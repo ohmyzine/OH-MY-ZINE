@@ -1,0 +1,839 @@
+/* =========================
+   ABOUT PROFILE WINDOW
+========================= */
+
+/* ABOUT-only hollow-dot background. */
+body.subpage.about-page-shell {
+  background-color: #c7c6c2;
+  background-image:
+    radial-gradient(
+      circle,
+      transparent 0 1px,
+      rgba(91, 81, 99, 0.58) 1.2px 2px,
+      transparent 2.2px
+    ),
+    linear-gradient(135deg, #eef0ef, #d7d9da);
+  background-size: 18px 18px, 100% 100%;
+}
+
+.about-page-shell .about-hero {
+  min-height: 255px;
+  padding: clamp(20px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: center;
+  gap: 28px;
+  border: 1px solid #6d7e88;
+  background:
+    repeating-linear-gradient(0deg, rgba(69, 76, 80, 0.045) 0 1px, transparent 1px 6px),
+    linear-gradient(135deg, #f0f2f3 0%, #d8e2e6 100%);
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    0 3px 0 rgba(68, 74, 78, 0.24);
+}
+
+.about-page-shell .about-hero h1 {
+  margin: 15px 0 12px;
+  color: #293943;
+  font-size: clamp(34px, 5.2vw, 70px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.06em;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.about-page-shell .about-lead {
+  max-width: 620px;
+  margin: 0;
+  color: #485861;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.about-page-shell .about-status {
+  min-height: 88px;
+  padding: 12px 13px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #a7adb0;
+  border-radius: 3px;
+  background: #f7f8f8;
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    0 2px 4px rgba(49, 54, 57, 0.20);
+  cursor: pointer;
+}
+
+.about-page-shell .system-check-input {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.about-page-shell .system-check-box {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #8c9498;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: inset 1px 1px 2px rgba(39, 48, 53, 0.08);
+}
+
+.about-page-shell .system-check-box i {
+  width: 14px;
+  height: 8px;
+  display: block;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  transform: translateY(-2px) rotate(-45deg);
+}
+
+.about-page-shell .system-check-input:focus-visible + .system-check-box {
+  outline: 2px solid #78b9ce;
+  outline-offset: 2px;
+}
+
+.about-page-shell .system-check-input:checked + .system-check-box {
+  border-color: #468ca8;
+  background: linear-gradient(180deg, #9ed9e9, #58a7c2);
+}
+
+.about-page-shell .system-check-input:checked + .system-check-box i {
+  border-left-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.about-page-shell .system-check-copy {
+  min-width: 0;
+}
+
+.about-page-shell .system-check-copy small,
+.about-page-shell .system-check-copy strong {
+  display: block;
+}
+
+.about-page-shell .system-check-copy small {
+  margin-top: 6px;
+  color: #778087;
+  font: 700 7px/1.2 "Courier New", monospace;
+  letter-spacing: 0.11em;
+}
+
+.about-page-shell .system-check-copy strong {
+  color: #252c30;
+  font: 600 14px/1.45 "Yu Gothic", "Segoe UI", sans-serif;
+}
+
+.about-page-shell .system-check-mark {
+  width: 48px;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  color: #667179;
+}
+
+.about-page-shell .system-check-mark > i {
+  width: 31px;
+  height: 31px;
+  display: block;
+  position: relative;
+  border: 6px solid #65c7d5;
+  border-right-color: #aa91c2;
+  border-radius: 50%;
+  transform: rotate(-18deg);
+}
+
+.about-page-shell .system-check-mark > i::before,
+.about-page-shell .system-check-mark > i::after {
+  content: "";
+  width: 5px;
+  height: 13px;
+  position: absolute;
+  top: -10px;
+  left: 7px;
+  border-radius: 3px;
+  background: #e78b9e;
+}
+
+.about-page-shell .system-check-mark > i::after {
+  top: 15px;
+  left: 15px;
+  background: #f0c56f;
+  transform: rotate(70deg);
+}
+
+.about-page-shell .system-check-mark small {
+  font: 700 6px/1 "Courier New", monospace;
+  letter-spacing: 0.04em;
+}
+
+.about-page-shell .about-layout {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.8fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.about-page-shell .about-story,
+.about-page-shell .about-section {
+  overflow: hidden;
+  border: 1px solid #78858d;
+  background: #e7e9ea;
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    3px 4px 0 rgba(70, 74, 81, 0.15);
+}
+
+.about-page-shell .section-toolbar {
+  min-height: 30px;
+  padding: 0 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #7c8991;
+  color: #47545c;
+  background: linear-gradient(90deg, #c1dce7, #e1e4e5);
+  box-shadow: inset 4px 0 0 #5fa6c0;
+}
+
+.about-page-shell .section-toolbar h2 {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+}
+
+.about-page-shell .section-toolbar span {
+  color: #6b7580;
+  font: 700 8px/1 "Courier New", monospace;
+}
+
+.about-page-shell .about-body,
+.about-page-shell .about-section-body {
+  padding: clamp(17px, 3vw, 30px);
+}
+
+.about-page-shell .about-body p {
+  margin: 0 0 24px;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.about-page-shell .about-body p:last-child,
+.about-page-shell .about-section-body p:last-child {
+  margin-bottom: 0;
+}
+
+.about-page-shell .about-meta {
+  display: grid;
+  gap: 12px;
+}
+
+.about-page-shell .about-section-body p {
+  margin: 0 0 16px;
+  color: #52616a;
+  font-size: 12px;
+  line-height: 1.85;
+}
+
+.about-page-shell .profile-motion {
+  width: min(220px, 100%);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 18px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #66737a;
+  border-radius: 10px;
+  background: #1f262a;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.32),
+    0 3px 0 rgba(61, 67, 71, 0.18);
+}
+
+.about-page-shell .profile-motion video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 48%;
+  position: relative;
+  left: 10%;
+  filter: saturate(0.88) contrast(1.03);
+  transform: scale(3.05);
+  transform-origin: 50% 48%;
+}
+
+.about-page-shell .profile-motion span {
+  min-height: 32px;
+  padding: 5px 8px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  align-items: center;
+  justify-items: start;
+  border-top: 1px solid #7c878d;
+  color: #303a40;
+  background: rgba(214, 218, 220, 0.94);
+  font: 700 7px/1 "Courier New", monospace;
+  letter-spacing: 0.08em;
+}
+
+.about-page-shell .profile-motion span b {
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.about-page-shell .profile-facts {
+  margin: 0 0 18px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  border: 1px solid #866b4f;
+  border-radius: 16px;
+  background-color: #d4ad75;
+  background-image:
+    radial-gradient(circle at 9px 9px, #604128 0 1.2px, transparent 1.5px),
+    radial-gradient(circle at 15px 14px, #6e482b 0 1px, transparent 1.4px),
+    radial-gradient(circle at 12px 12px, #e4ba79 0 8px, #a87848 8.3px 9.2px, transparent 9.5px);
+  background-size: 24px 24px;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.58),
+    0 3px 0 rgba(93, 70, 47, 0.20);
+}
+
+.about-page-shell .profile-facts div {
+  min-width: 0;
+  min-height: 82px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #78848a;
+  border-radius: 8px;
+  background: #f5f6f6;
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    0 2px 0 rgba(75, 62, 50, 0.20);
+}
+
+.about-page-shell .profile-facts dt,
+.about-page-shell .profile-facts dd {
+  margin: 0;
+  padding: 8px 9px;
+  display: flex;
+  align-items: center;
+}
+
+.about-page-shell .profile-facts dt {
+  min-height: 29px;
+  border-bottom: 1px solid #98a3a8;
+  color: #45535b;
+  background: #c7dfe8;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.about-page-shell .profile-facts div:nth-child(2) dt {
+  background: #d8cde2;
+}
+
+.about-page-shell .profile-facts div:nth-child(3) dt {
+  background: #e6cdd3;
+}
+
+.about-page-shell .profile-facts div:nth-child(4) dt {
+  background: #dddfe0;
+}
+
+.about-page-shell .profile-facts dd {
+  min-height: 51px;
+  flex: 1;
+  justify-content: center;
+  color: #263238;
+  background: #f5f6f6;
+  font: 800 21px/1 "Courier New", "Yu Gothic", monospace;
+}
+
+.about-page-shell .profile-section .section-toolbar {
+  background: linear-gradient(90deg, #d4c7e1, #e3e4e5);
+  box-shadow: inset 4px 0 0 #9a7eaf;
+}
+
+.about-page-shell .site-section .section-toolbar {
+  background: linear-gradient(90deg, #c5dce6, #e3e5e6);
+  box-shadow: inset 4px 0 0 #668ea1;
+}
+
+.about-page-shell .contact-section .section-toolbar {
+  background: linear-gradient(90deg, #e6cbd1, #e2e3e4);
+  box-shadow: inset 4px 0 0 #c77c8c;
+}
+
+@media (max-width: 880px) {
+  .about-page-shell .about-hero,
+  .about-page-shell .about-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-page-shell .about-hero {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .about-page-shell .about-hero h1 {
+    font-size: 38px;
+  }
+
+  .about-page-shell .about-body p {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================
+   JELLY-BEAN WORLD BACKDROP
+========================= */
+
+.about-page-shell .about-layout {
+  padding: clamp(12px, 2vw, 20px);
+  border: 3px solid #fff0f5;
+  border-radius: 25px;
+  background-image:
+    linear-gradient(rgba(255, 246, 235, 0.20), rgba(255, 246, 235, 0.20)),
+    url("../images/about-jellybeans-bg-v1.png");
+  background-position: center;
+  background-size: auto, min(680px, 86vw) auto;
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.30),
+    0 5px 0 rgba(94, 46, 62, 0.20);
+}
+
+.about-page-shell .about-story,
+.about-page-shell .about-section {
+  backdrop-filter: blur(1px);
+}
+
+.about-page-shell .about-story {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.32),
+    6px 7px 0 rgba(65, 31, 23, 0.30);
+}
+
+.about-page-shell .profile-section {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.40),
+    5px 6px 0 rgba(119, 71, 25, 0.28);
+}
+
+.about-page-shell .site-section {
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 207, 159, 0.22),
+    6px 7px 0 rgba(74, 38, 23, 0.34);
+}
+
+.about-page-shell .contact-section {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+    5px 6px 0 rgba(117, 70, 20, 0.27);
+}
+
+@media (max-width: 700px) {
+  .about-page-shell .about-layout {
+    padding: 9px;
+    border-width: 2px;
+    border-radius: 17px;
+    background-size: auto, 480px auto;
+  }
+}
+
+
+/* Cookie-clicker-like game field replacing the jelly-bean backdrop. */
+.about-page-shell .about-layout {
+  border-color: #d9f2ff;
+  background-color: #70b9db;
+  background-image:
+    radial-gradient(circle at 48px 48px, #5a331d 0 2px, transparent 2.8px),
+    radial-gradient(circle at 75px 60px, #6a3b20 0 2.4px, transparent 3.2px),
+    radial-gradient(circle at 58px 82px, #52301d 0 2.2px, transparent 3px),
+    radial-gradient(circle at 60px 60px, #f3cb7d 0 29px, #d4954e 30px 34px, #80502b 35px 38px, transparent 39px),
+    radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.72), transparent 38%),
+    linear-gradient(160deg, #9edcf2 0%, #66b3d7 52%, #7398d0 100%);
+  background-position: 0 0, 0 0, 0 0, 0 0, center, center;
+  background-size: 120px 120px, 120px 120px, 120px 120px, 120px 120px, 100% 100%, 100% 100%;
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.40),
+    0 5px 0 rgba(51, 94, 122, 0.28);
+}
+
+@media (max-width: 700px) {
+  .about-page-shell .about-layout {
+    background-size: 96px 96px, 96px 96px, 96px 96px, 96px 96px, 100% 100%, 100% 100%;
+  }
+}
+
+
+/* =========================
+   EXTRA CANDY DECORATIONS
+========================= */
+
+.about-page-shell .about-story,
+.about-page-shell .about-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.about-page-shell .about-story > *,
+.about-page-shell .about-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+.about-page-shell .about-story::after {
+  content: "";
+  width: 9px;
+  height: 20px;
+  position: absolute;
+  top: 58px;
+  right: 20px;
+  z-index: 3;
+  border-radius: 999px;
+  background: #ff78a9;
+  box-shadow:
+    -25px 14px 0 #7ed8ce,
+    -50px -4px 0 #fff1a3,
+    -75px 18px 0 #9d8ae8,
+    -99px 1px 0 #ff9c75;
+  transform: rotate(27deg);
+  pointer-events: none;
+}
+
+.about-page-shell .profile-section::before {
+  content: "COOKIE";
+  width: 58px;
+  height: 58px;
+  position: absolute;
+  top: 57px;
+  right: 17px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  border: 2px dashed #83591e;
+  border-radius: 50%;
+  color: #704817;
+  background:
+    radial-gradient(circle at 18px 17px, #6f421c 0 2px, transparent 2.5px),
+    radial-gradient(circle at 42px 36px, #6f421c 0 2px, transparent 2.5px),
+    radial-gradient(circle at 21px 44px, #6f421c 0 2px, transparent 2.5px),
+    #e8bd67;
+  box-shadow: 0 3px 0 rgba(91, 55, 20, 0.28);
+  font: 800 7px/1 "Courier New", monospace;
+  letter-spacing: 0.08em;
+  transform: rotate(9deg);
+  pointer-events: none;
+}
+
+.about-page-shell .site-section {
+  padding: 12px;
+  border: 3px solid #552718;
+  background-color: #6d321f;
+  background-image: url("../images/about-chocolate-tile-texture.png");
+  background-position: center;
+  background-size: 320px auto;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 207, 159, 0.22),
+    4px 5px 0 rgba(74, 38, 23, 0.25);
+}
+
+.about-page-shell .site-section .section-toolbar {
+  border-color: #74442f;
+  color: #5e3425;
+  background: #fff1d9;
+}
+
+.about-page-shell .site-section .about-section-body {
+  border: 2px solid #76422e;
+  background: rgba(255, 247, 225, 0.96);
+  box-shadow:
+    inset 0 0 0 4px rgba(137, 75, 45, 0.10),
+    0 2px 0 rgba(47, 24, 14, 0.24);
+}
+
+.about-page-shell .contact-section {
+  border-color: #b27122;
+  background-color: #df9f29;
+  background-image:
+    linear-gradient(135deg, rgba(255, 119, 162, 0.30) 0 14px, transparent 14px 28px, rgba(119, 215, 205, 0.30) 28px 42px, transparent 42px 56px),
+    url("../images/about-senbei-texture.png");
+  background-size: 56px 56px, 340px auto;
+}
+
+.about-page-shell .about-body p:nth-child(5) {
+  margin: 30px -6px;
+  padding: 18px 20px;
+  border: 2px solid #c35c83;
+  border-radius: 18px 7px 18px 7px;
+  color: #6e2440;
+  background: #ffd5e3;
+  box-shadow:
+    inset 0 0 0 4px #fff0f5,
+    4px 5px 0 rgba(98, 46, 62, 0.20);
+  font-weight: 700;
+  transform: rotate(-0.6deg);
+}
+
+.about-page-shell .about-body p:nth-child(5)::before,
+.about-page-shell .about-body p:nth-child(5)::after {
+  color: #ef6a9e;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  line-height: 0;
+}
+
+.about-page-shell .about-body p:nth-child(5)::before {
+  content: "“";
+  margin-right: 5px;
+}
+
+.about-page-shell .about-body p:nth-child(5)::after {
+  content: "”";
+  margin-left: 5px;
+}
+
+.about-page-shell .section-toolbar h2::before {
+  content: "●";
+  margin-right: 7px;
+  color: #ff79a8;
+  text-shadow: 7px 0 0 #7ad4cc, 14px 0 0 #f2cc67;
+}
+
+.about-page-shell .profile-facts div {
+  box-shadow:
+    inset 0 0 0 3px rgba(220, 176, 103, 0.16),
+    0 3px 0 rgba(75, 52, 31, 0.20);
+}
+
+@media (max-width: 700px) {
+  .about-page-shell .profile-section::before {
+    width: 44px;
+    height: 44px;
+    top: 54px;
+    right: 12px;
+    font-size: 6px;
+  }
+
+  .about-page-shell .about-story::after {
+    display: none;
+  }
+}
+
+
+/* =========================
+   SWEETS WORLD PANELS
+========================= */
+
+.about-page-shell .about-layout {
+  gap: 16px;
+}
+
+.about-page-shell .about-story,
+.about-page-shell .about-section {
+  padding: 10px;
+  border-width: 1px;
+  border-radius: 18px;
+  background-color: #c28b55;
+  background-repeat: repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.32),
+    4px 5px 0 rgba(79, 58, 40, 0.20);
+}
+
+.about-page-shell .about-story {
+  border-color: #4e281c;
+  background-image: url("../images/about-chocolate-tile-texture.png");
+  background-position: center top;
+  background-size: 430px auto;
+}
+
+.about-page-shell .profile-section {
+  border-color: #a87335;
+  background-image: url("../images/about-cracker-texture.png");
+  background-position: center;
+  background-size: 370px auto;
+}
+
+.about-page-shell .site-section {
+  border-color: #b17121;
+  background-image: url("../images/about-senbei-texture.png");
+  background-position: center;
+  background-size: 430px auto;
+}
+
+.about-page-shell .contact-section {
+  border-color: #5f2e1e;
+  background-image: url("../images/about-chocolate-tile-texture.png");
+  background-position: center;
+  background-size: 330px auto;
+}
+
+.about-page-shell .section-toolbar {
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid #8c7457;
+  border-radius: 10px;
+  color: #493d31;
+  background: rgba(255, 248, 227, 0.96);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 3px 0 rgba(74, 49, 31, 0.26);
+}
+
+.about-page-shell .section-toolbar h2 {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.about-page-shell .section-toolbar span {
+  color: #806c56;
+}
+
+.about-page-shell .about-body,
+.about-page-shell .about-section-body {
+  margin-top: 10px;
+  border: 1px solid rgba(100, 77, 54, 0.72);
+  border-radius: 11px;
+  background: rgba(255, 252, 241, 0.94);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 2px 0 rgba(63, 45, 31, 0.20);
+  backdrop-filter: blur(2px);
+}
+
+.about-page-shell .about-story .section-toolbar {
+  color: #5a3023;
+  background: #fff2d4;
+}
+
+.about-page-shell .profile-section .section-toolbar {
+  color: #64471e;
+  background: #fff5d9;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 3px 0 rgba(112, 70, 25, 0.25);
+}
+
+.about-page-shell .site-section .section-toolbar {
+  color: #70480d;
+  background: #fff1c7;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 3px 0 rgba(127, 76, 14, 0.24);
+}
+
+.about-page-shell .contact-section .section-toolbar {
+  color: #5b2631;
+  background: #ffe8ea;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 3px 0 rgba(89, 40, 38, 0.25);
+}
+
+.about-page-shell .profile-facts {
+  border-color: #9d702e;
+  background-color: #e6b958;
+  background-image: url("../images/about-senbei-texture.png");
+  background-position: center;
+  background-size: 360px auto;
+}
+
+.about-page-shell .profile-facts div {
+  border-color: #9e835d;
+  background: rgba(255, 252, 241, 0.96);
+}
+
+.about-page-shell .profile-facts dt {
+  border-color: #af986f;
+  color: #57462f;
+  background: #f4dfb0;
+}
+
+.about-page-shell .profile-facts div:nth-child(2) dt {
+  background: #ead4df;
+}
+
+.about-page-shell .profile-facts div:nth-child(3) dt {
+  background: #f5d6ae;
+}
+
+.about-page-shell .profile-facts div:nth-child(4) dt {
+  background: #e6d9c4;
+}
+
+.about-page-shell .profile-facts dd {
+  background: rgba(255, 253, 245, 0.96);
+}
+
+@media (max-width: 700px) {
+  .about-page-shell .about-story,
+  .about-page-shell .about-section {
+    padding: 7px;
+    border-radius: 13px;
+  }
+
+  .about-page-shell .about-body,
+  .about-page-shell .about-section-body {
+    padding: 16px;
+  }
+}
+
+
+/* Final cookie-clicker stage. Keep after the individual sweets panels. */
+.about-page-shell .about-layout {
+  padding: clamp(12px, 2vw, 20px);
+  border: 3px solid #d9f2ff;
+  border-radius: 25px;
+  background-color: #70b9db;
+  background-image:
+    radial-gradient(circle at 48px 48px, #5a331d 0 2px, transparent 2.8px),
+    radial-gradient(circle at 75px 60px, #6a3b20 0 2.4px, transparent 3.2px),
+    radial-gradient(circle at 58px 82px, #52301d 0 2.2px, transparent 3px),
+    radial-gradient(circle at 60px 60px, #f3cb7d 0 29px, #d4954e 30px 34px, #80502b 35px 38px, transparent 39px),
+    radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.72), transparent 38%),
+    linear-gradient(160deg, #9edcf2 0%, #66b3d7 52%, #7398d0 100%);
+  background-position: 0 0, 0 0, 0 0, 0 0, center, center;
+  background-size: 120px 120px, 120px 120px, 120px 120px, 120px 120px, 100% 100%, 100% 100%;
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.40),
+    0 5px 0 rgba(51, 94, 122, 0.28);
+}
+
+.about-page-shell .site-section {
+  padding: 12px;
+  border: 3px solid #552718;
+  background-color: #6d321f;
+  background-image: url("../images/about-chocolate-tile-texture.png");
+  background-position: center;
+  background-size: 320px auto;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 207, 159, 0.22),
+    6px 7px 0 rgba(74, 38, 23, 0.34);
+}
+
+@media (max-width: 700px) {
+  .about-page-shell .about-layout {
+    padding: 9px;
+    border-width: 2px;
+    border-radius: 17px;
+    background-size: 96px 96px, 96px 96px, 96px 96px, 96px 96px, 100% 100%, 100% 100%;
+  }
+}

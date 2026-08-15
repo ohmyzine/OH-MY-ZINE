@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>OH MY ZINE | Fashion & Culture</title>
+  <meta
+    name="description"
+    content="ファッションを入り口に、音楽や時代、その背景にあるカルチャーを読み解くWebメディア。"
+  >
+
+  <link rel="stylesheet" href="CSS/common.css?v=20260815-shared30">
+  <link rel="stylesheet" href="CSS/index.css?v=20260815-home22">
+  <script src="js/common.js?v=20260815-shared5" defer></script>
+  <script src="js/home.js?v=20260815-shared3" defer></script>
+</head>
+
+<body class="home-page">
+
+  <main class="home-main" id="top">
+    <section class="magazine-window" aria-label="OH MY ZINE ホーム">
+
+      <header class="system-bar shared-titlebar">
+        <a class="system-title shared-brand" href="index.html" aria-label="OH MY ZINE ホーム">
+          <img
+            class="system-app-icon shared-brand-icon"
+            src="images/oh-my-zine-archive-icon.png?v=magazine3"
+            alt=""
+            aria-hidden="true"
+          >
+          <span>OH_MY_ZINE.EXE</span>
+        </a>
+
+        <div class="system-controls shared-window-controls" aria-label="ウィンドウ操作">
+          <button
+            id="window-minimize"
+            type="button"
+            aria-label="最小化"
+            aria-pressed="false"
+          >—</button>
+          <button
+            id="window-maximize"
+            type="button"
+            aria-label="最大化"
+            aria-pressed="false"
+          >□</button>
+          <button id="window-close" type="button" aria-label="閉じる">×</button>
+        </div>
+      </header>
+
+      <nav class="site-nav shared-tabs" aria-label="メインメニュー">
+        <a href="index.html" aria-current="page">HOME</a>
+        <a href="fashion.html">FASHION</a>
+        <span>MUSIC — SOON</span>
+        <span>CULTURE — SOON</span>
+        <a href="about.html">ABOUT</a>
+      </nav>
+
+      <section class="portal-banner" aria-label="今号のイントロダクション">
+        <span class="portal-star" aria-hidden="true">★</span>
+
+        <div class="portal-copy">
+          <span>OH MY ZINE / ISSUE 001</span>
+          <img
+            class="portal-brand"
+            src="images/oh-my-zine-soft-logo.png"
+            alt="OH MY ZINE"
+          >
+          <p>Welcome to your portal to fashion &amp; culture</p>
+        </div>
+
+        <span class="portal-star" aria-hidden="true">★</span>
+        <small>FASHION ・ MUSIC ・ CULTURE</small>
+      </section>
+
+
+      <div class="magazine-grid">
+
+        <aside class="left-column">
+          <section class="photo-vault" aria-labelledby="photo-vault-title">
+            <img
+              id="photo-vault-image"
+              src="images/free-skater-close.jpg"
+              alt="スケートボードを持つ人の写真"
+            >
+
+            <label class="photo-add-button" for="photo-vault-input">
+              <b>+</b>
+              <span>
+                ADD PHOTOS
+                <small>好きな写真を追加</small>
+              </span>
+            </label>
+
+            <input
+              id="photo-vault-input"
+              class="photo-input"
+              type="file"
+              accept="image/*"
+              multiple
+            >
+
+            <h2 id="photo-vault-title" class="cover-label">MY PHOTO CABINET</h2>
+
+            <div class="photo-controls" aria-label="写真の操作">
+              <button id="photo-previous" type="button" aria-label="前の写真">←</button>
+              <span id="photo-count">SAMPLE</span>
+              <button id="photo-next" type="button" aria-label="次の写真">→</button>
+              <button id="photo-delete" class="photo-delete" type="button">DELETE</button>
+            </div>
+
+            <p id="photo-vault-message" class="photo-vault-message"></p>
+          </section>
+
+
+          <div class="lace-divider" aria-hidden="true">
+            <img src="images/lace-trim.png?v=1" alt="">
+          </div>
+
+
+          <section class="about-card" id="about">
+            <p class="micro-label">ABOUT THIS ZINE</p>
+
+            <h2>服から、音楽と時代を読み解く。</h2>
+
+            <p>
+              今かっこいいと思うものは、どこから来たんだろう？
+              ファッションを入口に、その背景にあるカルチャーを辿ります。
+            </p>
+
+            <a class="pill-button about-button" href="about.html">
+              ABOUT US <span>→</span>
+            </a>
+          </section>
+        </aside>
+
+
+        <section class="center-column">
+          <article class="article-card featured-card feature-panel" id="feature">
+            <div class="panel-titlebar">
+              <span>FEATURE_01.HTML</span>
+              <span class="panel-controls" aria-hidden="true">_ □ ×</span>
+            </div>
+
+            <div class="feature-body">
+              <a class="feature-link" href="article.html">
+                <div class="feature-image-wrap">
+                  <img
+                    class="feature-image"
+                    src="images/attention-athleisure.JPG"
+                    alt="NewJeans『Attention』のシーン"
+                  >
+                  <span class="image-credit">LAYOUT IMAGE</span>
+                </div>
+
+                <p class="category-tag">FASHION / MUSIC / CULTURE</p>
+
+                <h1>NewJeans「Attention」のファッションを読み解く</h1>
+
+                <p class="feature-copy">
+                  スポーツウェア、HIPHOP、R&amp;B、Y2K。衣装に重なるいくつもの時代とカルチャーを辿ります。
+                </p>
+
+                <span class="read-button">CONTINUE READING</span>
+              </a>
+            </div>
+          </article>
+
+
+          <section class="notes-panel" aria-labelledby="random-picks-title">
+            <div class="panel-titlebar">
+              <h2 id="random-picks-title">RANDOM_PICKS.HTML</h2>
+              <button id="recommendation-shuffle" class="shuffle-button" type="button">
+                SHUFFLE ↻
+              </button>
+            </div>
+
+            <div id="recommendation-grid" class="recommendation-grid" aria-live="polite">
+              <p class="recommendation-loading">記事を選んでいます…</p>
+            </div>
+          </section>
+        </section>
+
+
+        <aside class="right-column" aria-label="記事一覧とキーホルダー">
+          <section class="contents-card" aria-label="記事一覧">
+          <p class="issue-label">OH MY ZINE</p>
+
+          <div class="contents-heading">
+            <h2>CONTENTS</h2>
+            <span>ISSUE 001</span>
+          </div>
+
+          <div class="itunes-segments" aria-label="記事の表示切り替え">
+            <span class="is-active">TOP STORIES</span>
+            <span>ARCHIVE</span>
+          </div>
+
+          <p class="playlist-hint">Click a story to open</p>
+
+          <ol class="itunes-list">
+            <li class="is-active">
+              <span class="track-art">
+                <img src="images/attention-main.jpg" alt="">
+              </span>
+              <a href="article.html">
+                <strong><b>1.</b> Cover Story</strong>
+                <small>NewJeans「Attention」</small>
+              </a>
+              <span class="track-time">OPEN</span>
+            </li>
+
+            <li>
+              <span class="track-art is-placeholder">02</span>
+              <span>
+                <strong><b>2.</b> SOON</strong>
+                <small>Next article</small>
+              </span>
+              <span class="track-time">--</span>
+            </li>
+
+            <li>
+              <span class="track-art is-placeholder">03</span>
+              <span>
+                <strong><b>3.</b> SOON</strong>
+                <small>Next article</small>
+              </span>
+              <span class="track-time">--</span>
+            </li>
+
+            <li>
+              <span class="track-art is-placeholder">04</span>
+              <span>
+                <strong><b>4.</b> SOON</strong>
+                <small>Next article</small>
+              </span>
+              <span class="track-time">--</span>
+            </li>
+
+            <li>
+              <span class="track-art is-placeholder">05</span>
+              <span>
+                <strong><b>5.</b> SOON</strong>
+                <small>Next article</small>
+              </span>
+              <span class="track-time">--</span>
+            </li>
+          </ol>
+
+          <a class="pill-button contents-button" href="article.html">
+            OPEN SELECTED <span>→</span>
+          </a>
+          </section>
+
+          <figure class="hanging-keychain" aria-hidden="true">
+            <img class="keychain-eyelet" src="images/silver-grommet-eyelet.png?v=1" alt="">
+            <img class="keychain-charm" src="images/keychain-silver-connector.png?v=1" alt="">
+          </figure>
+        </aside>
+
+      </div>
+
+
+      <footer class="window-footer">
+        <span>ISSUE 001 / 2026</span>
+        <a href="credits.html">PHOTO CREDITS</a>
+      </footer>
+
+    </section>
+
+    <section id="closed-screen" class="closed-screen" hidden>
+      <p>PROGRAM CLOSED</p>
+      <h1>OH MY ZINE</h1>
+      <button id="window-reopen" type="button">OPEN OH_MY_ZINE.EXE</button>
+    </section>
+  </main>
+
+  <div id="soft-cursor" class="soft-cursor" aria-hidden="true">
+    <span></span>
+  </div>
+
+</body>
+
+</html>
