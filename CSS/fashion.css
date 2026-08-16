@@ -968,6 +968,188 @@ body.subpage.fashion-page {
   color: #78868c;
 }
 
+/* Last in the cascade: keep the hero photo and featured thumbnail visible. */
+body.subpage.fashion-page.fashion-player-page .fashion-hero {
+  background-image:
+    linear-gradient(90deg, rgba(15, 18, 20, 0.76) 0%, rgba(22, 25, 27, 0.50) 39%, rgba(25, 27, 29, 0.06) 73%, rgba(18, 21, 23, 0.17) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.01) 48%, rgba(12, 16, 18, 0.45) 100%),
+    url("../images/free-skater-venice.jpg") !important;
+}
+
+.fashion-page .fashion-stream-card.is-live .fashion-stream-cover img {
+  position: relative;
+  z-index: 0;
+  opacity: 1 !important;
+  filter: saturate(1) brightness(1.06) contrast(1.02) !important;
+}
+
+.fashion-page .fashion-stream-card.is-live .fashion-stream-cover::after {
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.48) 100%) !important;
+}
+
+.fashion-page .fashion-stream-card.is-live .fashion-card-mark,
+.fashion-page .fashion-stream-card.is-live .fashion-stream-cover > strong {
+  z-index: 2;
+}
+
+
+/* =========================
+   FASHION CHANNEL STRIP + LIGHT ARTICLE LIBRARY
+========================= */
+
+body.subpage.fashion-page.fashion-player-page .fashion-hero {
+  background-image:
+    linear-gradient(90deg, rgba(17, 20, 23, 0.82) 0%, rgba(25, 28, 31, 0.62) 39%, rgba(30, 31, 32, 0.10) 73%, rgba(21, 24, 26, 0.24) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.01) 46%, rgba(17, 20, 22, 0.55) 100%),
+    url("../images/free-skater-venice.jpg");
+}
+
+.fashion-page .fashion-channel-strip {
+  min-height: 42px;
+  margin: -1px 0 0;
+  padding: 0 10px;
+  position: relative;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: 0.58fr 1.25fr 1.08fr 1.18fr 1.12fr;
+  align-items: stretch;
+  border-top: 1px solid #ff9aac;
+  border-right: 1px solid #761122;
+  border-bottom: 5px solid #690d1e;
+  border-left: 1px solid #761122;
+  border-radius: 3px 3px 2px 2px;
+  color: #fff;
+  background:
+    linear-gradient(180deg, #ff5471 0%, #e9163b 44%, #bf0c2b 48%, #dc1438 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    inset 0 -1px 0 rgba(81, 3, 22, 0.72),
+    0 3px 0 rgba(59, 65, 68, 0.30);
+  transform: translateY(-1px);
+}
+
+.fashion-page .fashion-channel-strip::before {
+  content: "";
+  height: 5px;
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  left: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.fashion-page .fashion-channel-strip strong,
+.fashion-page .fashion-channel-strip span {
+  min-width: 0;
+  padding: 0 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(104, 0, 20, 0.55);
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(9px, 1.05vw, 13px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.045em;
+  white-space: nowrap;
+  text-shadow: 0 2px 0 #781026;
+  transform: skewX(-2deg);
+}
+
+.fashion-page .fashion-channel-strip strong {
+  margin: 0 -1px 0 -10px;
+  border-left: 0;
+  color: #ffdae3;
+  background: rgba(91, 0, 20, 0.35);
+  font-size: clamp(12px, 1.3vw, 17px);
+}
+
+.fashion-page .fashion-latest {
+  padding-bottom: 18px;
+  border-top: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 21px, rgba(55, 67, 73, 0.055) 21px 22px),
+    #c7cdd0;
+}
+
+.fashion-page .fashion-latest-heading {
+  margin: 0 12px;
+  padding: 12px 3px 6px;
+  border-bottom: 1px solid #7b858a;
+}
+
+.fashion-page .fashion-latest-heading h2 {
+  font-size: 18px !important;
+  letter-spacing: 0.035em !important;
+}
+
+.fashion-page .fashion-latest-rail {
+  padding: 9px 13px 12px;
+  gap: 13px;
+}
+
+.fashion-page .fashion-stream-card {
+  border-color: #707a7f;
+  background: #f0f2f2;
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    3px 4px 0 rgba(74, 80, 84, 0.24);
+}
+
+.fashion-page .fashion-stream-card.is-live {
+  border-top: 4px solid #c72e6c;
+  background: #f7f4f5;
+}
+
+.fashion-page .fashion-stream-card.is-soon {
+  border-top: 4px solid #8b969b;
+  background: #e2e6e7;
+}
+
+.fashion-page .fashion-stream-card-body {
+  background: #f3f4f4;
+}
+
+.fashion-page .fashion-stream-card.is-live .fashion-stream-card-body {
+  background: #fff8fa;
+}
+
+.fashion-page .fashion-stream-card.is-soon .fashion-stream-card-body {
+  background: #e6eaeb;
+}
+
+.fashion-page .fashion-unavailable-thumb {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 19px, rgba(70, 82, 88, 0.10) 19px 20px),
+    repeating-linear-gradient(0deg, transparent 0 19px, rgba(70, 82, 88, 0.08) 19px 20px),
+    #d2d8da;
+}
+
+@media (max-width: 760px) {
+  .fashion-page .fashion-channel-strip {
+    min-height: 38px;
+    padding: 0;
+    grid-template-columns: repeat(5, minmax(105px, 1fr));
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .fashion-page .fashion-channel-strip strong,
+  .fashion-page .fashion-channel-strip span {
+    padding: 0 8px;
+    font-size: 9px;
+  }
+
+  .fashion-page .fashion-channel-strip strong {
+    margin-left: 0;
+    font-size: 12px;
+  }
+}
+
 
 /* The feature keeps its streaming mood without becoming a separate black box. */
 body.subpage.fashion-page.fashion-player-page .fashion-hero {
@@ -1584,6 +1766,54 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
   overflow: hidden;
   border-top: 1px solid #c6ccd0;
   background: #e7ebed;
+}
+
+@media (max-width: 700px) {
+  .fashion-page .fashion-latest-heading {
+    min-height: 56px;
+    align-items: center;
+  }
+
+  .fashion-page .fashion-latest-heading h2 {
+    font-size: 22px;
+  }
+
+  .fashion-page .fashion-latest-heading span {
+    max-width: 46%;
+    font-size: 8px;
+    line-height: 1.35;
+    text-align: right;
+  }
+
+  .fashion-page .fashion-latest-rail {
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 12px;
+  }
+
+  .fashion-page .fashion-stream-card {
+    scroll-snap-align: start;
+  }
+
+  .fashion-page .fashion-card-controls > a,
+  .fashion-page .fashion-card-controls > button {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+
+  .fashion-page .fashion-card-controls .is-play {
+    font-size: 12px;
+  }
+
+  .fashion-page .fashion-unavailable-thumb b {
+    font-size: 11px;
+  }
+
+  .fashion-page .fashion-unavailable-thumb small,
+  .fashion-page .fashion-card-tags {
+    font-size: 9px;
+    line-height: 1.45;
+  }
 }
 
 .fashion-page .fashion-latest-heading {

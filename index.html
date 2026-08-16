@@ -11,10 +11,16 @@
     content="ファッションを入り口に、音楽や時代、その背景にあるカルチャーを読み解くWebメディア。"
   >
 
-  <link rel="stylesheet" href="CSS/common.css?v=20260815-shared30">
-  <link rel="stylesheet" href="CSS/index.css?v=20260815-home22">
-  <script src="js/common.js?v=20260815-shared5" defer></script>
-  <script src="js/home.js?v=20260815-shared3" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OH MY ZINE">
+  <meta property="og:title" content="OH MY ZINE | Fashion &amp; Culture">
+  <meta property="og:description" content="ファッションを入り口に、音楽や時代、その背景にあるカルチャーを読み解くWebメディア。">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
+  <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
+  <link rel="stylesheet" href="CSS/index.css?v=20260816-home23">
+  <script src="js/common.js?v=20260816-shared6" defer></script>
+  <script src="js/home.js?v=20260816-shared4" defer></script>
 </head>
 
 <body class="home-page">
@@ -151,6 +157,8 @@
                     class="feature-image"
                     src="images/attention-athleisure.JPG"
                     alt="NewJeans『Attention』のシーン"
+                    decoding="async"
+                    fetchpriority="high"
                   >
                   <span class="image-credit">LAYOUT IMAGE</span>
                 </div>
@@ -184,75 +192,50 @@
         </section>
 
 
-        <aside class="right-column" aria-label="記事一覧とキーホルダー">
-          <section class="contents-card" aria-label="記事一覧">
-          <p class="issue-label">OH MY ZINE</p>
+        <aside class="right-column" aria-label="雑誌レビューとプロフィール">
+          <section class="magazine-shelf-card" aria-labelledby="magazine-shelf-title">
+            <div class="magazine-shelf-topline">
+              <p>MY MAGAZINE SHELF</p>
+              <span>PERSONAL ARCHIVE / 000</span>
+            </div>
 
-          <div class="contents-heading">
-            <h2>CONTENTS</h2>
-            <span>ISSUE 001</span>
-          </div>
+            <div class="magazine-spines" aria-hidden="true">
+              <i><b>01</b><span>FASHION</span></i>
+              <i><b>02</b><span>MUSIC</span></i>
+              <i><b>03</b><span>CULTURE</span></i>
+              <i><b>04</b><span>PHOTO</span></i>
+              <i><b>05</b><span>ZINE</span></i>
+            </div>
 
-          <div class="itunes-segments" aria-label="記事の表示切り替え">
-            <span class="is-active">TOP STORIES</span>
-            <span>ARCHIVE</span>
-          </div>
-
-          <p class="playlist-hint">Click a story to open</p>
-
-          <ol class="itunes-list">
-            <li class="is-active">
-              <span class="track-art">
-                <img src="images/attention-main.jpg" alt="">
-              </span>
-              <a href="article.html">
-                <strong><b>1.</b> Cover Story</strong>
-                <small>NewJeans「Attention」</small>
-              </a>
-              <span class="track-time">OPEN</span>
-            </li>
-
-            <li>
-              <span class="track-art is-placeholder">02</span>
-              <span>
-                <strong><b>2.</b> SOON</strong>
-                <small>Next article</small>
-              </span>
-              <span class="track-time">--</span>
-            </li>
-
-            <li>
-              <span class="track-art is-placeholder">03</span>
-              <span>
-                <strong><b>3.</b> SOON</strong>
-                <small>Next article</small>
-              </span>
-              <span class="track-time">--</span>
-            </li>
-
-            <li>
-              <span class="track-art is-placeholder">04</span>
-              <span>
-                <strong><b>4.</b> SOON</strong>
-                <small>Next article</small>
-              </span>
-              <span class="track-time">--</span>
-            </li>
-
-            <li>
-              <span class="track-art is-placeholder">05</span>
-              <span>
-                <strong><b>5.</b> SOON</strong>
-                <small>Next article</small>
-              </span>
-              <span class="track-time">--</span>
-            </li>
-          </ol>
-
-          <a class="pill-button contents-button" href="article.html">
-            OPEN SELECTED <span>→</span>
-          </a>
+            <p class="magazine-shelf-kicker">COLLECTED &amp; REVIEWED BY ME</p>
+            <h2 id="magazine-shelf-title">集めた雑誌を、<br>1冊ずつレビュー。</h2>
+            <p class="magazine-shelf-copy">
+              表紙、誌面、好きだったページを自分の言葉で残す個人アーカイブ。
+            </p>
+            <span class="magazine-shelf-button" aria-disabled="true">
+              REVIEWS — SOON <b>→</b>
+            </span>
           </section>
+
+          <a class="desktop-pet-card" href="about.html" aria-label="犬のプロフィールを見る">
+            <img
+              src="images/free-desktop-pet.png"
+              alt="FREE DESKTOP PETと書かれた犬のカード"
+              loading="lazy"
+              decoding="async"
+            >
+            <span>MEET MY PROFILE →</span>
+          </a>
+
+          <div class="x-account-card" aria-label="Xアカウントは準備中です">
+            <img
+              src="images/x-social-button.png"
+              alt="X"
+              loading="lazy"
+              decoding="async"
+            >
+            <span>X ACCOUNT / SOON</span>
+          </div>
 
           <figure class="hanging-keychain" aria-hidden="true">
             <img class="keychain-eyelet" src="images/silver-grommet-eyelet.png?v=1" alt="">
@@ -272,7 +255,7 @@
 
     <section id="closed-screen" class="closed-screen" hidden>
       <p>PROGRAM CLOSED</p>
-      <h1>OH MY ZINE</h1>
+      <h2>OH MY ZINE</h2>
       <button id="window-reopen" type="button">OPEN OH_MY_ZINE.EXE</button>
     </section>
   </main>

@@ -94,7 +94,7 @@
       magazineWindow.classList.remove("is-maximized");
       document.body.classList.remove("window-maximized");
       maximizeButton.setAttribute("aria-pressed", "false");
-      setSearchOpen(false);
+      window.OhMyZineSharedUI?.setSearchOpen?.(false);
     }
   }
 
@@ -118,7 +118,7 @@
       return;
     }
 
-    setSearchOpen(false);
+    window.OhMyZineSharedUI?.setSearchOpen?.(false);
     setWindowMinimized(false);
     setWindowMaximized(false);
     magazineWindow.hidden = true;
@@ -255,6 +255,8 @@
     const image = document.createElement("img");
     image.src = article.image;
     image.alt = "";
+    image.loading = "lazy";
+    image.decoding = "async";
 
     const copy = document.createElement("span");
     copy.className = "recommendation-copy";
@@ -318,13 +320,12 @@
 
   async function loadArticles() {
     try {
-      const response = await fetch("data/articles.json", { cache: "no-store" });
-
-      if (!response.ok) {
-        throw new Error("記事一覧を読み込めませんでした");
-      }
-
-      const loadedArticles = await response.json();
+      const loadedArticles = window.OhMyZineSharedUI?.getArticles
+        ? await window.OhMyZineSharedUI.getArticles()
+        : await fetch("data/articles.json", { cache: "no-store" }).then((response) => {
+            if (!response.ok) throw new Error("記事一覧を読み込めませんでした");
+            return response.json();
+          });
 
       if (Array.isArray(loadedArticles) && loadedArticles.length > 0) {
         articles = loadedArticles;

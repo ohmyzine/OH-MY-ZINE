@@ -14,6 +14,7 @@
   ];
 
   let articles = fallbackArticles;
+  const sharedUi = window.OhMyZineSharedUI ||= {};
 
   function createSharedToolbar() {
     const titlebar = document.querySelector(".shared-titlebar");
@@ -144,6 +145,8 @@
       searchToggle.setAttribute("aria-expanded", String(isOpen));
       if (isOpen) input?.focus();
     };
+
+    sharedUi.setSearchOpen = setOpen;
 
     searchToggle.addEventListener("click", () => setOpen(searchPanel.hidden));
     input?.addEventListener("input", render);
@@ -290,7 +293,7 @@
         if (reducedMotion) return;
         event.preventDefault();
         swing();
-        window.setTimeout(() => window.location.assign(link.href), 540);
+        window.setTimeout(() => window.location.assign(link.href), 300);
       });
     });
   }
@@ -298,12 +301,14 @@
   async function loadSearchArticles() {
     try {
       const response = await fetch("data/articles.json", { cache: "no-store" });
-      if (!response.ok) return;
+      if (!response.ok) return articles;
       const loaded = await response.json();
       if (Array.isArray(loaded) && loaded.length) articles = loaded;
     } catch (error) {
       // file:// preview uses the built-in fallback article.
     }
+
+    return articles;
   }
 
   const toolbar = createSharedToolbar();
@@ -312,5 +317,6 @@
   setupCursor();
   setupMaterialHeadings();
   setupTabKeychain();
-  void loadSearchArticles();
+  const articleDataPromise = loadSearchArticles();
+  sharedUi.getArticles = () => articleDataPromise;
 })();

@@ -1312,8 +1312,49 @@ body.subpage .shared-tabs > span {
 }
 
 @media (max-width: 700px) {
+  body.home-page,
+  body.subpage {
+    --shared-app-width: 100%;
+    --shared-tab-height: 44px;
+  }
+
   body.home-page .shared-tabs,
   body.subpage .shared-tabs {
-    grid-template-columns: repeat(5, minmax(112px, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    padding-inline: 8px;
+    overflow: hidden;
   }
+
+  body.home-page .shared-tabs > a,
+  body.home-page .shared-tabs > span,
+  body.subpage .shared-tabs > a,
+  body.subpage .shared-tabs > span {
+    min-width: 0;
+    padding-inline: 2px;
+    white-space: normal;
+    text-align: center;
+    font-size: clamp(7px, 2.2vw, 9px);
+    line-height: 1.15;
+  }
+
+  body.home-page .shared-brand,
+  body.subpage .shared-brand {
+    min-width: 0;
+  }
+
+  body.home-page .shared-brand > span,
+  body.subpage .shared-brand > span {
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+body.home-page .shared-window-controls button:focus-visible,
+body.subpage .shared-window-controls button:focus-visible,
+body.home-page .shared-search-toggle:focus-visible,
+body.subpage .shared-search-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 1px;
 }

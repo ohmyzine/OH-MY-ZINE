@@ -6,10 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ABOUT | OH MY ZINE</title>
   <meta name="description" content="OH MY ZINEを作った理由と、このサイトで扱うファッション・音楽・カルチャーについて。">
-  <link rel="stylesheet" href="CSS/common.css?v=20260815-shared30">
-  <link rel="stylesheet" href="CSS/about.css?v=20260815-cookie22">
-  <script src="js/common.js?v=20260815-shared5" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OH MY ZINE">
+  <meta property="og:title" content="ABOUT | OH MY ZINE">
+  <meta property="og:description" content="OH MY ZINEを作った理由と、このサイトで扱うファッション・音楽・カルチャーについて。">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
+  <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
+  <link rel="stylesheet" href="CSS/about.css?v=20260816-dashboard23">
+  <script src="js/common.js?v=20260816-shared6" defer></script>
   <script src="js/subpage-window.js?v=20260815-shared9" defer></script>
+  <script src="js/about.js?v=20260816-dashboard2" defer></script>
 </head>
 
 <body class="subpage about-page-shell">
@@ -30,8 +37,8 @@
     <nav class="subpage-tabs shared-tabs" aria-label="メインメニュー">
       <a href="index.html">HOME</a>
       <a href="fashion.html">FASHION</a>
-      <a href="#">MUSIC — SOON</a>
-      <a href="#">CULTURE — SOON</a>
+      <span class="is-soon" aria-disabled="true">MUSIC — SOON</span>
+      <span class="is-soon" aria-disabled="true">CULTURE — SOON</span>
       <a href="about.html" aria-current="page">ABOUT</a>
     </nav>
   </header>
@@ -48,106 +55,127 @@
             </p>
           </div>
 
-          <label class="about-status system-check">
-            <input class="system-check-input" type="checkbox" aria-label="あなたは元気ですか？">
-            <span class="system-check-box" aria-hidden="true"><i></i></span>
-            <span class="system-check-copy">
-              <strong>あなたは元気ですか？</strong>
-              <small>IDENTITY CHECK / INPUT REQUIRED</small>
-            </span>
-            <span class="system-check-mark" aria-hidden="true">
-              <i></i>
-              <small>OH VERIFY</small>
-            </span>
-          </label>
         </header>
 
-        <div class="about-layout">
-          <section class="about-story" aria-labelledby="about-story-title">
-            <div class="section-toolbar">
-              <h2 id="about-story-title">WHY I MADE THIS</h2>
-              <span>01 / TEXT</span>
+        <div class="about-dashboard-v2">
+          <section class="profile-deck" aria-labelledby="profile-name">
+            <div class="profile-ticket">
+              <div class="profile-ticket-stub" aria-hidden="true">
+                <span>PROFILE</span><b>001</b>
+              </div>
+
+              <div class="profile-motion">
+                <video loop muted playsinline preload="none" aria-label="犬のプロフィール映像">
+                  <source data-src="videos/profile-motion.mp4" type="video/mp4">
+                </video>
+                <span><b>2026-08-15 07-53-59.mp4</b></span>
+              </div>
             </div>
 
-            <div class="about-body">
-              <p>
-                このサイトでは、ファッションを服だけで終わらせず、その背景にある音楽や時代、ストリート、サブカルチャーまで含めて紹介していきます。
-              </p>
+            <div class="profile-summary">
+              <p class="profile-label">USER_01 / MOTION PROFILE</p>
+              <h2 id="profile-name">フランクリン・クリントン</h2>
+              <dl class="profile-facts">
+                <div><dt>名前</dt><dd>犬</dd></div>
+                <div><dt>年齢</dt><dd>２０</dd></div>
+                <div><dt>好きなもの</dt><dd>MILK</dd></div>
+                <div><dt>好きな時間帯</dt><dd>昼</dd></div>
+              </dl>
 
-              <p>
-                自分自身、ファッションについて調べていると、オーラがあるから、イケメンだからそれっぽいで結論を出し、説明しきれていないのを見てのにモヤモヤすることが多いです。
-              </p>
-
-              <p>
-                ひとつの服をきっかけに理由を探っていくと、体のこと、昔の音楽やアーティスト、雑誌、街のカルチャーなど、知らなかったものにつながっていく。
-              </p>
-
-              <p>その過程が面白くて、このサイトを作りました。</p>
-
-              <p>「今かっこいいと思っているものは、なんでかっこいいんだろう？」</p>
-
-              <p>そんな疑問を出発点に、自分なりに調べたことや考えたことをまとめていきます。</p>
-
-              <p>ファッションを入り口に、音楽、ブランド、人、時代、カルチャーへ。</p>
-
-              <p>
-                このサイトが、自分の知らなかったものをもう少し調べてみたくなるきっかけになれば嬉しいです。
-              </p>
+              <div class="about-switcher" role="tablist" aria-label="ABOUTの表示切り替え">
+                <button class="is-active" type="button" role="tab" aria-selected="true" aria-controls="about-panel-why" data-about-panel="about-panel-why">
+                  <img src="images/about-tab-why.png" alt="" loading="lazy" decoding="async">
+                  <span>WHY I MADE THIS</span>
+                </button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="about-panel-site" data-about-panel="about-panel-site">
+                  <img src="images/about-tab-site.png" alt="" loading="lazy" decoding="async">
+                  <span>ABOUT THIS SITE</span>
+                </button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="about-panel-contact" data-about-panel="about-panel-contact">
+                  <img src="images/about-tab-contact.png" alt="" loading="lazy" decoding="async">
+                  <span>問い合わせ</span>
+                </button>
+              </div>
             </div>
           </section>
 
-          <aside class="about-meta">
-            <section class="about-section profile-section">
-              <div class="section-toolbar">
-                <h2>PROFILE</h2>
-                <span>USER_01</span>
-              </div>
-              <div class="about-section-body">
-                <div class="profile-motion">
-                  <video autoplay loop muted playsinline preload="metadata" aria-label="プロフィール映像">
-                    <source src="videos/profile-motion.mp4" type="video/mp4">
-                  </video>
-                  <span>
-                    <b>2069-01-11 本人.mp4</b>
-                  </span>
-                </div>
-                <dl class="profile-facts">
-                  <div><dt>名前</dt><dd>犬</dd></div>
-                  <div><dt>年齢</dt><dd>２０</dd></div>
-                  <div><dt>好きなもの</dt><dd>MILK</dd></div>
-                  <div><dt>好きな時間帯</dt><dd>昼</dd></div>
-                </dl>
-                <p>
-                  ファッションや音楽、カルチャーについて興味を持ったことを自分なりに調べ、記事としてまとめています。
-                </p>
-                <p>
-                  高橋盾さんしぬほど超好きな犬です。叔犬に裏原を教えてもらい衝撃を受けFASHIONにめりこんでいます。いつか絶対に会いたいです。AOIZOの次のLIVEあったら絶対行ってやります！！
-                </p>
-              </div>
-            </section>
+          <aside class="about-sponsor-rail" aria-label="スポンサー広告とサイト機能">
+            <p class="sponsor-heading">スポンサー広告</p>
 
-            <section class="about-section site-section">
-              <div class="section-toolbar">
-                <h2>ABOUT THIS SITE</h2>
-                <span>INFO</span>
-              </div>
-              <div class="about-section-body">
-                <p>
-                  掲載している文章・考察は、各種資料や公式情報、雑誌、Web記事などを参照しながら執筆しています。引用・参考資料については、可能な限り各記事内に出典を記載します。
-                </p>
-              </div>
-            </section>
+            <a class="fake-ad x-follow-ad" href="https://x.com/OH_MY_ZINE" target="_blank" rel="noopener noreferrer">
+              <small>FOLLOW THE ZINE</small>
+              <strong>X</strong>
+              <span>@OH_MY_ZINE →</span>
+            </a>
 
-            <section class="about-section contact-section">
-              <div class="section-toolbar">
-                <h2>CONTACT</h2>
-                <span>SOON</span>
-              </div>
-              <div class="about-section-body">
-                <p>お問い合わせ先は準備中です。</p>
-              </div>
-            </section>
+            <button class="fake-ad newsletter-ad" id="newsletter-banner" type="button">
+              <small>OH MY MAIL</small>
+              <strong>メルマガ登録</strong>
+              <span id="newsletter-status">CLICK TO SIGN UP →</span>
+            </button>
+
+            <label class="about-status system-check">
+              <input class="system-check-input" type="checkbox" aria-label="あなたは元気ですか？">
+              <span class="system-check-box" aria-hidden="true"><i></i></span>
+              <span class="system-check-copy">
+                <strong>あなたは元気ですか？</strong>
+                <small>IDENTITY CHECK / INPUT REQUIRED</small>
+              </span>
+              <span class="system-check-mark" aria-hidden="true"><i></i><small>OH VERIFY</small></span>
+            </label>
+
+            <button class="fake-ad cookie-counter-ad" id="cookie-counter" type="button">
+              <small>CLICK COOKIE</small>
+              <strong><span id="cookie-count">0</span> COOKIE</strong>
+              <span>クリックするたび増えます ＋</span>
+            </button>
           </aside>
+
+          <section class="about-story-switch" aria-live="polite">
+            <article class="about-copy-panel is-active" id="about-panel-why" role="tabpanel">
+              <div class="section-toolbar">
+                <h2>WHY I MADE THIS</h2><span>01 / TEXT</span>
+              </div>
+              <div class="about-body">
+                <p>このサイトでは、ファッションを服だけで終わらせず、その背景にある音楽や時代、ストリート、サブカルチャーまで含めて紹介していきます。</p>
+                <p>自分自身、ファッションについて調べていると、「オーラがあるから」「イケメンだから」といった言葉だけで結論づけ、説明しきれていないものを見ると、モヤモヤすることが多いです。</p>
+                <p>ひとつの服をきっかけに理由を探っていくと、体のこと、昔の音楽やアーティスト、雑誌、街のカルチャーなど、知らなかったものにつながっていく。</p>
+                <p>その過程が面白くて、このサイトを作りました。</p>
+                <p class="about-quote">「今かっこいいと思っているものは、なんでかっこいいんだろう？」</p>
+                <p>そんな疑問を出発点に、自分なりに調べたことや考えたことをまとめていきます。</p>
+                <p>ファッションを入り口に、音楽、ブランド、人、時代、カルチャーへ。</p>
+                <p>このサイトが、自分の知らなかったものをもう少し調べてみたくなるきっかけになれば嬉しいです。</p>
+              </div>
+            </article>
+
+            <article class="about-copy-panel" id="about-panel-site" role="tabpanel" hidden>
+              <div class="section-toolbar">
+                <h2>ABOUT THIS SITE</h2><span>02 / INFO</span>
+              </div>
+              <div class="about-body">
+                <p>OH MY ZINEは、服を入口にして、音楽、人物、雑誌、街、時代背景まで横断して読む個人制作のWebメディアです。</p>
+                <p>掲載している文章・考察は、各種資料や公式情報、雑誌、Web記事などを参照しながら執筆しています。</p>
+                <p>引用・参考資料については、可能な限り各記事内に出典を記載します。画像の権利は各権利者に帰属します。</p>
+                <p class="about-quote">知らなかったものへ、もう一歩だけ寄り道するためのアーカイブ。</p>
+              </div>
+            </article>
+
+            <article class="about-copy-panel" id="about-panel-contact" role="tabpanel" hidden>
+              <div class="section-toolbar">
+                <h2>問い合わせ</h2><span>03 / CONTACT</span>
+              </div>
+              <div class="about-body">
+                <p>記事の感想、訂正の連絡、紹介してほしいカルチャーの話などは、Xの <a href="https://x.com/OH_MY_ZINE" target="_blank" rel="noopener noreferrer">@OH_MY_ZINE</a> へ。</p>
+                <p>メール窓口とメルマガは現在準備中です。公開できたらこのページで案内します。</p>
+                <p class="about-quote">SEND A MESSAGE / RESPONSE MAY BE SLOW</p>
+              </div>
+            </article>
+          </section>
+
+          <figure class="milk-bottle-card">
+            <img src="images/about-milk-bottle.png" alt="白い牛乳が入ったヴィンテージのガラス瓶" loading="lazy" decoding="async">
+            <figcaption>MILK SUPPLY / FOR FRANKLIN</figcaption>
+          </figure>
         </div>
       </div>
     </section>

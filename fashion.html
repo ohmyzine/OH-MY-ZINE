@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FASHION | OH MY ZINE</title>
   <meta name="description" content="ファッションを入り口に、その背景にある音楽とカルチャーを読み解くOH MY ZINEのFASHIONページ。">
-  <link rel="stylesheet" href="CSS/common.css?v=20260815-shared30">
-  <link rel="stylesheet" href="CSS/fashion.css?v=20260815-stream16">
-  <script src="js/common.js?v=20260815-shared5" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OH MY ZINE">
+  <meta property="og:title" content="FASHION | OH MY ZINE">
+  <meta property="og:description" content="ファッションを入り口に、その背景にある音楽とカルチャーを読み解く記事ライブラリ。">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
+  <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
+  <link rel="stylesheet" href="CSS/fashion.css?v=20260816-channel17">
+  <script src="js/common.js?v=20260816-shared6" defer></script>
   <script src="js/subpage-window.js?v=20260815-shared9" defer></script>
   <script src="js/fashion.js?v=20260815-actions1" defer></script>
 </head>
@@ -31,8 +37,8 @@
     <nav class="subpage-tabs shared-tabs" aria-label="メインメニュー">
       <a href="index.html">HOME</a>
       <a href="fashion.html" aria-current="page">FASHION</a>
-      <a href="#">MUSIC — SOON</a>
-      <a href="#">CULTURE — SOON</a>
+      <span class="is-soon" aria-disabled="true">MUSIC — SOON</span>
+      <span class="is-soon" aria-disabled="true">CULTURE — SOON</span>
       <a href="about.html">ABOUT</a>
     </nav>
   </header>
@@ -66,6 +72,14 @@
           </dl>
         </section>
 
+        <div class="fashion-channel-strip" aria-label="FASHIONチャンネルメニュー">
+          <strong>ON AIR</strong>
+          <span>STREET STYLE FILE</span>
+          <span>ARCHIVE UPLOAD</span>
+          <span>MUSIC × FASHION</span>
+          <span>NEXT ISSUE — SOON</span>
+        </div>
+
         <section class="fashion-latest" aria-labelledby="latest-title">
           <header class="fashion-latest-heading">
             <h2 id="latest-title">最新の記事</h2>
@@ -75,7 +89,7 @@
           <div class="fashion-latest-rail">
             <article class="fashion-stream-card is-live">
               <a class="fashion-stream-cover" href="article.html" aria-label="NewJeans『Attention』の記事を読む">
-                <img src="images/attention-main.jpg" alt="NewJeans Attention">
+                <img decoding="async" fetchpriority="high" src="images/attention-main.jpg" alt="NewJeans Attention">
                 <span class="fashion-card-mark">OMZ</span>
                 <strong>ATTENTION</strong>
               </a>
@@ -160,7 +174,7 @@
         <section class="fashion-watch" aria-labelledby="watch-title">
           <div class="fashion-player">
             <a class="fashion-screen" href="article.html" aria-label="NewJeans『Attention』の記事を読む">
-              <img src="images/attention-main.jpg" alt="NewJeans Attention">
+              <img loading="lazy" decoding="async" src="images/attention-main.jpg" alt="NewJeans Attention">
               <span class="fashion-screen-badge">FEATURE 001 / LONG READ</span>
               <span class="fashion-big-play" aria-hidden="true">▶</span>
               <span class="fashion-screen-caption">クリックして記事を再生</span>
@@ -199,7 +213,7 @@
             </header>
 
             <a class="fashion-playlist-item is-playing" href="article.html">
-              <img src="images/attention-main.jpg" alt="">
+              <img loading="lazy" decoding="async" src="images/attention-main.jpg" alt="">
               <span>
                 <small>NOW READING</small>
                 <b>01. Attention Fashion</b>
@@ -236,7 +250,7 @@
           <article class="article-card is-featured">
             <a href="article.html">
               <div class="article-cover">
-                <img src="images/attention-main.jpg" alt="NewJeans Attention">
+                <img loading="lazy" decoding="async" src="images/attention-main.jpg" alt="NewJeans Attention">
                 <span>TRACK 01</span>
               </div>
 
