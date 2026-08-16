@@ -1,0 +1,203 @@
+/* Final cross-page visual adjustments. Loaded after each page stylesheet. */
+
+/* HOME: the artwork is the frame; both right-rail buttons share one width. */
+.home-page .desktop-pet-card,
+.home-page .x-account-card {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-page .desktop-pet-card img,
+.home-page .x-account-card img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background: transparent;
+}
+
+.home-page .desktop-pet-card:hover,
+.home-page .x-account-card:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* FASHION: red ticker and lettering use the hero marquee palette. */
+.fashion-page .fashion-channel-strip {
+  border-color: #6f092d;
+  border-bottom-color: #4c071f;
+  background: linear-gradient(180deg, #ff72aa 0%, #f22979 34%, #d20d57 50%, #f12570 78%, #a80742 100%);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.70), inset 0 -2px 0 rgba(84, 0, 31, 0.72), 0 3px 0 rgba(50, 55, 58, 0.34);
+}
+
+.fashion-page .fashion-channel-strip strong,
+.fashion-page .fashion-channel-strip span {
+  border-left-color: rgba(91, 0, 35, 0.58);
+  color: #fff276;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Black", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 0 #fff7b8, 0 2px 0 #95103f, 1px 2px 0 #6c082c;
+}
+
+.fashion-page .fashion-channel-strip strong {
+  color: #fff276;
+  background: rgba(111, 0, 41, 0.30);
+}
+
+/* ABOUT: Lifeinvader-inspired profile proportions and hierarchy. */
+.about-page-shell .profile-deck {
+  padding: 18px 20px;
+  grid-template-columns: minmax(170px, 0.48fr) minmax(0, 1.52fr);
+  gap: 28px;
+  border: 3px solid #f0c5c8;
+  border-radius: 0;
+  background: linear-gradient(180deg, #fff 0 53%, #f9dedd 53% 72%, #fff 72% 100%);
+  box-shadow: none;
+}
+
+.about-page-shell .profile-ticket {
+  align-self: start;
+  display: block;
+  border: 5px solid #f1cbcf;
+  border-radius: 0;
+  overflow: visible;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #a9b0b4;
+}
+
+.about-page-shell .profile-ticket-stub {
+  display: none;
+}
+
+.about-page-shell .profile-ticket .profile-motion {
+  min-height: 225px;
+  border: 3px solid #fff;
+  border-radius: 0;
+  box-sizing: border-box;
+  background: #dce3e5;
+  box-shadow: none;
+}
+
+.about-page-shell .profile-ticket .profile-motion video {
+  min-height: 219px;
+}
+
+.about-page-shell .profile-ticket .profile-motion > span {
+  padding: 5px 7px;
+  color: #fff;
+  background: #a60000;
+}
+
+.about-page-shell .profile-summary {
+  padding-top: 3px;
+}
+
+.about-page-shell .profile-label {
+  color: #a40000;
+}
+
+.about-page-shell .profile-summary > h2 {
+  margin-bottom: 16px;
+  padding: 0 0 12px;
+  border-bottom: 0;
+  color: #a90000;
+  font-family: Arial, "Yu Gothic", sans-serif;
+  font-size: clamp(25px, 3vw, 37px);
+  font-weight: 800;
+}
+
+.about-page-shell .profile-summary .profile-facts {
+  margin-bottom: 10px;
+  display: block;
+  border: 0;
+  background: transparent;
+  background-image: none;
+}
+
+.about-page-shell .profile-summary .profile-facts div {
+  padding: 5px 9px;
+  display: grid;
+  grid-template-columns: minmax(88px, 0.33fr) minmax(0, 1fr);
+  align-items: center;
+  border: 0;
+  background: transparent;
+}
+
+.about-page-shell .profile-summary .profile-facts div:nth-child(even) {
+  background: #f9dedd;
+}
+
+.about-page-shell .profile-summary .profile-facts dt,
+.about-page-shell .profile-summary .profile-facts dd {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #171717;
+  font-family: Arial, "Yu Gothic", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  background: transparent;
+}
+
+.about-page-shell .about-switcher {
+  margin-top: 0;
+  padding-top: 10px;
+  border-top: 1px solid #edc9c9;
+  gap: 14px;
+}
+
+.about-page-shell .about-switcher button {
+  padding: 0 4px 5px;
+  border: 0;
+  border-radius: 0;
+  color: #a40000;
+  background: transparent;
+  box-shadow: none;
+}
+
+.about-page-shell .about-switcher button:hover,
+.about-page-shell .about-switcher button.is-active {
+  color: #cf0000;
+  background: #fff2f1;
+  box-shadow: inset 0 -3px 0 #bd0000;
+  transform: none;
+}
+
+.about-page-shell .about-switcher img {
+  width: min(100%, 120px);
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+  border: 2px solid #f0c4c7;
+  border-radius: 0;
+}
+
+.about-page-shell .about-switcher span {
+  color: inherit;
+  font-family: Arial, "Yu Gothic", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+@media (max-width: 700px) {
+  .about-page-shell .profile-deck {
+    padding: 12px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .about-page-shell .profile-ticket {
+    width: min(230px, 82%);
+    margin: 0 auto;
+  }
+
+  .about-page-shell .profile-summary > h2 {
+    text-align: center;
+  }
+}
