@@ -18,6 +18,7 @@
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
   <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
   <link rel="stylesheet" href="CSS/article.css?v=20260816-editorial6">
+  <link rel="stylesheet" href="CSS/finishing.css?v=20260817-magazine-tabs2">
   <script src="js/common.js?v=20260816-shared6" defer></script>
   <script src="js/subpage-window.js?v=20260815-shared9" defer></script>
   <script src="js/article.js?v=20260816-reader1" defer></script>
@@ -45,7 +46,7 @@
     <nav class="subpage-tabs shared-tabs" aria-label="メインメニュー">
       <a href="index.html">HOME</a>
       <a href="fashion.html" aria-current="page">FASHION</a>
-      <span class="is-soon" aria-disabled="true">MUSIC — SOON</span>
+      <a href="magazine.html">MAGAZINE COLLECTION</a>
       <span class="is-soon" aria-disabled="true">CULTURE — SOON</span>
       <a href="about.html">ABOUT</a>
     </nav>
@@ -76,9 +77,17 @@
 
         <p class="ui-chip">FASHION / ARTICLE 001</p>
 
+        <p class="article-column-label">COLUMN</p>
+
         <h1 class="article-title-heading">ATTENTION</h1>
 
-        <img class="article-object-title" src="images/attention-object-title.png" alt="">
+        <div class="article-logo-frame">
+          <img class="article-object-title" src="images/attention-object-title.png" alt="ATTENTION">
+        </div>
+
+        <p class="article-display-title">
+          NewJeans「Attention」のファッションを読み解く
+        </p>
 
         <p class="article-subtitle">
           スポーツウェアとHIPHOP、その先にあるNewJeansらしさ
@@ -95,24 +104,32 @@
 
         <!-- キービジュアル -->
 
-        <figure class="article-figure article-hero">
+        <div class="article-visual-layout">
+          <figure class="article-hero-single">
+            <img
+              decoding="async"
+              fetchpriority="high"
+              src="images/attention-main.jpg"
+              alt="NewJeans Attention"
+            >
+            <figcaption>NewJeans「Attention」（2022）</figcaption>
+          </figure>
 
-          <img
-            decoding="async"
-            fetchpriority="high"
-            src="images/attention-main.jpg"
-            alt="Attention"
-          >
-
-          <figcaption>
-            NewJeans「Attention」（2022）
-          </figcaption>
-
-          <p class="image-source">
-            画像引用：https://www.youtube.com/watch?v=js1CtxSY38I
-          </p>
-
-        </figure>
+          <aside class="article-tags-panel" aria-label="記事タグ">
+            <p class="article-tags-title">タグ</p>
+            <div class="article-tags-list">
+              <span># スポーツウェア</span>
+              <span># R&amp;B</span>
+              <span># HIPHOP</span>
+              <span># Y2K</span>
+              <span># NewJeans</span>
+            </div>
+            <div class="article-share-line">
+              <span>この記事をシェア</span>
+              <b aria-hidden="true">↗　♡　◎</b>
+            </div>
+          </aside>
+        </div>
 
         </div>
 
@@ -723,6 +740,25 @@
       <p class="article-ending">
         そんなふうに、今のファッションから過去へ遡っていけるところも、「Attention」のスタイリングの面白さなのかもしれません。
       </p>
+
+      <form class="article-newsletter" action="#" method="post" onsubmit="event.preventDefault()">
+        <label for="article-newsletter-email">
+          <span aria-hidden="true">✉</span>
+          最新の記事をメールで受け取る
+        </label>
+        <div class="article-newsletter-controls">
+          <input
+            id="article-newsletter-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="メールアドレスを入力"
+            aria-label="メールアドレス"
+            required
+          >
+          <button type="submit">登録する</button>
+        </div>
+      </form>
 
       <div class="article-back-top-wrap">
         <a class="article-back-top" href="#top">

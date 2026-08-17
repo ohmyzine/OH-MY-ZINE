@@ -564,3 +564,45 @@
 
   refreshPhotoVault();
 })();
+
+(() => {
+  "use strict";
+
+  const widget = document.querySelector("#magazine-collection-widget");
+  const infoButton = document.querySelector("#magazine-info-button");
+  const infoPanel = document.querySelector("#magazine-info-panel");
+  const closeButton = document.querySelector("#magazine-close-button");
+  const readButton = document.querySelector("#magazine-read-button");
+  const reviewDrawer = document.querySelector("#magazine-review-drawer");
+
+  if (!widget || !closeButton) {
+    return;
+  }
+
+  const setExpanded = (button, panel, expanded) => {
+    if (!button || !panel) {
+      return;
+    }
+
+    button.setAttribute("aria-expanded", String(expanded));
+    panel.hidden = !expanded;
+  };
+
+  infoButton?.addEventListener("click", () => {
+    const expanded = infoButton.getAttribute("aria-expanded") !== "true";
+    setExpanded(infoButton, infoPanel, expanded);
+  });
+
+  readButton?.addEventListener("click", () => {
+    const expanded = readButton.getAttribute("aria-expanded") !== "true";
+    setExpanded(readButton, reviewDrawer, expanded);
+    readButton.querySelector("span").textContent = expanded
+      ? "CLOSE REVIEWS"
+      : "READ REVIEWS";
+    readButton.querySelector("b").textContent = expanded ? "▼" : "▶";
+  });
+
+  closeButton.addEventListener("click", () => {
+    widget.hidden = true;
+  });
+})();

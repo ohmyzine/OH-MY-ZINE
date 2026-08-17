@@ -19,9 +19,9 @@
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
   <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
   <link rel="stylesheet" href="CSS/index.css?v=20260816-home23">
-  <link rel="stylesheet" href="CSS/finishing.css?v=20260816-rail-profile1">
+  <link rel="stylesheet" href="CSS/finishing.css?v=20260817-magazine-tabs2">
   <script src="js/common.js?v=20260816-shared6" defer></script>
-  <script src="js/home.js?v=20260816-shared4" defer></script>
+  <script src="js/home.js?v=20260817-magazine2" defer></script>
 </head>
 
 <body class="home-page">
@@ -60,7 +60,7 @@
       <nav class="site-nav shared-tabs" aria-label="メインメニュー">
         <a href="index.html" aria-current="page">HOME</a>
         <a href="fashion.html">FASHION</a>
-        <span>MUSIC — SOON</span>
+        <a href="magazine.html">MAGAZINE COLLECTION</a>
         <span>CULTURE — SOON</span>
         <a href="about.html">ABOUT</a>
       </nav>
@@ -194,48 +194,66 @@
 
 
         <aside class="right-column" aria-label="雑誌レビューとプロフィール">
-          <section class="magazine-shelf-card" aria-labelledby="magazine-shelf-title">
-            <div class="magazine-shelf-topline">
-              <p>MY MAGAZINE SHELF</p>
-              <span>PERSONAL ARCHIVE / 000</span>
-            </div>
+          <section class="magazine-shelf-card magazine-collection-widget" id="magazine-collection-widget" aria-labelledby="magazine-collection-title">
+            <div class="magazine-widget-shell" id="magazine-widget-shell">
+              <header class="magazine-widget-header">
+                <h2 id="magazine-collection-title">MAGAZINE COLLECTION</h2>
+                <div class="magazine-widget-tools">
+                  <button id="magazine-info-button" type="button" aria-label="コレクションの説明を表示" aria-expanded="false">&#9432;</button>
+                  <button id="magazine-close-button" type="button" aria-label="コレクションを閉じる">&times;</button>
+                </div>
+              </header>
 
-            <div class="magazine-spines" aria-hidden="true">
-              <i><b>01</b><span>FASHION</span></i>
-              <i><b>02</b><span>MUSIC</span></i>
-              <i><b>03</b><span>CULTURE</span></i>
-              <i><b>04</b><span>PHOTO</span></i>
-              <i><b>05</b><span>ZINE</span></i>
-            </div>
+              <p class="magazine-info-panel" id="magazine-info-panel" hidden>
+                趣味で集めている雑誌を、自分の言葉で記録する個人アーカイブです。
+              </p>
 
-            <p class="magazine-shelf-kicker">COLLECTED &amp; REVIEWED BY ME</p>
-            <h2 id="magazine-shelf-title">集めた雑誌を、<br>1冊ずつレビュー。</h2>
-            <p class="magazine-shelf-copy">
-              表紙、誌面、好きだったページを自分の言葉で残す個人アーカイブ。
-            </p>
-            <span class="magazine-shelf-button" aria-disabled="true">
-              REVIEWS — SOON <b>→</b>
-            </span>
+              <dl class="magazine-widget-counts">
+                <div>
+                  <dt><b>OWNED</b><span>所有</span></dt>
+                  <dd class="is-blue"><strong>042</strong><span>冊</span></dd>
+                </div>
+                <div>
+                  <dt><b>REVIEWED</b><span>レビュー済み</span></dt>
+                  <dd class="is-green"><strong>017</strong><span>冊</span></dd>
+                </div>
+                <div>
+                  <dt><b>TO REVIEW</b><span>未レビュー</span></dt>
+                  <dd class="is-red"><strong>025</strong><span>冊</span></dd>
+                </div>
+              </dl>
+
+              <button class="magazine-read-button" id="magazine-read-button" type="button" aria-expanded="false" aria-controls="magazine-review-drawer">
+                <span>READ REVIEWS</span><b>▶</b>
+              </button>
+
+              <div class="magazine-review-drawer" id="magazine-review-drawer" hidden>
+                <p><b>01</b><span>Olive</span><small>REVIEW PREPARING</small></p>
+                <p><b>02</b><span>FRUiTS</span><small>COMING SOON</small></p>
+                <p><b>03</b><span>Zipper</span><small>COMING SOON</small></p>
+                <a href="magazine.html">OPEN MAGAZINE COLLECTION →</a>
+              </div>
+            </div>
           </section>
 
-          <a class="desktop-pet-card" href="about.html" aria-label="犬のプロフィールを見る">
-            <img
-              src="images/free-desktop-pet-transparent.png"
-              alt="FREE DESKTOP PETと書かれた犬のカード"
-              loading="lazy"
-              decoding="async"
-            >
-            <span>MEET MY PROFILE →</span>
-          </a>
+          <div class="home-ad-stack" aria-label="OH MY ZINEからのお知らせ">
+            <a class="desktop-pet-card" href="about.html" aria-label="犬のプロフィールを見る">
+              <img
+                src="images/home-ad-desktop-pet.png"
+                alt="FREE DESKTOP PETと書かれた犬の広告"
+                loading="lazy"
+                decoding="async"
+              >
+            </a>
 
-          <div class="x-account-card" aria-label="Xアカウントは準備中です">
-            <img
-              src="images/x-social-button.png"
-              alt="X"
-              loading="lazy"
-              decoding="async"
-            >
-            <span>X ACCOUNT / SOON</span>
+            <div class="x-account-card" aria-label="Xアカウントは準備中です">
+              <img
+                src="images/home-ad-x-account.png"
+                alt="X"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
           </div>
 
           <figure class="hanging-keychain" aria-hidden="true">
