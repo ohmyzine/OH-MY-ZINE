@@ -276,10 +276,6 @@
   background: #f4c5b1;
 }
 
-.article-page-shell .article-window-body {
-  padding: 0;
-}
-
 .article-page-shell .article-body {
   width: min(100%, 1180px);
   max-width: 1180px;
@@ -292,7 +288,7 @@
 
 .article-page-shell .article-intro {
   margin: 0;
-  padding: clamp(24px, 4vw, 54px);
+  padding: clamp(16px, 2.4vw, 32px) clamp(24px, 4vw, 54px);
   border: 0;
   border-radius: 0;
   background: #f4c5b1;
@@ -2066,10 +2062,7 @@
   overflow: hidden;
   color: #111111;
   background: #f8f4ed;
-  box-shadow:
-    inset 0 0 0 3px #ffffff,
-    3px 4px 0 rgba(65, 73, 80, 0.18);
-  line-height: normal;
+line-height: normal;
 }
 
 .home-page .magazine-shelf-card.magazine-collection-widget::after {
@@ -2444,4 +2437,4292 @@
   .article-page-shell .article-opening-copy {
     max-width: 650px;
   }
+}
+
+
+/* =========================
+   OHMY_PET.EXE / FINAL WINDOW TUNE
+   Slightly rounded XP-like window, white controls, softer warm-gray body.
+========================= */
+
+.home-page #desktop-pet-ad {
+  cursor: pointer;
+}
+
+/* The installer remains below the plush cursor. */
+.pet-installer-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2147480000;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: rgba(34, 42, 49, 0.08);
+}
+
+.pet-installer-window {
+  width: min(362px, calc(100vw - 14px));
+  overflow: hidden;
+  border: 1px solid #225c9d;
+  border-radius: 6px;
+  color: #111;
+  background: #e8e5da;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.95),
+    2px 4px 12px rgba(28, 39, 48, 0.28);
+  font-family: Tahoma, "MS UI Gothic", Arial, sans-serif;
+}
+
+.pet-installer-titlebar {
+  min-height: 30px;
+  padding: 0 4px 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  background:
+    linear-gradient(
+      180deg,
+      #3aa8f7 0%,
+      #1686e2 42%,
+      #0768c9 53%,
+      #1178d3 100%
+    );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.pet-installer-titlebar strong {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 0 #064a90;
+}
+
+.pet-installer-x {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #9c2a17;
+  border-radius: 4px;
+  color: #fff;
+  background: linear-gradient(180deg, #ffad90, #e45637 55%, #d84227 56%, #ec795d);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.72),
+    inset -1px -1px 0 rgba(118, 33, 18, 0.24);
+  font: 900 15px/1 Arial, sans-serif;
+  cursor: pointer;
+}
+
+.pet-installer-body {
+  background: #f0ede3;
+}
+
+.pet-installer-body.is-location-step {
+  min-height: 177px;
+  padding: 19px 18px 10px;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.pet-installer-mini-dog {
+  width: 47px;
+  height: 57px;
+  margin-top: 41px;
+  display: block;
+  border: 1px solid #7e96aa;
+  border-radius: 2px;
+  background:
+    #65abe8 url("../images/home-ad-desktop-pet.webp") 82% 36% / 355% auto no-repeat;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.pet-installer-location-copy {
+  min-width: 0;
+}
+
+.pet-installer-location-copy > strong {
+  display: block;
+  margin: 2px 0 0;
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.pet-installer-location-copy > span {
+  display: block;
+  margin: 0 0 4px;
+  color: #111;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.pet-installer-path {
+  width: 179px;
+  height: 21px;
+  padding: 0 3px;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #7f9db9;
+  border-radius: 1px;
+  outline: 0;
+  color: #606060;
+  background: #fff;
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.12);
+  font: 12px/19px Tahoma, "MS UI Gothic", Arial, sans-serif;
+}
+
+.pet-installer-location-copy > small {
+  display: block;
+  margin-top: 8px;
+  color: #222;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.pet-installer-actions {
+  min-height: 35px;
+  padding: 0 5px 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #e8e5da;
+}
+
+/* White, slightly rounded controls. */
+.pet-installer-browse,
+.pet-installer-cancel,
+.pet-installer-install,
+.pet-installer-ok {
+  min-width: 0;
+  height: 24px;
+  padding: 0 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8e9398;
+  border-radius: 3px;
+  color: #111;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 58%, #f0f1f1 100%);
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    0 1px 0 rgba(80, 86, 90, 0.12);
+  font: 12px/1 Tahoma, "MS UI Gothic", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.pet-installer-browse {
+  width: 72px;
+  margin-top: 3px;
+}
+
+.pet-installer-cancel {
+  width: 58px;
+}
+
+.pet-installer-install {
+  width: 54px;
+}
+
+.pet-installer-browse:hover,
+.pet-installer-cancel:hover,
+.pet-installer-install:hover,
+.pet-installer-ok:hover,
+.pet-installer-browse:focus-visible,
+.pet-installer-cancel:focus-visible,
+.pet-installer-install:focus-visible,
+.pet-installer-ok:focus-visible {
+  border-color: #4a76a5;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 58%, #e5edf5 100%);
+  outline: 1px dotted #333;
+  outline-offset: -4px;
+}
+
+.pet-installer-window footer {
+  padding: 4px 8px 5px;
+  border-top: 1px solid #c9c5ba;
+  color: #8d887e;
+  background: #e8e5da;
+  font: 400 7px/1 Tahoma, Arial, sans-serif;
+}
+
+/* Progress step */
+.pet-installer-body.is-progress-step {
+  min-height: 112px;
+  padding: 20px 18px 16px;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.pet-installer-body.is-progress-step .pet-installer-mini-dog {
+  margin-top: 0;
+}
+
+.pet-installer-progress-copy > span {
+  overflow: hidden;
+  color: #5a5751;
+  font-size: 9px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pet-installer-progress {
+  height: 16px;
+  padding: 2px;
+  overflow: hidden;
+  border: 1px solid #87939a;
+  border-radius: 1px;
+  background: #fff;
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.pet-installer-progress > span {
+  width: 0;
+  height: 100%;
+  display: block;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.23) 0 5px, transparent 5px 8px),
+    linear-gradient(180deg, #9ce876, #54ad34);
+  transition: width 85ms linear;
+}
+
+/* Complete step */
+.pet-installer-body.is-complete-step {
+  min-height: 110px;
+  padding: 20px 18px;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+}
+
+.pet-installer-complete-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #4e8f35;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(180deg, #8bd268, #409d28);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,.58);
+  font: 900 24px/1 Arial, sans-serif;
+}
+
+/* Desktop pet */
+.desktop-pet {
+  width: 132px;
+  height: 150px;
+  position: fixed;
+  z-index: 2147479000;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+  filter: drop-shadow(0 5px 4px rgba(22, 30, 35, 0.28));
+}
+
+.desktop-pet[hidden] {
+  display: none !important;
+}
+
+.desktop-pet.is-dragging {
+  cursor: grabbing;
+}
+
+.desktop-pet-art {
+  width: 118px;
+  height: 118px;
+  position: absolute;
+  left: 7px;
+  bottom: 15px;
+  display: block;
+  border-radius: 50%;
+  background:
+    #6caeea url("../images/home-ad-desktop-pet.webp") 81% 35% / 330% auto no-repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.8),
+    0 1px 0 rgba(59,83,104,.45);
+  transform-origin: 50% 90%;
+}
+
+.desktop-pet > small {
+  position: absolute;
+  right: 7px;
+  bottom: 2px;
+  left: 7px;
+  color: #344b59;
+  font: 900 7px/1 "Courier New", monospace;
+  text-align: center;
+}
+
+.desktop-pet-close {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  z-index: 3;
+  top: 19px;
+  right: 3px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #69767d;
+  border-radius: 3px;
+  color: #34434b;
+  background: #fff;
+  font: 900 11px/1 Arial, sans-serif;
+}
+
+.desktop-pet-bubble {
+  max-width: 104px;
+  min-width: 42px;
+  padding: 7px 9px;
+  position: absolute;
+  z-index: 4;
+  right: 3px;
+  top: -15px;
+  border: 1px solid #6d777c;
+  border-radius: 14px;
+  color: #111;
+  background: #fff;
+  box-shadow: 2px 3px 0 rgba(51,58,62,.16);
+  font: 900 11px/1.2 "Yu Gothic", Arial, sans-serif;
+  text-align: center;
+}
+
+.desktop-pet.is-entering .desktop-pet-art {
+  animation: omz-pet-drop 850ms cubic-bezier(.18,.77,.27,1.16) both;
+}
+
+.desktop-pet.is-reacting .desktop-pet-art {
+  animation: omz-pet-hop 520ms ease both;
+}
+
+.desktop-pet.is-sleeping .desktop-pet-art {
+  animation: omz-pet-sleep 2.8s ease-in-out infinite;
+}
+
+@keyframes omz-pet-drop {
+  0% { transform: translateY(-55vh) rotate(-9deg) scale(.78); opacity: .2; }
+  67% { transform: translateY(10px) rotate(4deg) scale(1.05); opacity: 1; }
+  82% { transform: translateY(-10px) rotate(-2deg) scale(.98); }
+  100% { transform: translateY(0) rotate(0) scale(1); }
+}
+
+@keyframes omz-pet-hop {
+  0%,100% { transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-22px) rotate(-5deg); }
+  62% { transform: translateY(-7px) rotate(5deg); }
+}
+
+@keyframes omz-pet-sleep {
+  0%,100% { transform: translateY(1px) rotate(5deg) scale(.98); }
+  50% { transform: translateY(5px) rotate(7deg) scale(.96); }
+}
+
+/* Most important fix: the plush cursor stays above the EXE window. */
+@media (pointer: fine) {
+  html body.custom-cursor-ready #soft-cursor.soft-cursor {
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    display: block !important;
+    pointer-events: none !important;
+    isolation: isolate;
+  }
+
+  html body.custom-cursor-ready #soft-cursor.soft-cursor span {
+    position: relative;
+    z-index: 2147483647 !important;
+  }
+}
+
+
+/* =========================
+   OHMY_PET.EXE / FINAL FONT + FLAT BUTTON TUNE
+   Reference: supplied installer screenshot
+========================= */
+
+/* Main installer palette sampled from the reference image. */
+.pet-installer-window {
+  border-radius: 5px;
+  background: #ece9d8;
+  font-family: "MS UI Gothic", "Yu Gothic UI", Tahoma, Arial, sans-serif;
+}
+
+.pet-installer-titlebar {
+  border-radius: 4px 4px 0 0;
+}
+
+.pet-installer-body,
+.pet-installer-body.is-location-step,
+.pet-installer-body.is-progress-step,
+.pet-installer-body.is-complete-step {
+  background: #f3f1e7;
+}
+
+.pet-installer-actions,
+.pet-installer-window footer {
+  background: #ece9d8;
+}
+
+/* The screenshot uses a narrow Times-like serif here, not Georgia. */
+.pet-installer-location-copy > strong {
+  margin: 2px 0 0;
+  font-family: "Times New Roman", "Yu Mincho", serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+/* Match the compact Windows-era Japanese UI text. */
+.pet-installer-location-copy > span {
+  margin: 1px 0 3px;
+  font-family: "MS UI Gothic", "Yu Gothic UI", Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.pet-installer-location-copy > small {
+  margin-top: 8px;
+  font-family: "MS UI Gothic", "Yu Gothic UI", Tahoma, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.pet-installer-path {
+  font-family: "MS UI Gothic", Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* Flat white buttons: no gradient, no bevel, no drop/inset shadow. */
+.pet-installer-browse,
+.pet-installer-cancel,
+.pet-installer-install,
+.pet-installer-ok {
+  height: 23px;
+  border: 1px solid #8b8b8b;
+  border-radius: 2px;
+  color: #111;
+  background: #ffffff;
+  box-shadow: none;
+  text-shadow: none;
+  font-family: "MS UI Gothic", Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.pet-installer-browse:hover,
+.pet-installer-cancel:hover,
+.pet-installer-install:hover,
+.pet-installer-ok:hover {
+  border-color: #666;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.pet-installer-browse:focus-visible,
+.pet-installer-cancel:focus-visible,
+.pet-installer-install:focus-visible,
+.pet-installer-ok:focus-visible {
+  border-color: #555;
+  background: #ffffff;
+  box-shadow: none;
+  outline: 1px dotted #333;
+  outline-offset: -4px;
+}
+
+/* Cursor must remain above the dynamically-created EXE window. */
+.pet-installer-layer > #soft-cursor.soft-cursor,
+html body.custom-cursor-ready #soft-cursor.soft-cursor {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+  display: block !important;
+}
+
+.pet-installer-layer > #soft-cursor.soft-cursor span,
+html body.custom-cursor-ready #soft-cursor.soft-cursor span {
+  position: relative;
+  z-index: 2147483647 !important;
+}
+
+
+/* ========================================
+   INTEGRATED: OHMY_PET.EXE exact patch
+======================================== */
+
+/*
+  OHMY_PET.EXE exact visual patch
+  IMPORTANT:
+  - This file only targets .pet-installer-* and #soft-cursor while the installer is open.
+  - It does not restyle HOME / ABOUT / FASHION / MAGAZINE / ARTICLE.
+*/
+
+.pet-installer-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2147480000;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: transparent;
+}
+
+.pet-installer-window {
+  width: 360px;
+  max-width: calc(100vw - 10px);
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid #315b83;
+  border-radius: 5px;
+  color: #101010;
+  background: #ece9d8;
+  box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.22);
+  font-family: Tahoma, "MS UI Gothic", "Yu Gothic UI", Arial, sans-serif;
+}
+
+/* ===== blue title bar ===== */
+.pet-installer-titlebar {
+  height: 30px;
+  min-height: 30px;
+  box-sizing: border-box;
+  padding: 0 4px 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px 4px 0 0;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      180deg,
+      #2f9cf1 0%,
+      #1688e7 36%,
+      #0f79da 52%,
+      #0768c7 55%,
+      #1178d3 100%
+    );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
+}
+
+.pet-installer-titlebar strong {
+  margin: 0;
+  font-family: Tahoma, "MS UI Gothic", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: 0 1px 0 rgba(0, 58, 114, 0.75);
+}
+
+.pet-installer-x {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #9d2f1c;
+  border-radius: 4px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffad92 0%, #ee674a 45%, #dc4b31 56%, #ed765a 100%);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,.72);
+  font: 900 15px/1 Arial, sans-serif;
+}
+
+/* ===== cream body ===== */
+.pet-installer-body.is-location-step {
+  min-height: 177px;
+  box-sizing: border-box;
+  padding: 20px 18px 10px;
+  display: grid;
+  grid-template-columns: 47px minmax(0, 1fr);
+  align-items: start;
+  gap: 17px;
+  background: rgb(243, 241, 231);
+}
+
+/* dog icon */
+.pet-installer-body.is-location-step .pet-installer-mini-dog {
+  width: 47px;
+  height: 57px;
+  margin-top: 41px;
+  box-sizing: border-box;
+  border: 1px solid #7692aa;
+  border-radius: 1px;
+  background:
+    #63a9e8 url("../images/home-ad-desktop-pet.webp") 82% 36% / 355% auto no-repeat;
+  box-shadow: inset 1px 1px 0 #ffffff;
+}
+
+/* heading: match the screenshot's Times-like serif */
+.pet-installer-location-copy {
+  min-width: 0;
+  padding: 0;
+}
+
+.pet-installer-location-copy > strong {
+  display: block;
+  margin: 1px 0 0;
+  color: #101010;
+  font-family: "Times New Roman", Times, "Yu Mincho", serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+
+/* Japanese explanatory text */
+.pet-installer-location-copy > span {
+  width: 240px;
+  max-width: 100%;
+  display: block;
+  margin: 1px 0 3px;
+  color: #101010;
+  font-family: "MS UI Gothic", Tahoma, "Yu Gothic UI", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0;
+}
+
+/* path field */
+.pet-installer-path {
+  width: 177px;
+  height: 20px;
+  margin: 0;
+  padding: 0 3px;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #7f9db9;
+  border-radius: 0;
+  outline: 0;
+  color: #5f5f5f;
+  background: #ffffff;
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,.10);
+  font-family: "MS UI Gothic", Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+/* Browse + bottom buttons: intentionally flat and white */
+.pet-installer-browse,
+.pet-installer-cancel,
+.pet-installer-install,
+.pet-installer-ok {
+  height: 23px;
+  min-height: 23px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border: 1px solid #858585;
+  border-radius: 2px;
+  color: #101010;
+  background: #ffffff;
+  box-shadow: none;
+  text-shadow: none;
+  font-family: "MS UI Gothic", Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.pet-installer-browse {
+  width: 71px;
+  margin-top: 3px;
+}
+
+.pet-installer-location-copy > small {
+  width: 238px;
+  max-width: 100%;
+  display: block;
+  margin-top: 7px;
+  color: #101010;
+  font-family: "MS UI Gothic", Tahoma, "Yu Gothic UI", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+/* ===== bottom controls ===== */
+.pet-installer-actions {
+  height: 25px;
+  min-height: 25px;
+  box-sizing: border-box;
+  padding: 0 3px 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 5px;
+  background: rgb(233, 230, 217);
+}
+
+.pet-installer-cancel {
+  width: 55px;
+}
+
+.pet-installer-install {
+  width: 51px;
+}
+
+.pet-installer-browse:hover,
+.pet-installer-cancel:hover,
+.pet-installer-install:hover,
+.pet-installer-ok:hover {
+  color: #101010;
+  border-color: #858585;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.pet-installer-browse:focus-visible,
+.pet-installer-cancel:focus-visible,
+.pet-installer-install:focus-visible,
+.pet-installer-ok:focus-visible {
+  color: #101010;
+  border-color: #555555;
+  background: #ffffff;
+  box-shadow: none;
+  outline: 1px dotted #333333;
+  outline-offset: -4px;
+}
+
+/* ===== tiny footer ===== */
+.pet-installer-window footer {
+  height: 20px;
+  box-sizing: border-box;
+  padding: 5px 8px 0;
+  border-top: 1px solid #c6c2b6;
+  color: #8d887c;
+  background: rgb(236, 233, 216);
+  font-family: Tahoma, "MS UI Gothic", Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+/* ===== progress screen / complete screen ===== */
+.pet-installer-body.is-progress-step {
+  min-height: 177px;
+  box-sizing: border-box;
+  padding: 35px 18px;
+  display: grid;
+  grid-template-columns: 47px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  background: rgb(243, 241, 231);
+}
+
+.pet-installer-body.is-progress-step .pet-installer-mini-dog {
+  width: 47px;
+  height: 57px;
+  margin: 0;
+  border: 1px solid #7692aa;
+  border-radius: 1px;
+  background:
+    #63a9e8 url("../images/home-ad-desktop-pet.webp") 82% 36% / 355% auto no-repeat;
+}
+
+.pet-installer-progress-copy {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.pet-installer-progress-copy strong {
+  font-size: 12px;
+}
+
+.pet-installer-progress-copy > span {
+  overflow: hidden;
+  color: #555555;
+  font-size: 9px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pet-installer-progress {
+  height: 16px;
+  padding: 2px;
+  overflow: hidden;
+  border: 1px solid #7f9db9;
+  background: #ffffff;
+}
+
+.pet-installer-progress > span {
+  width: 0;
+  height: 100%;
+  display: block;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.22) 0 5px, transparent 5px 8px),
+    linear-gradient(180deg, #93df6e, #4ba52e);
+}
+
+.pet-installer-percent {
+  align-self: end;
+  padding-bottom: 2px;
+  font-size: 10px;
+}
+
+.pet-installer-body.is-complete-step {
+  min-height: 177px;
+  box-sizing: border-box;
+  padding: 50px 28px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+  background: rgb(243, 241, 231);
+}
+
+.pet-installer-complete-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #4c8b33;
+  border-radius: 50%;
+  color: #ffffff;
+  background: linear-gradient(180deg, #83cf61, #3d9c25);
+  font: 900 24px/1 Arial, sans-serif;
+}
+
+.pet-installer-complete-copy {
+  display: grid;
+  gap: 5px;
+}
+
+.pet-installer-complete-copy strong {
+  font-size: 12px;
+}
+
+.pet-installer-complete-copy span {
+  font-size: 10px;
+}
+
+/* ===== cursor: only while installer exists ===== */
+.pet-installer-layer #soft-cursor.soft-cursor {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
+.pet-installer-layer #soft-cursor.soft-cursor span {
+  position: relative;
+  z-index: 2147483647 !important;
+}
+
+
+/* ============================================================
+   ARTICLE SETTINGS RESTORED EXACTLY FROM USER-SUPPLIED FILE
+   Only .article-page-shell rules are restored below.
+============================================================ */
+
+/* ---------- ARTICLE ---------- */
+/* Reference-image typography: smaller editorial type so the copy does not break into short, awkward lines. */
+.article-page-shell .article-opening-grid {
+  grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.38fr);
+  gap: clamp(24px, 3vw, 42px);
+  align-items: start;
+}
+
+.article-page-shell .article-opening-copy {
+  min-width: 0;
+}
+
+.article-page-shell .article-logo-frame {
+  width: min(100%, 335px);
+  margin-bottom: 18px;
+}
+
+.article-page-shell .article-display-title {
+  max-width: 12em;
+  margin-bottom: 14px;
+  font-size: clamp(22px, 2.15vw, 34px);
+  line-height: 1.42;
+  letter-spacing: -0.03em;
+}
+
+.article-page-shell .article-opening-copy .article-subtitle {
+  max-width: 30em;
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.article-page-shell .article-publish-meta {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.article-page-shell .article-lede {
+  margin-top: 26px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 4vw, 52px);
+  row-gap: 4px;
+}
+
+.article-page-shell .article-lede p {
+  font-size: 14px;
+  line-height: 1.95;
+}
+
+.article-page-shell .article-body > p {
+  font-size: 15px;
+  line-height: 2;
+}
+
+.article-page-shell .article-body > h2 {
+  font-size: clamp(26px, 2.45vw, 36px);
+  line-height: 1.4;
+}
+
+.article-page-shell .article-body > h3 {
+  font-size: clamp(21px, 2vw, 28px);
+  line-height: 1.5;
+}
+
+.article-page-shell .toc a {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.article-page-shell blockquote p,
+.article-page-shell .article-ending {
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+@media (max-width: 900px) {
+  .article-page-shell .article-opening-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-page-shell .article-opening-copy {
+    max-width: 650px;
+  }
+
+  .article-page-shell .article-display-title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .article-page-shell .article-lede {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ARTICLE: closer to the editorial reference layout.
+   Keep the peach hero area, but move the intro copy into a body-like white sheet. */
+.article-page-shell .article-intro {
+  padding: clamp(24px, 3vw, 34px) clamp(24px, 3.6vw, 44px) 22px;
+}
+
+.article-page-shell .article-opening-grid {
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 3vw, 36px);
+  align-items: start;
+}
+
+.article-page-shell .article-opening-copy {
+  max-width: 390px;
+}
+
+.article-page-shell .article-column-label {
+  margin-bottom: 11px;
+}
+
+.article-page-shell .article-logo-frame {
+  width: min(100%, 360px);
+  margin-bottom: 20px;
+}
+
+.article-page-shell .article-display-title {
+  max-width: 9.7em;
+  margin-bottom: 12px;
+  font-size: clamp(30px, 2.55vw, 40px);
+  line-height: 1.28;
+  letter-spacing: -0.035em;
+}
+
+.article-page-shell .article-opening-copy .article-subtitle {
+  max-width: 28em;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.article-page-shell .article-publish-meta {
+  margin: 11px 0 0;
+}
+
+.article-page-shell .article-visual-layout {
+  min-height: clamp(330px, 30vw, 410px);
+}
+
+.article-page-shell .article-hero-single img {
+  min-height: 330px;
+}
+
+.article-page-shell .article-tags-panel {
+  width: min(218px, calc(100% - 24px));
+  right: 14px;
+  bottom: 14px;
+}
+
+.article-page-shell .article-lede {
+  margin: 22px 0 0;
+  padding: 26px 28px 10px;
+  display: block;
+  border: 1px solid #dfd3cc;
+  border-radius: 18px 18px 10px 10px;
+  background: #fffdfb;
+  box-shadow: 0 2px 0 rgba(118, 96, 87, 0.16);
+}
+
+.article-page-shell .article-lede p {
+  max-width: 70ch;
+  margin: 0 0 22px;
+  color: #26211f;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.article-page-shell .article-body > p,
+.article-page-shell .article-body > h2,
+.article-page-shell .article-body > h3,
+.article-page-shell .article-body > blockquote,
+.article-page-shell .article-body > .toc,
+.article-page-shell .article-body > .article-figure,
+.article-page-shell .article-body > .image-comparison,
+.article-page-shell .article-body > .article-ending,
+.article-page-shell .article-body > .article-back-top-wrap,
+.article-page-shell .article-page-shell .article-newsletter {
+  margin-left: clamp(28px, 4.8vw, 58px);
+  margin-right: clamp(28px, 4.8vw, 58px);
+}
+
+.article-page-shell .article-body > p {
+  font-size: 16px;
+  line-height: 2;
+}
+
+.article-page-shell .toc,
+.article-page-shell blockquote,
+.article-page-shell .article-ending {
+  border-radius: 12px;
+}
+
+@media (max-width: 960px) {
+  .article-page-shell .article-opening-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-page-shell .article-opening-copy {
+    max-width: 640px;
+  }
+
+  .article-page-shell .article-display-title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .article-page-shell .article-lede {
+    padding: 22px 18px 4px;
+  }
+
+  .article-page-shell .article-lede p,
+  .article-page-shell .article-body > p {
+    font-size: 15px;
+  }
+}
+
+
+/* ============================================================
+   OHMY_PET.EXE / SITE-FIT TUNE
+   Only the pet-installer UI is changed below.
+============================================================ */
+
+/* Softer steel/ice palette so the popup belongs to OH MY ZINE,
+   rather than looking like a direct Windows XP clone. */
+.pet-installer-window {
+  width: min(374px, calc(100vw - 14px));
+  border: 1px solid #74848d;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #17242b;
+  background: #eef2f4;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+    0 5px 14px rgba(48, 60, 68, 0.20);
+  font-family: "Segoe UI", "Yu Gothic UI", "Yu Gothic", Arial, sans-serif;
+}
+
+.pet-installer-titlebar {
+  min-height: 31px;
+  padding: 0 5px 0 9px;
+  border-radius: 7px 7px 0 0;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      180deg,
+      #91c5d9 0%,
+      #5f9bb6 47%,
+      #477f99 52%,
+      #699fb6 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -1px 0 rgba(52, 79, 92, 0.35);
+}
+
+.pet-installer-titlebar strong {
+  font-family: "Segoe UI", "Yu Gothic UI", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 0 rgba(48, 72, 84, 0.8);
+}
+
+.pet-installer-x {
+  width: 21px;
+  height: 21px;
+  border: 1px solid #8e5656;
+  border-radius: 4px;
+  color: #fff;
+  background: #d66a65;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* Main panel */
+.pet-installer-body.is-location-step {
+  min-height: 176px;
+  padding: 20px 18px 12px;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 16px;
+  background: #f5f7f8;
+}
+
+.pet-installer-body.is-location-step .pet-installer-mini-dog {
+  margin-top: 36px;
+  border-color: #83949d;
+  border-radius: 3px;
+  background-color: #dce8ee;
+}
+
+/* Normal site UI font for the heading. */
+.pet-installer-location-copy {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 7px;
+  align-items: center;
+}
+
+.pet-installer-location-copy > strong {
+  grid-column: 1 / -1;
+  margin: 1px 0 2px;
+  color: #263841;
+  font-family: "Segoe UI", "Yu Gothic UI", "Yu Gothic", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.pet-installer-location-copy > span {
+  grid-column: 1 / -1;
+  width: auto;
+  margin: 0 0 6px;
+  color: #465860;
+  font-family: "Yu Gothic UI", "Yu Gothic", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.pet-installer-path {
+  grid-column: 1;
+  width: 100%;
+  min-width: 0;
+  height: 25px;
+  padding: 0 7px;
+  border: 1px solid #a3afb5;
+  border-radius: 3px;
+  color: #536169;
+  background: #ffffff;
+  box-shadow: inset 0 1px 2px rgba(52, 62, 68, 0.08);
+  font-family: "Segoe UI", "Yu Gothic UI", Arial, sans-serif;
+  font-size: 11px;
+  line-height: 23px;
+}
+
+.pet-installer-browse {
+  grid-column: 2;
+  width: auto;
+  min-width: 68px;
+  margin: 0;
+}
+
+/* Put Browse to the RIGHT of the path field. */
+.pet-installer-location-copy > small {
+  grid-column: 1 / -1;
+  width: auto;
+  margin-top: 8px;
+  color: #6e797f;
+  font-family: "Yu Gothic UI", "Yu Gothic", Arial, sans-serif;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+/* Buttons: flatter and cleaner, matching the site's chrome. */
+.pet-installer-browse,
+.pet-installer-cancel,
+.pet-installer-install,
+.pet-installer-ok {
+  height: 25px;
+  padding: 0 10px;
+  border: 1px solid #8d9aa1;
+  border-radius: 4px;
+  color: #263841;
+  background: #ffffff;
+  box-shadow: none;
+  text-shadow: none;
+  font-family: "Segoe UI", "Yu Gothic UI", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 23px;
+}
+
+/* Bottom actions to the RIGHT. */
+.pet-installer-actions {
+  min-height: 36px;
+  padding: 5px 8px 7px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  background: #e9eef1;
+  border-top: 1px solid #c6d0d5;
+}
+
+.pet-installer-cancel,
+.pet-installer-install {
+  width: auto;
+  min-width: 58px;
+}
+
+.pet-installer-browse:hover,
+.pet-installer-cancel:hover,
+.pet-installer-install:hover,
+.pet-installer-ok:hover,
+.pet-installer-browse:focus-visible,
+.pet-installer-cancel:focus-visible,
+.pet-installer-install:focus-visible,
+.pet-installer-ok:focus-visible {
+  border-color: #657983;
+  color: #1d313b;
+  background: #f7fbfd;
+  box-shadow: none;
+}
+
+.pet-installer-window footer {
+  height: auto;
+  min-height: 20px;
+  padding: 5px 9px 6px;
+  border-top: 1px solid #c8d1d5;
+  color: #859198;
+  background: #e9eef1;
+  font-family: "Courier New", monospace;
+  font-size: 7px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+/* Keep the progress/complete steps in the same site-fit palette. */
+.pet-installer-body.is-progress-step,
+.pet-installer-body.is-complete-step {
+  background: #f5f7f8;
+}
+
+.pet-installer-progress {
+  border-color: #8fa0a8;
+  border-radius: 3px;
+}
+
+.pet-installer-complete-icon {
+  border-color: #6b8f78;
+  background: #84b695;
+}
+
+
+/* ============================================================
+   HOME / DESKTOP PET BANNER FULL-IMAGE FIX
+   Keep the entire supplied 1774x887 (2:1) artwork visible.
+============================================================ */
+.home-page .home-ad-stack .desktop-pet-card {
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+}
+
+.home-page .home-ad-stack .desktop-pet-card img,
+.home-page .home-ad-stack .desktop-pet-card img:first-child {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+
+
+/* ============================================================
+   SPACING FIX / FASHION + ABOUT ONLY
+============================================================ */
+
+/* FASHION: restore a small gap between the hero and the red channel strip area. */
+.fashion-page .fashion-channel-strip + .fashion-latest {
+  margin-top: 12px !important;
+}
+
+/* ABOUT: bring the first paragraph closer to the "思い立った理由" toolbar. */
+.about-page-shell .about-copy-panel .about-body {
+  margin-top: 6px;
+  padding:
+    18px
+    clamp(22px, 4vw, 52px)
+    clamp(22px, 4vw, 52px);
+}
+
+
+/* ============================================================
+   ABOUT GAP FIX / 2026-08-18
+   Revert the previous body-spacing change and only reduce the
+   large gap between PROFILE and the story panel.
+============================================================ */
+
+/* Revert the previous "本文を見出しに近づける" adjustment. */
+.about-page-shell .about-copy-panel .about-body {
+  margin-top: 0;
+  padding: clamp(22px, 4vw, 52px);
+}
+
+/* Pull only the story panel upward into the large empty blue area. */
+.about-page-shell .about-story-switch {
+  margin-top: -135px;
+}
+
+@media (max-width: 900px) {
+  .about-page-shell .about-story-switch {
+    margin-top: 0;
+  }
+}
+
+
+/* ============================================================
+   HOME MAGAZINE WIDGET + ABOUT PROFILE GAP / 2026-08-18
+   Only these two areas are changed.
+============================================================ */
+
+/* HOME: MAGAZINE COLLECTION — remove the cream tint completely. */
+.home-page .magazine-shelf-card.magazine-collection-widget,
+.home-page .magazine-widget-shell,
+.home-page .magazine-widget-header,
+.home-page .magazine-widget-counts > div,
+.home-page .magazine-review-drawer {
+  background: #ffffff !important;
+}
+
+.home-page .magazine-shelf-card.magazine-collection-widget {
+}
+
+/* ABOUT:
+   Keep the original spacing between "思い立った理由" and its body.
+   Only use the empty space inside the profile card by placing the
+   three section buttons at the bottom of the right-hand column. */
+.about-page-shell .profile-summary {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.about-page-shell .about-switcher {
+  margin-top: auto !important;
+  align-self: stretch !important;
+}
+
+/* The story block no longer needs to be dragged upward with a large
+   negative margin. Leave only a small normal separation below profile. */
+.about-page-shell .about-story-switch {
+  margin-top: -12px !important;
+}
+
+@media (max-width: 900px) {
+  .about-page-shell .about-story-switch {
+    margin-top: 0 !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v3
+   Research-informed pass inspired by classic Mac OS X Aqua:
+   translucent gel, pinstripes, graphite chrome, strong press states,
+   and a blue default action. OH MY ZINE's pink/violet/cyan accents remain.
+   ========================================================= */
+
+.home-page {
+  --omz-aqua-ink: #243740;
+  --omz-aqua-muted: #64727a;
+  --omz-aqua-line: #76868e;
+  --omz-aqua-line-dark: #596a72;
+
+  --omz-aqua-white: #ffffff;
+  --omz-aqua-silver-1: #fdfefe;
+  --omz-aqua-silver-2: #edf1f3;
+  --omz-aqua-silver-3: #cfd7db;
+  --omz-aqua-silver-4: #aebac0;
+
+  --omz-aqua-blue-1: #f4fdff;
+  --omz-aqua-blue-2: #bfeafa;
+  --omz-aqua-blue-3: #5fc0e9;
+  --omz-aqua-blue-4: #168fc4;
+  --omz-aqua-blue-5: #086b9a;
+
+  --omz-aqua-pink-1: #fff5fb;
+  --omz-aqua-pink-2: #f2cfe2;
+  --omz-aqua-pink-3: #d78eb5;
+  --omz-aqua-violet-1: #f7f3ff;
+  --omz-aqua-violet-2: #d7cee8;
+  --omz-aqua-violet-3: #9e8fbc;
+
+  --omz-aqua-shadow-control: 0 1px 2px rgba(37,48,55,.26);
+  --omz-aqua-shadow-panel: 0 4px 9px rgba(35,45,51,.17);
+  --omz-aqua-ui-font: "Lucida Grande", "Helvetica Neue", "Segoe UI", Tahoma, Arial, sans-serif;
+  --omz-aqua-mono-font: "Courier New", monospace;
+}
+
+/* ---------------------------------------------------------
+   1. PANEL SURFACES
+   Classic Aqua-inspired content surfaces: calm silver, faint pinstripe,
+   stronger depth only on the outer panel.
+   --------------------------------------------------------- */
+
+.home-page :is(
+  .photo-vault,
+  .about-card,
+  .feature-panel,
+  .notes-panel,
+  .magazine-shelf-card.magazine-collection-widget
+) {
+  border: 1px solid var(--omz-aqua-line) !important;
+  border-radius: 7px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    var(--omz-aqua-shadow-panel) !important;
+}
+
+.home-page :is(.about-card, .feature-panel, .notes-panel) {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.34) 0 1px,
+      rgba(132,146,154,.045) 1px 2px,
+      transparent 2px 4px
+    ),
+    linear-gradient(180deg, #f5f7f8 0%, #e6ecef 100%) !important;
+}
+
+.home-page .photo-vault {
+  overflow: hidden !important;
+  background: #c8ced1 !important;
+}
+
+.home-page .magazine-shelf-card.magazine-collection-widget {
+  overflow: hidden !important;
+  background: #f7f9fa !important;
+}
+
+/* ---------------------------------------------------------
+   2. SUBWINDOW TITLEBARS
+   Aqua-era graphite/platinum chrome rather than saturated Windows blue.
+   --------------------------------------------------------- */
+
+.home-page .panel-titlebar,
+.home-page .magazine-widget-header {
+  min-height: 28px !important;
+  height: 28px !important;
+  margin: 0 !important;
+  padding: 0 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  border: 0 !important;
+  border-bottom: 1px solid #819097 !important;
+  color: #324750 !important;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.38) 0 1px,
+      rgba(86,101,109,.06) 1px 2px,
+      transparent 2px 4px
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f3f6f7 42%,
+      #d9e0e3 49%,
+      #bec9ce 54%,
+      #edf1f3 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -1px 0 rgba(74,89,97,.12) !important;
+  text-shadow: 0 1px 0 #fff !important;
+  font: 700 9px/1 var(--omz-aqua-mono-font) !important;
+  letter-spacing: .015em !important;
+}
+
+.home-page .magazine-widget-header {
+  margin: -10px -12px 8px !important;
+  padding-inline: 9px !important;
+}
+
+.home-page .panel-titlebar h2,
+.home-page .magazine-widget-header h2 {
+  margin: 0 !important;
+  color: inherit !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+}
+
+/* Decorative fake controls become a truthful status label. */
+.home-page .feature-panel .panel-controls {
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+}
+
+.home-page .feature-panel .panel-controls::after {
+  content: "ARTICLE VIEW";
+  color: #69777e;
+  font: 700 8px/1 var(--omz-aqua-mono-font);
+  letter-spacing: .06em;
+}
+
+/* ---------------------------------------------------------
+   3. AQUA PUSH BUTTON — NEUTRAL
+   Standard action button: glossy rounded rectangle, compact, physical.
+   --------------------------------------------------------- */
+
+.home-page :is(
+  .about-card .about-button.pill-button,
+  .magazine-read-button
+) {
+  min-height: 28px !important;
+  height: 28px !important;
+  padding: 0 13px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border: 1px solid #75858d !important;
+  border-radius: 14px !important;
+  color: #263a44 !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.98) 0%,
+      rgba(255,255,255,.88) 38%,
+      rgba(255,255,255,.25) 39%,
+      rgba(255,255,255,.02) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #fdfefe 0%,
+      #edf1f3 45%,
+      #c7d0d5 52%,
+      #e7edef 76%,
+      #f8fafb 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -2px 3px rgba(60,75,83,.14),
+    0 1px 2px rgba(37,48,55,.26) !important;
+  text-shadow: 0 1px 0 #fff !important;
+  font: 700 9px/1 var(--omz-aqua-ui-font) !important;
+  letter-spacing: .035em !important;
+}
+
+.home-page :is(
+  .about-card .about-button.pill-button,
+  .magazine-read-button
+):hover {
+  color: #173f52 !important;
+  border-color: #5d8598 !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,.92) 37%,
+      rgba(255,255,255,.20) 38%,
+      rgba(255,255,255,.02) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #f8fdff 0%,
+      #dff4fb 45%,
+      #a8d9eb 52%,
+      #d9f0f8 77%,
+      #f7fdff 100%
+    ) !important;
+}
+
+.home-page :is(
+  .about-card .about-button.pill-button,
+  .magazine-read-button
+):active {
+  transform: translateY(1px) !important;
+  background:
+    linear-gradient(180deg, #cfd7db 0%, #e9eef0 55%, #f8fafb 100%) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(45,62,71,.25),
+    0 1px 1px rgba(37,48,55,.10) !important;
+}
+
+/* ---------------------------------------------------------
+   4. AQUA DEFAULT BUTTON — BLUE
+   Classic Aqua's "default action" feel: blue gel + restrained pulse.
+   --------------------------------------------------------- */
+
+.home-page .read-button {
+  --capsule-color-width: 0px !important;
+  min-height: 32px !important;
+  height: 32px !important;
+  margin: 0 0 8px !important;
+  padding: 0 15px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid #27799f !important;
+  border-radius: 16px !important;
+  color: #ffffff !important;
+  background:
+    radial-gradient(ellipse at 50% -8%, rgba(255,255,255,.96) 0 16%, transparent 48%),
+    linear-gradient(
+      180deg,
+      #9be5fa 0%,
+      #5cc7ee 40%,
+      #159bce 50%,
+      #087bae 58%,
+      #35add7 79%,
+      #89d7ed 100%
+    ) !important;
+  background-size: 100% 100% !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.92),
+    inset 0 -3px 4px rgba(0,76,114,.28),
+    0 1px 2px rgba(31,62,77,.30),
+    0 0 0 rgba(58,178,224,0) !important;
+  text-shadow: 0 -1px 0 rgba(0,74,110,.72) !important;
+  transform: none !important;
+  font: 700 10px/1 var(--omz-aqua-ui-font) !important;
+  letter-spacing: .025em !important;
+  animation: omz-aqua-default-pulse 2.4s ease-in-out infinite;
+}
+
+.home-page .read-button::before,
+.home-page .read-button::after {
+  display: none !important;
+}
+
+@keyframes omz-aqua-default-pulse {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.92),
+      inset 0 -3px 4px rgba(0,76,114,.28),
+      0 1px 2px rgba(31,62,77,.30),
+      0 0 0 0 rgba(58,178,224,0);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.96),
+      inset 0 -3px 4px rgba(0,76,114,.24),
+      0 1px 2px rgba(31,62,77,.28),
+      0 0 0 3px rgba(79,193,232,.16);
+  }
+}
+
+.home-page .feature-link:hover .read-button {
+  transform: none !important;
+  filter: brightness(1.035) saturate(1.03) !important;
+}
+
+.home-page .feature-link:active .read-button {
+  transform: translateY(1px) !important;
+  animation: none !important;
+  filter: none !important;
+  background:
+    linear-gradient(180deg, #0a75a4 0%, #168fc2 40%, #60c4e7 100%) !important;
+  box-shadow:
+    inset 0 3px 5px rgba(0,65,98,.32),
+    0 1px 1px rgba(31,62,77,.16) !important;
+}
+
+/* ---------------------------------------------------------
+   5. TOOLBAR BUTTONS — SMALL / GRAPHITE
+   SHUFFLE, photo arrows, info buttons: small controls, not giant gel pills.
+   --------------------------------------------------------- */
+
+.home-page :is(
+  .shuffle-button,
+  .magazine-widget-tools button,
+  .photo-controls button
+) {
+  min-height: 23px !important;
+  height: 23px !important;
+  padding: 0 7px !important;
+  border: 1px solid #788891 !important;
+  border-radius: 5px !important;
+  color: #314650 !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.98) 0%,
+      rgba(255,255,255,.78) 39%,
+      rgba(255,255,255,.10) 40%,
+      transparent 100%
+    ),
+    linear-gradient(180deg, #f7f9fa 0%, #d9e0e3 52%, #edf1f3 100%) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    var(--omz-aqua-shadow-control) !important;
+  text-shadow: 0 1px 0 #fff !important;
+  font: 700 8px/1 var(--omz-aqua-ui-font) !important;
+  letter-spacing: .02em !important;
+}
+
+.home-page :is(
+  .shuffle-button,
+  .magazine-widget-tools button,
+  .photo-controls button
+):hover:not(:disabled) {
+  color: #1b4557 !important;
+  border-color: #668696 !important;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #effaff 40%,
+      #b9dfed 52%,
+      #edf9fd 100%
+    ) !important;
+}
+
+.home-page :is(
+  .shuffle-button,
+  .magazine-widget-tools button,
+  .photo-controls button
+):active:not(:disabled) {
+  transform: translateY(1px) !important;
+  box-shadow:
+    inset 0 2px 3px rgba(42,65,76,.24),
+    0 1px 1px rgba(37,48,55,.10) !important;
+}
+
+/* Magazine utility buttons become jewel-like, but remain site-specific. */
+.home-page .magazine-widget-tools {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.home-page .magazine-widget-tools button {
+  width: 23px !important;
+  min-width: 23px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  font-size: 11px !important;
+}
+
+.home-page #magazine-info-button {
+  border-color: #5f8597 !important;
+  color: #286078 !important;
+  background:
+    radial-gradient(circle at 38% 25%, #fff 0 12%, transparent 15%),
+    linear-gradient(180deg, #eafaff 0%, #9fd9ed 48%, #66bad8 55%, #d7f1fa 100%) !important;
+}
+
+.home-page #magazine-close-button {
+  border-color: #9b6570 !important;
+  color: #7c2d3b !important;
+  background:
+    radial-gradient(circle at 38% 25%, #fff 0 12%, transparent 15%),
+    linear-gradient(180deg, #fff0f3 0%, #efb8c2 48%, #d78391 55%, #f5d1d7 100%) !important;
+}
+
+/* ---------------------------------------------------------
+   6. PHOTO CABINET
+   Keep its own identity: violet file/app label + neutral Aqua media controls.
+   --------------------------------------------------------- */
+
+.home-page .photo-add-button {
+  min-width: 174px !important;
+  min-height: 43px !important;
+  padding: 6px 9px !important;
+  border: 1px solid #78878f !important;
+  border-radius: 5px !important;
+  color: #2d4049 !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.98) 0%,
+      rgba(255,255,255,.88) 39%,
+      rgba(255,255,255,.16) 40%,
+      transparent 100%
+    ),
+    linear-gradient(180deg, #f8fafb 0%, #d8e0e3 54%, #eef2f4 100%) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 2px 4px rgba(37,48,55,.20) !important;
+  font-family: var(--omz-aqua-ui-font) !important;
+}
+
+.home-page .photo-add-button b {
+  width: 21px !important;
+  height: 21px !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid #70838d !important;
+  border-radius: 4px !important;
+  color: #2b4d5d !important;
+  background:
+    linear-gradient(180deg, #fff, #e5eef2 48%, #cad8df 53%, #f1f6f8) !important;
+  box-shadow: inset 0 1px 0 #fff !important;
+}
+
+.home-page .photo-controls {
+  min-height: 33px !important;
+  padding: 4px 5px !important;
+  gap: 5px !important;
+  border: 1px solid #7b8990 !important;
+  border-radius: 6px !important;
+  color: #344750 !important;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.24) 0 1px, transparent 1px 3px),
+    rgba(244,248,250,.95) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 2px 4px rgba(42,54,61,.18) !important;
+  backdrop-filter: blur(4px);
+}
+
+.home-page .photo-controls #photo-delete,
+.home-page .photo-controls #photo-delete:disabled {
+  border-color: #9a737b !important;
+  color: #763541 !important;
+  background:
+    linear-gradient(180deg, #fff, #f8e8eb 44%, #e3b4bd 53%, #f5dce1) !important;
+  text-shadow: 0 1px 0 #fff !important;
+}
+
+.home-page .cover-label {
+  padding: 6px 9px !important;
+  border: 1px solid #7d7192 !important;
+  border-radius: 3px !important;
+  color: #433b52 !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.94) 0%,
+      rgba(255,255,255,.64) 38%,
+      rgba(255,255,255,.08) 39%,
+      transparent 100%
+    ),
+    linear-gradient(180deg, #f7f3ff 0%, #d7cee8 52%, #b9aacd 56%, #eee8f5 100%) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 2px rgba(37,43,47,.20) !important;
+  font: 800 9px/1 var(--omz-aqua-ui-font) !important;
+  letter-spacing: .07em !important;
+}
+
+/* ---------------------------------------------------------
+   7. OH MY ZINE ACCENT LANGUAGE
+   Pink is branding/status, cyan is interaction, violet belongs to Photo Cabinet.
+   --------------------------------------------------------- */
+
+.home-page .micro-label {
+  min-height: 21px !important;
+  padding: 0 7px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  border: 1px solid #9b7b8c !important;
+  border-radius: 3px !important;
+  color: #694153 !important;
+  background:
+    linear-gradient(180deg, #fff9fc 0%, #f3dce8 54%, #f8edf3 100%) !important;
+  box-shadow: inset 0 1px 0 #fff !important;
+  font: 800 8px/1 var(--omz-aqua-mono-font) !important;
+  letter-spacing: .08em !important;
+}
+
+.home-page .category-tag {
+  min-height: 22px !important;
+  padding: 0 8px !important;
+  border: 1px solid #859aa5 !important;
+  border-radius: 4px !important;
+  color: #365562 !important;
+  background:
+    linear-gradient(180deg, #faffff 0%, #dcebf1 100%) !important;
+  box-shadow: inset 0 1px 0 #fff !important;
+  font: 800 8px/1 var(--omz-aqua-mono-font) !important;
+  letter-spacing: .065em !important;
+}
+
+.home-page .category-tag::before {
+  width: 8px !important;
+  height: 8px !important;
+  border: 1px solid #4b7c91 !important;
+  background:
+    radial-gradient(circle at 34% 27%, #fff 0 13%, #a9edff 17%, #43b4df 55%, #176d95 100%) !important;
+  box-shadow: 0 1px 1px rgba(39,66,78,.18) !important;
+}
+
+/* ---------------------------------------------------------
+   8. CONTENT CHROME
+   --------------------------------------------------------- */
+
+.home-page .about-card {
+  padding: 18px !important;
+}
+
+.home-page .feature-panel,
+.home-page .notes-panel {
+  overflow: hidden !important;
+}
+
+.home-page .feature-body {
+  padding: 12px !important;
+}
+
+.home-page .feature-image-wrap {
+  border: 1px solid #6f7f87 !important;
+  background: #c9ced1 !important;
+  box-shadow: inset 0 1px 2px rgba(38,48,54,.15) !important;
+}
+
+.home-page .recommendation-grid {
+  padding: 9px !important;
+  gap: 9px !important;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.24) 0 1px, transparent 1px 4px),
+    #e9eef0 !important;
+}
+
+.home-page .recommendation-card {
+  border: 1px solid #7d8b92 !important;
+  border-radius: 3px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.40),
+    0 1px 2px rgba(45,55,61,.10) !important;
+}
+
+.home-page .magazine-widget-shell {
+  padding: 10px 12px 12px !important;
+  background: #f8fafb !important;
+}
+
+.home-page .magazine-widget-counts > div {
+  min-height: 49px !important;
+  border-bottom: 1px solid #b4bec3 !important;
+  background: transparent !important;
+}
+
+.home-page .magazine-widget-counts dd {
+  min-height: 35px !important;
+  border: 1px solid #a0acb2 !important;
+  border-radius: 3px !important;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f7f9fa 100%) !important;
+  box-shadow: inset 1px 1px 2px rgba(66,82,90,.08) !important;
+}
+
+/* ---------------------------------------------------------
+   9. ACCESSIBILITY / INPUT FEEDBACK
+   --------------------------------------------------------- */
+
+.home-page :is(
+  .photo-add-button,
+  .photo-controls button,
+  .about-button,
+  .read-button,
+  .shuffle-button,
+  .magazine-widget-tools button,
+  .magazine-read-button
+):focus-visible {
+  outline: 2px solid #4aa8d0 !important;
+  outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .read-button {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .home-page :is(
+    .photo-controls button,
+    .shuffle-button,
+    .magazine-widget-tools button
+  ) {
+    min-height: 36px !important;
+    height: 36px !important;
+  }
+
+  .home-page :is(
+    .about-card .about-button.pill-button,
+    .magazine-read-button,
+    .read-button
+  ) {
+    min-height: 44px !important;
+    height: 44px !important;
+    border-radius: 22px !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v4
+   LATEST ARTICLE = intentional hierarchy exception.
+   This card is allowed to be louder than the rest of the GUI.
+   ========================================================= */
+
+/* Latest article card: stronger depth + subtle Aqua glow. */
+.home-page .feature-panel {
+  position: relative !important;
+  border: 2px solid #3f91b3 !important;
+  border-radius: 8px !important;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.42) 0 1px,
+      rgba(101,129,143,.045) 1px 2px,
+      transparent 2px 4px
+    ),
+    linear-gradient(180deg, #f9fcfd 0%, #edf4f7 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 0 0 1px rgba(255,255,255,.78),
+    0 5px 12px rgba(35,73,92,.22),
+    0 0 14px rgba(74,181,222,.12) !important;
+}
+
+/* Latest article titlebar intentionally breaks from the neutral subwindow chrome. */
+.home-page .feature-panel .panel-titlebar {
+  min-height: 31px !important;
+  height: 31px !important;
+  padding: 0 8px 0 10px !important;
+  border-bottom: 1px solid #286d8d !important;
+  color: #ffffff !important;
+  background:
+    radial-gradient(
+      ellipse at 50% -18%,
+      rgba(255,255,255,.96) 0 16%,
+      transparent 46%
+    ),
+    linear-gradient(
+      180deg,
+      #dff8ff 0%,
+      #8fd8ef 12%,
+      #46b1d9 46%,
+      #1688b9 52%,
+      #2c9ec7 73%,
+      #78c8e2 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -2px 3px rgba(0,75,112,.20) !important;
+  text-shadow: 0 -1px 0 rgba(0,73,106,.65) !important;
+}
+
+/* Right-side latest badge: OH MY ZINE pink gel, not another fake window control. */
+.home-page .feature-panel .panel-controls::after {
+  content: "LATEST ARTICLE" !important;
+  min-height: 18px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(121,67,94,.70);
+  border-radius: 9px;
+  color: #63364e;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.95) 0 18%, transparent 54%),
+    linear-gradient(
+      180deg,
+      #fff5fb 0%,
+      #f3d2e4 40%,
+      #d990b5 52%,
+      #edc2d8 78%,
+      #fff4fa 100%
+    );
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 1px rgba(53,58,63,.18);
+  text-shadow: 0 1px 0 rgba(255,255,255,.9);
+  font: 800 7px/1 var(--omz-aqua-ui-font);
+  letter-spacing: .08em;
+}
+
+/* Give the body slightly more breathing room than normal content panels. */
+.home-page .feature-panel .feature-body {
+  padding: 13px !important;
+}
+
+/* Image frame gets a bit more "hero" treatment. */
+.home-page .feature-panel .feature-image-wrap {
+  border: 1px solid #5f7784 !important;
+  border-radius: 2px !important;
+  background: #bfc7cb !important;
+  box-shadow:
+    inset 0 1px 2px rgba(34,45,52,.20),
+    0 1px 0 rgba(255,255,255,.78) !important;
+}
+
+/* Latest category badge is brighter than normal status tags. */
+.home-page .feature-panel .category-tag {
+  min-height: 23px !important;
+  padding: 0 9px !important;
+  border-color: #568ba2 !important;
+  color: #214b5f !important;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #e6f7fd 45%,
+      #b6dfef 53%,
+      #edfaff 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 2px rgba(48,77,91,.14) !important;
+}
+
+/* Headline carries more visual priority without becoming a different typographic system. */
+.home-page .feature-panel .feature-body h1 {
+  margin-top: 11px !important;
+  color: #111820 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+}
+
+/* Latest article copy is slightly darker for contrast. */
+.home-page .feature-panel .feature-copy {
+  color: #3c4d56 !important;
+}
+
+/* Default action is larger and brighter only inside the latest card. */
+.home-page .feature-panel .read-button {
+  min-height: 36px !important;
+  height: 36px !important;
+  border-radius: 18px !important;
+  border-color: #1779a5 !important;
+  background:
+    radial-gradient(
+      ellipse at 50% -12%,
+      rgba(255,255,255,.98) 0 17%,
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      #a6e9fb 0%,
+      #66ccf0 39%,
+      #1aa8d8 50%,
+      #087faf 58%,
+      #36b1d9 79%,
+      #91deef 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    inset 0 -3px 4px rgba(0,73,109,.28),
+    0 2px 3px rgba(27,72,91,.28),
+    0 0 0 2px rgba(78,188,227,.08) !important;
+  font-size: 10px !important;
+  letter-spacing: .02em !important;
+}
+
+/* Hover and press stay physical rather than simply changing color. */
+.home-page .feature-link:hover .read-button {
+  filter: brightness(1.045) saturate(1.04) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -3px 4px rgba(0,73,109,.24),
+    0 3px 5px rgba(27,72,91,.30),
+    0 0 0 3px rgba(78,188,227,.10) !important;
+}
+
+.home-page .feature-link:active .read-button {
+  transform: translateY(1px) !important;
+  filter: none !important;
+  background:
+    linear-gradient(180deg, #0b78a5 0%, #1695c5 44%, #62c9e8 100%) !important;
+  box-shadow:
+    inset 0 3px 5px rgba(0,61,92,.34),
+    0 1px 1px rgba(27,72,91,.14) !important;
+}
+
+/* Keep the hierarchy exception responsive and not oversized on mobile. */
+@media (max-width: 720px) {
+  .home-page .feature-panel .panel-titlebar {
+    min-height: 32px !important;
+    height: 32px !important;
+  }
+
+  .home-page .feature-panel .read-button {
+    min-height: 44px !important;
+    height: 44px !important;
+    border-radius: 22px !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v5
+   MAGAZINE COLLECTION:
+   parody of the tiny close button used on modern web ads.
+   ========================================================= */
+
+/* Let the tiny ad-style close button sit on the card corner. */
+.home-page .magazine-shelf-card.magazine-collection-widget {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Keep the widget shell clipped so the interior still feels like one panel. */
+.home-page .magazine-widget-shell {
+  overflow: hidden !important;
+  border-radius: 6px !important;
+}
+
+/* The info button stays part of the GUI chrome. */
+.home-page #magazine-info-button {
+  width: 22px !important;
+  min-width: 22px !important;
+  height: 22px !important;
+  min-height: 22px !important;
+  border-radius: 50% !important;
+}
+
+/* Close button deliberately BREAKS the Aqua system:
+   it mimics a cheap little web-ad close box. */
+.home-page #magazine-close-button {
+  width: 21px !important;
+  min-width: 21px !important;
+  height: 21px !important;
+  min-height: 21px !important;
+  padding: 0 !important;
+
+  position: absolute !important;
+  z-index: 8 !important;
+  top: -7px !important;
+  right: -7px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border: 1px solid #8f8f8f !important;
+  border-radius: 1px !important;
+
+  color: #222 !important;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f2f2f2 48%,
+      #d5d5d5 52%,
+      #eeeeee 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 1px 2px rgba(0,0,0,.24) !important;
+
+  text-shadow: 0 1px 0 #fff !important;
+  font: 400 17px/19px Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+
+  transform: none !important;
+}
+
+/* Slightly ugly hover on purpose — like an ad-network close control. */
+.home-page #magazine-close-button:hover,
+.home-page #magazine-close-button:focus-visible {
+  color: #000 !important;
+  border-color: #555 !important;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #ffffff 45%,
+      #cccccc 53%,
+      #e7e7e7 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 3px rgba(0,0,0,.32) !important;
+}
+
+/* Press state: tiny cheap plastic button. */
+.home-page #magazine-close-button:active {
+  transform: translateY(1px) !important;
+  background: linear-gradient(180deg, #cfcfcf, #f5f5f5) !important;
+  box-shadow:
+    inset 0 1px 3px rgba(0,0,0,.24),
+    0 1px 0 rgba(255,255,255,.55) !important;
+}
+
+/* Make the titlebar leave breathing room for the overlapping ad-close control. */
+.home-page .magazine-widget-header {
+  padding-right: 30px !important;
+}
+
+/* Tiny "ADVERTISEMENT"-style microcopy adds to the parody without
+   turning the whole widget into a fake ad. */
+.home-page .magazine-widget-header::after {
+  content: "WIDGET";
+  margin-left: auto;
+  margin-right: 2px;
+  color: #879198;
+  font: 700 6px/1 var(--omz-aqua-mono-font);
+  letter-spacing: .08em;
+  opacity: .72;
+}
+
+/* Keep the real tools on the right and avoid collision with pseudo-copy. */
+.home-page .magazine-widget-tools {
+  margin-left: 3px !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v6
+   MAGAZINE COLLECTION = fake web-ad widget.
+   No titlebar / no tab / no Aqua chrome at the top.
+   ========================================================= */
+
+/* The widget itself becomes a flatter rectangular ad-like module. */
+.home-page .magazine-shelf-card.magazine-collection-widget {
+  border: 1px solid #a3a9ad !important;
+  border-radius: 4px !important;
+  background: #ffffff !important;
+}
+
+/* Remove the "subwindow chrome" treatment from this one widget only. */
+.home-page .magazine-widget-header {
+  min-height: 22px !important;
+  height: 22px !important;
+  margin: -10px -12px 7px !important;
+  padding: 5px 31px 2px 7px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  border: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+
+  color: #333 !important;
+  background: #ffffff !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+  text-shadow: none !important;
+
+  font: 700 8px/1 var(--omz-aqua-mono-font) !important;
+  letter-spacing: .02em !important;
+}
+
+/* No fake "WIDGET" / no tab-like extra chrome. */
+.home-page .magazine-widget-header::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Title becomes simple ad copy, not a window title. */
+.home-page .magazine-widget-header h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #333 !important;
+  font: 700 8px/1 var(--omz-aqua-mono-font) !important;
+  letter-spacing: .02em !important;
+}
+
+/* Tool group is no longer part of a titlebar. */
+.home-page .magazine-widget-tools {
+  position: static !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+/* The info control becomes a tiny flat "ad info" control. */
+.home-page #magazine-info-button {
+  width: 16px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  min-height: 16px !important;
+
+  position: absolute !important;
+  z-index: 7 !important;
+  top: 3px !important;
+  right: 18px !important;
+
+  padding: 0 !important;
+  border: 1px solid #aaa !important;
+  border-radius: 50% !important;
+
+  color: #666 !important;
+  background: #f7f7f7 !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+  text-shadow: none !important;
+
+  font: 700 9px/14px Arial, sans-serif !important;
+  transform: none !important;
+}
+
+.home-page #magazine-info-button:hover,
+.home-page #magazine-info-button:focus-visible {
+  color: #222 !important;
+  border-color: #777 !important;
+  background: #fff !important;
+  outline: none !important;
+}
+
+/* Ad-style close button remains the visual joke. */
+.home-page #magazine-close-button {
+  top: -6px !important;
+  right: -6px !important;
+}
+
+/* Remove Aqua-like shell highlight around the widget interior. */
+.home-page .magazine-widget-shell {
+  border-radius: 4px !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* Keep the content itself clean and slightly ad-module-like. */
+.home-page .magazine-widget-counts > div {
+  background: #fff !important;
+}
+
+.home-page .magazine-read-button {
+  margin-top: 8px !important;
+}
+
+/* Small ad-caption style label, visually separate from the "title". */
+.home-page .magazine-widget-header::before {
+  content: "SPONSORED WIDGET";
+  margin-right: 7px;
+  color: #9a9a9a;
+  font: 700 6px/1 Arial, sans-serif;
+  letter-spacing: .07em;
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v7
+   MAGAZINE COLLECTION ad-header readability + matched tools
+   ========================================================= */
+
+/* Make MAGAZINE COLLECTION readable again without restoring a titlebar look. */
+.home-page .magazine-widget-header h2 {
+  color: #2b2b2b !important;
+  font: 800 10px/1 var(--omz-aqua-mono-font) !important;
+  letter-spacing: .015em !important;
+}
+
+/* Keep the sponsored microcopy subordinate. */
+.home-page .magazine-widget-header::before {
+  margin-right: 8px !important;
+  color: #999 !important;
+  font: 700 6px/1 Arial, sans-serif !important;
+  letter-spacing: .07em !important;
+}
+
+/* INFO and CLOSE: same size, same square ad-control material.
+   CLOSE is the reference geometry. */
+.home-page #magazine-info-button,
+.home-page #magazine-close-button {
+  width: 21px !important;
+  min-width: 21px !important;
+  height: 21px !important;
+  min-height: 21px !important;
+  padding: 0 !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border: 1px solid #8f8f8f !important;
+  border-radius: 1px !important;
+
+  color: #222 !important;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f2f2f2 48%,
+      #d5d5d5 52%,
+      #eeeeee 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 1px 2px rgba(0,0,0,.24) !important;
+
+  text-shadow: 0 1px 0 #fff !important;
+  transform: none !important;
+}
+
+/* Place both controls together at the ad's upper-right corner. */
+.home-page #magazine-info-button {
+  position: absolute !important;
+  z-index: 8 !important;
+  top: -6px !important;
+  right: 18px !important;
+
+  border-radius: 1px !important;
+  font: 700 11px/19px Arial, sans-serif !important;
+}
+
+.home-page #magazine-close-button {
+  top: -6px !important;
+  right: -6px !important;
+  font: 400 17px/19px Arial, sans-serif !important;
+}
+
+/* Same hover material for both. */
+.home-page #magazine-info-button:hover,
+.home-page #magazine-info-button:focus-visible,
+.home-page #magazine-close-button:hover,
+.home-page #magazine-close-button:focus-visible {
+  color: #000 !important;
+  border-color: #555 !important;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #ffffff 45%,
+      #cccccc 53%,
+      #e7e7e7 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 3px rgba(0,0,0,.32) !important;
+  outline: none !important;
+}
+
+/* Same pressed depth. */
+.home-page #magazine-info-button:active,
+.home-page #magazine-close-button:active {
+  transform: translateY(1px) !important;
+  background: linear-gradient(180deg, #cfcfcf, #f5f5f5) !important;
+  box-shadow:
+    inset 0 1px 3px rgba(0,0,0,.24),
+    0 1px 0 rgba(255,255,255,.55) !important;
+}
+
+/* Slightly more room so the larger title doesn't collide with controls. */
+.home-page .magazine-widget-header {
+  padding-right: 49px !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v8
+   Remove SPONSORED WIDGET microcopy from MAGAZINE COLLECTION.
+   ========================================================= */
+
+.home-page .magazine-widget-header::before {
+  display: none !important;
+  content: none !important;
+}
+
+.home-page .magazine-widget-header h2 {
+  margin-left: 0 !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v9
+   CLEAN SURFACES
+   Keep HOME's vertical stripe identity.
+   Remove horizontal pinstripes from panel/content surfaces.
+   Titlebar chrome may keep subtle Aqua texture.
+   ========================================================= */
+
+/* Main content panels: smooth silver surfaces only. */
+.home-page .about-card,
+.home-page .notes-panel {
+  background:
+    linear-gradient(
+      180deg,
+      #f7f9fa 0%,
+      #eef2f4 48%,
+      #e2e8eb 100%
+    ) !important;
+}
+
+/* Latest article stays visually prominent, but no horizontal pinstripe. */
+.home-page .feature-panel {
+  background:
+    linear-gradient(
+      180deg,
+      #fbfdfe 0%,
+      #f3f8fa 46%,
+      #e8f0f3 100%
+    ) !important;
+}
+
+/* RANDOM PICKS interior: plain silver gradient.
+   This prevents horizontal panel lines fighting the HOME vertical stripes. */
+.home-page .recommendation-grid {
+  background:
+    linear-gradient(
+      180deg,
+      #f4f6f7 0%,
+      #e5eaed 100%
+    ) !important;
+}
+
+/* Photo controls: translucent smooth plate, no stripe texture. */
+.home-page .photo-controls {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250,252,253,.97) 0%,
+      rgba(232,239,242,.96) 100%
+    ) !important;
+}
+
+/* Magazine widget stays clean/flat as the ad parody. */
+.home-page .magazine-widget-shell {
+  background: #ffffff !important;
+}
+
+/* Preserve texture only in compact chrome/titlebars.
+   Explicitly leave .panel-titlebar untouched. */
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v10
+   MAGAZINE COLLECTION -> modern small web-ad card parody
+   Ref: white ad module with blue headline, green URL, copy underneath.
+   ========================================================= */
+
+/* Overall card: flatter, ad-like white module */
+.home-page .magazine-shelf-card.magazine-collection-widget {
+  border: 1px solid #b8b8b8 !important;
+  border-radius: 2px !important;
+  background: #ffffff !important;
+overflow: visible !important;
+}
+
+/* Kill the app/widget title treatment */
+.home-page .magazine-widget-shell {
+  padding: 0 !important;
+  border-radius: 2px !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+/* Simple top band like a small ad header */
+.home-page .magazine-widget-header {
+  min-height: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 10px 42px 0 12px !important;
+  display: block !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Remove any leftover pseudo labels */
+.home-page .magazine-widget-header::before,
+.home-page .magazine-widget-header::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Big blue ad headline */
+.home-page .magazine-widget-header h2 {
+  display: block !important;
+  margin: 0 0 6px !important;
+  padding: 0 !important;
+  color: #2638b5 !important;
+  font: 800 13px/1.08 "Arial", "Helvetica Neue", sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* Fake green URL line under the headline */
+.home-page .magazine-widget-header h2::after {
+  content: "magazinecollection.jp";
+  display: block;
+  margin-top: 5px;
+  color: #4f9a40;
+  font: 700 9px/1.1 Arial, sans-serif;
+  letter-spacing: .01em;
+}
+
+/* Float the close/info buttons in the top-right like web ads */
+.home-page .magazine-widget-tools {
+  position: absolute !important;
+  top: 3px !important;
+  right: 3px !important;
+  z-index: 9 !important;
+  display: flex !important;
+  gap: 2px !important;
+  margin: 0 !important;
+}
+
+.home-page #magazine-info-button,
+.home-page #magazine-close-button {
+  width: 18px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  padding: 0 !important;
+  position: static !important;
+  border: 1px solid #a0a0a0 !important;
+  border-radius: 1px !important;
+  color: #333 !important;
+  background: #f4f4f4 !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.home-page #magazine-info-button {
+  font: 700 10px/16px Arial, sans-serif !important;
+}
+
+.home-page #magazine-close-button {
+  font: 400 15px/15px Arial, sans-serif !important;
+}
+
+.home-page #magazine-info-button:hover,
+.home-page #magazine-close-button:hover,
+.home-page #magazine-info-button:focus-visible,
+.home-page #magazine-close-button:focus-visible {
+  border-color: #6f6f6f !important;
+  background: #ffffff !important;
+  outline: none !important;
+}
+
+/* Ad body spacing */
+.home-page .magazine-widget-counts {
+  padding: 8px 12px 10px !important;
+}
+
+/* Rebuild each stat row into a text-heavy ad layout:
+   label on the left, number box on the right. */
+.home-page .magazine-widget-counts > div {
+  min-height: 40px !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 96px !important;
+  grid-template-areas:
+    "title box"
+    "sub   box" !important;
+  align-items: center !important;
+  column-gap: 12px !important;
+  border-bottom: 0 !important;
+  background: transparent !important;
+}
+
+.home-page .magazine-widget-counts > div + div {
+  margin-top: 9px !important;
+}
+
+.home-page .magazine-widget-counts dt {
+  grid-area: title !important;
+  margin: 0 !important;
+  align-self: end !important;
+  color: #222 !important;
+  font: 800 10px/1.1 "Arial", "Helvetica Neue", sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+}
+
+.home-page .magazine-widget-counts dd {
+  margin: 0 !important;
+}
+
+/* Japanese helper text appears under each item like ad subcopy */
+.home-page .magazine-widget-counts dt small,
+.home-page .magazine-widget-counts .widget-note,
+.home-page .magazine-widget-counts .widget-sub,
+.home-page .magazine-widget-counts > div > p {
+  color: #8a8a8a !important;
+  font: 400 9px/1.2 Arial, sans-serif !important;
+}
+
+/* If the markup places the helper text in a separate element, put it under title */
+.home-page .magazine-widget-counts > div > :not(dt):not(dd):not(button) {
+  grid-area: sub !important;
+  margin: 2px 0 0 !important;
+  align-self: start !important;
+  color: #8a8a8a !important;
+  font: 400 9px/1.2 Arial, sans-serif !important;
+}
+
+/* Number field becomes a plain white inset box like a cheap web module */
+.home-page .magazine-widget-counts dd {
+  grid-area: box !important;
+  min-height: 32px !important;
+  padding: 0 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  border: 1px solid #b7bdc3 !important;
+  border-radius: 1px !important;
+  background: #ffffff !important;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.04) !important;
+}
+
+/* CTA at the bottom: still a button, but simpler and more ad-like */
+.home-page .magazine-read-button {
+  width: calc(100% - 24px) !important;
+  margin: 8px 12px 12px !important;
+  min-height: 28px !important;
+  height: 28px !important;
+  border: 1px solid #9ca8b1 !important;
+  border-radius: 14px !important;
+  color: #243b48 !important;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #edf2f5 46%,
+      #d4dde3 54%,
+      #eef3f6 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 2px rgba(0,0,0,.08) !important;
+  font: 700 10px/1 var(--omz-aqua-ui-font) !important;
+}
+
+.home-page .magazine-read-button:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f6fbfd 46%,
+      #dcecf4 54%,
+      #f5fbfd 100%
+    ) !important;
+}
+
+.home-page .magazine-read-button:active {
+  transform: translateY(1px) !important;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,.10) !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v11
+   RANDOM PICKS titlebar cleanup
+   Remove horizontal pinstripes; keep only clean silver chrome.
+   ========================================================= */
+
+.home-page .notes-panel .panel-titlebar {
+  min-height: 28px !important;
+  height: 28px !important;
+
+  border-bottom: 1px solid #7f8f97 !important;
+
+  color: #30434d !important;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f5f7f8 42%,
+      #dde4e7 49%,
+      #c8d2d7 54%,
+      #eef2f4 100%
+    ) !important;
+  background-image:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f5f7f8 42%,
+      #dde4e7 49%,
+      #c8d2d7 54%,
+      #eef2f4 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    inset 0 -1px 0 rgba(74,89,97,.12) !important;
+
+  text-shadow: 0 1px 0 #ffffff !important;
+}
+
+/* Make the file-name text slightly clearer against the calmer surface. */
+.home-page .notes-panel .panel-titlebar h2 {
+  color: #2c414b !important;
+  font-weight: 700 !important;
+}
+
+/* SHUFFLE remains the only raised interactive object in the bar. */
+.home-page .notes-panel .shuffle-button {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v12
+   MAGAZINE COLLECTION ad-copy layout
+   Keep:
+   - blue "MAGAZINE COLLECTION"
+   - green "magazinecollection.jp"
+   Add:
+   - black promo headline under URL
+   - large gray circular review button with "<"
+   ========================================================= */
+
+/* Keep the ad-card header flat and readable. */
+.home-page .magazine-widget-header {
+  padding: 10px 44px 0 12px !important;
+}
+
+/* Blue headline stays exactly as the main ad headline. */
+.home-page .magazine-widget-header h2 {
+  margin: 0 0 6px !important;
+  color: #2638b5 !important;
+  font: 800 13px/1.08 Arial, "Helvetica Neue", sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+/* Green fake URL stays directly below. */
+.home-page .magazine-widget-header h2::after {
+  content: "magazinecollection.jp" !important;
+  display: block !important;
+  margin-top: 5px !important;
+  color: #4f9a40 !important;
+  font: 700 9px/1.1 Arial, sans-serif !important;
+  letter-spacing: .01em !important;
+}
+
+/* Promotional copy under the URL, like a compact web ad. */
+.home-page .magazine-widget-header::after {
+  content: "下のボタンからレビュー公開中！" !important;
+  display: block !important;
+  margin-top: 12px !important;
+  color: #2b2b2b !important;
+  font: 800 11px/1.35 Arial, "Helvetica Neue", sans-serif !important;
+  letter-spacing: .01em !important;
+}
+
+/* Give the stats a little breathing room after the promo copy. */
+.home-page .magazine-widget-counts {
+  padding-top: 12px !important;
+}
+
+/* Replace the READ REVIEWS pill visually with the reference-style circle button.
+   Existing button text remains in the DOM for semantics, but is visually hidden. */
+.home-page .magazine-read-button {
+  width: 62px !important;
+  min-width: 62px !important;
+  height: 62px !important;
+  min-height: 62px !important;
+  margin: 18px auto 15px !important;
+  padding: 0 !important;
+
+  position: relative !important;
+  display: grid !important;
+  place-items: center !important;
+
+  border: 0 !important;
+  border-radius: 50% !important;
+
+  color: transparent !important;
+  background:
+    radial-gradient(
+      circle at 38% 30%,
+      #e1e1e1 0%,
+      #cecece 45%,
+      #bcbcbc 72%,
+      #b2b2b2 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.80),
+    0 1px 3px rgba(0,0,0,.10) !important;
+
+  text-shadow: none !important;
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Hide the original visible label/triangle. */
+.home-page .magazine-read-button > span,
+.home-page .magazine-read-button > b {
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Reference-like "<" arrow in the gray circle. */
+.home-page .magazine-read-button::before {
+  content: "<" !important;
+  display: block !important;
+  color: #ffffff !important;
+  font: 300 37px/.9 "Helvetica Neue", Arial, sans-serif !important;
+  transform: translateX(-1px) translateY(-1px) !important;
+  text-shadow: 0 1px 1px rgba(0,0,0,.08) !important;
+}
+
+/* Keep interaction subtle, like a lightweight web-ad CTA. */
+.home-page .magazine-read-button:hover {
+  background:
+    radial-gradient(
+      circle at 38% 30%,
+      #ebebeb 0%,
+      #d8d8d8 45%,
+      #c4c4c4 72%,
+      #b8b8b8 100%
+    ) !important;
+}
+
+.home-page .magazine-read-button:active {
+  transform: translateY(1px) !important;
+  background:
+    radial-gradient(
+      circle at 42% 38%,
+      #b6b6b6 0%,
+      #c1c1c1 52%,
+      #d0d0d0 100%
+    ) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,.10) !important;
+}
+
+/* On small screens keep a comfortable tap target. */
+@media (max-width: 720px) {
+  .home-page .magazine-read-button {
+    width: 68px !important;
+    min-width: 68px !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    border-radius: 50% !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v13
+   MAGAZINE REVIEW CTA — FORCE TRUE CIRCLE
+   ========================================================= */
+
+.home-page .magazine-read-button {
+  box-sizing: border-box !important;
+
+  width: 64px !important;
+  min-width: 64px !important;
+  max-width: 64px !important;
+
+  height: 64px !important;
+  min-height: 64px !important;
+  max-height: 64px !important;
+
+  inline-size: 64px !important;
+  min-inline-size: 64px !important;
+  max-inline-size: 64px !important;
+
+  block-size: 64px !important;
+  min-block-size: 64px !important;
+  max-block-size: 64px !important;
+
+  flex: 0 0 64px !important;
+  aspect-ratio: 1 / 1 !important;
+
+  margin: 18px auto 16px !important;
+  padding: 0 !important;
+
+  display: grid !important;
+  place-items: center !important;
+  align-self: center !important;
+
+  border: 0 !important;
+  border-radius: 50% !important;
+
+  color: transparent !important;
+  background: #c9c9c9 !important;
+  background-image:
+    radial-gradient(
+      circle at 38% 30%,
+      #dedede 0%,
+      #d3d3d3 38%,
+      #c5c5c5 70%,
+      #bdbdbd 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.68),
+    0 1px 3px rgba(0,0,0,.10) !important;
+
+  font-size: 0 !important;
+  line-height: 0 !important;
+  letter-spacing: 0 !important;
+  transform: none !important;
+}
+
+/* Hide old text and triangle completely. */
+.home-page .magazine-read-button > span,
+.home-page .magazine-read-button > b {
+  display: none !important;
+}
+
+/* White "<" centered in the circle. */
+.home-page .magazine-read-button::before {
+  content: "<" !important;
+  width: auto !important;
+  height: auto !important;
+  position: static !important;
+  display: block !important;
+
+  color: rgba(255,255,255,.92) !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  font: 300 38px/.8 "Helvetica Neue", Arial, sans-serif !important;
+  text-shadow: 0 1px 1px rgba(0,0,0,.08) !important;
+
+  transform: translate(-1px, -1px) !important;
+}
+
+/* No secondary pseudo decoration. */
+.home-page .magazine-read-button::after {
+  display: none !important;
+  content: none !important;
+}
+
+.home-page .magazine-read-button:hover {
+  background: #d0d0d0 !important;
+  background-image:
+    radial-gradient(
+      circle at 38% 30%,
+      #e8e8e8 0%,
+      #d8d8d8 40%,
+      #c9c9c9 72%,
+      #c0c0c0 100%
+    ) !important;
+}
+
+.home-page .magazine-read-button:active {
+  transform: translateY(1px) !important;
+  background: #bdbdbd !important;
+  background-image:
+    radial-gradient(
+      circle at 45% 42%,
+      #b8b8b8 0%,
+      #c2c2c2 55%,
+      #d0d0d0 100%
+    ) !important;
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,.12),
+    0 1px 0 rgba(255,255,255,.50) !important;
+}
+
+@media (max-width: 720px) {
+  .home-page .magazine-read-button {
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    max-height: 68px !important;
+    inline-size: 68px !important;
+    block-size: 68px !important;
+    flex-basis: 68px !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v14
+   REVIEW CTA — clearer white chevron
+   ========================================================= */
+
+/* Slightly darker gray circle for stronger white-arrow contrast. */
+.home-page .magazine-read-button {
+  background: #b9b9b9 !important;
+  background-image:
+    radial-gradient(
+      circle at 38% 30%,
+      #d6d6d6 0%,
+      #c9c9c9 38%,
+      #b9b9b9 70%,
+      #aeaeae 100%
+    ) !important;
+}
+
+/* Draw the "<" as a real chevron instead of a text glyph.
+   This makes it much easier to recognize at small size. */
+.home-page .magazine-read-button::before {
+  content: "" !important;
+
+  width: 17px !important;
+  height: 17px !important;
+
+  display: block !important;
+  position: static !important;
+
+  border: 0 !important;
+  border-left: 4px solid rgba(255,255,255,.98) !important;
+  border-bottom: 4px solid rgba(255,255,255,.98) !important;
+  border-radius: 1px !important;
+
+  background: none !important;
+  box-shadow: none !important;
+
+  transform: translateX(3px) rotate(45deg) !important;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.12)) !important;
+}
+
+/* Keep the arrow crisp on hover. */
+.home-page .magazine-read-button:hover::before {
+  border-left-color: #ffffff !important;
+  border-bottom-color: #ffffff !important;
+}
+
+/* Pressed state keeps enough contrast. */
+.home-page .magazine-read-button:active::before {
+  border-left-color: rgba(255,255,255,.96) !important;
+  border-bottom-color: rgba(255,255,255,.96) !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v15
+   MAGAZINE REVIEW CTA — true circle + revised promo copy
+   ========================================================= */
+
+/* Exact copy requested under the green URL. */
+.home-page .magazine-widget-header::after {
+  content: "下のボタンから雑誌のレビュー無料で公開中！！" !important;
+}
+
+/* Strip every old pill/button visual off the real button element. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+
+  width: 66px !important;
+  min-width: 66px !important;
+  max-width: 66px !important;
+  height: 66px !important;
+  min-height: 66px !important;
+  max-height: 66px !important;
+
+  inline-size: 66px !important;
+  min-inline-size: 66px !important;
+  max-inline-size: 66px !important;
+  block-size: 66px !important;
+  min-block-size: 66px !important;
+  max-block-size: 66px !important;
+
+  flex: 0 0 66px !important;
+  aspect-ratio: 1 / 1 !important;
+
+  margin: 20px auto 17px !important;
+  padding: 0 !important;
+
+  position: relative !important;
+  display: block !important;
+  justify-self: center !important;
+  align-self: center !important;
+
+  border: 0 !important;
+  border-radius: 50% !important;
+
+  color: transparent !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+
+  overflow: visible !important;
+  transform: none !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* Hide the old READ REVIEWS label and triangle. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button > span,
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button > b {
+  display: none !important;
+}
+
+/* Actual gray circular face.
+   Pseudo-element avoids any leftover global pill styling. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button::after {
+  content: "" !important;
+
+  width: 66px !important;
+  height: 66px !important;
+
+  position: absolute !important;
+  z-index: 1 !important;
+  inset: 0 !important;
+
+  display: block !important;
+
+  border: 0 !important;
+  border-radius: 50% !important;
+  clip-path: circle(50% at 50% 50%) !important;
+
+  background:
+    radial-gradient(
+      circle at 36% 27%,
+      #dedede 0%,
+      #d1d1d1 36%,
+      #bcbcbc 70%,
+      #adadad 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.78),
+    0 2px 5px rgba(0,0,0,.11) !important;
+
+  pointer-events: none !important;
+}
+
+/* Thick white left chevron. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button::before {
+  content: "" !important;
+
+  width: 19px !important;
+  height: 19px !important;
+
+  position: absolute !important;
+  z-index: 2 !important;
+  top: 50% !important;
+  left: 50% !important;
+
+  display: block !important;
+
+  border: 0 !important;
+  border-left: 4px solid #ffffff !important;
+  border-bottom: 4px solid #ffffff !important;
+  border-radius: 1px !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+
+  transform: translate(-38%, -50%) rotate(45deg) !important;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.13)) !important;
+
+  pointer-events: none !important;
+}
+
+/* Hover changes only the circle face. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button:hover::after {
+  background:
+    radial-gradient(
+      circle at 36% 27%,
+      #e8e8e8 0%,
+      #d9d9d9 36%,
+      #c6c6c6 70%,
+      #b6b6b6 100%
+    ) !important;
+}
+
+/* Press moves the whole circular face down by 1px. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button:active {
+  transform: translateY(1px) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button:active::after {
+  background:
+    radial-gradient(
+      circle at 45% 42%,
+      #b0b0b0 0%,
+      #bebebe 52%,
+      #cecece 100%
+    ) !important;
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,.13),
+    0 1px 0 rgba(255,255,255,.48) !important;
+}
+
+/* Keyboard focus surrounds the actual circle. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button:focus-visible {
+  outline: 2px solid #6aaeca !important;
+  outline-offset: 3px !important;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 720px) {
+  .home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button {
+    width: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+    height: 70px !important;
+    min-height: 70px !important;
+    max-height: 70px !important;
+    inline-size: 70px !important;
+    block-size: 70px !important;
+    flex-basis: 70px !important;
+  }
+
+  .home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button::after {
+    width: 70px !important;
+    height: 70px !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v17
+   MAGAZINE REVIEW CTA — site-matched silver Aqua button
+   ========================================================= */
+
+/* Keep the true circle, but use the same silver/Aqua material language
+   as the rest of OH MY ZINE instead of a flat generic gray disc. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button::after {
+  border: 1px solid #788a94 !important;
+  border-radius: 50% !important;
+  clip-path: circle(50% at 50% 50%) !important;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 15%,
+      rgba(255,255,255,.96) 0 18%,
+      rgba(255,255,255,.56) 19% 34%,
+      transparent 36%
+    ),
+    linear-gradient(
+      180deg,
+      #f8fbfc 0%,
+      #e8eef1 38%,
+      #c7d3d9 52%,
+      #aebdc5 58%,
+      #dbe5e9 78%,
+      #f3f7f8 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -4px 6px rgba(64,82,92,.18),
+    inset 3px 0 4px rgba(255,255,255,.40),
+    inset -3px 0 4px rgba(54,72,82,.08),
+    0 2px 4px rgba(35,49,57,.20),
+    0 0 0 1px rgba(255,255,255,.55) !important;
+}
+
+/* A faint cool-Aqua edge glow ties the ad parody back into the site. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button {
+  filter: drop-shadow(0 0 3px rgba(72,161,198,.08)) !important;
+}
+
+/* Chevron is brighter, crisp and slightly inset like an Aqua control glyph. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button::before {
+  width: 18px !important;
+  height: 18px !important;
+  border-left: 4px solid rgba(255,255,255,.98) !important;
+  border-bottom: 4px solid rgba(255,255,255,.98) !important;
+  filter:
+    drop-shadow(0 -1px 0 rgba(82,100,110,.22))
+    drop-shadow(0 1px 1px rgba(35,49,57,.18)) !important;
+}
+
+/* Hover: a little more Aqua, but still silver rather than blue. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button:hover::after {
+  border-color: #678d9e !important;
+  background:
+    radial-gradient(
+      ellipse at 50% 15%,
+      rgba(255,255,255,1) 0 19%,
+      rgba(255,255,255,.66) 20% 35%,
+      transparent 37%
+    ),
+    linear-gradient(
+      180deg,
+      #fbfeff 0%,
+      #e9f6fb 38%,
+      #bad9e6 52%,
+      #9fc1cf 58%,
+      #d6ecf4 78%,
+      #f6fcfe 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -4px 6px rgba(52,95,113,.16),
+    0 3px 5px rgba(35,72,89,.22),
+    0 0 0 2px rgba(86,173,207,.08) !important;
+}
+
+/* Pressed: physical depression matching the other site controls. */
+.home-page .magazine-shelf-card.magazine-collection-widget .magazine-read-button:active::after {
+  border-color: #6e7f88 !important;
+  background:
+    linear-gradient(
+      180deg,
+      #aab9c0 0%,
+      #c4d0d5 48%,
+      #e6ecef 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 4px 7px rgba(52,67,75,.22),
+    inset 0 -1px 0 rgba(255,255,255,.60),
+    0 1px 1px rgba(35,49,57,.10) !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / AQUA GUI v18
+   MAGAZINE COLLECTION — match panel corner radius
+   Other main HOME panels use 7px, so this ad-card uses 7px too.
+   ========================================================= */
+
+.home-page .magazine-shelf-card.magazine-collection-widget {
+  border-radius: 7px !important;
+}
+
+.home-page .magazine-widget-shell {
+  border-radius: 7px !important;
+}
+
+/* Keep the flat ad header clipped cleanly into the same rounded top corners. */
+.home-page .magazine-widget-header {
+  border-radius: 7px 7px 0 0 !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / v19 PHOTO TAB
+   HOME Photo Cabinet is now a viewer/shortcut only.
+   Upload and delete live on PHOTO.html.
+   ========================================================= */
+
+.home-page .photo-add-button,
+.home-page .photo-input,
+.home-page .photo-delete {
+  display: none !important;
+}
+
+.home-page .photo-controls.photo-controls-viewer {
+  grid-template-columns: 32px minmax(0,1fr) 32px !important;
+}
+
+.home-page .photo-cabinet-link {
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.home-page .photo-cabinet-link:hover,
+.home-page .photo-cabinet-link:focus-visible {
+  color: #2d4856 !important;
+  border-color: #6e8c9c !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.98) 0%,
+      rgba(255,255,255,.72) 38%,
+      rgba(255,255,255,.08) 39%,
+      transparent 100%
+    ),
+    linear-gradient(180deg, #f8f4ff 0%, #dcd4ea 52%, #b9afcb 56%, #f1ebf6 100%) !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / FINAL LAYERED KEYCHAIN
+   One source of truth for the current 3-layer keychain.
+   1) dog/full keychain + 3) front cover swing together
+   2) eyelet-only stays fixed
+   ========================================================= */
+
+.home-page .hanging-keychain.hanging-keychain-layered {
+  width: clamp(158px, 15vw, 212px) !important;
+  aspect-ratio: 2 / 3 !important;
+  margin: auto 4px -6px auto !important;
+  padding-top: 0 !important;
+  position: relative !important;
+  align-self: flex-end !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+  overflow: visible !important;
+}
+
+/* All source images use the same 1024 x 1536 canvas. */
+.home-page .hanging-keychain.hanging-keychain-layered img {
+  width: 100% !important;
+  height: auto !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  object-fit: contain !important;
+  backface-visibility: hidden !important;
+}
+
+/* BACK: full keychain / dog. */
+.home-page .hanging-keychain.hanging-keychain-layered .keychain-swing-layer {
+  z-index: 1 !important;
+  transform-origin: 50% 16% !important;
+  will-change: transform !important;
+  filter: drop-shadow(0 7px 10px rgba(28, 33, 37, 0.18)) !important;
+}
+
+/* MIDDLE: eyelet remains fixed. */
+.home-page .hanging-keychain.hanging-keychain-layered .keychain-eyelet-only {
+  z-index: 2 !important;
+  animation: none !important;
+  transform: none !important;
+  filter: drop-shadow(0 1px 1px rgba(28, 33, 37, 0.16)) !important;
+}
+
+/* FRONT: cover shares the dog's exact pivot and motion. */
+.home-page .hanging-keychain.hanging-keychain-layered .keychain-eyelet-front {
+  z-index: 3 !important;
+  transform-origin: 50% 16% !important;
+  will-change: transform !important;
+  filter: drop-shadow(0 1px 1px rgba(28, 33, 37, 0.12)) !important;
+}
+
+.home-page .hanging-keychain.is-tab-swinging.hanging-keychain-layered .keychain-swing-layer,
+.home-page .hanging-keychain.is-tab-swinging.hanging-keychain-layered .keychain-eyelet-front {
+  animation-name: tab-keychain-swing !important;
+  animation-duration: 1650ms !important;
+  animation-timing-function: cubic-bezier(0.23, 0.86, 0.29, 1) !important;
+  animation-fill-mode: both !important;
+}
+
+.home-page .magazine-window.is-dragging .hanging-keychain.hanging-keychain-layered .keychain-swing-layer,
+.home-page .magazine-window.is-dragging .hanging-keychain.hanging-keychain-layered .keychain-eyelet-front {
+  animation: drag-keychain-swing 250ms ease-in-out infinite alternate !important;
+}
+
+@media (max-width: 1000px) {
+  .home-page .hanging-keychain.hanging-keychain-layered {
+    width: 182px !important;
+    margin-top: 18px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .home-page .hanging-keychain.hanging-keychain-layered {
+    width: 146px !important;
+    margin: 8px auto 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page .right-column .hanging-keychain.hanging-keychain-layered {
+    grid-column: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .hanging-keychain.is-tab-swinging.hanging-keychain-layered .keychain-swing-layer,
+  .home-page .hanging-keychain.is-tab-swinging.hanging-keychain-layered .keychain-eyelet-front,
+  .home-page .magazine-window.is-dragging .hanging-keychain.hanging-keychain-layered .keychain-swing-layer,
+  .home-page .magazine-window.is-dragging .hanging-keychain.hanging-keychain-layered .keychain-eyelet-front {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / v26
+   ABOUT PROFILE AREA FIX
+   1) close the large blue gap below profile
+   2) turn ABOUT switcher labels into real GUI buttons
+   3) shift dog video slightly to the right
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. CLOSE THE LARGE GAP
+   The sponsor rail is taller than the profile card, so CSS Grid
+   makes the second row start too low. Pull only the story panel
+   upward into that empty left-column space.
+   --------------------------------------------------------- */
+
+@media (min-width: 901px) {
+  .about-page-shell .about-story-switch {
+    margin-top: -142px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-page-shell .about-story-switch {
+    margin-top: 0 !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   2. ABOUT SWITCHER = REAL GUI PUSH BUTTONS
+   --------------------------------------------------------- */
+
+.about-page-shell .about-switcher {
+  margin-top: auto !important;
+  padding-top: 8px !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 7px !important;
+  border-top: 1px solid #edcaca !important;
+  align-self: stretch !important;
+}
+
+.about-page-shell .about-switcher button,
+.about-page-shell .about-switcher button:hover,
+.about-page-shell .about-switcher button.is-active {
+  min-width: 0 !important;
+  min-height: 30px !important;
+  padding: 0 8px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border: 1px solid #87949b !important;
+  border-radius: 7px !important;
+
+  color: #354851 !important;
+  background:
+    radial-gradient(
+      ellipse at 50% -12%,
+      rgba(255,255,255,.98) 0 18%,
+      transparent 52%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f5f7f8 40%,
+      #dce3e6 50%,
+      #c7d2d7 55%,
+      #edf2f4 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    inset 0 -2px 3px rgba(67,82,90,.12),
+    0 2px 2px rgba(46,59,66,.18) !important;
+
+  text-shadow: 0 1px 0 #ffffff !important;
+  transform: none !important;
+  cursor: pointer !important;
+}
+
+/* Active = OH MY ZINE pink/Aqua-influenced selected button. */
+.about-page-shell .about-switcher button.is-active {
+  border-color: #b66f89 !important;
+  color: #7f2044 !important;
+  background:
+    radial-gradient(
+      ellipse at 50% -12%,
+      rgba(255,255,255,.98) 0 18%,
+      transparent 52%
+    ),
+    linear-gradient(
+      180deg,
+      #fffafa 0%,
+      #faeaf0 40%,
+      #e9bfd0 51%,
+      #d99ab4 56%,
+      #f7dfe8 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    inset 0 -2px 3px rgba(126,58,82,.13),
+    0 2px 2px rgba(84,47,60,.20) !important;
+}
+
+/* Hover gives a restrained Aqua cue without changing the ABOUT palette. */
+.about-page-shell .about-switcher button:hover:not(.is-active) {
+  border-color: #6f93a3 !important;
+  color: #244b5c !important;
+  background:
+    radial-gradient(
+      ellipse at 50% -12%,
+      rgba(255,255,255,1) 0 18%,
+      transparent 52%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f3fbfe 40%,
+      #d4eaf3 51%,
+      #b4d3df 56%,
+      #edf8fb 100%
+    ) !important;
+}
+
+/* Physical press state. */
+.about-page-shell .about-switcher button:active {
+  transform: translateY(1px) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(57,74,83,.20),
+    0 1px 1px rgba(46,59,66,.10) !important;
+}
+
+/* Remove the old underline-tab treatment completely. */
+.about-page-shell .about-switcher button.is-active {
+  border-bottom-width: 1px !important;
+}
+
+.about-page-shell .about-switcher span {
+  margin: 0 !important;
+  display: block !important;
+  color: inherit !important;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Arial, sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0 !important;
+  white-space: normal !important;
+}
+
+/* ---------------------------------------------------------
+   3. DOG VIDEO — MOVE SUBJECT RIGHT
+   Keep the same zoom, only offset the actual video image.
+   --------------------------------------------------------- */
+
+.about-page-shell .profile-ticket .profile-motion video {
+  transform: translateX(11px) scale(2.65) !important;
+  transform-origin: 50% 44% !important;
+}
+
+/* Mobile: slightly smaller offset so it doesn't clip too hard. */
+@media (max-width: 700px) {
+  .about-page-shell .profile-ticket .profile-motion video {
+    transform: translateX(7px) scale(2.65) !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / v27
+   HOME RANDOM_PICKS.HTML
+   Match FEATURE_01.HTML outer GUI.
+   Keep RANDOM PICKS content/cards/SHUFFLE behavior intact.
+   ========================================================= */
+
+/* RANDOM PICKS gets the same emphasized Aqua panel frame as FEATURE. */
+.home-page .notes-panel {
+  position: relative !important;
+  overflow: hidden !important;
+
+  border: 2px solid #3f91b3 !important;
+  border-radius: 8px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fbfdfe 0%,
+      #f3f8fa 46%,
+      #e8f0f3 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 0 0 1px rgba(255,255,255,.78),
+    0 5px 12px rgba(35,73,92,.22),
+    0 0 14px rgba(74,181,222,.12) !important;
+}
+
+/* Same Aqua titlebar material/height as FEATURE_01.HTML. */
+.home-page .notes-panel .panel-titlebar {
+  min-height: 31px !important;
+  height: 31px !important;
+  padding: 0 8px 0 10px !important;
+
+  border: 0 !important;
+  border-bottom: 1px solid #286d8d !important;
+  border-radius: 0 !important;
+
+  color: #ffffff !important;
+  background:
+    radial-gradient(
+      ellipse at 50% -18%,
+      rgba(255,255,255,.96) 0 16%,
+      transparent 46%
+    ),
+    linear-gradient(
+      180deg,
+      #dff8ff 0%,
+      #8fd8ef 12%,
+      #46b1d9 46%,
+      #1688b9 52%,
+      #2c9ec7 73%,
+      #78c8e2 100%
+    ) !important;
+
+  background-image:
+    radial-gradient(
+      ellipse at 50% -18%,
+      rgba(255,255,255,.96) 0 16%,
+      transparent 46%
+    ),
+    linear-gradient(
+      180deg,
+      #dff8ff 0%,
+      #8fd8ef 12%,
+      #46b1d9 46%,
+      #1688b9 52%,
+      #2c9ec7 73%,
+      #78c8e2 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -2px 3px rgba(0,75,112,.20) !important;
+
+  text-shadow: 0 -1px 0 rgba(0,73,106,.65) !important;
+}
+
+/* File-name typography follows FEATURE chrome. */
+.home-page .notes-panel .panel-titlebar h2 {
+  margin: 0 !important;
+  color: #ffffff !important;
+  font: 700 9px/1 var(--omz-aqua-mono-font) !important;
+  letter-spacing: .015em !important;
+  text-shadow: 0 -1px 0 rgba(0,73,106,.65) !important;
+}
+
+/* Keep SHUFFLE as an actual control, but make it sit naturally on the
+   FEATURE-style blue chrome. */
+.home-page .notes-panel .shuffle-button {
+  min-height: 21px !important;
+  height: 21px !important;
+  padding: 0 8px !important;
+
+  border: 1px solid rgba(45,91,111,.72) !important;
+  border-radius: 10px !important;
+
+  color: #31505d !important;
+  background:
+    radial-gradient(
+      ellipse at 50% -15%,
+      rgba(255,255,255,.98) 0 20%,
+      transparent 54%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f4f7f8 42%,
+      #d6e0e4 52%,
+      #eef3f5 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 1px 2px rgba(23,66,84,.28) !important;
+
+  text-shadow: 0 1px 0 #ffffff !important;
+}
+
+.home-page .notes-panel .shuffle-button:hover {
+  border-color: #3c7890 !important;
+  background:
+    radial-gradient(
+      ellipse at 50% -15%,
+      rgba(255,255,255,1) 0 20%,
+      transparent 54%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #eefaff 42%,
+      #b9dfeC 52%,
+      #edf9fd 100%
+    ) !important;
+}
+
+.home-page .notes-panel .shuffle-button:active {
+  transform: translateY(1px) !important;
+  box-shadow:
+    inset 0 2px 3px rgba(42,65,76,.22),
+    0 1px 1px rgba(23,66,84,.12) !important;
+}
+
+/* The inner recommendation area uses the same quiet silver content surface
+   as FEATURE's body rather than acting like a second window. */
+.home-page .notes-panel .recommendation-grid {
+  margin: 0 !important;
+  padding: 12px !important;
+  gap: 10px !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f7fafb 0%,
+      #edf3f5 100%
+    ) !important;
+
+  box-shadow: none !important;
+}
+
+/* Keep the two RANDOM PICK cards distinct but clean, like content inside
+   FEATURE rather than separate OS windows. */
+.home-page .notes-panel .recommendation-card {
+  border: 1px solid #71838c !important;
+  border-radius: 3px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.44),
+    0 1px 2px rgba(45,55,61,.12) !important;
+}
+
+@media (max-width: 720px) {
+  .home-page .notes-panel .panel-titlebar {
+    min-height: 32px !important;
+    height: 32px !important;
+  }
+
+  .home-page .notes-panel .shuffle-button {
+    min-height: 26px !important;
+    height: 26px !important;
+    border-radius: 13px !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / v28
+   ABOUT PROFILE CARD — remove bottom dead space
+   ========================================================= */
+
+.about-page-shell .profile-deck {
+  padding-bottom: 4px !important;
+}
+
+
+/* =========================================================
+   OH MY ZINE / v29
+   ABOUT SWITCHER — larger GUI buttons
+   ========================================================= */
+
+.about-page-shell .about-switcher button,
+.about-page-shell .about-switcher button:hover,
+.about-page-shell .about-switcher button.is-active {
+  min-height: 40px !important;
+  height: 40px !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+}
+
+.about-page-shell .about-switcher span {
+  font-size: 10px !important;
+  line-height: 1.15 !important;
+}
+
+@media (max-width: 700px) {
+  .about-page-shell .about-switcher button,
+  .about-page-shell .about-switcher button:hover,
+  .about-page-shell .about-switcher button.is-active {
+    min-height: 44px !important;
+    height: 44px !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / v30
+   ABOUT PROFILE — compact vertical fit
+   Remove the dead space under the large switcher buttons.
+   ========================================================= */
+
+/* Stop the old fixed/minimum panel height from creating bottom whitespace. */
+.about-page-shell .profile-deck {
+  min-height: 0 !important;
+  height: auto !important;
+  padding-top: 12px !important;
+  padding-bottom: 7px !important;
+  align-items: start !important;
+}
+
+/* Shorten the portrait/video frame so it no longer dictates a tall card. */
+.about-page-shell .profile-ticket .profile-motion {
+  height: 166px !important;
+  min-height: 166px !important;
+}
+
+/* Let the MP4 use the whole shorter frame.
+   object-fit + the existing zoom keeps the dog composition intact. */
+.about-page-shell .profile-ticket .profile-motion video {
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  transform: translateX(11px) scale(2.65) !important;
+  transform-origin: 50% 44% !important;
+}
+
+/* Keep the right column content-driven rather than stretching to the old row height. */
+.about-page-shell .profile-summary {
+  align-self: start !important;
+  height: auto !important;
+}
+
+/* Buttons sit near the actual bottom of the content instead of reserving flex space. */
+.about-page-shell .about-switcher {
+  margin-top: 8px !important;
+  align-self: start !important;
+}
+
+/* Mobile uses a proportionally shorter portrait as well. */
+@media (max-width: 700px) {
+  .about-page-shell .profile-ticket .profile-motion {
+    height: 154px !important;
+    min-height: 154px !important;
+  }
+
+  .about-page-shell .profile-ticket .profile-motion video {
+    height: 100% !important;
+    transform: translateX(7px) scale(2.65) !important;
+  }
+}
+
+
+/* =========================================================
+   OH MY ZINE / v31
+   HOME PSEUDO PAGE SHADOW
+   Add a restrained Aqua-style depth to the inner fake pages.
+   ========================================================= */
+
+/* Main pseudo-page windows */
+.home-page .feature-panel,
+.home-page .notes-panel {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    inset 0 -1px 0 rgba(73,92,103,.10),
+    0 5px 11px rgba(34,50,59,.22),
+    0 0 0 1px rgba(255,255,255,.48) !important;
+}
+
+/* Inner page surfaces get a slight recessed feel */
+.home-page .feature-panel .feature-body,
+.home-page .notes-panel .recommendation-grid {
+  box-shadow:
+    inset 0 2px 5px rgba(57,75,85,.10),
+    inset 0 1px 0 rgba(255,255,255,.70) !important;
+}
+
+/* Image/content areas sit one level deeper */
+.home-page .feature-panel .feature-image-wrap,
+.home-page .notes-panel .recommendation-card {
+  box-shadow:
+    inset 0 2px 4px rgba(43,57,65,.16),
+    0 2px 4px rgba(38,52,60,.14) !important;
+}
+
+/* Keep the titlebar visually above the recessed page */
+.home-page .feature-panel .panel-titlebar,
+.home-page .notes-panel .panel-titlebar {
+  position: relative !important;
+  z-index: 2 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -2px 3px rgba(0,75,112,.20),
+    0 2px 4px rgba(35,62,75,.14) !important;
+}
+
+
+/* =========================================================
+   HOME / AQUA UNIFORM DEPTH — FINAL
+   Same HOME panel depth = same shadow.
+   Old MAGAZINE COLLECTION outer-card shadows are removed above.
+   ========================================================= */
+.home-page :is(
+  .feature-panel,
+  .notes-panel,
+  .magazine-shelf-card.magazine-collection-widget,
+  .photo-vault,
+  .about-card
+) {
+  position: relative !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 0 0 1px rgba(255,255,255,.72),
+    0 1px 2px rgba(0,0,0,.24),
+    0 4px 8px rgba(0,0,0,.23),
+    0 10px 20px rgba(0,0,0,.20),
+    0 18px 34px rgba(0,0,0,.14) !important;
+}
+
+/* Let the soft Aqua shadow render outside every pseudo-window. */
+.home-page :is(
+  .magazine-grid,
+  .left-column,
+  .center-column,
+  .right-column
+) {
+  overflow: visible !important;
+}
+
+/* ARTICLE ONLY: remove the thin left edge line shown beside Attention / VHS. */
+.article-page-shell .content-window {
+  border-left-width: 0 !important;
+}
+
+/* Shared outer frame/chrome now lives only in CSS/common.css. */
+
+.article-page-shell .article-window-body {
+  padding: 0;
+}
+
+.article-page-shell .article-window-body {
+  background: #e7ebed;
+}
+
+.article-page-shell .content-window {
+  border-top-right-radius: 23px;
 }

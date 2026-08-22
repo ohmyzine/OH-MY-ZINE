@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHOTO | OH MY ZINE</title>
+  <meta name="description" content="OH MY ZINEのPHOTO CABINET。好きな写真をブラウザ内に保存して一覧できるローカルフォトアーカイブ。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OH MY ZINE">
+  <meta property="og:title" content="PHOTO | OH MY ZINE">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
+  <link rel="stylesheet" href="CSS/common.css?v=20260822-shared-template4">
+  <link rel="stylesheet" href="CSS/photo.css?v=20260822-common-cleanup1">
+  <link rel="stylesheet" href="CSS/finishing.css?v=20260822-common-cleanup1">
+  <script src="js/common.js?v=20260816-shared6" defer></script>
+  <script src="js/subpage-window.js?v=20260822-close-screen1" defer></script>
+  <script src="js/photo.js?v=20260819-github20" defer></script>
+</head>
+
+<body class="subpage photo-page-shell">
+
+  <div class="subpage-app-frame shared-app-window">
+  <div class="subpage-header">
+    <header class="system-bar subpage-systembar shared-titlebar">
+      <a class="system-title subpage-brand shared-brand" href="index.html">
+        <img class="system-app-icon shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
+        <span>OH_MY_ZINE.EXE / PHOTO_LIBRARY</span>
+      </a>
+      <div class="system-controls subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
+        <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">—</button>
+        <button type="button" data-window-action="maximize" aria-label="最大化" aria-pressed="false">□</button>
+        <button type="button" data-window-action="close" aria-label="閉じる" aria-pressed="false">×</button>
+      </div>
+    </header>
+
+    <nav class="site-nav subpage-tabs shared-tabs" aria-label="メインメニュー">
+      <a href="index.html">HOME</a>
+      <a href="fashion.html">FASHION</a>
+      <a href="magazine.html">MAGAZINE COLLECTION</a>
+      <a href="photo.html" aria-current="page">PHOTO</a>
+      <a href="about.html">ABOUT</a>
+    </nav>
+  </div>
+
+  <main class="subpage-main shared-page-base photo-page">
+    <section class="content-window photo-window">
+      <div class="content-window-body">
+
+        <header class="photo-hero">
+          <div>
+            <p class="photo-kicker">PHOTO_CABINET.APP / LOCAL ARCHIVE</p>
+            <h1>PHOTO</h1>
+            <p>好きな写真をまとめて保存して、OH MY ZINEの中で眺めるフォトキャビネット。</p>
+          </div>
+          <dl class="photo-status">
+            <div><dt>PHOTOS</dt><dd id="photo-total">000</dd></div>
+            <div><dt>SOURCE</dt><dd id="photo-source">GITHUB</dd></div>
+          </dl>
+        </header>
+
+        <section class="photo-public-toolbar" aria-label="PHOTO archive status">
+          <div class="photo-public-status">
+            <span class="photo-public-led" aria-hidden="true"></span>
+            <span>
+              <b>PUBLIC PHOTO ARCHIVE</b>
+              <small>GitHub Pages / READ ONLY</small>
+            </span>
+          </div>
+          <span class="photo-public-help">写真の追加・削除はサイト管理者のみ</span>
+        </section>
+
+        <div class="photo-library-status" role="status" aria-live="polite">
+          <span id="photo-library-message">LOADING PHOTO ARCHIVE...</span>
+          <span id="photo-loaded-count">000 PHOTOS</span>
+        </div>
+
+        <section class="photo-grid" id="photo-grid" aria-label="保存した写真">
+          <p class="photo-empty" id="photo-empty">
+            PHOTO ARCHIVEはまだ空です。<br>
+            管理者がGitHubへ写真を追加するとここに表示されます。
+          </p>
+        </section>
+
+      </div>
+    </section>
+  </main>
+  </div>
+
+  <dialog class="photo-viewer" id="photo-viewer">
+    <div class="photo-viewer-bar">
+      <span id="photo-viewer-name">PHOTO</span>
+      <button id="photo-viewer-close" type="button" aria-label="閉じる">×</button>
+    </div>
+    <div class="photo-viewer-stage">
+      <button class="photo-viewer-nav" id="photo-viewer-prev" type="button" aria-label="前の写真">‹</button>
+      <img id="photo-viewer-image" alt="">
+      <button class="photo-viewer-nav" id="photo-viewer-next" type="button" aria-label="次の写真">›</button>
+    </div>
+    <div class="photo-viewer-footer">
+      <span id="photo-viewer-count">0 / 0</span>
+      <span class="photo-viewer-readonly">PUBLIC / READ ONLY</span>
+    </div>
+  </dialog>
+
+</body>
+</html>

@@ -33,23 +33,23 @@
 
     const logos = [
       {
-        src: "images/oh-my-zine-soft-logo.png",
+        src: "images/oh-my-zine-soft-logo.webp",
         isStacked: false,
       },
       {
-        src: "images/oh-my-zine-rough-horizontal.png",
+        src: "images/oh-my-zine-rough-horizontal.webp",
         isStacked: false,
       },
       {
-        src: "images/oh-my-zine-cookie.png",
+        src: "images/oh-my-zine-cookie.webp",
         isStacked: false,
       },
       {
-        src: "images/oh-my-zine-toy.png",
+        src: "images/oh-my-zine-toy.webp",
         isStacked: false,
       },
       {
-        src: "images/oh-my-zine-textile-paper.png",
+        src: "images/oh-my-zine-textile-paper.webp",
         isStacked: false,
       },
     ];
@@ -135,106 +135,6 @@
     magazineWindow.hidden = false;
     minimizeButton?.focus();
   }
-
-  let windowPositionX = 0;
-  let windowPositionY = 0;
-  let dragState = null;
-  let didWindowDrag = false;
-
-  function setWindowPosition(x, y) {
-    if (!magazineWindow) {
-      return;
-    }
-
-    windowPositionX = x;
-    windowPositionY = y;
-    magazineWindow.style.setProperty("--window-x", `${x}px`);
-    magazineWindow.style.setProperty("--window-y", `${y}px`);
-  }
-
-  function resetWindowPosition() {
-    setWindowPosition(0, 0);
-  }
-
-  systemBar?.addEventListener("pointerdown", (event) => {
-    if (
-      event.button !== 0 ||
-      event.target.closest("button, input, label") ||
-      magazineWindow?.classList.contains("is-maximized")
-    ) {
-      return;
-    }
-
-    const rect = magazineWindow?.getBoundingClientRect();
-
-    if (!rect) {
-      return;
-    }
-
-    dragState = {
-      pointerId: event.pointerId,
-      startX: event.clientX,
-      startY: event.clientY,
-      startLeft: rect.left,
-      startTop: rect.top,
-      startWindowX: windowPositionX,
-      startWindowY: windowPositionY,
-      width: rect.width,
-    };
-    didWindowDrag = false;
-
-    systemBar.setPointerCapture(event.pointerId);
-    magazineWindow?.classList.add("is-dragging");
-    softCursor?.classList.add("is-dragging");
-    event.preventDefault();
-  });
-
-  systemBar?.addEventListener("pointermove", (event) => {
-    if (!dragState || event.pointerId !== dragState.pointerId) {
-      return;
-    }
-
-    const deltaX = event.clientX - dragState.startX;
-    const deltaY = event.clientY - dragState.startY;
-
-    if (Math.abs(deltaX) + Math.abs(deltaY) > 5) {
-      didWindowDrag = true;
-    }
-
-    const visibleEdge = 130;
-    const nextLeft = Math.min(
-      window.innerWidth - visibleEdge,
-      Math.max(-(dragState.width - visibleEdge), dragState.startLeft + deltaX),
-    );
-    const nextTop = Math.min(
-      window.innerHeight - 44,
-      Math.max(0, dragState.startTop + deltaY),
-    );
-
-    setWindowPosition(
-      dragState.startWindowX + nextLeft - dragState.startLeft,
-      dragState.startWindowY + nextTop - dragState.startTop,
-    );
-  });
-
-  function endWindowDrag(event) {
-    if (!dragState || event.pointerId !== dragState.pointerId) {
-      return;
-    }
-
-    dragState = null;
-    magazineWindow?.classList.remove("is-dragging");
-    softCursor?.classList.remove("is-dragging");
-  }
-
-  systemBar?.addEventListener("pointerup", endWindowDrag);
-  systemBar?.addEventListener("pointercancel", endWindowDrag);
-  systemBar?.addEventListener("click", (event) => {
-    if (didWindowDrag) {
-      event.preventDefault();
-      didWindowDrag = false;
-    }
-  });
 
   function shuffled(items) {
     const result = [...items];
@@ -345,7 +245,7 @@
     const willMaximize = !magazineWindow?.classList.contains("is-maximized");
 
     if (willMaximize) {
-      resetWindowPosition();
+      window.OhMyZineSharedUI?.resetWindowPosition?.();
     }
 
     setWindowMaximized(willMaximize);
@@ -605,4 +505,325 @@
   closeButton.addEventListener("click", () => {
     widget.hidden = true;
   });
+})();
+
+/* =========================
+   FREE DESKTOP PET / PARODY INSTALLER
+   A harmless in-page gimmick. No file is actually downloaded or installed.
+========================= */
+(() => {
+  "use strict";
+
+  const ad = document.querySelector("#desktop-pet-ad");
+  if (!ad) return;
+
+  const STORAGE_KEY = "oh-my-zine-desktop-pet-installed-v1";
+  const PET_POSITION_KEY = "oh-my-zine-desktop-pet-position-v1";
+  let installer = null;
+  let pet = null;
+  let bubbleTimer = null;
+  let sleepTimer = null;
+  let reactionIndex = 0;
+
+  const reactions = ["わん！", "なにこれ？", "まて〜！", "♡", "OH!", "ZINE?" ];
+
+  const canStore = () => {
+    try {
+      localStorage.setItem("__omz_test__", "1");
+      localStorage.removeItem("__omz_test__");
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const storageAvailable = canStore();
+
+  const markInstalled = () => {
+    if (!storageAvailable) return;
+    localStorage.setItem(STORAGE_KEY, "1");
+  };
+
+  const isInstalled = () => {
+    if (!storageAvailable) return false;
+    return localStorage.getItem(STORAGE_KEY) === "1";
+  };
+
+  const clearTimers = () => {
+    window.clearTimeout(bubbleTimer);
+    window.clearTimeout(sleepTimer);
+  };
+
+  const scheduleSleep = () => {
+    window.clearTimeout(sleepTimer);
+    sleepTimer = window.setTimeout(() => {
+      if (!pet || pet.classList.contains("is-dragging")) return;
+      pet.classList.add("is-sleeping");
+      showBubble("Zzz…", 3200);
+    }, 9000);
+  };
+
+  const showBubble = (message, duration = 1800) => {
+    if (!pet) return;
+    const bubble = pet.querySelector(".desktop-pet-bubble");
+    if (!bubble) return;
+    bubble.textContent = message;
+    bubble.hidden = false;
+    window.clearTimeout(bubbleTimer);
+    bubbleTimer = window.setTimeout(() => {
+      bubble.hidden = true;
+    }, duration);
+  };
+
+  const wakePet = () => {
+    if (!pet) return;
+    pet.classList.remove("is-sleeping");
+    scheduleSleep();
+  };
+
+  const react = () => {
+    if (!pet) return;
+    wakePet();
+    pet.classList.remove("is-reacting");
+    // Restart the animation even on repeated clicks.
+    void pet.offsetWidth;
+    pet.classList.add("is-reacting");
+    showBubble(reactions[reactionIndex % reactions.length]);
+    reactionIndex += 1;
+  };
+
+  const savePetPosition = () => {
+    if (!pet || !storageAvailable) return;
+    const rect = pet.getBoundingClientRect();
+    localStorage.setItem(PET_POSITION_KEY, JSON.stringify({
+      left: Math.round(rect.left),
+      top: Math.round(rect.top),
+    }));
+  };
+
+  const restorePetPosition = () => {
+    if (!pet || !storageAvailable) return false;
+    try {
+      const saved = JSON.parse(localStorage.getItem(PET_POSITION_KEY) || "null");
+      if (!saved || !Number.isFinite(saved.left) || !Number.isFinite(saved.top)) return false;
+      const maxLeft = Math.max(8, window.innerWidth - 150);
+      const maxTop = Math.max(8, window.innerHeight - 160);
+      pet.style.left = `${Math.min(maxLeft, Math.max(8, saved.left))}px`;
+      pet.style.top = `${Math.min(maxTop, Math.max(8, saved.top))}px`;
+      pet.style.right = "auto";
+      pet.style.bottom = "auto";
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const checkKeychainEncounter = () => {
+    if (!pet) return;
+    const keychain = document.querySelector(".hanging-keychain");
+    if (!keychain) return;
+    const a = pet.getBoundingClientRect();
+    const b = keychain.getBoundingClientRect();
+    const overlap = !(a.right < b.left - 45 || a.left > b.right + 45 || a.bottom < b.top - 45 || a.top > b.bottom + 45);
+    if (overlap) {
+      showBubble("!?", 2500);
+      pet.classList.add("is-surprised");
+      window.setTimeout(() => pet?.classList.remove("is-surprised"), 750);
+    }
+  };
+
+  const enableDrag = (node) => {
+    let pointerId = null;
+    let startX = 0;
+    let startY = 0;
+    let originLeft = 0;
+    let originTop = 0;
+    let moved = false;
+
+    node.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || event.target.closest(".desktop-pet-close")) return;
+      const rect = node.getBoundingClientRect();
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      startY = event.clientY;
+      originLeft = rect.left;
+      originTop = rect.top;
+      moved = false;
+      node.classList.add("is-dragging");
+      node.style.left = `${rect.left}px`;
+      node.style.top = `${rect.top}px`;
+      node.style.right = "auto";
+      node.style.bottom = "auto";
+      node.setPointerCapture?.(pointerId);
+      wakePet();
+      event.preventDefault();
+    });
+
+    node.addEventListener("pointermove", (event) => {
+      if (pointerId !== event.pointerId) return;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      if (Math.abs(dx) + Math.abs(dy) > 4) moved = true;
+      const maxLeft = Math.max(4, window.innerWidth - node.offsetWidth - 4);
+      const maxTop = Math.max(4, window.innerHeight - node.offsetHeight - 4);
+      node.style.left = `${Math.min(maxLeft, Math.max(4, originLeft + dx))}px`;
+      node.style.top = `${Math.min(maxTop, Math.max(4, originTop + dy))}px`;
+    });
+
+    const finishDrag = (event) => {
+      if (pointerId !== event.pointerId) return;
+      node.releasePointerCapture?.(pointerId);
+      pointerId = null;
+      node.classList.remove("is-dragging");
+      if (moved) {
+        savePetPosition();
+        checkKeychainEncounter();
+      } else {
+        react();
+      }
+      scheduleSleep();
+    };
+
+    node.addEventListener("pointerup", finishDrag);
+    node.addEventListener("pointercancel", finishDrag);
+  };
+
+  const spawnPet = ({ announce = true } = {}) => {
+    if (pet) {
+      pet.hidden = false;
+      wakePet();
+      if (announce) showBubble("ただいま！");
+      return;
+    }
+
+    pet = document.createElement("div");
+    pet.className = "desktop-pet is-entering";
+    pet.setAttribute("role", "button");
+    pet.setAttribute("tabindex", "0");
+    pet.setAttribute("aria-label", "デスクトップペット。クリックするとリアクションします。ドラッグで移動できます。");
+    pet.innerHTML = `
+      <button class="desktop-pet-close" type="button" aria-label="デスクトップペットを閉じる">×</button>
+      <span class="desktop-pet-bubble" hidden></span>
+      <span class="desktop-pet-art" aria-hidden="true"></span>
+      <small>OHMY_PET.EXE</small>
+    `;
+    document.body.appendChild(pet);
+
+    const restored = restorePetPosition();
+    if (!restored) {
+      pet.style.right = "18px";
+      pet.style.bottom = "18px";
+    }
+
+    enableDrag(pet);
+
+    pet.querySelector(".desktop-pet-close")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      pet.hidden = true;
+      clearTimers();
+    });
+
+    pet.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        react();
+      }
+    });
+
+    window.setTimeout(() => pet?.classList.remove("is-entering"), 950);
+    if (announce) window.setTimeout(() => showBubble("わん！"), 620);
+    scheduleSleep();
+  };
+
+  const closeInstaller = () => {
+    installer?.remove();
+    installer = null;
+  };
+
+  const showCompleteDialog = () => {
+    if (!installer) return;
+    installer.classList.add("is-complete");
+    const body = installer.querySelector(".pet-installer-body");
+    if (!body) return;
+    body.innerHTML = `
+      <div class="pet-installer-complete-icon">✓</div>
+      <div class="pet-installer-copy">
+        <strong>Installation Complete!</strong>
+        <span>Click [OK] to start.</span>
+      </div>
+      <button class="pet-installer-ok" type="button">OK</button>
+    `;
+    body.querySelector(".pet-installer-ok")?.addEventListener("click", () => {
+      markInstalled();
+      closeInstaller();
+      spawnPet();
+    });
+    body.querySelector(".pet-installer-ok")?.focus();
+  };
+
+  const startProgress = () => {
+    if (!installer) return;
+    const bar = installer.querySelector(".pet-installer-progress > span");
+    const percent = installer.querySelector(".pet-installer-percent");
+    let value = 0;
+    const tick = () => {
+      if (!installer || !bar || !percent) return;
+      value = Math.min(100, value + Math.ceil(Math.random() * 12));
+      bar.style.width = `${value}%`;
+      percent.textContent = `${value}%`;
+      if (value < 100) {
+        window.setTimeout(tick, 95 + Math.random() * 85);
+      } else {
+        window.setTimeout(showCompleteDialog, 360);
+      }
+    };
+    window.setTimeout(tick, 220);
+  };
+
+  const openInstaller = () => {
+    if (installer) return;
+    if (pet && !pet.hidden) {
+      react();
+      return;
+    }
+
+    installer = document.createElement("div");
+    installer.className = "pet-installer-layer";
+    installer.innerHTML = `
+      <section class="pet-installer-window" role="dialog" aria-modal="true" aria-labelledby="pet-installer-title">
+        <header class="pet-installer-titlebar">
+          <strong id="pet-installer-title">OHMY_PET.EXE</strong>
+          <button class="pet-installer-x" type="button" aria-label="インストーラーを閉じる">×</button>
+        </header>
+        <div class="pet-installer-body">
+          <span class="pet-installer-mini-dog" aria-hidden="true"></span>
+          <div class="pet-installer-copy">
+            <strong>Installing...</strong>
+            <span>FREE DESKTOP PET / OH MY ZINE</span>
+            <div class="pet-installer-progress" aria-label="インストール進捗"><span></span></div>
+          </div>
+          <b class="pet-installer-percent">0%</b>
+        </div>
+        <footer>※これはサイト内だけで動く演出です。実際のインストールは行いません。</footer>
+      </section>
+    `;
+    document.body.appendChild(installer);
+
+    installer.querySelector(".pet-installer-x")?.addEventListener("click", closeInstaller);
+    installer.addEventListener("pointerdown", (event) => {
+      if (event.target === installer) closeInstaller();
+    });
+    installer.querySelector(".pet-installer-x")?.focus();
+    startProgress();
+  };
+
+  ad.addEventListener("click", (event) => {
+    event.preventDefault();
+    openInstaller();
+  });
+
+  // Re-create the pet on repeat visits after the user has installed it once.
+  if (isInstalled()) {
+    window.setTimeout(() => spawnPet({ announce: false }), 700);
+  }
 })();

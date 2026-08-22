@@ -100,46 +100,37 @@ main {
 
 
 /* =========================
-   MOVABLE SUBPAGE WINDOWS
+   SHARED WINDOW DRAG
+   Movement values/behavior come from HOME.
 ========================= */
 
+body.home-page,
 body.subpage {
   --window-x: 0px;
   --window-y: 0px;
 }
 
-.subpage .subpage-header,
-.subpage .subpage-main {
-  transform: translate3d(var(--window-x), var(--window-y), 0);
-  transition: transform 120ms ease-out;
-  will-change: transform;
+/* Wrapper-based HOME / article / modern subpages. */
+.shared-drag-window {
+  transform: translate3d(var(--window-x, 0px), var(--window-y, 0px), 0);
 }
 
-.subpage.is-window-dragging .subpage-header,
-.subpage.is-window-dragging .subpage-main {
-  transition: none;
+/* Legacy subpages keep header + main together with the same variables. */
+body.subpage:not(.shared-drag-frame) .subpage-header,
+body.subpage:not(.shared-drag-frame) .subpage-main {
+  transform: translate3d(var(--window-x, 0px), var(--window-y, 0px), 0);
 }
 
-.subpage .subpage-systembar,
-.subpage .content-titlebar {
-  cursor: grab;
-  touch-action: none;
-  user-select: none;
-}
-
-.subpage.is-window-dragging .subpage-systembar,
-.subpage.is-window-dragging .content-titlebar {
+.shared-drag-window.is-dragging .shared-titlebar,
+body.subpage .subpage-header.is-dragging .shared-titlebar {
   cursor: grabbing;
 }
 
-.subpage.is-subpage-minimized .subpage-main,
-.subpage.is-subpage-closed .subpage-main,
-.subpage.is-subpage-closed .subpage-tabs {
+.subpage.is-subpage-minimized .subpage-main {
   display: none;
 }
 
-.subpage.is-subpage-minimized .subpage-header,
-.subpage.is-subpage-closed .subpage-header {
+.subpage.is-subpage-minimized .subpage-header {
   margin-bottom: 0;
 }
 
@@ -151,6 +142,10 @@ body.subpage.is-subpage-maximized {
 .subpage.is-subpage-maximized .subpage-main {
   max-width: none;
   width: 100%;
+  transform: none;
+}
+
+body.subpage.is-subpage-maximized .shared-drag-window {
   transform: none;
 }
 
@@ -183,15 +178,9 @@ body.about-page-shell {
     linear-gradient(135deg, rgba(237, 239, 239, 0.94), rgba(205, 209, 211, 0.84));
 }
 
-body.fashion-page .subpage-header,
-body.about-page-shell .subpage-header {
-  border-color: #555d62;
-  border-radius: 3px 3px 0 0;
-  background: #d4d8da;
-  box-shadow:
-    inset 1px 1px 0 #fff,
-    3px 4px 0 rgba(43, 46, 48, 0.25);
-}
+/* Top chrome is intentionally not page-themed here.
+   HOME / FASHION / MAGAZINE / PHOTO / ABOUT / ARTICLE all use
+   the shared chrome source defined at the end of this file. */
 
 body.fashion-page .content-window,
 body.about-page-shell .content-window {
@@ -266,34 +255,9 @@ body.subpage *::after {
   color: inherit;
 }
 
-.subpage .subpage-header {
-  max-width: 1180px;
-  margin: 0 auto 14px;
-  overflow: hidden;
-  border: 1px solid #67747d;
-  border-radius: 8px 8px 3px 3px;
-  background: #d9e0e4;
-  box-shadow:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.96),
-    5px 6px 0 rgba(55, 49, 47, 0.24),
-    0 12px 24px rgba(54, 45, 42, 0.16);
-}
-
-.subpage .subpage-main {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0;
-}
-
 .subpage .content-window {
   overflow: hidden;
-  border: 1px solid #697983;
-  border-radius: 4px;
   background: #e9edef;
-  box-shadow:
-    inset 1px 1px 0 #fff,
-    5px 6px 0 rgba(65, 62, 62, 0.22),
-    0 12px 24px rgba(52, 45, 43, 0.17);
 }
 
 .subpage .content-titlebar {
@@ -362,58 +326,8 @@ body.subpage *::after {
 }
 
 @media (max-width: 700px) {
-  body.subpage {
-    padding: 7px;
-  }
-
   .subpage .content-window-body {
     padding: 14px;
-  }
-}
-
-
-/* =========================
-   UNIFIED ROUNDED APP FRAME
-========================= */
-
-body.subpage .subpage-header {
-  margin-bottom: 0;
-  border-radius: 20px 20px 0 0;
-  box-shadow:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.96),
-    5px 0 0 rgba(55, 49, 47, 0.20);
-}
-
-body.subpage .subpage-main {
-  margin-top: 0;
-}
-
-body.subpage .content-window {
-  border-top: 0;
-  border-radius: 0 0 20px 20px;
-  box-shadow:
-    inset 1px 0 0 rgba(255, 255, 255, 0.88),
-    5px 7px 0 rgba(55, 49, 47, 0.20),
-    0 14px 24px rgba(48, 43, 41, 0.14);
-}
-
-body.subpage.is-subpage-minimized .subpage-header,
-body.subpage.is-subpage-closed .subpage-header {
-  border-radius: 20px;
-}
-
-body.subpage.is-subpage-maximized .subpage-header,
-body.subpage.is-subpage-maximized .content-window {
-  border-radius: 0;
-}
-
-@media (max-width: 700px) {
-  body.subpage .subpage-header {
-    border-radius: 13px 13px 0 0;
-  }
-
-  body.subpage .content-window {
-    border-radius: 0 0 13px 13px;
   }
 }
 
@@ -658,7 +572,7 @@ body.subpage .shared-tabs > a:focus-visible {
     display: block;
     position: relative;
     z-index: 1;
-    background: url("../images/soft-plush-cursor.png") center / contain no-repeat;
+    background: url("../images/soft-plush-cursor.webp") center / contain no-repeat;
     filter: grayscale(1) contrast(0.68) brightness(1.48);
     transform-origin: 16px 11px;
     transition: transform 90ms ease, filter 90ms ease;
@@ -675,7 +589,7 @@ body.subpage .shared-tabs > a:focus-visible {
   }
 
   .soft-cursor.is-dragging span {
-    background-image: url("../images/soft-plush-hand.png");
+    background-image: url("../images/soft-plush-hand.webp");
     filter: grayscale(1) contrast(0.70) brightness(1.48);
     transform: translate(-11px, -8px) scale(1.18) rotate(-4deg);
   }
@@ -689,23 +603,6 @@ body.subpage .shared-tabs > a:focus-visible {
 body.home-page,
 body.subpage {
   --shared-app-width: min(1134px, calc(100vw - 24px));
-}
-
-body.subpage {
-  padding: clamp(12px, 2.4vw, 34px);
-}
-
-body.home-page .magazine-window,
-body.subpage .subpage-header,
-body.subpage .subpage-main {
-  width: var(--shared-app-width);
-  max-width: none;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-body.subpage .subpage-header {
-  position: relative;
 }
 
 .shared-system-actions {
@@ -882,29 +779,6 @@ body.subpage .subpage-header {
 
 
 /* =========================
-   FINAL SHARED FRAME
-   HOME is the source for outline weight and joined chrome.
-========================= */
-
-body.home-page .magazine-window,
-body.subpage .subpage-header,
-body.subpage .content-window {
-  border-color: #656b70;
-}
-
-body.subpage .subpage-header {
-  border-width: 2px 2px 0;
-  border-style: solid;
-  border-radius: 27px 27px 0 0;
-}
-
-body.subpage .content-window {
-  border-width: 0 2px 2px;
-  border-style: solid;
-  border-radius: 0 0 27px 27px;
-}
-
-/* =========================
    SHARED SUBPAGE HEADLINE PANEL
    A solid steel base with bands and reflected light.
 ========================= */
@@ -924,16 +798,12 @@ body.subpage .subpage-feature-hero {
 }
 
 /* HOME, FASHION and ABOUT use one optimized headline-frame footprint. */
-body.home-page main.home-main .magazine-window > .portal-banner,
+body.home-page main.home-main .magazine-window > .shared-page-base > .portal-banner,
 body.subpage .content-window-body > .subpage-feature-hero {
   min-height: 220px;
   border-width: 2px;
   border-style: solid;
   border-radius: 26px;
-}
-
-body.home-page main.home-main .magazine-window {
-  background-color: #e7ebed;
 }
 
 body.subpage.fashion-page .content-window-body,
@@ -987,7 +857,7 @@ body.subpage.fashion-page .subpage-feature-hero {
   background-image:
     linear-gradient(90deg, rgba(8, 6, 8, 0.94) 0%, rgba(12, 7, 11, 0.76) 38%, rgba(29, 8, 20, 0.38) 68%, rgba(7, 6, 8, 0.78) 100%),
     linear-gradient(0deg, rgba(5, 5, 6, 0.70), transparent 65%),
-    url("../images/free-magazines.jpg");
+    url("../images/free-magazines.webp");
   background-position: center, center, center 72%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1021,7 +891,7 @@ body.subpage.fashion-page .subpage-feature-hero::after {
 body.subpage.about-page-shell .subpage-feature-hero {
   border-color: #4b2922;
   background-color: #6b3528;
-  background-image: url("../images/about-chocolate-tile-texture.png");
+  background-image: url("../images/about-chocolate-tile-texture.webp");
   background-position: center;
   background-size: cover;
   box-shadow:
@@ -1077,14 +947,6 @@ body.subpage.about-page-shell .subpage-feature-hero .ui-chip::after {
 }
 
 @media (max-width: 700px) {
-  body.subpage .subpage-header {
-    border-radius: 17px 17px 0 0;
-  }
-
-  body.subpage .content-window {
-    border-radius: 0 0 17px 17px;
-  }
-
   body.subpage .subpage-feature-hero {
     border-radius: 17px;
   }
@@ -1260,7 +1122,7 @@ body.subpage.about-page-shell .subpage-feature-hero .about-lead {
     padding: 12px;
   }
 
-  body.home-page main.home-main .magazine-window > .portal-banner,
+  body.home-page main.home-main .magazine-window > .shared-page-base > .portal-banner,
   body.subpage .content-window-body > .subpage-feature-hero {
     min-height: 190px;
     border-radius: 18px;
@@ -1358,3 +1220,309 @@ body.subpage .shared-search-toggle:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 1px;
 }
+
+
+/* ===== OUTER PAGE BACKGROUND / 2026-08-18 =====
+   ABOUT keeps its own wallpaper. All other subpages use #cccccc.
+*/
+body.subpage:not(.about-page-shell) {
+  background: #cccccc !important;
+  background-image: none !important;
+}
+
+/* =========================================================
+   SHARED TOP CHROME / HOME VISUAL SOURCE OF TRUTH
+   2026-08-19
+
+   HOME itself is not redesigned here. These values are a snapshot
+   of HOME's current computed top chrome, made explicit so every
+   subpage inherits the same type, highlights, shadows and controls.
+   ========================================================= */
+
+body.home-page,
+body.subpage {
+  --shared-chrome-title-bg: linear-gradient(#f8f8f8, #d8d9dd 52%, #f2f2f2);
+  --shared-chrome-title-line: #777d84;
+  --shared-chrome-title-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.55);
+
+  --shared-chrome-brand-color: #172229;
+  --shared-chrome-brand-shadow: 0 1px 0 #fff;
+  --shared-chrome-title-font: "Courier New", monospace;
+
+  /* HOME's tabs inherit this stack from index.css. Making it explicit
+     here prevents subpages from drifting to Segoe UI/Tahoma. */
+  --shared-chrome-tab-font: Arial, "Helvetica Neue", "Yu Gothic", sans-serif;
+  --shared-chrome-tab-bg: linear-gradient(180deg, #cbe7f1 0%, #86b7c9 46%, #4f8094 52%, #79a7b8 100%);
+  --shared-chrome-tab-hover-bg: linear-gradient(180deg, #ddf4fb 0%, #9bcbdb 47%, #5b91a7 52%, #89b7c7 100%);
+  --shared-chrome-tab-current-bg: linear-gradient(180deg, #f1fbff 0%, #b9dfea 46%, #77afc3 52%, #b5dce7 100%);
+  --shared-chrome-tab-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.76),
+    inset 0 -4px 0 rgba(35, 71, 84, 0.15);
+  --shared-chrome-tab-current-shadow:
+    inset 0 2px 0 #fff,
+    inset 0 -3px 0 #d8eef5,
+    0 1px 2px rgba(61, 76, 82, 0.34);
+}
+
+body.home-page .shared-titlebar,
+body.subpage .shared-titlebar {
+  background: var(--shared-chrome-title-bg);
+  border-bottom-color: var(--shared-chrome-title-line);
+  box-shadow: var(--shared-chrome-title-shadow);
+  font-family: var(--shared-chrome-title-font);
+}
+
+body.home-page .shared-brand,
+body.subpage .shared-brand {
+  color: var(--shared-chrome-brand-color);
+  text-shadow: var(--shared-chrome-brand-shadow);
+}
+
+body.home-page .shared-tabs > a,
+body.home-page .shared-tabs > span,
+body.subpage .shared-tabs > a,
+body.subpage .shared-tabs > span {
+  font-family: var(--shared-chrome-tab-font);
+  background: var(--shared-chrome-tab-bg);
+  box-shadow: var(--shared-chrome-tab-shadow);
+}
+
+body.home-page .shared-tabs > a:hover,
+body.subpage .shared-tabs > a:hover {
+  background: var(--shared-chrome-tab-hover-bg);
+}
+
+body.home-page .shared-tabs > a[aria-current="page"],
+body.subpage .shared-tabs > a[aria-current="page"] {
+  background: var(--shared-chrome-tab-current-bg);
+  box-shadow: var(--shared-chrome-tab-current-shadow);
+}
+
+/* Preserve the shared unavailable/soon state after the base chrome lock. */
+body.home-page .shared-tabs > span,
+body.subpage .shared-tabs > span,
+body.home-page .shared-tabs > .is-soon,
+body.subpage .shared-tabs > .is-soon,
+body.home-page .shared-tabs > [aria-disabled="true"],
+body.subpage .shared-tabs > [aria-disabled="true"],
+body.home-page .shared-tabs > a[href="#"],
+body.subpage .shared-tabs > a[href="#"] {
+  color: #dbe0e2;
+  background: linear-gradient(180deg, #aebfc6 0%, #8198a2 48%, #687d86 52%, #8da3ac 100%);
+  opacity: 0.68;
+  pointer-events: none;
+  text-shadow: 0 1px 0 #59666b;
+}
+
+
+/* All outer-frame geometry/positioning above this point has been removed.
+   The block below is the single source of truth for HOME and every app page. */
+
+/* Keep the document canvas width stable for every page.
+   This belongs to the shared template; no PHOTO-only offset is used. */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* =========================================================
+   OH MY ZINE / SHARED BASE WINDOW TEMPLATE
+   2026-08-22
+
+   Source of truth: HOME's existing .home-main + .magazine-window.
+   The silver title text and active tab stay page-specific in HTML.
+   ABOUT's body wallpaper stays page-specific; only the app window is shared.
+   ========================================================= */
+
+/* HOME's outer page spacing is now the shared spacing for every app page. */
+body.home-page .home-main,
+body.subpage {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: clamp(12px, 2.4vw, 34px);
+}
+
+/* Match HOME's border-box width calculation so the shared frame starts
+   at the exact same horizontal position on every subpage. */
+body.subpage {
+  box-sizing: border-box;
+}
+
+/* HOME .magazine-window copied as the one base-window definition. */
+.shared-app-window {
+  width: var(--shared-app-width);
+  max-width: none;
+  min-height: calc(100vh - clamp(24px, 4.8vw, 68px));
+  margin: 0 auto !important;
+  position: relative;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #6b6e73 !important;
+  border-radius: 28px !important;
+  background: #d5d7da !important;
+  box-shadow:
+    0 14px 30px rgba(25, 22, 20, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Keep the legacy subpage wrapper for JS, but remove its visual box.
+   Its children then participate in exactly the same frame as HOME. */
+body.subpage .shared-app-window > .subpage-header {
+  display: contents !important;
+}
+
+/* The long surface below the blue tabs is part of the shared template. */
+.shared-page-base {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0 !important;
+  flex: 1 0 auto;
+  background: #e7ebed;
+}
+
+/* Subpage content lives inside the common base instead of drawing a second
+   outer window frame. Page-specific inner backgrounds/content remain intact. */
+body.subpage .shared-page-base > .content-window {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* The shared shell owns the full outer shape; no header-only outer shadow. */
+body.subpage .shared-app-window .subpage-header,
+body.subpage .shared-app-window .subpage-main {
+  width: 100%;
+  max-width: none;
+}
+
+/* HOME's existing full-window states, applied to the common shell. */
+.shared-app-window.is-maximized,
+body.subpage.is-subpage-maximized .shared-app-window {
+  width: 100% !important;
+  min-height: 100vh;
+  border-right: 0 !important;
+  border-left: 0 !important;
+  border-radius: 0 !important;
+}
+
+.shared-app-window.is-minimized,
+body.subpage.is-subpage-minimized .shared-app-window {
+  min-height: 0;
+}
+
+body.home-page.window-maximized .home-main,
+body.subpage.is-subpage-maximized {
+  padding: 0;
+}
+
+@media (max-width: 700px) {
+  body.home-page .home-main,
+  body.subpage {
+    padding: 7px;
+  }
+
+  .shared-app-window {
+    width: 100%;
+    min-height: calc(100vh - 14px);
+  }
+}
+
+/* =========================================================
+   SHARED CLOSED PROGRAM SCREEN
+   HOME's existing closed-state visual is the source of truth.
+   ========================================================= */
+.shared-app-window[hidden] {
+  display: none !important;
+}
+
+.closed-screen {
+  width: min(680px, calc(100% - 24px));
+  margin: 15vh auto 0;
+  padding: clamp(36px, 7vw, 76px) 24px;
+  border: 2px solid #3f4144;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.42) 0 1px, transparent 1px 7px),
+    #c7c9cd;
+  box-shadow: 11px 11px 0 rgba(34, 25, 20, 0.34);
+  text-align: center;
+}
+
+.closed-screen[hidden] { display: none !important; }
+.closed-screen p {
+  margin: 0 0 12px;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+.closed-screen h1,
+.closed-screen h2 {
+  margin: 0;
+  font-family: Arial Black, Impact, sans-serif;
+  font-size: clamp(48px, 10vw, 96px);
+  font-style: italic;
+  letter-spacing: -0.08em;
+  line-height: 1;
+}
+.closed-screen button {
+  min-height: 38px;
+  margin-top: 28px;
+  padding: 0 18px;
+  border: 1px solid #76546b;
+  border-radius: 999px;
+  color: #172027;
+  background:
+    radial-gradient(ellipse at 50% 4%, rgba(255, 255, 255, 0.98) 0 18%, transparent 52%),
+    linear-gradient(180deg, #fff1f8 0%, #f7d5e8 37%, #e7a8cb 49%, #efc2dc 72%, #c983ac 100%);
+  box-shadow:
+    inset 0 3px 2px rgba(255, 255, 255, 1),
+    inset 3px 0 5px rgba(255, 255, 255, 0.48),
+    inset -3px 0 5px rgba(104, 56, 84, 0.13),
+    inset 0 -5px 7px rgba(104, 56, 84, 0.25);
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 0 #fff;
+  cursor: pointer;
+  transform: translateY(0);
+  transition: transform 90ms ease, box-shadow 90ms ease, filter 90ms ease;
+}
+.closed-screen button:hover {
+  color: #172027;
+  background:
+    radial-gradient(ellipse at 50% 4%, #fff 0 20%, transparent 54%),
+    linear-gradient(180deg, #fff7fb 0%, #fbe1ef 37%, #efb6d5 49%, #f5cfe4 72%, #d391b8 100%);
+  box-shadow:
+    inset 0 3px 2px #fff,
+    inset 3px 0 5px rgba(255, 255, 255, 0.58),
+    inset -3px 0 5px rgba(104, 56, 84, 0.10),
+    inset 0 -5px 7px rgba(104, 56, 84, 0.21);
+  filter: none;
+  transform: translateY(-1px);
+}
+.closed-screen button:active {
+  box-shadow:
+    inset 0 5px 8px rgba(66, 76, 84, 0.30),
+    inset 0 -2px 3px rgba(255, 255, 255, 0.72);
+  transform: translateY(1px) scale(0.992);
+}
+
+/* HOME's real narrow-screen shell values, shared without redesign. */
+@media (max-width: 720px) {
+  body.home-page .home-main,
+  body.subpage { padding: 8px; }
+  .shared-app-window { border-radius: 17px !important; }
+}
+

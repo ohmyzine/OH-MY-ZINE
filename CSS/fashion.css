@@ -749,39 +749,11 @@ body.subpage.fashion-page {
   background: #0a0c0d;
 }
 
-.fashion-page .fashion-stream-cover {
-  display: block;
-}
-
 .fashion-page .fashion-latest-heading {
   min-height: 72px;
   padding-top: 8px;
   padding-bottom: 8px;
   background: #0b0c0d;
-}
-
-.fashion-page .fashion-latest-heading h2 {
-  color: #fff !important;
-  font-family: "Arial Black", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif !important;
-  font-size: clamp(28px, 3.7vw, 44px) !important;
-  font-weight: 900 !important;
-  line-height: 1 !important;
-  letter-spacing: -0.055em !important;
-  text-shadow: 0 2px 0 #000 !important;
-}
-
-.fashion-page .fashion-latest-heading h2::after {
-  content: "NEW";
-  margin-left: 12px;
-  display: inline-block;
-  color: #ff2d7f;
-  font: 800 8px/1 "Courier New", monospace;
-  letter-spacing: 0.16em;
-  vertical-align: middle;
-}
-
-.fashion-page .fashion-latest-heading span {
-  color: #b9bec1;
 }
 
 @media (max-width: 620px) {
@@ -800,20 +772,6 @@ body.subpage.fashion-page {
   background-size: 11px 11px, 100% 100%;
 }
 
-.fashion-page .content-window {
-  border-color: #596268;
-  background: #d8dcde;
-  box-shadow:
-    inset 1px 1px 0 #fff,
-    4px 5px 0 rgba(50, 53, 55, 0.20);
-}
-
-.fashion-page .content-window-body {
-  background:
-    repeating-linear-gradient(90deg, rgba(80, 87, 91, 0.04) 0 1px, transparent 1px 11px),
-    #e7ebed;
-}
-
 /* Netflix-like compact row label. */
 .fashion-page .fashion-latest-heading {
   min-height: 0;
@@ -821,12 +779,6 @@ body.subpage.fashion-page {
   display: block;
   border-bottom: 0;
   background: #0d0f10;
-}
-
-.fashion-page .fashion-latest-heading::before,
-.fashion-page .fashion-latest-heading h2::after,
-.fashion-page .fashion-latest-heading span {
-  display: none;
 }
 
 .fashion-page .fashion-latest-heading h2 {
@@ -868,112 +820,12 @@ body.subpage.fashion-page {
   text-shadow: 0 1px 0 #fff !important;
 }
 
-.fashion-page .fashion-latest-rail {
-  scrollbar-color: #7a8a92 #d7dee1;
-}
-
-.fashion-page .fashion-stream-card {
-  border-color: #6f7b81;
-  color: #24323a;
-  background: #eef2f4;
-  box-shadow:
-    inset 1px 1px 0 #fff,
-    4px 5px 0 rgba(73, 83, 89, 0.20);
-}
-
-.fashion-page .fashion-stream-card:hover {
-  box-shadow:
-    inset 1px 1px 0 #fff,
-    5px 8px 0 rgba(73, 83, 89, 0.18);
-}
-
-.fashion-page .fashion-stream-card-body {
-  border-top: 1px solid #aab5ba;
-  background: #edf1f3;
-}
-
-.fashion-page .fashion-card-controls > a,
-.fashion-page .fashion-card-controls > button {
-  border-color: #708087;
-  color: #33454e;
-  background: #f8fafb;
-}
-
-.fashion-page .fashion-card-controls > a:hover,
-.fashion-page .fashion-card-controls > button:hover {
-  border-color: #3e89a8;
-  color: #173746;
-  background: #d8edf5;
-}
-
-.fashion-page .fashion-card-controls .is-play {
-  border-color: #4f859b;
-  color: #fff;
-  background: #56a9cc;
-}
-
-.fashion-page .fashion-card-controls > button:disabled {
-  border-color: #a3adb2;
-  color: #899499;
-  background: #dce2e5;
-}
-
-.fashion-page .fashion-card-controls small {
-  color: #69767d;
-}
-
-.fashion-page .fashion-stream-card h3,
-.fashion-page .fashion-stream-card h3 a {
-  color: #24323a;
-}
-
-.fashion-page .fashion-card-meta,
-.fashion-page .fashion-card-tags {
-  color: #52636c;
-}
-
-.fashion-page .fashion-card-meta b,
-.fashion-page .fashion-card-meta em {
-  border-color: #86959c;
-  color: #42555e;
-  background: #f8fafb;
-}
-
-.fashion-page .fashion-card-meta b {
-  color: #c72e6c;
-}
-
-.fashion-page .fashion-unavailable-thumb {
-  color: #718087;
-  background:
-    repeating-linear-gradient(90deg, transparent 0 19px, rgba(74, 91, 100, 0.09) 19px 20px),
-    repeating-linear-gradient(0deg, transparent 0 19px, rgba(74, 91, 100, 0.07) 19px 20px),
-    #d7dde0;
-}
-
-.fashion-page .fashion-unavailable-thumb span {
-  border-color: #839198;
-  color: #738087;
-  background: rgba(255, 255, 255, 0.42);
-}
-
-.fashion-page .fashion-unavailable-thumb b,
-.fashion-page .fashion-stream-card.is-soon .fashion-stream-cover strong,
-.fashion-page .fashion-stream-card.is-soon .fashion-card-mark {
-  color: #596970;
-  text-shadow: 0 1px 0 #fff;
-}
-
-.fashion-page .fashion-unavailable-thumb small {
-  color: #78868c;
-}
-
 /* Last in the cascade: keep the hero photo and featured thumbnail visible. */
 body.subpage.fashion-page.fashion-player-page .fashion-hero {
   background-image:
     linear-gradient(90deg, rgba(15, 18, 20, 0.76) 0%, rgba(22, 25, 27, 0.50) 39%, rgba(25, 27, 29, 0.06) 73%, rgba(18, 21, 23, 0.17) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.01) 48%, rgba(12, 16, 18, 0.45) 100%),
-    url("../images/free-skater-venice.jpg") !important;
+    url("../images/free-skater-venice.webp") !important;
 }
 
 .fashion-page .fashion-stream-card.is-live .fashion-stream-cover img {
@@ -1002,7 +854,7 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
   background-image:
     linear-gradient(90deg, rgba(17, 20, 23, 0.82) 0%, rgba(25, 28, 31, 0.62) 39%, rgba(30, 31, 32, 0.10) 73%, rgba(21, 24, 26, 0.24) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.01) 46%, rgba(17, 20, 22, 0.55) 100%),
-    url("../images/free-skater-venice.jpg");
+    url("../images/free-skater-venice.webp");
 }
 
 .fashion-page .fashion-channel-strip {
@@ -1159,7 +1011,7 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
   background-image:
     linear-gradient(90deg, rgba(30, 36, 40, 0.88) 0%, rgba(38, 42, 46, 0.76) 38%, rgba(42, 45, 48, 0.24) 72%, rgba(32, 37, 40, 0.42) 100%),
     linear-gradient(180deg, rgba(99, 128, 141, 0.06) 43%, rgba(28, 34, 37, 0.68) 100%),
-    url("../images/free-skater-venice.jpg");
+    url("../images/free-skater-venice.webp");
   box-shadow:
     inset 1px 1px 0 rgba(255, 255, 255, 0.44),
     inset 0 -12px 22px rgba(25, 31, 34, 0.24),
@@ -1207,68 +1059,11 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
     5px 8px 0 rgba(73, 83, 89, 0.18);
 }
 
-.fashion-page .fashion-stream-card-body {
-  border-top: 1px solid #aab5ba;
-  background: #edf1f3;
-}
-
 .fashion-page .fashion-card-controls > a,
 .fashion-page .fashion-card-controls > button {
   border-color: #708087;
   color: #33454e;
   background: #f8fafb;
-}
-
-.fashion-page .fashion-card-controls > a:hover,
-.fashion-page .fashion-card-controls > button:hover {
-  border-color: #3e89a8;
-  color: #173746;
-  background: #d8edf5;
-}
-
-.fashion-page .fashion-card-controls .is-play {
-  border-color: #4f859b;
-  color: #fff;
-  background: #56a9cc;
-}
-
-.fashion-page .fashion-card-controls > button:disabled {
-  border-color: #a3adb2;
-  color: #899499;
-  background: #dce2e5;
-}
-
-.fashion-page .fashion-card-controls small {
-  color: #69767d;
-}
-
-.fashion-page .fashion-stream-card h3,
-.fashion-page .fashion-stream-card h3 a {
-  color: #24323a;
-}
-
-.fashion-page .fashion-card-meta,
-.fashion-page .fashion-card-tags {
-  color: #52636c;
-}
-
-.fashion-page .fashion-card-meta b,
-.fashion-page .fashion-card-meta em {
-  border-color: #86959c;
-  color: #42555e;
-  background: #f8fafb;
-}
-
-.fashion-page .fashion-card-meta b {
-  color: #c72e6c;
-}
-
-.fashion-page .fashion-unavailable-thumb {
-  color: #718087;
-  background:
-    repeating-linear-gradient(90deg, transparent 0 19px, rgba(74, 91, 100, 0.09) 19px 20px),
-    repeating-linear-gradient(0deg, transparent 0 19px, rgba(74, 91, 100, 0.07) 19px 20px),
-    #d7dde0;
 }
 
 .fashion-page .fashion-unavailable-thumb span {
@@ -1279,10 +1074,6 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
 
 .fashion-page .fashion-unavailable-thumb b {
   color: #596970;
-}
-
-.fashion-page .fashion-unavailable-thumb small {
-  color: #78868c;
 }
 
 .fashion-page .fashion-stream-card.is-soon .fashion-stream-cover strong,
@@ -1399,13 +1190,6 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
   border-color: #fff;
   opacity: 1;
   background: rgba(255, 255, 255, 0.14);
-}
-
-.fashion-page .fashion-card-controls .is-play {
-  border-color: #fff;
-  color: #111;
-  background: #fff;
-  font-size: 10px;
 }
 
 .fashion-page .fashion-card-controls .js-article-toggle.is-active {
@@ -1535,10 +1319,6 @@ body.subpage.fashion-page {
   box-shadow:
     inset 1px 1px 0 rgba(255, 255, 255, 0.11),
     0 5px 18px rgba(0, 0, 0, 0.50);
-}
-
-.fashion-page .fashion-stream-cover {
-  display: block;
 }
 
 .fashion-page .fashion-latest-heading {
@@ -1751,7 +1531,7 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
   background-image:
     linear-gradient(90deg, rgba(5, 6, 8, 0.96) 0%, rgba(8, 9, 11, 0.88) 36%, rgba(8, 9, 11, 0.30) 70%, rgba(8, 9, 11, 0.55) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.06) 42%, rgba(0, 0, 0, 0.82) 100%),
-    url("../images/free-skater-venice.jpg");
+    url("../images/free-skater-venice.webp");
   background-position: center, center, center 66%;
   background-size: cover;
 }
@@ -2056,7 +1836,7 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
   background-image:
     linear-gradient(90deg, rgba(30, 36, 40, 0.88) 0%, rgba(38, 42, 46, 0.76) 38%, rgba(42, 45, 48, 0.24) 72%, rgba(32, 37, 40, 0.42) 100%),
     linear-gradient(180deg, rgba(99, 128, 141, 0.06) 43%, rgba(28, 34, 37, 0.68) 100%),
-    url("../images/free-skater-venice.jpg");
+    url("../images/free-skater-venice.webp");
   box-shadow:
     inset 1px 1px 0 rgba(255, 255, 255, 0.44),
     inset 0 -12px 22px rgba(25, 31, 34, 0.24),

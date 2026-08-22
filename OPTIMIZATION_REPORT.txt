@@ -1,0 +1,137 @@
+Original extracted size: 306.39 MB
+Optimized extracted size: 13.57 MB
+Reduction: 292.82 MB (95.6%)
+
+REMOVED NON-RUNTIME / DUPLICATE FILES
+- .git (92.00 MB): Git history; not loaded by the website
+- images.zip (78.16 MB): duplicate backup archive of image assets
+- images/desktop.ini (0.00 MB): Windows metadata
+- index (2).html (0.00 MB): old GUI/styleguide prototype, not linked by the live site
+- CSS/index (2).css (0.06 MB): old duplicate CSS copy, not linked
+- index.css (0.06 MB): root-level duplicate; live pages load CSS/index.css
+- home.js (0.02 MB): root-level duplicate; live page loads js/home.js
+- CSS/article-vhs.html (0.02 MB): misplaced old HTML copy inside CSS folder; live page is /article-vhs.html
+- CSS/style.css (0.00 MB): unreferenced stylesheet
+- CSS/desktop-shell.css (0.02 MB): unreferenced old desktop-shell stylesheet
+- js/desktop-shell.js (0.01 MB): unreferenced old desktop-shell script
+- CSS/home-gui-system.css (0.02 MB): unreferenced old HOME GUI override stylesheet
+- CSS/ohmyzine-gui-system-v1.css (0.00 MB): only belonged to removed GUI prototype, not live site
+- article-template.html (0.00 MB): development template page, not linked by live site
+- CSS/index.css :: dead background-image declaration (0.00 MB): pre-existing broken relative URL; removal is render-neutral
+
+REMOVED ZERO-REFERENCE IMAGE ASSETS: 51 files
+- images/VHS1.jpg (1.83 MB)
+- images/VHS3.jpg (1.32 MB)
+- images/VHS6.jpg (1.58 MB)
+- images/VHS8.jpg (2.36 MB)
+- images/about-chocolate-bg.png (1.71 MB)
+- images/about-chocolate-real-v2.png (1.99 MB)
+- images/about-tab-contact.png (2.26 MB)
+- images/about-tab-site.png (2.67 MB)
+- images/about-tab-why.png (2.54 MB)
+- images/attention-object-title-chroma.png (1.59 MB)
+- images/attention-thumb.jpg (0.02 MB)
+- images/contents-object-title-chroma.png (1.04 MB)
+- images/contents-object-title.png (0.44 MB)
+- images/fashion-object-title-chroma.png (1.51 MB)
+- images/fashion-object-title.png (0.97 MB)
+- images/fashion-stream-hero-v1.png (1.68 MB)
+- images/free-crt-room.jpg (0.42 MB)
+- images/free-desktop-pet-ad.png (2.07 MB)
+- images/free-desktop-pet-transparent.png (1.42 MB)
+- images/free-desktop-pet.png (0.56 MB)
+- images/free-skateboard-stickers.jpg (0.26 MB)
+- images/free-skater-room.jpg (1.06 MB)
+- images/free-vhs-tapes.jpg (0.40 MB)
+- images/home-keychain-eyelet-back.png (0.09 MB)
+- images/home-keychain-eyelet-front.png (0.06 MB)
+- images/home-keychain-swing-layer.png (0.71 MB)
+- images/home-magazine-collection-ad.png (1.83 MB)
+- images/keychain-silver-connector.jpg (0.17 MB)
+- images/keychain-silver-connector.png (2.38 MB)
+- images/oh-my-zine-cookie-chroma.png (1.27 MB)
+- images/oh-my-zine-object-logo-chroma.png (1.49 MB)
+- images/oh-my-zine-object-logo-v2.png (0.97 MB)
+- images/oh-my-zine-object-logo.png (0.97 MB)
+- images/oh-my-zine-rough-horizontal-chroma.png (1.40 MB)
+- images/oh-my-zine-soft-logo-chroma.png (1.43 MB)
+- images/oh-my-zine-textile-paper-chroma.png (1.35 MB)
+- images/oh-my-zine-toy-chroma.png (1.08 MB)
+- images/ohmyzine-gray-wallpaper-v2.png (1.42 MB)
+- images/ohmyzine-gray-wallpaper.png (1.42 MB)
+- images/ohmyzine-vista-wallpaper.png (1.44 MB)
+- images/ohmyzine-wallpaper.png (2.36 MB)
+- images/plastic-eyelet-keychain.png (2.38 MB)
+- images/skater-hidden-room-hero.png (2.26 MB)
+- images/soft-plush-cursor-chroma.png (1.54 MB)
+- images/soft-plush-hand-chroma.png (1.60 MB)
+- images/test.jpg (1.04 MB)
+- images/uzi-silhouette-chroma.png (1.09 MB)
+- images/uzi-silhouette-v2.png (0.24 MB)
+- images/uzi-silhouette.png (0.24 MB)
+- images/vhs-title.png (0.35 MB)
+- images/x-social-button.png (1.22 MB)
+
+CSS EXACT DUPLICATE RULE CLEANUP
+- CSS/fashion.css: removed 37 earlier byte-identical duplicate rule blocks (4920 chars)
+- CSS/finishing.css: removed 8 earlier byte-identical duplicate rule blocks (1237 chars)
+
+IMAGE WEBP / RESIZE OPERATIONS: 41
+- VHS.png -> VHS.webp: 1254x1254 -> 1254x1254, 0.60 MB -> 0.30 MB, lossless alpha WebP
+- VHS1.png -> VHS1.webp: 486x446 -> 486x446, 0.36 MB -> 0.06 MB, WebP q94
+- VHS10.jpg -> VHS10.webp: 2160x2414 -> 1611x1800, 0.27 MB -> 0.24 MB, WebP q94
+- VHS2.jpg -> VHS2.webp: 2160x2880 -> 1350x1800, 1.52 MB -> 0.46 MB, WebP q94
+- VHS3.png -> VHS3.webp: 507x333 -> 507x333, 0.20 MB -> 0.03 MB, WebP q94
+- VHS4.jpg -> VHS4.webp: 2880x2160 -> 1800x1350, 0.30 MB -> 0.38 MB, WebP q94
+- VHS5.png -> VHS5.webp: 6308x4278 -> 1800x1221, 12.16 MB -> 0.12 MB, WebP q94
+- VHS6-2.jpg -> VHS6-2.webp: 2160x2880 -> 1350x1800, 1.39 MB -> 0.31 MB, WebP q94
+- VHS6.png -> VHS6.webp: 243x291 -> 243x291, 0.12 MB -> 0.02 MB, WebP q94
+- VHS7.jpg -> VHS7.webp: 2160x2186 -> 1779x1800, 0.27 MB -> 0.29 MB, WebP q94
+- VHS8.png -> VHS8.webp: 490x530 -> 490x530, 0.41 MB -> 0.04 MB, WebP q94
+- VHS9.jpg -> VHS9.webp: 2427x2160 -> 1800x1602, 0.29 MB -> 0.26 MB, WebP q94
+- about-chocolate-tile-texture.png -> about-chocolate-tile-texture.webp: 1774x887 -> 1774x887, 2.12 MB -> 0.15 MB, WebP q94
+- about-cracker-texture.png -> about-cracker-texture.webp: 853x1844 -> 853x1844, 2.48 MB -> 0.34 MB, WebP q94
+- about-dog-hill-wallpaper.png -> about-dog-hill-wallpaper.webp: 1536x1024 -> 1536x1024, 2.49 MB -> 0.33 MB, WebP q94
+- about-jellybeans-bg-v1.png -> about-jellybeans-bg-v1.webp: 1254x1254 -> 1254x1254, 2.29 MB -> 0.35 MB, WebP q94
+- about-milk-bottle.png -> about-milk-bottle.webp: 1024x1536 -> 1024x1536, 2.20 MB -> 0.20 MB, WebP q94
+- about-senbei-texture.png -> about-senbei-texture.webp: 941x1672 -> 941x1672, 3.14 MB -> 0.69 MB, WebP q94
+- attention-athleisure.JPG -> attention-athleisure.webp: 1382x771 -> 1382x771, 0.15 MB -> 0.12 MB, WebP q94
+- attention-object-title.png -> attention-object-title.webp: 2123x741 -> 1600x558, 1.14 MB -> 0.46 MB, lossless alpha WebP
+- attention-speed-compare.jpg -> attention-speed-compare.webp: 1392x781 -> 1392x781, 0.18 MB -> 0.16 MB, WebP q94
+- bandana-2000.png -> bandana-2000.webp: 1206x1833 -> 1206x1833, 2.31 MB -> 0.35 MB, WebP q94
+- football-jersey.jpg -> football-jersey.webp: 833x532 -> 833x532, 0.10 MB -> 0.09 MB, WebP q94
+- free-magazines.jpg -> free-magazines.webp: 1600x2400 -> 1600x2400, 0.15 MB -> 0.12 MB, WebP q94
+- free-skater-venice.jpg -> free-skater-venice.webp: 3072x2304 -> 2400x1800, 1.29 MB -> 0.77 MB, WebP q94
+- home-ad-desktop-pet.png -> home-ad-desktop-pet.webp: 1774x887 -> 1774x887, 2.88 MB -> 1.28 MB, lossless alpha WebP
+- home-ad-x-account.png -> home-ad-x-account.webp: 2172x724 -> 2172x724, 1.38 MB -> 0.74 MB, lossless alpha WebP
+- home-keychain-dog-layer.png -> home-keychain-dog-layer.webp: 1024x1536 -> 1024x1536, 0.71 MB -> 0.39 MB, lossless alpha WebP
+- home-keychain-eyelet-only.png -> home-keychain-eyelet-only.webp: 1024x1536 -> 1024x1536, 0.09 MB -> 0.03 MB, lossless alpha WebP
+- home-keychain-front-cover.png -> home-keychain-front-cover.webp: 1024x1536 -> 1024x1536, 0.06 MB -> 0.01 MB, lossless alpha WebP
+- lace-trim.png -> lace-trim.webp: 2048x768 -> 2048x768, 0.65 MB -> 0.48 MB, lossless alpha WebP
+- oh-my-zine-cookie.png -> oh-my-zine-cookie.webp: 1896x830 -> 1600x700, 0.64 MB -> 0.35 MB, lossless alpha WebP
+- oh-my-zine-rough-horizontal.png -> oh-my-zine-rough-horizontal.webp: 1895x830 -> 1600x701, 0.80 MB -> 0.41 MB, lossless alpha WebP
+- oh-my-zine-soft-logo.png -> oh-my-zine-soft-logo.webp: 2043x770 -> 1600x603, 0.86 MB -> 0.37 MB, lossless alpha WebP
+- oh-my-zine-textile-paper.png -> oh-my-zine-textile-paper.webp: 1896x830 -> 1600x700, 0.68 MB -> 0.38 MB, lossless alpha WebP
+- oh-my-zine-toy.png -> oh-my-zine-toy.webp: 1896x830 -> 1600x700, 0.37 MB -> 0.21 MB, lossless alpha WebP
+- soft-plush-cursor.png -> soft-plush-cursor.webp: 1254x1254 -> 256x256, 0.89 MB -> 0.03 MB, lossless alpha WebP
+- soft-plush-hand.png -> soft-plush-hand.webp: 1254x1254 -> 256x256, 0.99 MB -> 0.03 MB, lossless alpha WebP
+- speed-body-soul.png -> speed-body-soul.webp: 1206x848 -> 1206x848, 0.73 MB -> 0.08 MB, WebP q94
+- vhs-main.jpg -> vhs-main.webp: 1536x1024 -> 1536x1024, 2.46 MB -> 0.23 MB, WebP q94
+- vhs-thumbnail.png -> vhs-thumbnail.webp: 1536x1024 -> 1200x800, 2.92 MB -> 0.15 MB, WebP q94
+
+VIDEO OPTIMIZATION
+- videos/profile-motion.mp4: 14.71 MB -> 1.01 MB; 1920x1080 60fps retained; audio removed because element is muted
+
+REFERENCE VALIDATION
+- All local HTML/CSS src/href/url references resolved.
+
+NOTES
+- CSS cleanup is intentionally conservative: only exact duplicate rule blocks and entirely unreferenced legacy stylesheets/scripts were removed.
+- No selector was deleted merely because static analysis could not see it; JS-applied/dynamic classes were preserved.
+- profile-motion.mp4 keeps the same 1920x1080/60fps presentation and HTML/CSS behavior; only H.264 bitrate was reduced and unused audio removed (the element is muted).
+
+VIDEO COMPATIBILITY CORRECTION
+- videos/profile-motion.mp4 was restored byte-for-byte from the original site ZIP.
+- Reason: the first optimized encode changed H.264 level from High@4.2 to High@5.0 and did not play in the user's environment.
+- Current video behavior/visuals/codecs are identical to the uploaded original.
+- about.js and the video HTML loading logic were not changed.

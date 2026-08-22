@@ -5,51 +5,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MAGAZINE COLLECTION | OH MY ZINE</title>
-  <meta name="description" content="集めた雑誌を1冊ずつ記録するOH MY ZINEの個人アーカイブ。">
+  <meta name="description" content="集めた雑誌をカテゴリごとに並べて記録するOH MY ZINEの個人マガジンアーカイブ。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="OH MY ZINE">
   <meta property="og:title" content="MAGAZINE COLLECTION | OH MY ZINE">
-  <meta property="og:description" content="集めた雑誌を1冊ずつ記録する個人アーカイブ。">
+  <meta property="og:description" content="古着屋や中古雑誌サイトを見る感覚で、集めた雑誌をカテゴリごとに眺められる個人アーカイブ。">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
-  <link rel="stylesheet" href="CSS/magazine.css?v=20260817-collection1">
-  <link rel="stylesheet" href="CSS/finishing.css?v=20260817-magazine-tabs2">
+  <link rel="stylesheet" href="CSS/common.css?v=20260822-shared-template4">
+  <link rel="stylesheet" href="CSS/magazine.css?v=20260822-exporting1">
+  <link rel="stylesheet" href="CSS/finishing.css?v=20260819-photo19">
   <script src="js/common.js?v=20260816-shared6" defer></script>
-  <script src="js/subpage-window.js?v=20260815-shared9" defer></script>
+  <script src="js/subpage-window.js?v=20260819-home-drag-shared1" defer></script>
 </head>
 
-<body class="subpage magazine-page-shell">
-  <header class="subpage-header">
-    <div class="subpage-systembar shared-titlebar">
-      <a class="subpage-brand shared-brand" href="index.html">
-        <img class="shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
-        <span>OH_MY_ZINE.EXE - MAGAZINE_COLLECTION.html</span>
+<body class="subpage magazine-page-shell magazine-store-page">
+  <div class="subpage-app-frame shared-app-window">
+  <div class="subpage-header">
+    <header class="system-bar subpage-systembar shared-titlebar">
+      <a class="system-title subpage-brand shared-brand" href="index.html">
+        <img class="system-app-icon shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
+        <span>OH_MY_ZINE.EXE / MAGAZINE_COLLECTION.html</span>
       </a>
-      <div class="subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
-        <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">_</button>
+      <div class="system-controls subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
+        <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">—</button>
         <button type="button" data-window-action="maximize" aria-label="最大化" aria-pressed="false">□</button>
         <button type="button" data-window-action="close" aria-label="閉じる" aria-pressed="false">×</button>
       </div>
-    </div>
+    </header>
 
-    <nav class="subpage-tabs shared-tabs" aria-label="メインメニュー">
+    <nav class="site-nav subpage-tabs shared-tabs" aria-label="メインメニュー">
       <a href="index.html">HOME</a>
       <a href="fashion.html">FASHION</a>
       <a href="magazine.html" aria-current="page">MAGAZINE COLLECTION</a>
-      <span class="is-soon" aria-disabled="true">CULTURE — SOON</span>
+      <a href="photo.html">PHOTO</a>
       <a href="about.html">ABOUT</a>
     </nav>
-  </header>
+  </div>
 
-  <main class="subpage-main magazine-page">
+  <main class="subpage-main shared-page-base magazine-page">
     <section class="content-window magazine-window">
       <div class="content-window-body">
         <header class="magazine-archive-hero">
           <div class="magazine-archive-copy">
-            <p class="magazine-kicker">PERSONAL ARCHIVE / ISSUE 001</p>
+            <p class="magazine-kicker">PERSONAL ARCHIVE / RESALE STYLE VIEW</p>
             <h1>MAGAZINE<br>COLLECTION</h1>
-            <p>集めた雑誌を、好きだったページや当時の空気と一緒に1冊ずつ記録します。</p>
+            <p>中古雑誌サイトを見る感覚で、自分のコレクションをカテゴリごとに整理したページです。気になるテーマから棚を横断して見られるようにしています。</p>
           </div>
 
           <dl class="magazine-archive-counts" aria-label="雑誌コレクションの集計">
@@ -68,65 +69,167 @@
           </dl>
         </header>
 
-        <section class="magazine-library" aria-labelledby="magazine-library-title">
-          <header class="magazine-library-heading">
-            <div>
-              <p>MY MAGAZINE SHELF</p>
-              <h2 id="magazine-library-title">棚から1冊ずつ。</h2>
+        <section class="magazine-shop-shell" aria-labelledby="magazine-shop-title">
+          <aside class="magazine-category-panel" aria-label="カテゴリ一覧">
+            <div class="magazine-panel-title">
+              <strong>HOME</strong>
+              <span>Category</span>
             </div>
-            <span>UPDATED 2026.08</span>
-          </header>
 
-          <div class="magazine-library-grid">
-            <details class="magazine-record is-reviewed" open>
-              <summary>
-                <span class="magazine-spine">01</span>
-                <span class="magazine-cover-word">Olive</span>
-                <b>REVIEWED</b>
-              </summary>
-              <div>
-                <p class="magazine-record-meta">MAGAZINE / GIRLHOOD / CULTURE</p>
-                <h3>Olive</h3>
-                <p>少女趣味と日常の服を、生活そのものとして見せてくれる雑誌。最初のレビューを準備中です。</p>
+            <nav class="magazine-category-groups">
+              <div class="magazine-category-group">
+                <h3>キーワードで探す</h3>
+                <ul>
+                  <li><a class="is-active" href="#">Jeans ジーンズ</a></li>
+                  <li><a href="#">Sneakers スニーカー</a></li>
+                  <li><a href="#">T-SHIRT Tシャツ</a></li>
+                  <li><a href="#">MILITARY ミリタリー</a></li>
+                  <li><a href="#">OUTDOOR アウトドア & ヘビーデューティー</a></li>
+                  <li><a href="#">Counterculture カウンターカルチャー</a></li>
+                  <li><a href="#">PUNK パンク</a></li>
+                  <li><a href="#">SKATER スケーター</a></li>
+                  <li><a href="#">Ura-Harajuku 裏原宿</a></li>
+                </ul>
               </div>
-            </details>
 
-            <details class="magazine-record">
-              <summary>
-                <span class="magazine-spine">02</span>
-                <span class="magazine-cover-word">FRUiTS</span>
-                <b>TO REVIEW</b>
-              </summary>
-              <div>
-                <p class="magazine-record-meta">STREET / TOKYO / ARCHIVE</p>
-                <h3>FRUiTS</h3>
-                <p>街のスタイルを見返しながら、服とその人らしさの関係を記録する予定です。</p>
+              <div class="magazine-category-group">
+                <h3>TRADITIONAL STYLE</h3>
+                <ul>
+                  <li><a href="#">MEN'S CLUB メンズクラブ</a></li>
+                  <li><a href="#">mc sister エムシーシスター</a></li>
+                  <li><a href="#">MEN'S CLUB BOOKS メンズクラブブックス</a></li>
+                </ul>
               </div>
-            </details>
+            </nav>
+          </aside>
 
-            <details class="magazine-record">
-              <summary>
-                <span class="magazine-spine">03</span>
-                <span class="magazine-cover-word">Zipper</span>
-                <b>TO REVIEW</b>
-              </summary>
-              <div>
-                <p class="magazine-record-meta">FASHION / MUSIC / YOUTH</p>
-                <h3>Zipper</h3>
-                <p>原宿の服と音楽が混ざっていた時代を、自分の言葉で読み直す予定です。</p>
+          <div class="magazine-store-content">
+            <header class="magazine-store-tools">
+              <label class="magazine-search-field" aria-label="キーワード検索">
+                <span>⌕</span>
+                <input type="search" placeholder="検索" value="Jeans ジーンズ">
+              </label>
+
+              <div class="magazine-breadcrumbs" aria-label="パンくずリスト">
+                <a href="magazine.html">Home</a>
+                <span>/</span>
+                <a href="#">キーワードで探す</a>
+                <span>/</span>
+                <strong>Jeans ジーンズ</strong>
               </div>
-            </details>
 
-            <article class="magazine-record is-empty" aria-label="次に追加される雑誌">
-              <span class="magazine-spine">04</span>
-              <strong>?</strong>
-              <p>NEXT MAGAZINE<br>COMING SOON</p>
-            </article>
+              <div class="magazine-collection-heading">
+                <div>
+                  <p class="magazine-section-note">USED MAGAZINE / CATEGORY VIEW</p>
+                  <h2 id="magazine-shop-title">Jeans ジーンズ</h2>
+                </div>
+                <span>8 ITEMS / SOLD OUT MIX</span>
+              </div>
+            </header>
+
+            <div class="magazine-card-grid">
+              <article class="magazine-item-card is-soldout">
+                <a href="#" aria-label="5D Diesel Dream Disruption Deviation Denim の詳細を見る">
+                  <div class="magazine-item-cover cover-diesel is-exporting">
+                    <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                  </div>
+                  <div class="magazine-item-copy">
+                    <h3>タイトル書き出し中…</h3>
+                    <p>2000s / denim culture / archive book</p>
+                    <div class="magazine-item-price-row">
+                      <small>¥7,000</small>
+                      <b>SOLD OUT</b>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="magazine-item-card is-soldout">
+                <a href="#" aria-label="cult a visual history of jeanswear の詳細を見る">
+                  <div class="magazine-item-cover cover-cult is-exporting">
+                    <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                  </div>
+                  <div class="magazine-item-copy">
+                    <h3>タイトル書き出し中…</h3>
+                    <p>visual archive / American originals</p>
+                    <div class="magazine-item-price-row">
+                      <small>¥15,000</small>
+                      <b>SOLD OUT</b>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="magazine-item-card is-soldout">
+                <a href="#" aria-label="asayan アサヤン 021 の詳細を見る">
+                  <div class="magazine-item-cover cover-asayan-blue is-exporting">
+                    <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                  </div>
+                  <div class="magazine-item-copy">
+                    <h3>タイトル書き出し中…</h3>
+                    <p>Japanese street / denim special</p>
+                    <div class="magazine-item-price-row">
+                      <small>¥2,000</small>
+                      <b>SOLD OUT</b>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="magazine-item-card">
+                <a href="#" aria-label="asayan アサヤン 041 の詳細を見る">
+                  <div class="magazine-item-cover cover-asayan-red is-exporting">
+                    <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                  </div>
+                  <div class="magazine-item-copy">
+                    <h3>タイトル書き出し中…</h3>
+                    <p>street style / bootscut / spring</p>
+                    <div class="magazine-item-price-row">
+                      <small>¥2,200</small>
+                      <i>IN SHELF</i>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="magazine-item-card">
+                <a href="#" aria-label="Boon EXTRA VOL.1 プロトタイプなジーンズ の詳細を見る">
+                  <div class="magazine-item-cover cover-boon-khaki is-exporting">
+                    <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                  </div>
+                  <div class="magazine-item-copy">
+                    <h3>タイトル書き出し中…</h3>
+                    <p>Boon archive / denim issue</p>
+                    <div class="magazine-item-price-row">
+                      <small>¥3,800</small>
+                      <i>IN SHELF</i>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="magazine-item-card is-soldout">
+                <a href="#" aria-label="Boon EXTRA VOL.4 DENIM ディテールの書 の詳細を見る">
+                  <div class="magazine-item-cover cover-boon-cream is-exporting">
+                    <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                  </div>
+                  <div class="magazine-item-copy">
+                    <h3>タイトル書き出し中…</h3>
+                    <p>details / labels / Lee archive</p>
+                    <div class="magazine-item-price-row">
+                      <small>¥4,200</small>
+                      <b>SOLD OUT</b>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            </div>
           </div>
         </section>
       </div>
     </section>
   </main>
+  </div>
 </body>
 
 </html>

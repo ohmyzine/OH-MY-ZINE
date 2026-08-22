@@ -17,17 +17,195 @@
   <meta property="og:description" content="ファッションを入り口に、音楽や時代、その背景にあるカルチャーを読み解くWebメディア。">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
-  <link rel="stylesheet" href="CSS/index.css?v=20260816-home23">
-  <link rel="stylesheet" href="CSS/finishing.css?v=20260817-magazine-tabs2">
-  <script src="js/common.js?v=20260816-shared6" defer></script>
-  <script src="js/home.js?v=20260817-magazine2" defer></script>
+  <link rel="stylesheet" href="CSS/common.css?v=20260822-shared-template4">
+  <link rel="stylesheet" href="CSS/index.css?v=20260822-common-cleanup1">
+  <link rel="stylesheet" href="CSS/finishing.css?v=20260822-common-cleanup1">
+  <script src="js/common.js?v=20260819-random2" defer></script>
+  <script src="js/home.js?v=20260819-random2" defer></script>
+
+  <style id="home-aqua-final-fix">
+    /* =========================================================
+       HOME / MAC OS X AQUA-LIKE UNIFORM PANEL DEPTH
+       FEATURE / RANDOM / MAGAZINE / PHOTO / ABOUT share one depth.
+       ========================================================= */
+    body.home-page .feature-panel,
+    body.home-page .notes-panel,
+    body.home-page .photo-vault,
+    body.home-page .about-card,
+    body.home-page .magazine-shelf-card.magazine-collection-widget {
+      position: relative !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.98),
+        0 0 0 1px rgba(255,255,255,.72),
+        0 1px 2px rgba(0,0,0,.24),
+        0 4px 8px rgba(0,0,0,.23),
+        0 10px 20px rgba(0,0,0,.20),
+        0 18px 34px rgba(0,0,0,.14) !important;
+    }
+
+    body.home-page .magazine-grid,
+    body.home-page .left-column,
+    body.home-page .center-column,
+    body.home-page .right-column {
+      overflow: visible !important;
+    }
+
+    /* =========================================================
+       FEATURE CTA — thick two-piece medicine capsule
+       ========================================================= */
+    body.home-page .feature-panel .feature-link > .read-button {
+      width: 100% !important;
+      min-height: 54px !important;
+      height: 54px !important;
+      margin: 2px 0 8px !important;
+      padding: 0 !important;
+      position: relative !important;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      align-items: center !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      border: 1px solid #68777f !important;
+      border-radius: 999px !important;
+      background-color: transparent !important;
+      background-image:
+        linear-gradient(180deg,
+          rgba(255,255,255,.92) 0%,
+          rgba(255,255,255,.48) 18%,
+          rgba(255,255,255,.08) 43%,
+          rgba(0,0,0,.07) 78%,
+          rgba(255,255,255,.18) 100%),
+        linear-gradient(90deg,
+          #2093c2 0%,
+          #4bc0e3 48.8%,
+          #147da8 49.8%,
+          #f3f0df 50.2%,
+          #fffef5 54%,
+          #e4dfca 100%) !important;
+      box-shadow:
+        inset 0 2px 2px rgba(255,255,255,.96),
+        inset 0 -5px 8px rgba(51,62,68,.22),
+        0 2px 0 rgba(57,68,74,.42),
+        0 5px 9px rgba(31,42,48,.24) !important;
+      transform: none !important;
+      animation: none !important;
+    }
+
+    body.home-page .feature-panel .feature-link > .read-button .capsule-word {
+      position: relative !important;
+      z-index: 2 !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 10px !important;
+      font-weight: 900 !important;
+      letter-spacing: .03em !important;
+      line-height: 1 !important;
+      pointer-events: none !important;
+    }
+
+    body.home-page .feature-panel .feature-link > .read-button .capsule-word-left {
+      color: #fff !important;
+      text-shadow: 0 -1px 0 rgba(0,72,102,.72), 0 1px 1px rgba(0,0,0,.16) !important;
+    }
+
+    body.home-page .feature-panel .feature-link > .read-button .capsule-word-right {
+      color: #334148 !important;
+      text-shadow: 0 1px 0 rgba(255,255,255,.96) !important;
+    }
+
+    body.home-page .feature-panel .feature-link > .read-button::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      bottom: 5px !important;
+      left: 50% !important;
+      width: 10px !important;
+      transform: translateX(-50%) !important;
+      border-left: 1px solid rgba(17,91,123,.36) !important;
+      border-right: 1px solid rgba(255,255,255,.88) !important;
+      background: linear-gradient(
+        90deg,
+        rgba(8,95,132,.18),
+        rgba(255,255,255,.52),
+        rgba(120,111,84,.10)
+      ) !important;
+      pointer-events: none !important;
+    }
+
+    body.home-page .feature-panel .feature-link > .read-button::after {
+      content: "" !important;
+      position: absolute !important;
+      top: 4px !important;
+      left: 14px !important;
+      right: 14px !important;
+      height: 8px !important;
+      border-radius: 999px !important;
+      background: linear-gradient(
+        90deg,
+        rgba(255,255,255,.22),
+        rgba(255,255,255,.82) 44%,
+        rgba(255,255,255,.55) 58%,
+        rgba(255,255,255,.18)
+      ) !important;
+      pointer-events: none !important;
+    }
+
+    @media (max-width: 700px) {
+      body.home-page .feature-panel .feature-link > .read-button {
+        min-height: 50px !important;
+        height: 50px !important;
+      }
+    }
+
+    /* =========================================================
+       HOME / KEYCHAIN SIZE + BOTTOM GAP FIX
+       Desktop: keep the keychain decorative, so it no longer
+       determines the height of the three-column content row.
+       ========================================================= */
+    @media (min-width: 1001px) {
+      body.home-page .magazine-grid {
+        padding-bottom: 34px !important;
+      }
+
+      body.home-page .right-column {
+        position: relative !important;
+        min-height: 0 !important;
+      }
+
+      body.home-page .right-column .hanging-keychain.hanging-keychain-layered {
+        width: clamp(108px, 10vw, 128px) !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: absolute !important;
+        right: 2px !important;
+        bottom: 0 !important;
+        align-self: auto !important;
+      }
+    }
+
+    /* Smaller keychain on narrower layouts too, but keep it in normal flow. */
+    @media (max-width: 1000px) {
+      body.home-page .hanging-keychain.hanging-keychain-layered {
+        width: 126px !important;
+      }
+    }
+
+    @media (max-width: 720px) {
+      body.home-page .hanging-keychain.hanging-keychain-layered {
+        width: 112px !important;
+      }
+    }
+
+  </style>
+
 </head>
 
 <body class="home-page">
 
   <main class="home-main" id="top">
-    <section class="magazine-window" aria-label="OH MY ZINE ホーム">
+    <section class="magazine-window shared-app-window" aria-label="OH MY ZINE ホーム">
 
       <header class="system-bar shared-titlebar">
         <a class="system-title shared-brand" href="index.html" aria-label="OH MY ZINE ホーム">
@@ -61,10 +239,11 @@
         <a href="index.html" aria-current="page">HOME</a>
         <a href="fashion.html">FASHION</a>
         <a href="magazine.html">MAGAZINE COLLECTION</a>
-        <span>CULTURE — SOON</span>
+        <a href="photo.html">PHOTO</a>
         <a href="about.html">ABOUT</a>
       </nav>
 
+      <div class="shared-page-base home-page-base">
       <section class="portal-banner" aria-label="今号のイントロダクション">
         <span class="portal-star" aria-hidden="true">★</span>
 
@@ -72,7 +251,7 @@
           <span>OH MY ZINE / ISSUE 001</span>
           <img
             class="portal-brand"
-            src="images/oh-my-zine-soft-logo.png"
+            src="images/oh-my-zine-soft-logo.webp"
             alt="OH MY ZINE"
           >
           <p>Welcome to your portal to fashion &amp; culture</p>
@@ -93,29 +272,14 @@
               alt="スケートボードを持つ人の写真"
             >
 
-            <label class="photo-add-button" for="photo-vault-input">
-              <b>+</b>
-              <span>
-                ADD PHOTOS
-                <small>好きな写真を追加</small>
-              </span>
-            </label>
+            <a id="photo-vault-title" class="cover-label photo-cabinet-link" href="photo.html">
+              MY PHOTO CABINET
+            </a>
 
-            <input
-              id="photo-vault-input"
-              class="photo-input"
-              type="file"
-              accept="image/*"
-              multiple
-            >
-
-            <h2 id="photo-vault-title" class="cover-label">MY PHOTO CABINET</h2>
-
-            <div class="photo-controls" aria-label="写真の操作">
+            <div class="photo-controls photo-controls-viewer" aria-label="写真の閲覧">
               <button id="photo-previous" type="button" aria-label="前の写真">←</button>
               <span id="photo-count">SAMPLE</span>
               <button id="photo-next" type="button" aria-label="次の写真">→</button>
-              <button id="photo-delete" class="photo-delete" type="button">DELETE</button>
             </div>
 
             <p id="photo-vault-message" class="photo-vault-message"></p>
@@ -123,7 +287,7 @@
 
 
           <div class="lace-divider" aria-hidden="true">
-            <img src="images/lace-trim.png?v=1" alt="">
+            <img src="images/lace-trim.webp?v=1" alt="">
           </div>
 
 
@@ -156,7 +320,7 @@
                 <div class="feature-image-wrap">
                   <img
                     class="feature-image"
-                    src="images/attention-athleisure.JPG"
+                    src="images/attention-athleisure.webp"
                     alt="NewJeans『Attention』のシーン"
                     decoding="async"
                     fetchpriority="high"
@@ -172,7 +336,7 @@
                   スポーツウェア、HIPHOP、R&amp;B、Y2K。衣装に重なるいくつもの時代とカルチャーを辿ります。
                 </p>
 
-                <span class="read-button">CONTINUE READING</span>
+                <span class="read-button"><span class="capsule-word capsule-word-left">CONTINUE</span><span class="capsule-word capsule-word-right">READING</span></span>
               </a>
             </div>
           </article>
@@ -237,9 +401,9 @@
           </section>
 
           <div class="home-ad-stack" aria-label="OH MY ZINEからのお知らせ">
-            <a class="desktop-pet-card" href="about.html" aria-label="犬のプロフィールを見る">
+            <a class="desktop-pet-card" id="desktop-pet-ad" href="#ohmy-pet" aria-label="OHMY_PET.EXEを起動する">
               <img
-                src="images/home-ad-desktop-pet.png"
+                src="images/home-ad-desktop-pet.webp"
                 alt="FREE DESKTOP PETと書かれた犬の広告"
                 loading="lazy"
                 decoding="async"
@@ -248,7 +412,7 @@
 
             <div class="x-account-card" aria-label="Xアカウントは準備中です">
               <img
-                src="images/home-ad-x-account.png"
+                src="images/home-ad-x-account.webp"
                 alt="X"
                 loading="lazy"
                 decoding="async"
@@ -256,9 +420,10 @@
             </div>
           </div>
 
-          <figure class="hanging-keychain" aria-hidden="true">
-            <img class="keychain-eyelet" src="images/silver-grommet-eyelet.png?v=1" alt="">
-            <img class="keychain-charm" src="images/keychain-silver-connector.png?v=1" alt="">
+          <figure class="hanging-keychain hanging-keychain-layered" aria-hidden="true">
+            <img class="keychain-charm keychain-swing-layer" src="images/home-keychain-dog-layer.webp?v=22" alt="">
+            <img class="keychain-eyelet keychain-eyelet-only" src="images/home-keychain-eyelet-only.webp?v=22" alt="">
+            <img class="keychain-eyelet keychain-eyelet-front" src="images/home-keychain-front-cover.webp?v=23-clean" alt="">
           </figure>
         </aside>
 
@@ -270,6 +435,7 @@
         <a href="credits.html">PHOTO CREDITS</a>
       </footer>
 
+      </div>
     </section>
 
     <section id="closed-screen" class="closed-screen" hidden>

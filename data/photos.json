@@ -1,0 +1,4 @@
+{
+  "_comment": "写真を images/photos/ に追加し、この photos 配列へファイル名を追加してください。GitHub Pagesで全閲覧者に同じ写真が表示されます。",
+  "photos": []
+}

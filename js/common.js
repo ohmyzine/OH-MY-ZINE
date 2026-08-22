@@ -6,9 +6,17 @@
 
   const fallbackArticles = [
     {
+      title: "OHMYZINE vs VSH",
+      url: "article-vhs.html",
+      category: "FASHION / VHS / CULTURE",
+      image: "images/vhs-thumbnail.webp",
+      description: "VHSプレイヤーを導入して、ファッション目線でVHSに惹かれた理由を辿る記事。",
+    },
+    {
       title: "NewJeans『Attention』のファッションを読み解く",
       url: "article.html",
       category: "FASHION / MUSIC / Y2K",
+      image: "images/attention-main.jpg",
       description: "スポーツウェア、HIPHOP、R&B。その背景にあるカルチャーを辿ります。",
     },
   ];
@@ -298,6 +306,129 @@
     });
   }
 
+
+  function setupSharedWindowDrag() {
+    const page = document.body;
+    const systemBar = document.querySelector(".shared-titlebar");
+    const softCursor = document.querySelector("#soft-cursor");
+    const windowFrame = systemBar?.closest(".magazine-window, .subpage-app-frame");
+    const legacyHeader = systemBar?.closest(".subpage-header");
+    const magazineWindow = windowFrame || legacyHeader;
+    const positionTarget = windowFrame || page;
+
+    if (!systemBar || !magazineWindow) {
+      return;
+    }
+
+    if (windowFrame) {
+      windowFrame.classList.add("shared-drag-window");
+      page.classList.add("shared-drag-frame");
+    }
+
+    let windowPositionX = 0;
+    let windowPositionY = 0;
+    let dragState = null;
+    let didWindowDrag = false;
+
+    function setWindowPosition(x, y) {
+      if (!magazineWindow) {
+        return;
+      }
+
+      windowPositionX = x;
+      windowPositionY = y;
+      positionTarget.style.setProperty("--window-x", `${x}px`);
+      positionTarget.style.setProperty("--window-y", `${y}px`);
+    }
+
+    function resetWindowPosition() {
+      setWindowPosition(0, 0);
+    }
+
+    systemBar?.addEventListener("pointerdown", (event) => {
+      if (
+        event.button !== 0 ||
+        event.target.closest("button, input, label") ||
+        magazineWindow?.classList.contains("is-maximized") ||
+        page.classList.contains("is-subpage-maximized")
+      ) {
+        return;
+      }
+
+      const rect = magazineWindow?.getBoundingClientRect();
+
+      if (!rect) {
+        return;
+      }
+
+      dragState = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        startLeft: rect.left,
+        startTop: rect.top,
+        startWindowX: windowPositionX,
+        startWindowY: windowPositionY,
+        width: rect.width,
+      };
+      didWindowDrag = false;
+
+      systemBar.setPointerCapture(event.pointerId);
+      magazineWindow?.classList.add("is-dragging");
+      softCursor?.classList.add("is-dragging");
+      event.preventDefault();
+    });
+
+    systemBar?.addEventListener("pointermove", (event) => {
+      if (!dragState || event.pointerId !== dragState.pointerId) {
+        return;
+      }
+
+      const deltaX = event.clientX - dragState.startX;
+      const deltaY = event.clientY - dragState.startY;
+
+      if (Math.abs(deltaX) + Math.abs(deltaY) > 5) {
+        didWindowDrag = true;
+      }
+
+      const visibleEdge = 130;
+      const nextLeft = Math.min(
+        window.innerWidth - visibleEdge,
+        Math.max(-(dragState.width - visibleEdge), dragState.startLeft + deltaX),
+      );
+      const nextTop = Math.min(
+        window.innerHeight - 44,
+        Math.max(0, dragState.startTop + deltaY),
+      );
+
+      setWindowPosition(
+        dragState.startWindowX + nextLeft - dragState.startLeft,
+        dragState.startWindowY + nextTop - dragState.startTop,
+      );
+    });
+
+    function endWindowDrag(event) {
+      if (!dragState || event.pointerId !== dragState.pointerId) {
+        return;
+      }
+
+      dragState = null;
+      magazineWindow?.classList.remove("is-dragging");
+      softCursor?.classList.remove("is-dragging");
+    }
+
+    systemBar?.addEventListener("pointerup", endWindowDrag);
+    systemBar?.addEventListener("pointercancel", endWindowDrag);
+    systemBar?.addEventListener("click", (event) => {
+      if (didWindowDrag) {
+        event.preventDefault();
+        didWindowDrag = false;
+      }
+    });
+
+    sharedUi.resetWindowPosition = resetWindowPosition;
+  }
+
   async function loadSearchArticles() {
     try {
       const response = await fetch("data/articles.json", { cache: "no-store" });
@@ -317,6 +448,7 @@
   setupCursor();
   setupMaterialHeadings();
   setupTabKeychain();
+  setupSharedWindowDrag();
   const articleDataPromise = loadSearchArticles();
   sharedUi.getArticles = () => articleDataPromise;
 })();

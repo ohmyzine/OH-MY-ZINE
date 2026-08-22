@@ -12,39 +12,40 @@
   <meta property="og:description" content="OH MY ZINEを作った理由と、このサイトで扱うファッション・音楽・カルチャーについて。">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
+  <link rel="stylesheet" href="CSS/common.css?v=20260822-shared-template4">
   <link rel="stylesheet" href="CSS/about.css?v=20260816-dashboard23">
-  <link rel="stylesheet" href="CSS/finishing.css?v=20260817-magazine-tabs2">
+  <link rel="stylesheet" href="CSS/finishing.css?v=20260822-common-cleanup1">
   <script src="js/common.js?v=20260816-shared6" defer></script>
-  <script src="js/subpage-window.js?v=20260815-shared9" defer></script>
+  <script src="js/subpage-window.js?v=20260822-close-screen1" defer></script>
   <script src="js/about.js?v=20260816-dashboard2" defer></script>
 </head>
 
 <body class="subpage about-page-shell">
 
-  <header class="subpage-header">
-    <div class="subpage-systembar shared-titlebar">
-      <a class="subpage-brand shared-brand" href="index.html">
-        <img class="shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
+  <div class="subpage-app-frame shared-app-window">
+  <div class="subpage-header">
+    <header class="system-bar subpage-systembar shared-titlebar">
+      <a class="system-title subpage-brand shared-brand" href="index.html">
+        <img class="system-app-icon shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
         <span>OH_MY_ZINE.EXE / ABOUT_PROFILE</span>
       </a>
-      <div class="subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
-        <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">_</button>
+      <div class="system-controls subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
+        <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">—</button>
         <button type="button" data-window-action="maximize" aria-label="最大化" aria-pressed="false">□</button>
         <button type="button" data-window-action="close" aria-label="閉じる" aria-pressed="false">×</button>
       </div>
-    </div>
+    </header>
 
-    <nav class="subpage-tabs shared-tabs" aria-label="メインメニュー">
+    <nav class="site-nav subpage-tabs shared-tabs" aria-label="メインメニュー">
       <a href="index.html">HOME</a>
       <a href="fashion.html">FASHION</a>
       <a href="magazine.html">MAGAZINE COLLECTION</a>
-      <span class="is-soon" aria-disabled="true">CULTURE — SOON</span>
+      <a href="photo.html">PHOTO</a>
       <a href="about.html" aria-current="page">ABOUT</a>
     </nav>
-  </header>
+  </div>
 
-  <main class="subpage-main about-page">
+  <main class="subpage-main shared-page-base about-page">
     <section class="content-window about-window">
       <div class="content-window-body">
         <header class="about-hero subpage-feature-hero">
@@ -69,7 +70,6 @@
                 <video loop muted playsinline preload="none" aria-label="犬のプロフィール映像">
                   <source data-src="videos/profile-motion.mp4" type="video/mp4">
                 </video>
-                <span><b>プロフィールに戻る</b></span>
               </div>
             </div>
 
@@ -85,15 +85,12 @@
 
               <div class="about-switcher" role="tablist" aria-label="ABOUTの表示切り替え">
                 <button class="is-active" type="button" role="tab" aria-selected="true" aria-controls="about-panel-why" data-about-panel="about-panel-why">
-                  <img src="images/about-tab-why.png" alt="" loading="lazy" decoding="async">
-                  <span>WHY I MADE THIS</span>
+                  <span>思い立った理由</span>
                 </button>
                 <button type="button" role="tab" aria-selected="false" aria-controls="about-panel-site" data-about-panel="about-panel-site">
-                  <img src="images/about-tab-site.png" alt="" loading="lazy" decoding="async">
-                  <span>ABOUT THIS SITE</span>
+                  <span>このサイトについて</span>
                 </button>
                 <button type="button" role="tab" aria-selected="false" aria-controls="about-panel-contact" data-about-panel="about-panel-contact">
-                  <img src="images/about-tab-contact.png" alt="" loading="lazy" decoding="async">
                   <span>問い合わせ</span>
                 </button>
               </div>
@@ -135,7 +132,7 @@
           <section class="about-story-switch" aria-live="polite">
             <article class="about-copy-panel is-active" id="about-panel-why" role="tabpanel">
               <div class="section-toolbar">
-                <h2>WHY I MADE THIS</h2><span>01 / TEXT</span>
+                <h2>思い立った理由</h2><span>01 / TEXT</span>
               </div>
               <div class="about-body">
                 <p>このサイトでは、ファッションを服だけで終わらせず、その背景にある音楽や時代、ストリート、サブカルチャーまで含めて紹介していきます。</p>
@@ -151,7 +148,7 @@
 
             <article class="about-copy-panel" id="about-panel-site" role="tabpanel" hidden>
               <div class="section-toolbar">
-                <h2>ABOUT THIS SITE</h2><span>02 / INFO</span>
+                <h2>このサイトについて</h2><span>02 / INFO</span>
               </div>
               <div class="about-body">
                 <p>OH MY ZINEは、服を入口にして、音楽、人物、雑誌、街、時代背景まで横断して読む個人制作のWebメディアです。</p>
@@ -174,13 +171,14 @@
           </section>
 
           <figure class="milk-bottle-card">
-            <img src="images/about-milk-bottle.png" alt="白い牛乳が入ったヴィンテージのガラス瓶" loading="lazy" decoding="async">
+            <img src="images/about-milk-bottle.webp" alt="白い牛乳が入ったヴィンテージのガラス瓶" loading="lazy" decoding="async">
             <figcaption>MILK SUPPLY / FOR FRANKLIN</figcaption>
           </figure>
         </div>
       </div>
     </section>
   </main>
+  </div>
 
   <div id="soft-cursor" class="soft-cursor" aria-hidden="true">
     <span></span>

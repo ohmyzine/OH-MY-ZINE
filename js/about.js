@@ -6,8 +6,6 @@
 
   if (video && source) {
     let loaded = false;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     const loadVideo = () => {
       if (loaded) return;
       loaded = true;
@@ -15,11 +13,9 @@
       source.removeAttribute("data-src");
       video.load();
 
-      if (!reducedMotion) {
-        video.play().catch(() => {
-          // Autoplay can be blocked. The first frame still remains visible.
-        });
-      }
+      video.play().catch(() => {
+        // Autoplay can be blocked. The first frame still remains visible.
+      });
     };
 
     if (!("IntersectionObserver" in window)) {

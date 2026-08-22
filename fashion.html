@@ -12,39 +12,40 @@
   <meta property="og:description" content="ファッションを入り口に、その背景にある音楽とカルチャーを読み解く記事ライブラリ。">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
+  <link rel="stylesheet" href="CSS/common.css?v=20260822-shared-template4">
   <link rel="stylesheet" href="CSS/fashion.css?v=20260816-channel17">
-  <link rel="stylesheet" href="CSS/finishing.css?v=20260817-magazine-tabs2">
+  <link rel="stylesheet" href="CSS/finishing.css?v=20260822-common-cleanup1">
   <script src="js/common.js?v=20260816-shared6" defer></script>
-  <script src="js/subpage-window.js?v=20260815-shared9" defer></script>
+  <script src="js/subpage-window.js?v=20260822-close-screen1" defer></script>
   <script src="js/fashion.js?v=20260815-actions1" defer></script>
 </head>
 
 <body class="subpage fashion-page fashion-player-page">
 
+  <div class="subpage-app-frame shared-app-window">
   <header class="subpage-header">
-    <div class="subpage-systembar shared-titlebar">
-      <a class="subpage-brand shared-brand" href="index.html">
+    <header class="system-bar subpage-systembar shared-titlebar">
+      <a class="system-title subpage-brand shared-brand" href="index.html">
         <img class="shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
-        <span>OH_MY_ZINE.EXE - FASHION.html</span>
+        <span>OH_MY_ZINE.EXE / FASHION.html</span>
       </a>
-      <div class="subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
-        <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">_</button>
+      <div class="system-controls subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
+        <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">—</button>
         <button type="button" data-window-action="maximize" aria-label="最大化" aria-pressed="false">□</button>
         <button type="button" data-window-action="close" aria-label="閉じる" aria-pressed="false">×</button>
       </div>
-    </div>
+    </header>
 
-    <nav class="subpage-tabs shared-tabs" aria-label="メインメニュー">
+    <nav class="site-nav subpage-tabs shared-tabs" aria-label="メインメニュー">
       <a href="index.html">HOME</a>
       <a href="fashion.html" aria-current="page">FASHION</a>
       <a href="magazine.html">MAGAZINE COLLECTION</a>
-      <span class="is-soon" aria-disabled="true">CULTURE — SOON</span>
+      <a href="photo.html">PHOTO</a>
       <a href="about.html">ABOUT</a>
     </nav>
   </header>
 
-  <main class="subpage-main">
+  <main class="subpage-main shared-page-base">
     <section class="content-window fashion-window">
       <div class="content-window-body">
         <section class="fashion-hero subpage-feature-hero" aria-labelledby="fashion-title">
@@ -52,7 +53,7 @@
             <p class="ui-chip">CATEGORY / 01</p>
             <h1 id="fashion-title" data-material-heading="rhinestone">FASHION</h1>
             <p class="fashion-stream-meta">
-              <strong>2026</strong><span>1 ISSUE</span><span>LONG READ</span><b>13+</b>
+              <strong>2026</strong><span>2 ISSUES</span><span>LONG READ</span><b>13+</b>
             </p>
             <div class="fashion-hero-actions">
               <a class="fashion-hero-play" href="article.html"><span>▶</span> 最新の記事を読む</a>
@@ -67,7 +68,7 @@
           </div>
 
           <dl class="fashion-status">
-            <div><dt>ARTICLES</dt><dd>001</dd></div>
+            <div><dt>ARTICLES</dt><dd>002</dd></div>
             <div><dt>UPDATED</dt><dd>2026</dd></div>
             <div><dt>STATUS</dt><dd>ONLINE</dd></div>
           </dl>
@@ -107,24 +108,28 @@
               </div>
             </article>
 
-            <article class="fashion-stream-card is-soon">
-              <div class="fashion-stream-cover">
-                <div class="fashion-unavailable-thumb" role="img" aria-label="サムネイルを表示できません">
-                  <span>×</span><b>サムネイルを表示できません</b><small>IMAGE NOT AVAILABLE</small>
-                </div>
-                <span class="fashion-card-mark">02</span>
-                <strong>?</strong>
-              </div>
+            <article class="fashion-stream-card is-live">
+              <a class="fashion-stream-cover" href="article-vhs.html" aria-label="OHMYZINE vs VSHの記事を読む">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src="images/vhs-thumbnail.webp"
+                  alt="VHS"
+                  style="object-fit:contain;object-position:center;"
+                >
+                <span class="fashion-card-mark">OMZ</span>
+                <strong>VSH</strong>
+              </a>
               <div class="fashion-stream-card-body">
                 <div class="fashion-card-controls">
-                  <button class="is-play" type="button" aria-label="記事は準備中です" disabled>▶</button>
-                  <button type="button" aria-label="記事は準備中です" disabled>＋</button>
-                  <button type="button" aria-label="記事は準備中です" disabled>♡</button>
-                  <small>----文字</small>
+                  <a class="is-play" href="article-vhs.html" aria-label="記事を読む">▶</a>
+                  <button class="js-article-toggle" type="button" data-article-action="save" data-article-id="vsh-002" data-off-symbol="＋" data-on-symbol="✓" aria-label="マイリストに追加" aria-pressed="false">＋</button>
+                  <button class="js-article-toggle" type="button" data-article-action="like" data-article-id="vsh-002" data-off-symbol="♡" data-on-symbol="♥" aria-label="お気に入りに追加" aria-pressed="false">♡</button>
+                  <small>約3,800文字</small>
                 </div>
-                <h3>?</h3>
-                <p class="fashion-card-meta"><b>SOON</b><span>準備中</span><em>TXT</em></p>
-                <p class="fashion-card-tags">DETAILS NOT AVAILABLE</p>
+                <h3><a href="article-vhs.html">OHMYZINE vs VSH</a></h3>
+                <p class="fashion-card-meta"><b>13+</b><span>長編</span><span>2026</span><em>TXT</em></p>
+                <p class="fashion-card-tags">VHS　・　ファッション　・　アーカイブ</p>
               </div>
             </article>
 
@@ -287,6 +292,7 @@
       </div>
     </section>
   </main>
+  </div>
 
   <div id="soft-cursor" class="soft-cursor" aria-hidden="true">
     <span></span>

@@ -16,43 +16,61 @@
   <meta property="article:published_time" content="2026-08-15">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.css?v=20260816-shared31">
+  <link rel="stylesheet" href="CSS/common.css?v=20260822-shared-template4">
+  <link rel="stylesheet" href="CSS/index.css?v=20260822-common-cleanup1">
   <link rel="stylesheet" href="CSS/article.css?v=20260816-editorial6">
-  <link rel="stylesheet" href="CSS/finishing.css?v=20260817-magazine-tabs2">
+  <link rel="stylesheet" href="CSS/finishing.css?v=20260822-common-cleanup1">
   <script src="js/common.js?v=20260816-shared6" defer></script>
-  <script src="js/subpage-window.js?v=20260815-shared9" defer></script>
+  <script src="js/subpage-window.js?v=20260822-close-screen1" defer></script>
   <script src="js/article.js?v=20260816-reader1" defer></script>
 </head>
 
-<body id="top" class="subpage article-page-shell">
+<body class="home-page article-page-shell">
 
   <!-- =========================
        ヘッダー
   ========================== -->
 
-  <header class="subpage-header">
-    <div class="subpage-systembar shared-titlebar">
-      <a class="subpage-brand shared-brand" href="index.html">
-        <img class="shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
-        <span>OH_MY_ZINE.EXE / ARTICLE_READER</span>
-      </a>
-      <div class="subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
-        <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">_</button>
-        <button type="button" data-window-action="maximize" aria-label="最大化" aria-pressed="false">□</button>
-        <button type="button" data-window-action="close" aria-label="閉じる" aria-pressed="false">×</button>
-      </div>
-    </div>
+  <main class="home-main" id="top">
+    <section class="magazine-window shared-app-window" aria-label="OH MY ZINE ホーム">
 
-    <nav class="subpage-tabs shared-tabs" aria-label="メインメニュー">
-      <a href="index.html">HOME</a>
-      <a href="fashion.html" aria-current="page">FASHION</a>
-      <a href="magazine.html">MAGAZINE COLLECTION</a>
-      <span class="is-soon" aria-disabled="true">CULTURE — SOON</span>
-      <a href="about.html">ABOUT</a>
-    </nav>
-  </header>
+      <header class="system-bar shared-titlebar">
+        <a class="system-title shared-brand" href="index.html" aria-label="OH MY ZINE ホーム">
+          <img
+            class="system-app-icon shared-brand-icon"
+            src="images/oh-my-zine-archive-icon.png?v=magazine3"
+            alt=""
+            aria-hidden="true"
+          >
+          <span>OH_MY_ZINE.EXE</span>
+        </a>
 
+        <div class="system-controls shared-window-controls" aria-label="ウィンドウ操作">
+          <button
+            id="window-minimize"
+            type="button"
+            aria-label="最小化"
+            aria-pressed="false"
+          >—</button>
+          <button
+            id="window-maximize"
+            type="button"
+            aria-label="最大化"
+            aria-pressed="false"
+          >□</button>
+          <button id="window-close" type="button" aria-label="閉じる">×</button>
+        </div>
+      </header>
 
+      <nav class="site-nav shared-tabs" aria-label="メインメニュー">
+        <a href="index.html" aria-current="page">HOME</a>
+        <a href="fashion.html">FASHION</a>
+        <a href="magazine.html">MAGAZINE COLLECTION</a>
+        <a href="photo.html">PHOTO</a>
+        <a href="about.html">ABOUT</a>
+      </nav>
+
+      <div class="shared-page-base article-page-base">
   <div class="article-reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 
   <!-- =========================
@@ -82,11 +100,12 @@
         <h1 class="article-title-heading">ATTENTION</h1>
 
         <div class="article-logo-frame">
-          <img class="article-object-title" src="images/attention-object-title.png" alt="ATTENTION">
+          <img class="article-object-title" src="images/attention-object-title.webp" alt="ATTENTION">
         </div>
 
         <p class="article-display-title">
-          NewJeans「Attention」のファッションを読み解く
+          <span>NewJeans「Attention」の</span>
+          <span>ファッションを読み解く</span>
         </p>
 
         <p class="article-subtitle">
@@ -237,7 +256,7 @@
         <img
           loading="lazy"
           decoding="async"
-          src="images/football-jersey.jpg"
+          src="images/football-jersey.webp"
           alt="スポーツユニフォームを取り入れたスタイリング"
         >
 
@@ -306,7 +325,7 @@
         <img
           loading="lazy"
           decoding="async"
-          src="images/attention-athleisure.JPG"
+          src="images/attention-athleisure.webp"
           alt="Attentionのもうひとつのスポーティールック"
         >
 
@@ -415,7 +434,7 @@
           <img
             loading="lazy"
             decoding="async"
-            src="images/bandana-2000.png"
+            src="images/bandana-2000.webp"
             alt="2000年の赤いバンダナトップのスタイリング"
           >
 
@@ -608,7 +627,7 @@
           <img
             loading="lazy"
             decoding="async"
-            src="images/speed-body-soul.png"
+            src="images/speed-body-soul.webp"
             alt="1996年のBody and Soulのスポーティーなスタイリング"
           >
 
@@ -630,7 +649,7 @@
           <img
             loading="lazy"
             decoding="async"
-            src="images/attention-speed-compare.jpg"
+            src="images/attention-speed-compare.webp"
             alt="2022年のAttentionのスポーティーなスタイリング"
           >
 
@@ -773,6 +792,9 @@
       </div>
     </section>
 
+  </main>
+      </div>
+    </section>
   </main>
 
   <div id="soft-cursor" class="soft-cursor" aria-hidden="true">

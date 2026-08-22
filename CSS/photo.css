@@ -1,0 +1,531 @@
+/* =========================================================
+   OH MY ZINE / PHOTO
+   Aqua-influenced local photo library
+   ========================================================= */
+
+body.photo-page-shell {
+  --photo-ink: #243740;
+  --photo-line: #748791;
+  --photo-aqua: #4aafd4;
+  --photo-pink: #e38db9;
+  --photo-silver: #e7ecef;
+  --photo-white: #fff;
+  background: #cccccc;
+}
+
+.photo-page-shell .photo-window {
+  overflow: hidden;
+  border: 1px solid #6f8089;
+  border-radius: 0 0 10px 10px;
+  background: #e9eef0;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    0 14px 30px rgba(35,46,52,.20);
+}
+
+.photo-page-shell .content-window-body {
+  padding: 16px;
+  background:
+    linear-gradient(180deg, #f7f9fa 0%, #e8edef 100%);
+}
+
+.photo-hero {
+  min-height: 148px;
+  padding: 20px 22px;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: end;
+  gap: 24px;
+  border: 1px solid #758891;
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at 50% -30%, rgba(255,255,255,.95), transparent 48%),
+    linear-gradient(180deg, #f8fcfd 0%, #dfe9ed 100%);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 4px 10px rgba(38,52,59,.13);
+}
+
+.photo-kicker {
+  margin: 0 0 7px;
+  color: #64747c;
+  font: 700 9px/1 "Courier New", monospace;
+  letter-spacing: .08em;
+}
+
+.photo-hero h1 {
+  margin: 0;
+  color: #182d38;
+  font: 800 clamp(38px, 7vw, 72px)/.9 "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -.055em;
+}
+
+.photo-hero > div > p:last-child {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: #4c5d65;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.photo-status {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 94px);
+  gap: 7px;
+}
+
+.photo-status div {
+  min-height: 62px;
+  padding: 8px;
+  border: 1px solid #87969e;
+  border-radius: 5px;
+  background:
+    linear-gradient(180deg, #fff 0%, #eef4f6 48%, #d5e0e5 54%, #f4f8fa 100%);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(40,53,60,.14);
+}
+
+.photo-status dt {
+  color: #66777f;
+  font: 700 8px/1 "Courier New", monospace;
+}
+
+.photo-status dd {
+  margin: 9px 0 0;
+  color: #2381aa;
+  font: 500 24px/1 "Courier New", monospace;
+}
+
+.photo-toolbar {
+  margin-top: 12px;
+  padding: 7px;
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  border: 1px solid #7c8d95;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #f8fafb 0%, #dce5e9 100%);
+  box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgba(42,55,62,.13);
+}
+
+.photo-library-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.photo-upload-button,
+.photo-toolbar-button {
+  min-height: 38px;
+  border: 1px solid #71848e;
+  border-radius: 7px;
+  color: #2a4350;
+  background:
+    radial-gradient(ellipse at 50% -8%, rgba(255,255,255,.95) 0 18%, transparent 52%),
+    linear-gradient(180deg, #fff 0%, #eef7fa 43%, #bedce8 52%, #e8f4f8 100%);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -2px 3px rgba(58,82,94,.12),
+    0 1px 2px rgba(39,54,62,.17);
+  text-shadow: 0 1px 0 #fff;
+  font-family: "Lucida Grande", "Segoe UI", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.photo-upload-button {
+  min-width: 196px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.photo-upload-plus {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #63869a;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #fff, #d2ebf5 52%, #a5d3e5 56%, #edf9fd);
+  font-size: 17px;
+}
+
+.photo-upload-button b,
+.photo-upload-button small {
+  display: block;
+  text-align: left;
+}
+
+.photo-upload-button b {
+  font-size: 10px;
+}
+
+.photo-upload-button small {
+  margin-top: 2px;
+  color: #697b84;
+  font-size: 8px;
+}
+
+.photo-toolbar-button {
+  padding: 0 11px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.photo-toolbar-button.is-danger,
+.photo-viewer-footer .is-danger {
+  border-color: #967079;
+  color: #703540;
+  background: linear-gradient(180deg, #fff, #f6e4e8 45%, #deb0b9 54%, #f4d9df);
+}
+
+.photo-toolbar-button:active,
+.photo-upload-button:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(43,66,77,.20);
+}
+
+.photo-drop-zone {
+  min-height: 82px;
+  margin-top: 10px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed #899aa2;
+  border-radius: 7px;
+  color: #6c7c84;
+  background: rgba(255,255,255,.52);
+}
+
+.photo-drop-zone.is-dragover {
+  border-color: #319ac5;
+  color: #26647e;
+  background: #e5f7fd;
+  box-shadow: inset 0 0 0 2px rgba(73,176,216,.10);
+}
+
+.photo-drop-copy {
+  text-align: center;
+}
+
+.photo-drop-copy b,
+.photo-drop-copy span {
+  display: block;
+}
+
+.photo-drop-copy b {
+  font: 800 10px/1 "Courier New", monospace;
+  letter-spacing: .09em;
+}
+
+.photo-drop-copy span {
+  margin-top: 6px;
+  font-size: 9px;
+}
+
+.photo-library-status {
+  min-height: 25px;
+  margin-top: 8px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #9ba8ae;
+  border-radius: 4px;
+  color: #60717a;
+  background: linear-gradient(180deg, #f9fbfc, #e6ecef);
+  font: 700 8px/1 "Courier New", monospace;
+}
+
+.photo-grid {
+  min-height: 240px;
+  margin-top: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  align-content: start;
+  gap: 10px;
+  border: 1px solid #7c8c94;
+  border-radius: 7px;
+  background: #d9e0e3;
+  box-shadow: inset 0 2px 4px rgba(54,70,78,.10);
+}
+
+.photo-empty {
+  grid-column: 1 / -1;
+  margin: 70px 0;
+  color: #718088;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.photo-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid #75868f;
+  border-radius: 5px;
+  background: #bfc7cb;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 2px 4px rgba(42,54,61,.13);
+}
+
+.photo-tile.is-selected {
+  outline: 3px solid #44a9d1;
+  outline-offset: 1px;
+}
+
+.photo-tile-open {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  display: block;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.photo-tile img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.photo-tile-select {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  z-index: 2;
+  top: 5px;
+  left: 5px;
+  border: 1px solid #6d7f88;
+  border-radius: 5px;
+  color: #264653;
+  background: rgba(247,251,252,.92);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.14);
+  font-weight: 900;
+}
+
+.photo-tile.is-selected .photo-tile-select {
+  color: #fff;
+  border-color: #267ea4;
+  background: #43abd3;
+  text-shadow: 0 -1px 0 #20708e;
+}
+
+.photo-tile-name {
+  max-width: calc(100% - 10px);
+  padding: 4px 6px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  overflow: hidden;
+  color: #fff;
+  background: rgba(32,48,57,.76);
+  font: 700 8px/1 "Courier New", monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.photo-viewer {
+  width: min(900px, calc(100vw - 28px));
+  padding: 0;
+  border: 1px solid #627984;
+  border-radius: 10px;
+  background: #dce5e9;
+  box-shadow: 0 24px 70px rgba(20,30,36,.45);
+}
+
+.photo-viewer::backdrop {
+  background: rgba(25,31,35,.68);
+  backdrop-filter: blur(3px);
+}
+
+.photo-viewer-bar {
+  height: 31px;
+  padding: 0 6px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  background: linear-gradient(180deg, #dff8ff 0%, #72c8e6 14%, #2499c7 52%, #62bddb 100%);
+  font: 700 9px/1 "Courier New", monospace;
+  text-shadow: 0 -1px 0 #28647c;
+}
+
+.photo-viewer-bar button {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #976d76;
+  border-radius: 6px;
+  color: #702d3a;
+  background: linear-gradient(180deg, #fff, #f3d3d9 48%, #db9ba6 54%, #f3ccd3);
+}
+
+.photo-viewer-stage {
+  min-height: min(72vh, 680px);
+  display: grid;
+  grid-template-columns: 46px minmax(0,1fr) 46px;
+  align-items: center;
+  background: #20272b;
+}
+
+.photo-viewer-stage img {
+  width: 100%;
+  height: min(72vh, 680px);
+  object-fit: contain;
+}
+
+.photo-viewer-nav {
+  width: 36px;
+  height: 58px;
+  margin: auto;
+  border: 1px solid #76868e;
+  border-radius: 18px;
+  color: #fff;
+  background: rgba(214,225,230,.25);
+  font-size: 30px;
+}
+
+.photo-viewer-footer {
+  min-height: 42px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #586a73;
+  background: linear-gradient(180deg, #f7f9fa, #dce5e9);
+  font: 700 9px/1 "Courier New", monospace;
+}
+
+.photo-viewer-footer button {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid #8e7077;
+  border-radius: 6px;
+}
+
+@media (max-width: 720px) {
+  .photo-page-shell .content-window-body {
+    padding: 8px;
+  }
+
+  .photo-hero {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .photo-status {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .photo-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .photo-upload-button {
+    width: 100%;
+  }
+
+  .photo-toolbar-button {
+    min-height: 44px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .photo-viewer-stage {
+    grid-template-columns: 40px minmax(0,1fr) 40px;
+  }
+}
+
+
+/* =========================================================
+   PHOTO / GITHUB PUBLIC ARCHIVE v20
+   Viewer-only site UI. Upload/delete controls do not exist.
+   ========================================================= */
+
+.photo-public-toolbar {
+  min-height: 52px;
+  margin-top: 12px;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid #7c8d95;
+  border-radius: 7px;
+  background:
+    radial-gradient(ellipse at 50% -30%, rgba(255,255,255,.88), transparent 54%),
+    linear-gradient(180deg, #f8fafb 0%, #dce5e9 100%);
+  box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgba(42,55,62,.13);
+}
+
+.photo-public-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #334b56;
+}
+
+.photo-public-status b,
+.photo-public-status small {
+  display: block;
+}
+
+.photo-public-status b {
+  font: 800 9px/1.2 "Courier New", monospace;
+  letter-spacing: .055em;
+}
+
+.photo-public-status small {
+  margin-top: 3px;
+  color: #71828a;
+  font: 700 8px/1.2 "Courier New", monospace;
+}
+
+.photo-public-led {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #3d7650;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fff 0 13%, #99e0a8 17%, #53ad6b 58%, #2e7041 100%);
+  box-shadow: 0 0 5px rgba(66,158,87,.28);
+}
+
+.photo-public-help {
+  color: #697a82;
+  font-size: 9px;
+}
+
+.photo-tile {
+  cursor: default;
+}
+
+.photo-tile-open {
+  cursor: zoom-in;
+}
+
+.photo-viewer-readonly {
+  color: #718089;
+  font: 700 8px/1 "Courier New", monospace;
+  letter-spacing: .08em;
+}
+
+@media (max-width: 720px) {
+  .photo-public-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .photo-public-help {
+    padding-left: 19px;
+  }
+}
