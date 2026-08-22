@@ -13,7 +13,7 @@
   body {
     overflow-x: clip;
     overflow-wrap: break-word;
-    font-size: 16px;
+    font-size: 15.5px;
   }
 
   :where(p, li, dd) {
@@ -23,7 +23,7 @@
   /* Shared window chrome and navigation */
   body.home-page,
   body.subpage {
-    --shared-tab-height: 48px;
+    --shared-tab-height: 44px;
   }
 
   body.home-page .shared-titlebar,
@@ -120,8 +120,8 @@
   .home-page .feature-copy,
   .home-page .magazine-info-panel,
   .home-page .recommendation-loading {
-    font-size: 15px !important;
-    line-height: 1.75 !important;
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
   }
 
   .home-page .about-card h2,
@@ -130,21 +130,21 @@
   }
 
   .home-page .recommendation-copy strong {
-    font-size: 15px !important;
-    line-height: 1.45 !important;
+    font-size: 14.5px !important;
+    line-height: 1.35 !important;
   }
 
   .home-page .recommendation-copy small,
   .home-page .recommendation-copy > span {
     font-size: 11px !important;
-    line-height: 1.45 !important;
+    line-height: 1.35 !important;
   }
 
   .home-page :is(.read-button, .pill-button, .magazine-read-button),
   .home-page .notes-panel .shuffle-button {
     min-height: 44px !important;
     height: auto !important;
-    padding: 10px 14px !important;
+    padding: 8px 14px !important;
     font-size: 12px !important;
     line-height: 1.2 !important;
   }
@@ -205,43 +205,43 @@
 
   .article-page-shell .article-display-title {
     font-size: clamp(23px, 7.2vw, 30px) !important;
-    line-height: 1.45 !important;
+    line-height: 1.32 !important;
   }
 
   .article-page-shell .article-subtitle {
-    font-size: 15px !important;
-    line-height: 1.75 !important;
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
   }
 
   .article-page-shell .article-lede p,
   .article-page-shell .article-body > p,
   .article-page-shell .article-body blockquote p {
-    font-size: 16px !important;
-    line-height: 1.95 !important;
+    font-size: 15.5px !important;
+    line-height: 1.75 !important;
     letter-spacing: 0.015em !important;
   }
 
   .article-page-shell .article-body > h2 {
     font-size: clamp(24px, 7vw, 29px) !important;
-    line-height: 1.45 !important;
+    line-height: 1.32 !important;
   }
 
   .article-page-shell .article-body > h3 {
-    font-size: 21px !important;
-    line-height: 1.5 !important;
+    font-size: 20px !important;
+    line-height: 1.35 !important;
   }
 
   .article-page-shell .toc li,
   .article-page-shell .toc a {
-    font-size: 15px !important;
-    line-height: 1.65 !important;
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
   }
 
   .article-page-shell .toc a {
     display: flex;
     align-items: center;
     min-height: 44px;
-    padding-block: 7px;
+    padding-block: 4px;
   }
 
   .article-page-shell :is(.article-tags-list span, .article-share-line,
@@ -253,8 +253,8 @@
 
   /* ABOUT and CREDITS */
   body.subpage.about-page-shell .subpage-feature-hero .about-lead {
-    font-size: 16px !important;
-    line-height: 1.75 !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
   }
 
   .about-page-shell .content-window-body {
@@ -273,12 +273,12 @@
   .credits-page-shell .credits-hero > p:last-child,
   .credits-page-shell .credits-list li,
   .credits-page-shell .credits-note p {
-    font-size: 16px !important;
-    line-height: 1.9 !important;
+    font-size: 15.5px !important;
+    line-height: 1.75 !important;
   }
 
   .about-page-shell .about-copy-panel .about-body p {
-    margin-bottom: 1.05em !important;
+    margin-bottom: 0.75em !important;
   }
 
   .about-page-shell .profile-facts {
@@ -294,7 +294,7 @@
   .about-page-shell .about-switcher button,
   .about-page-shell .fake-ad,
   .about-page-shell .about-status {
-    min-height: 48px !important;
+    min-height: 44px !important;
   }
 
   .about-page-shell .section-toolbar h2,
@@ -307,8 +307,8 @@
   .fashion-page .fashion-video-info > p:not(.fashion-channel-name),
   .fashion-page .article-card .description {
     color: #26363e !important;
-    font-size: 15px !important;
-    line-height: 1.8 !important;
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
   }
 
   .fashion-page .fashion-hero-copy > p:last-child {
@@ -322,19 +322,19 @@
 
   .fashion-page .fashion-stream-card-body h3,
   .fashion-page .article-card h2 {
-    font-size: 18px !important;
-    line-height: 1.45 !important;
+    font-size: 17px !important;
+    line-height: 1.35 !important;
   }
 
   .fashion-page .fashion-card-tags {
-    font-size: 12px !important;
-    line-height: 1.55 !important;
+    font-size: 11.5px !important;
+    line-height: 1.4 !important;
   }
 
   .fashion-page :is(.fashion-card-meta, .fashion-stream-meta,
       .fashion-article-stats, .fashion-player-controls) {
-    font-size: 11px !important;
-    line-height: 1.45 !important;
+    font-size: 10.5px !important;
+    line-height: 1.3 !important;
   }
 
   .fashion-page :is(.fashion-hero-play, .fashion-read-button),
@@ -347,25 +347,25 @@
 
   .fashion-page .fashion-hero-play,
   .fashion-page .fashion-read-button {
-    padding: 10px 14px !important;
-    font-size: 14px !important;
-    line-height: 1.3 !important;
+    padding: 8px 12px !important;
+    font-size: 13.5px !important;
+    line-height: 1.2 !important;
   }
 
   /* MAGAZINE COLLECTION */
   .magazine-page-shell .magazine-archive-copy > p:last-child {
     color: #26363e !important;
-    font-size: 15px !important;
-    line-height: 1.8 !important;
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
   }
 
   .magazine-page-shell .magazine-category-group a {
     display: flex;
     align-items: center;
-    min-height: 44px;
-    padding-block: 8px;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
+    min-height: 36px;
+    padding-block: 4px;
+    font-size: 13px !important;
+    line-height: 1.3 !important;
   }
 
   .magazine-page-shell .magazine-search-field input {
@@ -376,25 +376,25 @@
   .magazine-page-shell .magazine-breadcrumbs a {
     display: inline-flex;
     align-items: center;
-    min-height: 32px;
+    min-height: 28px;
     padding-inline: 4px;
   }
 
   .magazine-page-shell .magazine-item-copy h3 {
-    font-size: 16px !important;
-    line-height: 1.45 !important;
+    font-size: 15px !important;
+    line-height: 1.35 !important;
   }
 
   .magazine-page-shell .magazine-item-copy p {
-    font-size: 13px !important;
-    line-height: 1.65 !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
   }
 
   /* PHOTO CABINET */
   .photo-page-shell .photo-hero > div > p:last-child,
   .photo-page-shell .photo-empty {
-    font-size: 15px !important;
-    line-height: 1.8 !important;
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
   }
 
   .photo-page-shell .photo-public-help,
@@ -424,10 +424,215 @@
     font-size: 16px !important;
   }
 
+  /* Denser mobile rhythm: reduce decorative empty space, not content. */
+  .home-page .portal-banner {
+    min-height: 128px !important;
+    margin: 8px 8px 0 !important;
+    padding: 16px 18px 18px !important;
+    gap: 6px !important;
+    border-radius: 16px !important;
+  }
+
+  .home-page .portal-brand {
+    width: min(440px, 68vw) !important;
+    height: 60px !important;
+  }
+
+  .home-page .portal-copy p {
+    margin-block: 4px 0 !important;
+  }
+
+  .home-page .magazine-grid {
+    padding: 8px !important;
+    gap: 12px !important;
+  }
+
+  .home-page .feature-body {
+    padding: 10px !important;
+  }
+
+  .home-page .feature-body h1 {
+    margin-block: 7px 5px !important;
+    font-size: 24px !important;
+    line-height: 1.28 !important;
+  }
+
+  .home-page .feature-copy {
+    margin-bottom: 9px !important;
+  }
+
+  .home-page .recommendation-grid {
+    padding: 8px !important;
+    gap: 8px !important;
+  }
+
+  .home-page .about-card {
+    padding: 14px !important;
+  }
+
+  .home-page .about-card h2 {
+    margin-block: 6px !important;
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  body.subpage .content-window-body {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  body.subpage .subpage-feature-hero {
+    min-height: 148px !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    border-radius: 14px !important;
+  }
+
+  body.subpage.fashion-page .subpage-feature-hero h1[data-material-heading="rhinestone"] {
+    font-size: clamp(38px, 12vw, 54px) !important;
+  }
+
+  body.subpage.about-page-shell .subpage-feature-hero h1[data-material-heading="paper"] {
+    font-size: clamp(34px, 11vw, 48px) !important;
+  }
+
+  .article-page-shell .article-intro {
+    margin-bottom: 18px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .article-page-shell .article-opening-grid {
+    gap: 14px !important;
+  }
+
+  .article-page-shell .article-display-title {
+    margin-bottom: 8px !important;
+  }
+
+  .article-page-shell .article-subtitle {
+    margin-bottom: 8px !important;
+  }
+
+  .article-page-shell .article-publish-meta {
+    margin: 8px 0 10px !important;
+  }
+
+  .article-page-shell .article-lede {
+    margin-top: 16px !important;
+    padding-top: 14px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .article-page-shell .article-lede p {
+    margin-bottom: 12px !important;
+  }
+
+  .article-page-shell .article-body > p {
+    margin-top: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .article-page-shell .article-body > h2 {
+    margin-top: 28px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .article-page-shell .article-body > h3 {
+    margin-top: 22px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .article-page-shell .article-body > :is(.toc, .article-figure, .image-comparison, blockquote) {
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .about-page-shell .profile-deck {
+    padding: 8px !important;
+    gap: 8px !important;
+  }
+
+  .about-page-shell .profile-ticket .profile-motion {
+    height: 132px !important;
+    min-height: 132px !important;
+  }
+
+  .about-page-shell .about-dashboard-v2,
+  .about-page-shell .about-sponsor-rail {
+    gap: 10px !important;
+  }
+
+  .about-page-shell .about-switcher {
+    margin-top: 6px !important;
+    padding-top: 6px !important;
+    gap: 6px !important;
+  }
+
+  .about-page-shell .about-story-switch {
+    margin-top: 10px !important;
+  }
+
+  .fashion-page .fashion-channel-strip {
+    min-height: 34px !important;
+    padding: 6px 10px !important;
+    gap: 10px !important;
+  }
+
+  .fashion-page .fashion-latest {
+    padding-bottom: 12px !important;
+  }
+
+  .fashion-page .fashion-latest-heading {
+    min-height: 46px !important;
+    padding: 8px 10px 4px !important;
+  }
+
+  .fashion-page .fashion-latest-rail {
+    padding: 6px 8px 10px !important;
+    gap: 10px !important;
+  }
+
+  .fashion-page .fashion-stream-card-body {
+    padding: 8px !important;
+  }
+
+  .magazine-page-shell .magazine-archive-hero {
+    padding: 16px !important;
+    gap: 12px !important;
+  }
+
+  .magazine-page-shell .magazine-archive-copy > p:last-child {
+    margin-top: 8px !important;
+  }
+
+  .magazine-page-shell .magazine-shop-shell {
+    gap: 10px !important;
+  }
+
+  .magazine-page-shell .magazine-card-grid {
+    gap: 10px !important;
+  }
+
+  .photo-page-shell .photo-hero {
+    min-height: 0 !important;
+    padding: 12px !important;
+    gap: 10px !important;
+  }
+
+  .photo-page-shell .photo-hero > div > p:last-child {
+    margin-top: 8px !important;
+  }
+
+  .photo-page-shell .photo-public-toolbar,
+  .photo-page-shell .photo-library-status {
+    padding: 8px 10px !important;
+  }
+
   /* Utility pages */
   .not-found-page .subpage-main p {
-    font-size: 16px !important;
-    line-height: 1.8 !important;
+    font-size: 15.5px !important;
+    line-height: 1.65 !important;
   }
 
   .not-found-page .subpage-main a,
