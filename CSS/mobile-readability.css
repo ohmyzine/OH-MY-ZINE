@@ -1,0 +1,454 @@
+/* =========================================================
+   OH MY ZINE / MOBILE READABILITY
+   Keeps the compact 2000s GUI details while making reading
+   text and touch controls comfortable on narrow screens.
+   ========================================================= */
+
+@media (max-width: 720px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    overflow-x: clip;
+    overflow-wrap: break-word;
+    font-size: 16px;
+  }
+
+  :where(p, li, dd) {
+    text-wrap: pretty;
+  }
+
+  /* Shared window chrome and navigation */
+  body.home-page,
+  body.subpage {
+    --shared-tab-height: 48px;
+  }
+
+  body.home-page .shared-titlebar,
+  body.subpage .shared-titlebar {
+    padding-inline: 10px !important;
+  }
+
+  body.home-page .shared-brand,
+  body.subpage .shared-brand {
+    min-height: 44px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  body.home-page .shared-window-controls button,
+  body.subpage .shared-window-controls button {
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+  }
+
+  body.home-page .shared-tabs > a,
+  body.home-page .shared-tabs > span,
+  body.subpage .shared-tabs > a,
+  body.subpage .shared-tabs > span {
+    height: var(--shared-tab-height) !important;
+    min-height: var(--shared-tab-height) !important;
+    padding-inline: 3px !important;
+    font-size: clamp(10px, 2.7vw, 12px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .shared-search-toggle {
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+  }
+
+  .shared-search-toggle > span {
+    top: 10px;
+    left: 10px;
+  }
+
+  .shared-search-panel {
+    width: calc(100% - 16px);
+    right: 8px;
+    padding: 14px;
+  }
+
+  .shared-search-panel label {
+    font-size: 12px;
+  }
+
+  .shared-search-input-row {
+    grid-template-columns: minmax(0, 1fr) 52px;
+    gap: 8px;
+  }
+
+  .shared-search-input-row input,
+  .shared-search-input-row button {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .shared-search-results a,
+  .shared-search-results p {
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* The app frame already supplies its own mobile gutter. Remove the
+     inherited desktop main padding so narrow screens keep a readable line. */
+  body.subpage .subpage-main,
+  .article-page-shell .subpage-main.article-page {
+    padding-inline: 0 !important;
+  }
+
+  /* Small labels stay compact, but no longer become illegible. */
+  :is(.ui-chip, .micro-label, .category-tag, .magazine-kicker,
+      .magazine-section-note, .photo-kicker, .fashion-file-label,
+      .fashion-channel-name, .article-column-label) {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  /* HOME */
+  .home-page .portal-copy p,
+  .home-page .about-card > p:not(.micro-label),
+  .home-page .feature-copy,
+  .home-page .magazine-info-panel,
+  .home-page .recommendation-loading {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+  }
+
+  .home-page .about-card h2,
+  .home-page .feature-body h1 {
+    line-height: 1.4 !important;
+  }
+
+  .home-page .recommendation-copy strong {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+  }
+
+  .home-page .recommendation-copy small,
+  .home-page .recommendation-copy > span {
+    font-size: 11px !important;
+    line-height: 1.45 !important;
+  }
+
+  .home-page :is(.read-button, .pill-button, .magazine-read-button),
+  .home-page .notes-panel .shuffle-button {
+    min-height: 44px !important;
+    height: auto !important;
+    padding: 10px 14px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+  }
+
+  .home-page .photo-controls button {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  .home-page #magazine-info-button,
+  .home-page #magazine-close-button {
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+  }
+
+  .home-page .photo-cabinet-link {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px !important;
+    padding: 8px 12px !important;
+  }
+
+  .home-page .window-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding-inline: 8px;
+  }
+
+  /* ARTICLE */
+  .article-page-shell .article-body {
+    width: 100% !important;
+  }
+
+  .article-page-shell .article-intro {
+    padding-inline: 14px !important;
+  }
+
+  .article-page-shell .article-lede {
+    padding-inline: 12px !important;
+  }
+
+  .article-page-shell .article-body > p,
+  .article-page-shell .article-body > h2,
+  .article-page-shell .article-body > h3,
+  .article-page-shell .article-body > blockquote,
+  .article-page-shell .article-body > .toc,
+  .article-page-shell .article-body > .article-figure,
+  .article-page-shell .article-body > .image-comparison,
+  .article-page-shell .article-body > .article-ending,
+  .article-page-shell .article-body > .article-back-top-wrap {
+    max-width: none !important;
+    margin-inline: 16px !important;
+  }
+
+  .article-page-shell .article-display-title {
+    font-size: clamp(23px, 7.2vw, 30px) !important;
+    line-height: 1.45 !important;
+  }
+
+  .article-page-shell .article-subtitle {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+  }
+
+  .article-page-shell .article-lede p,
+  .article-page-shell .article-body > p,
+  .article-page-shell .article-body blockquote p {
+    font-size: 16px !important;
+    line-height: 1.95 !important;
+    letter-spacing: 0.015em !important;
+  }
+
+  .article-page-shell .article-body > h2 {
+    font-size: clamp(24px, 7vw, 29px) !important;
+    line-height: 1.45 !important;
+  }
+
+  .article-page-shell .article-body > h3 {
+    font-size: 21px !important;
+    line-height: 1.5 !important;
+  }
+
+  .article-page-shell .toc li,
+  .article-page-shell .toc a {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  .article-page-shell .toc a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: 7px;
+  }
+
+  .article-page-shell :is(.article-tags-list span, .article-share-line,
+      .figure-caption, .image-source, .comparison-caption,
+      .article-publish-meta) {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ABOUT and CREDITS */
+  body.subpage.about-page-shell .subpage-feature-hero .about-lead {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+  }
+
+  .about-page-shell .content-window-body {
+    padding-inline: 8px !important;
+  }
+
+  .about-page-shell .about-copy-panel {
+    margin-inline: 0 !important;
+  }
+
+  .about-page-shell .about-copy-panel .about-body {
+    padding-inline: 16px !important;
+  }
+
+  .about-page-shell .about-copy-panel .about-body p,
+  .credits-page-shell .credits-hero > p:last-child,
+  .credits-page-shell .credits-list li,
+  .credits-page-shell .credits-note p {
+    font-size: 16px !important;
+    line-height: 1.9 !important;
+  }
+
+  .about-page-shell .about-copy-panel .about-body p {
+    margin-bottom: 1.05em !important;
+  }
+
+  .about-page-shell .profile-facts {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  .about-page-shell .about-switcher span {
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+  }
+
+  .about-page-shell .about-switcher button,
+  .about-page-shell .fake-ad,
+  .about-page-shell .about-status {
+    min-height: 48px !important;
+  }
+
+  .about-page-shell .section-toolbar h2,
+  .credits-page-shell .credits-list h2 {
+    line-height: 1.4 !important;
+  }
+
+  /* FASHION */
+  .fashion-page .fashion-hero-copy > p:last-child,
+  .fashion-page .fashion-video-info > p:not(.fashion-channel-name),
+  .fashion-page .article-card .description {
+    color: #26363e !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+
+  .fashion-page .fashion-hero-copy > p:last-child {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .fashion-page .subpage-feature-hero {
+    padding-inline: 16px !important;
+  }
+
+  .fashion-page .fashion-stream-card-body h3,
+  .fashion-page .article-card h2 {
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+  }
+
+  .fashion-page .fashion-card-tags {
+    font-size: 12px !important;
+    line-height: 1.55 !important;
+  }
+
+  .fashion-page :is(.fashion-card-meta, .fashion-stream-meta,
+      .fashion-article-stats, .fashion-player-controls) {
+    font-size: 11px !important;
+    line-height: 1.45 !important;
+  }
+
+  .fashion-page :is(.fashion-hero-play, .fashion-read-button),
+  .fashion-page :is(.fashion-hero-add, .fashion-hero-rate),
+  .fashion-page .fashion-card-controls > :is(a, button),
+  .fashion-page .fashion-player-controls > a {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  .fashion-page .fashion-hero-play,
+  .fashion-page .fashion-read-button {
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* MAGAZINE COLLECTION */
+  .magazine-page-shell .magazine-archive-copy > p:last-child {
+    color: #26363e !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+
+  .magazine-page-shell .magazine-category-group a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: 8px;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  .magazine-page-shell .magazine-search-field input {
+    min-height: 44px;
+    font-size: 16px !important;
+  }
+
+  .magazine-page-shell .magazine-breadcrumbs a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding-inline: 4px;
+  }
+
+  .magazine-page-shell .magazine-item-copy h3 {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+
+  .magazine-page-shell .magazine-item-copy p {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* PHOTO CABINET */
+  .photo-page-shell .photo-hero > div > p:last-child,
+  .photo-page-shell .photo-empty {
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+
+  .photo-page-shell .photo-public-help,
+  .photo-page-shell .photo-tile-name {
+    font-size: 12px !important;
+    line-height: 1.55 !important;
+  }
+
+  .photo-page-shell .photo-public-status b {
+    font-size: 11px !important;
+  }
+
+  .photo-page-shell .photo-public-status small,
+  .photo-page-shell .photo-viewer-readonly {
+    font-size: 10px !important;
+  }
+
+  .photo-page-shell .photo-tile-open,
+  .photo-viewer :is(.photo-viewer-nav, #photo-viewer-close) {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  .article-page-shell .article-newsletter :is(input, button) {
+    min-height: 44px !important;
+    height: 44px !important;
+    font-size: 16px !important;
+  }
+
+  /* Utility pages */
+  .not-found-page .subpage-main p {
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+  }
+
+  .not-found-page .subpage-main a,
+  .credits-page-shell .credits-list a {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  body.home-page .shared-tabs > a,
+  body.home-page .shared-tabs > span,
+  body.subpage .shared-tabs > a,
+  body.subpage .shared-tabs > span {
+    font-size: 9px !important;
+  }
+
+  .article-page-shell .article-lede p,
+  .article-page-shell .article-body > p,
+  .article-page-shell .article-body blockquote p,
+  .about-page-shell .about-copy-panel .about-body p,
+  .credits-page-shell .credits-list li {
+    font-size: 15.5px !important;
+  }
+}
