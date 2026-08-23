@@ -1,6 +1,8 @@
 (() => {
   "use strict";
 
+  if (window.OHMYZINE_OS_STAGE_HOST) return;
+
   const recommendationGrid = document.querySelector("#recommendation-grid");
   const shuffleButton = document.querySelector("#recommendation-shuffle");
   const magazineWindow = document.querySelector(".magazine-window");

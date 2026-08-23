@@ -1,6 +1,8 @@
 (() => {
   "use strict";
 
+  if (window.OHMYZINE_OS_STAGE_HOST) return;
+
   if (document.documentElement.dataset.sharedUiReady === "true") return;
   document.documentElement.dataset.sharedUiReady = "true";
 

@@ -425,45 +425,196 @@
   }
 
   /* Denser mobile rhythm: reduce decorative empty space, not content. */
+  body.home-page .shared-titlebar {
+    height: 44px !important;
+    min-height: 44px !important;
+  }
+
+  body.home-page .shared-brand {
+    height: 44px !important;
+    min-height: 44px !important;
+    padding-block: 0 !important;
+  }
+
   .home-page .portal-banner {
-    min-height: 128px !important;
-    margin: 8px 8px 0 !important;
-    padding: 16px 18px 18px !important;
-    gap: 6px !important;
-    border-radius: 16px !important;
+    min-height: 0 !important;
+    margin: 6px 8px 0 !important;
+    padding: 6px 12px 7px !important;
+    gap: 0 !important;
+    border-radius: 12px !important;
+  }
+
+  .home-page .portal-copy {
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    grid-template-areas:
+      "issue brand"
+      "tagline tagline";
+    align-items: center;
+    column-gap: 10px;
+    text-align: left;
+  }
+
+  .home-page .portal-copy > span {
+    grid-area: issue;
+    font-size: 7px !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.08em !important;
   }
 
   .home-page .portal-brand {
-    width: min(440px, 68vw) !important;
-    height: 60px !important;
+    width: 100% !important;
+    max-width: 220px !important;
+    height: 34px !important;
+    margin: 0 !important;
+    grid-area: brand;
   }
 
   .home-page .portal-copy p {
-    margin-block: 4px 0 !important;
+    margin: 2px 0 0 !important;
+    grid-area: tagline;
+    overflow: hidden;
+    font-size: 11.5px !important;
+    line-height: 1.25 !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .home-page .portal-star,
+  .home-page .portal-banner > small {
+    display: none !important;
   }
 
   .home-page .magazine-grid {
-    padding: 8px !important;
-    gap: 12px !important;
+    padding: 7px 8px 8px !important;
+    gap: 8px !important;
+  }
+
+  .home-page .center-column {
+    gap: 8px !important;
+  }
+
+  .home-page .feature-panel .panel-titlebar {
+    height: 26px !important;
   }
 
   .home-page .feature-body {
-    padding: 10px !important;
+    padding: 8px !important;
+  }
+
+  .home-page .feature-link {
+    display: grid !important;
+    grid-template-columns: minmax(112px, 36%) minmax(0, 1fr);
+    grid-template-rows: auto auto auto minmax(44px, auto);
+    column-gap: 9px;
+    row-gap: 4px;
+  }
+
+  .home-page .feature-image-wrap {
+    min-height: 174px;
+    grid-column: 1;
+    grid-row: 1 / 5;
+  }
+
+  .home-page .feature-image {
+    height: 100% !important;
+    aspect-ratio: auto !important;
+  }
+
+  .home-page .category-tag {
+    margin: 0 !important;
+    padding: 4px 6px !important;
+    align-self: start;
   }
 
   .home-page .feature-body h1 {
-    margin-block: 7px 5px !important;
-    font-size: 24px !important;
-    line-height: 1.28 !important;
+    margin: 0 !important;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 18px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.035em !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
   }
 
   .home-page .feature-copy {
-    margin-bottom: 9px !important;
+    margin: 0 !important;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 12.5px !important;
+    line-height: 1.4 !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  body.home-page .feature-panel .feature-body .feature-link > .read-button {
+    min-height: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+    padding: 7px 10px !important;
+    align-self: end;
+    font-size: 10px !important;
+  }
+
+  body.home-page .feature-panel .feature-body .feature-link > .read-button .capsule-word {
+    font-size: 0 !important;
+    letter-spacing: 0 !important;
+  }
+
+  body.home-page .feature-panel .feature-body .feature-link > .read-button .capsule-word::after {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  body.home-page .feature-panel .feature-body .feature-link > .read-button .capsule-word-left::after {
+    content: "記事を";
+  }
+
+  body.home-page .feature-panel .feature-body .feature-link > .read-button .capsule-word-right::after {
+    content: "読む";
+  }
+
+  .home-page .notes-panel .panel-titlebar {
+    height: 34px !important;
+  }
+
+  body.home-page .notes-panel .shuffle-button {
+    min-height: 30px !important;
+    height: 30px !important;
+    padding: 4px 8px !important;
+    font-size: 10px !important;
   }
 
   .home-page .recommendation-grid {
-    padding: 8px !important;
-    gap: 8px !important;
+    padding: 6px !important;
+    gap: 6px !important;
+  }
+
+  .home-page .recommendation-copy small {
+    top: 5px;
+    right: 5px;
+    bottom: auto;
+    max-width: calc(100% - 10px);
+    padding: 3px 5px;
+    font-size: 9px !important;
+  }
+
+  .home-page .recommendation-copy strong {
+    left: 5px;
+    bottom: 5px;
+    max-width: calc(100% - 10px);
+    padding: 4px 5px;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 11.5px !important;
+    line-height: 1.25 !important;
+    opacity: 1;
+    transform: none;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .home-page .about-card {

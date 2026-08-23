@@ -1,6 +1,8 @@
 (() => {
   "use strict";
 
+  if (window.OHMYZINE_OS_STAGE_HOST) return;
+
   const progress = document.querySelector("[data-reading-progress]");
 
   const updateProgress = () => {

@@ -1,6 +1,8 @@
 (() => {
   "use strict";
 
+  if (window.OHMYZINE_OS_STAGE_HOST) return;
+
   const video = document.querySelector(".profile-motion video");
   const source = video?.querySelector("source[data-src]");
 

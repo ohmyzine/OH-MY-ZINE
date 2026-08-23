@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  if (window.OHMYZINE_OS_STAGE_HOST) return;
+
   var buttons = Array.prototype.slice.call(document.querySelectorAll(".js-article-toggle"));
   if (!buttons.length) return;
 

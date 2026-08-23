@@ -1,6 +1,8 @@
 (() => {
   "use strict";
 
+  if (window.OHMYZINE_OS_STAGE_HOST) return;
+
   const MANIFEST_URL = "data/photos.json";
 
   const grid = document.querySelector("#photo-grid");

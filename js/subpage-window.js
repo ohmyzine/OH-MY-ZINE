@@ -1,4 +1,6 @@
 (() => {
+  if (window.OHMYZINE_OS_STAGE_HOST) return;
+
   const page = document.body;
   const appWindow = document.querySelector(".shared-app-window");
   const isSubpage = page.classList.contains("subpage");
