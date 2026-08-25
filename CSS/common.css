@@ -1355,7 +1355,7 @@ body.subpage {
 .shared-app-window {
   width: var(--shared-app-width);
   max-width: none;
-  min-height: calc(100vh - clamp(24px, 4.8vw, 68px));
+  min-height: 0;
   margin: 0 auto !important;
   position: relative;
   overflow: hidden !important;
@@ -1381,7 +1381,7 @@ body.subpage .shared-app-window > .subpage-header {
   max-width: none;
   min-width: 0;
   margin: 0 !important;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   background: #e7ebed;
 }
 
@@ -1525,4 +1525,3 @@ body.subpage.is-subpage-maximized {
   body.subpage { padding: 8px; }
   .shared-app-window { border-radius: 17px !important; }
 }
-

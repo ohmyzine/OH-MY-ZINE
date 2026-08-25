@@ -3,7 +3,7 @@
 
   const STAGE_PARAMETER = "ohmy_stage";
   const DESKTOP_STAGE_WIDTH = 1440;
-  const PHONE_STAGE_WIDTH = 1260;
+  const PHONE_STAGE_WIDTH = 1220;
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
   const screenShortEdge = Math.min(window.screen.width, window.screen.height);
