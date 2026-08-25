@@ -56,60 +56,60 @@
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
-        min-height: 288px !important;
-        margin-top: 29px !important;
-        padding-block: 55px !important;
+        min-height: 280px !important;
+        margin-top: 28px !important;
+        padding-block: 52px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .magazine-grid {
-        padding-block: 34px !important;
+        padding-block: 31px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .left-column,
       html.ohmy-native-phone-stage body.home-page .center-column {
-        gap: 33px !important;
+        gap: 30px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .right-column {
-        gap: 25px !important;
+        gap: 23px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .photo-vault,
       html.ohmy-native-phone-stage body.home-page .photo-vault > img {
-        min-height: 510px !important;
+        min-height: 495px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .about-card {
-        padding-block: 35px !important;
+        padding-block: 32px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .feature-body {
-        padding-block: 27px !important;
+        padding-block: 25px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .feature-image {
-        aspect-ratio: 16 / 10.2 !important;
+        aspect-ratio: 16 / 10 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .recommendation-grid {
-        padding-block: 22px !important;
-        gap: 17px !important;
+        padding-block: 20px !important;
+        gap: 16px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .recommendation-card {
-        aspect-ratio: 1.23 / 1 !important;
+        aspect-ratio: 1.28 / 1 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-ad-stack {
-        gap: 20px !important;
+        gap: 18px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .magazine-widget-shell {
-        padding-block: 24px !important;
+        padding-block: 22px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .window-footer {
-        min-height: 58px !important;
+        min-height: 56px !important;
         padding-block: 8px !important;
       }
 
