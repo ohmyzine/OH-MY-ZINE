@@ -5,6 +5,9 @@
   const DESKTOP_STAGE_WIDTH = 1440;
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
+  const isTouchPhone =
+    navigator.maxTouchPoints > 0 &&
+    Math.min(window.screen.width, window.screen.height) <= 820;
 
   if (currentUrl.searchParams.get(STAGE_PARAMETER) === "1") {
     document.documentElement.classList.add("ohmy-os-stage-frame");
@@ -52,9 +55,27 @@
     let desktopHeight = 900;
     let measureTimer = 0;
     let resizeFrame = 0;
+    let phoneViewportWidth = document.documentElement.clientWidth;
+
+    function isPinchZoomed() {
+      const scale = window.visualViewport?.scale ?? 1;
+      return Math.abs(scale - 1) > 0.01;
+    }
+
+    function syncPhoneViewportWidth() {
+      if (!isTouchPhone || isPinchZoomed()) return;
+
+      const nextWidth = document.documentElement.clientWidth;
+      if (nextWidth > 0 && nextWidth <= STAGE_BREAKPOINT) {
+        phoneViewportWidth = nextWidth;
+      }
+    }
 
     function stageScale() {
-      return stageViewport.clientWidth / DESKTOP_STAGE_WIDTH;
+      const viewportWidth = isTouchPhone
+        ? phoneViewportWidth
+        : stageViewport.clientWidth;
+      return viewportWidth / DESKTOP_STAGE_WIDTH;
     }
 
     function applyStageSize() {
@@ -165,12 +186,18 @@
 
     stageFrame.addEventListener("load", connectFrameDocument);
     window.addEventListener("resize", () => {
-      if (document.documentElement.clientWidth > STAGE_BREAKPOINT) {
+      /* Safari fires resize while a person pinches the page. On phones, keep
+         the original layout width so zoom remains native and never reloads.
+         The non-phone branch is intentionally unchanged for desktop use. */
+      if (isTouchPhone) {
+        if (isPinchZoomed()) return;
+        syncPhoneViewportWidth();
+      } else if (document.documentElement.clientWidth > STAGE_BREAKPOINT) {
         window.location.reload();
         return;
       }
       applyStageSize();
-    });
+    }, { passive: true });
 
     applyStageSize();
   }
