@@ -5,15 +5,33 @@
    ========================================================= */
 
 @media (max-width: 720px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
 
   body {
-    overflow-x: clip;
     overflow-wrap: break-word;
     font-size: 15.5px;
+  }
+
+  body.home-page .home-main,
+  body.subpage,
+  .shared-app-window,
+  .shared-page-base,
+  body.subpage .subpage-main,
+  body.subpage .content-window {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   :where(p, li, dd) {
