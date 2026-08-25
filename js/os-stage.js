@@ -55,6 +55,64 @@
         height: auto !important;
       }
 
+      html.ohmy-native-phone-stage body.home-page .portal-banner {
+        min-height: 250px !important;
+        margin-top: 24px !important;
+        padding-block: 44px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .magazine-grid {
+        padding-block: 26px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .left-column,
+      html.ohmy-native-phone-stage body.home-page .center-column {
+        gap: 22px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .right-column {
+        gap: 18px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .photo-vault,
+      html.ohmy-native-phone-stage body.home-page .photo-vault > img {
+        min-height: 460px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .about-card {
+        padding-block: 26px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .feature-body {
+        padding-block: 20px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .feature-image {
+        aspect-ratio: 16 / 9.2 !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .recommendation-grid {
+        padding-block: 16px !important;
+        gap: 12px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .recommendation-card {
+        aspect-ratio: 1.35 / 1 !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .home-ad-stack {
+        gap: 14px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .magazine-widget-shell {
+        padding-block: 18px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .window-footer {
+        min-height: 48px !important;
+        padding-block: 6px !important;
+      }
+
     `;
     document.head.append(phoneStageSizing);
     return;
