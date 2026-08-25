@@ -37,8 +37,19 @@
     phoneStageSizing.id = "ohmy-native-phone-stage-sizing";
     phoneStageSizing.textContent = `
       html.ohmy-native-phone-stage body.home-page .home-main,
-      html.ohmy-native-phone-stage body.subpage,
+      html.ohmy-native-phone-stage body.subpage {
+        min-height: 0 !important;
+        height: auto !important;
+      }
+
       html.ohmy-native-phone-stage .shared-app-window {
+        display: block !important;
+        min-height: 0 !important;
+        height: auto !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-page-base {
+        flex: none !important;
         min-height: 0 !important;
         height: auto !important;
       }
