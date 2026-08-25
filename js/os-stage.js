@@ -53,6 +53,38 @@
         min-height: 0 !important;
         height: auto !important;
       }
+
+      html.ohmy-native-phone-stage body.home-page,
+      html.ohmy-native-phone-stage body.subpage {
+        --shared-titlebar-height: 80px;
+      }
+
+      html.ohmy-native-phone-stage .shared-titlebar {
+        min-height: 80px !important;
+        padding-inline: 26px !important;
+        font-size: 20px !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-brand {
+        gap: 12px !important;
+        padding-block: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-brand .shared-brand-icon {
+        width: 34px !important;
+        height: 34px !important;
+        flex-basis: 34px !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-window-controls {
+        gap: 8px !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-window-controls button {
+        width: 38px !important;
+        height: 34px !important;
+        font-size: 15px !important;
+      }
     `;
     document.head.append(phoneStageSizing);
     return;
