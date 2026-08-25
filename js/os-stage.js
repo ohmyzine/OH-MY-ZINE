@@ -32,6 +32,18 @@
       ].join(", "),
     );
     document.documentElement.classList.add("ohmy-native-phone-stage");
+
+    const phoneStageSizing = document.createElement("style");
+    phoneStageSizing.id = "ohmy-native-phone-stage-sizing";
+    phoneStageSizing.textContent = `
+      html.ohmy-native-phone-stage body.home-page .home-main,
+      html.ohmy-native-phone-stage body.subpage,
+      html.ohmy-native-phone-stage .shared-app-window {
+        min-height: 0 !important;
+        height: auto !important;
+      }
+    `;
+    document.head.append(phoneStageSizing);
     return;
   }
 
