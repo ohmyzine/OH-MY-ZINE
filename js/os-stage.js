@@ -5,9 +5,35 @@
   const DESKTOP_STAGE_WIDTH = 1440;
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
+  const screenShortEdge = Math.min(window.screen.width, window.screen.height);
+  const screenLongEdge = Math.max(window.screen.width, window.screen.height);
+  const reportsMobile =
+    navigator.userAgentData?.mobile === true ||
+    /iPhone|iPod|Android.+Mobile/i.test(navigator.userAgent);
   const isTouchPhone =
     navigator.maxTouchPoints > 0 &&
-    Math.min(window.screen.width, window.screen.height) <= 820;
+    (reportsMobile || (screenShortEdge <= 600 && screenLongEdge <= 1000));
+
+  if (isTouchPhone) {
+    const viewport = document.querySelector('meta[name="viewport"]');
+    const visibleWidth = window.visualViewport
+      ? window.visualViewport.width * window.visualViewport.scale
+      : document.documentElement.clientWidth || window.innerWidth;
+    const initialScale = Math.min(1, visibleWidth / DESKTOP_STAGE_WIDTH);
+
+    viewport?.setAttribute(
+      "content",
+      [
+        `width=${DESKTOP_STAGE_WIDTH}`,
+        `initial-scale=${initialScale.toFixed(6)}`,
+        "minimum-scale=0.1",
+        "maximum-scale=5",
+        "user-scalable=yes",
+      ].join(", "),
+    );
+    document.documentElement.classList.add("ohmy-native-phone-stage");
+    return;
+  }
 
   if (currentUrl.searchParams.get(STAGE_PARAMETER) === "1") {
     document.documentElement.classList.add("ohmy-os-stage-frame");
@@ -55,27 +81,9 @@
     let desktopHeight = 900;
     let measureTimer = 0;
     let resizeFrame = 0;
-    let phoneViewportWidth = document.documentElement.clientWidth;
-
-    function isPinchZoomed() {
-      const scale = window.visualViewport?.scale ?? 1;
-      return Math.abs(scale - 1) > 0.01;
-    }
-
-    function syncPhoneViewportWidth() {
-      if (!isTouchPhone || isPinchZoomed()) return;
-
-      const nextWidth = document.documentElement.clientWidth;
-      if (nextWidth > 0 && nextWidth <= STAGE_BREAKPOINT) {
-        phoneViewportWidth = nextWidth;
-      }
-    }
 
     function stageScale() {
-      const viewportWidth = isTouchPhone
-        ? phoneViewportWidth
-        : stageViewport.clientWidth;
-      return viewportWidth / DESKTOP_STAGE_WIDTH;
+      return stageViewport.clientWidth / DESKTOP_STAGE_WIDTH;
     }
 
     function applyStageSize() {
@@ -186,18 +194,12 @@
 
     stageFrame.addEventListener("load", connectFrameDocument);
     window.addEventListener("resize", () => {
-      /* Safari fires resize while a person pinches the page. On phones, keep
-         the original layout width so zoom remains native and never reloads.
-         The non-phone branch is intentionally unchanged for desktop use. */
-      if (isTouchPhone) {
-        if (isPinchZoomed()) return;
-        syncPhoneViewportWidth();
-      } else if (document.documentElement.clientWidth > STAGE_BREAKPOINT) {
+      if (document.documentElement.clientWidth > STAGE_BREAKPOINT) {
         window.location.reload();
         return;
       }
       applyStageSize();
-    }, { passive: true });
+    });
 
     applyStageSize();
   }
