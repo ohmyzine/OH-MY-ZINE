@@ -55,6 +55,13 @@
         height: auto !important;
       }
 
+      @media (orientation: portrait) {
+        html.ohmy-native-phone-stage body.home-page:not(.window-maximized) .home-main,
+        html.ohmy-native-phone-stage body.subpage:not(.is-subpage-maximized) {
+          padding-top: 290px !important;
+        }
+      }
+
       html.ohmy-native-phone-stage body.home-page .portal-banner {
         min-height: 280px !important;
         margin-top: 28px !important;
