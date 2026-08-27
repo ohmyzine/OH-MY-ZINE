@@ -52,10 +52,25 @@
         height: auto !important;
       }
 
-      html.ohmy-native-phone-stage .shared-app-window {
+      html.ohmy-native-phone-stage .shared-app-window,
+      html.ohmy-native-phone-stage .phone-fashion-base {
         display: block !important;
         min-height: 0 !important;
         height: auto !important;
+      }
+
+      html.ohmy-native-phone-stage .phone-fashion-base {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        position: relative;
+        overflow: hidden !important;
+        border-style: solid !important;
+        border-color: #6b6e73 !important;
+        background: #d5d7da !important;
+        box-shadow:
+          0 2.5vw 5.357143vw rgba(25, 22, 20, 0.28),
+          inset 0 0.178571vw 0 rgba(255, 255, 255, 0.9) !important;
       }
 
       html.ohmy-native-phone-stage .shared-page-base {
@@ -64,8 +79,8 @@
         height: auto !important;
       }
 
-      html.ohmy-native-phone-stage body.home-page .shared-app-window > .desktop-site-chrome,
-      html.ohmy-native-phone-stage body.subpage .shared-app-window > .subpage-header.desktop-site-chrome {
+      html.ohmy-native-phone-stage .phone-fashion-base > .desktop-site-chrome,
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-base > .subpage-header.desktop-site-chrome {
         display: none !important;
       }
 
@@ -73,19 +88,7 @@
         display: block !important;
       }
 
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .phone-fashion-header-slot {
-        display: block !important;
-        height: ${98 * (PHONE_OVERVIEW_STAGE_WIDTH / PHONE_READING_STAGE_WIDTH)}px;
-        overflow: hidden;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .phone-fashion-header-slot .phone-fashion-header {
-        width: ${(PHONE_READING_STAGE_WIDTH / PHONE_OVERVIEW_STAGE_WIDTH) * 100}% !important;
-        transform: scale(${PHONE_OVERVIEW_STAGE_WIDTH / PHONE_READING_STAGE_WIDTH});
-        transform-origin: top left;
-      }
-
-      html.ohmy-native-phone-stage body.home-page .phone-fashion-header .shared-window-controls button[data-window-action="close"] {
+      html.ohmy-native-phone-stage .phone-fashion-header .shared-window-controls button[data-window-action="close"] {
         border-color: #8c2c27 !important;
         color: #fff !important;
         background: linear-gradient(180deg, #f8a59e 0%, #d9534b 46%, #972019 52%, #cb443c 100%) !important;
@@ -118,24 +121,46 @@
         filter: brightness(1.08) saturate(1.12) !important;
       }
 
-      /* Copied from FASHION's active mobile chrome rules. */
+      /* FASHION's 560px phone frame is the source for every phone page. */
       html.ohmy-native-phone-stage body.home-page,
       html.ohmy-native-phone-stage body.subpage {
         --shared-app-width: 100%;
-        --shared-tab-height: 44px;
+        --shared-titlebar-height: 8.571429vw;
+        --shared-tab-height: 7.857143vw;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .home-main,
+      html.ohmy-native-phone-stage body.subpage {
+        padding-inline: 1.428571vw !important;
+      }
+
+      html.ohmy-native-phone-stage .phone-fashion-base {
+        border-width: 0.357143vw !important;
+        border-radius: 3.035714vw !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-titlebar,
       html.ohmy-native-phone-stage body.subpage .shared-titlebar {
-        padding-inline: 10px !important;
+        min-height: var(--shared-titlebar-height) !important;
+        padding-inline: 1.785714vw !important;
+        border-bottom-width: 0.178571vw !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand,
       html.ohmy-native-phone-stage body.subpage .shared-brand {
         min-width: 0;
-        min-height: 44px !important;
-        font-size: 11px !important;
+        min-height: 7.857143vw !important;
+        padding-block: 1.785714vw !important;
+        gap: 1.25vw !important;
+        font-size: 1.964286vw !important;
         letter-spacing: 0.04em !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-brand .shared-brand-icon,
+      html.ohmy-native-phone-stage body.subpage .shared-brand .shared-brand-icon {
+        width: 3.571429vw !important;
+        height: 3.571429vw !important;
+        flex-basis: 3.571429vw !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand > span,
@@ -148,10 +173,18 @@
 
       html.ohmy-native-phone-stage body.home-page .shared-window-controls button,
       html.ohmy-native-phone-stage body.subpage .shared-window-controls button {
-        width: 32px !important;
-        min-width: 32px !important;
-        height: 32px !important;
-        min-height: 32px !important;
+        width: 5.714286vw !important;
+        min-width: 5.714286vw !important;
+        height: 5.714286vw !important;
+        min-height: 5.714286vw !important;
+        border-width: 0.178571vw !important;
+        border-radius: 0.357143vw !important;
+        font-size: 1.785714vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-window-controls,
+      html.ohmy-native-phone-stage body.subpage .shared-window-controls {
+        gap: 0.892857vw !important;
       }
 
       html.ohmy-native-phone-stage .shared-visitor-counter {
@@ -205,7 +238,8 @@
       html.ohmy-native-phone-stage body.home-page .shared-tabs,
       html.ohmy-native-phone-stage body.subpage .shared-tabs {
         grid-template-columns: repeat(5, minmax(0, 1fr));
-        padding-inline: 8px;
+        padding-inline: 1.428571vw;
+        border-bottom-width: 1.071429vw;
         overflow: hidden;
       }
 
@@ -216,12 +250,23 @@
         min-width: 0;
         height: var(--shared-tab-height) !important;
         min-height: var(--shared-tab-height) !important;
-        padding-inline: 3px !important;
+        padding-inline: 0.535714vw !important;
         white-space: normal;
         text-align: center;
-        font-size: clamp(10px, 2.7vw, 12px) !important;
+        font-size: 2.142857vw !important;
         line-height: 1.15 !important;
         letter-spacing: 0.01em !important;
+        border-width: 0.178571vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-tabs > :first-child,
+      html.ohmy-native-phone-stage body.subpage .shared-tabs > :first-child {
+        border-radius: 1.428571vw 0 0 1.428571vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-tabs > :last-child,
+      html.ohmy-native-phone-stage body.subpage .shared-tabs > :last-child {
+        border-radius: 0 1.428571vw 1.428571vw 0 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page:not(.window-maximized) .home-main,
