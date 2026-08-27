@@ -9,7 +9,9 @@
   const currentUrl = new URL(window.location.href);
   const currentPage = currentUrl.pathname.split("/").pop()?.toLowerCase() || "index.html";
   const isPhoneOverview =
-    currentPage === "index.html" || currentPage === "about.html";
+    currentPage === "index.html" ||
+    currentPage === "about.html" ||
+    currentPage === "magazine.html";
   const screenShortEdge = Math.min(window.screen.width, window.screen.height);
   const screenLongEdge = Math.max(window.screen.width, window.screen.height);
   const reportsMobile =

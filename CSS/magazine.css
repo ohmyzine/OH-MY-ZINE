@@ -916,3 +916,122 @@
     display: block;
   }
 }
+
+/* Phone Magazine Collection keeps the PC archive layout; only categories become a drawer. */
+html.ohmy-native-phone-stage body.magazine-store-page.is-magazine-category-open {
+  overflow: hidden !important;
+}
+
+html.ohmy-native-phone-stage body.magazine-store-page.is-magazine-category-open .phone-fashion-base {
+  overflow: visible !important;
+}
+
+html.ohmy-native-phone-stage .magazine-mobile-storebar {
+  min-height: 64px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #d4d7d8;
+  background: #f7f8f8;
+}
+
+html.ohmy-native-phone-stage .magazine-mobile-storebar > strong {
+  color: #243740;
+  font: 900 16px/1 "Courier New", monospace;
+  letter-spacing: .08em;
+}
+
+html.ohmy-native-phone-stage .magazine-mobile-menu-button {
+  width: 48px;
+  height: 48px;
+  padding: 9px 7px;
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  border: 0;
+  color: #182a32;
+  background: transparent;
+}
+
+html.ohmy-native-phone-stage .magazine-mobile-menu-button span {
+  height: 3px;
+  display: block;
+  border-radius: 99px;
+  background: currentColor;
+}
+
+html.ohmy-native-phone-stage .magazine-mobile-arrival-title {
+  display: none !important;
+}
+
+html.ohmy-native-phone-stage .magazine-shop-shell {
+  display: block !important;
+}
+
+html.ohmy-native-phone-stage .magazine-category-panel {
+  width: min(78vw, 640px) !important;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding: 28px 30px 40px !important;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10001;
+  overflow-y: auto;
+  border: 0 !important;
+  background: #fff !important;
+  box-shadow: 12px 0 30px rgba(0, 0, 0, .18) !important;
+  transform: translateX(-110%);
+  transition: transform 180ms ease;
+}
+
+html.ohmy-native-phone-stage body.is-magazine-category-open .magazine-category-panel {
+  transform: translateX(0);
+}
+
+html.ohmy-native-phone-stage .magazine-panel-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+html.ohmy-native-phone-stage .magazine-category-close {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  color: #111;
+  background: transparent;
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+html.ohmy-native-phone-stage .magazine-category-group h3 {
+  margin-top: 28px;
+  font-size: 20px;
+}
+
+html.ohmy-native-phone-stage .magazine-category-group ul {
+  gap: 20px;
+}
+
+html.ohmy-native-phone-stage .magazine-category-group a {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+html.ohmy-native-phone-stage .magazine-category-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  border: 0;
+  background: rgba(0, 0, 0, .34);
+}
+
+html.ohmy-native-phone-stage body.is-magazine-category-open .magazine-category-backdrop {
+  display: block;
+}

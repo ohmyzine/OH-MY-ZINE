@@ -1533,3 +1533,16 @@ body.subpage.about-page-shell {
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
 }
+
+/* Phone ABOUT: keep desktop content styling, remove side promos, and read in one column. */
+html.ohmy-native-phone-stage .about-page-shell .about-dashboard-v2 {
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-areas:
+    "profile"
+    "story" !important;
+}
+
+html.ohmy-native-phone-stage .about-page-shell .about-sponsor-rail,
+html.ohmy-native-phone-stage .about-page-shell .milk-bottle-card {
+  display: none !important;
+}
