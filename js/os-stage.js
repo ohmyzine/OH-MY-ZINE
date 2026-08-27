@@ -250,14 +250,6 @@
         overflow: hidden;
       }
 
-      /* FASHION's lower chrome line copied onto HOME, replacing the thin one. */
-      html.ohmy-native-phone-stage body.home-page .shared-tabs {
-        border-bottom: 1.071429vw solid #59656b !important;
-        box-shadow:
-          inset 0 1px 0 #fff,
-          0 2px 0 #cbd1d4 !important;
-      }
-
       html.ohmy-native-phone-stage body.home-page .shared-tabs > a,
       html.ohmy-native-phone-stage body.home-page .shared-tabs > span,
       html.ohmy-native-phone-stage body.subpage .shared-tabs > a,
@@ -291,13 +283,6 @@
 
       html.ohmy-native-phone-stage body.subpage .subpage-main {
         padding-top: 0 !important;
-      }
-
-      /* HOME's 28px opening gap copied to every phone page. */
-      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .content-window,
-      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .subpage-main > .content-window,
-      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main > .content-window {
-        margin-top: 28px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
