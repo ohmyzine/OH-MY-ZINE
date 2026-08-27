@@ -260,16 +260,11 @@
       html.ohmy-native-phone-stage body.subpage .shared-tabs {
         grid-template-columns: repeat(5, minmax(0, 1fr));
         padding-inline: 1.428571vw;
-        border-bottom-width: 1.071429vw;
-        overflow: hidden;
-      }
-
-      /* Match HOME's phone separator to FASHION's 560px source proportions. */
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-tabs {
-        border-bottom: 1.071429vw solid #59656b !important;
+        border-bottom: 6px solid #59656b !important;
         box-shadow:
-          inset 0 0.178571vw 0 #fff,
-          0 0.357143vw 0 #cbd1d4 !important;
+          inset 0 1px 0 #fff,
+          0 2px 0 #cbd1d4 !important;
+        overflow: hidden;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs > a,

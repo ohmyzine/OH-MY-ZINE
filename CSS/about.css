@@ -1546,3 +1546,8 @@ html.ohmy-native-phone-stage .about-page-shell .about-sponsor-rail,
 html.ohmy-native-phone-stage .about-page-shell .milk-bottle-card {
   display: none !important;
 }
+
+/* The desktop layout pulls this panel upward by 142px. Keep phone sections in normal flow. */
+html.ohmy-native-phone-stage .about-page-shell .about-story-switch {
+  margin-top: 0 !important;
+}

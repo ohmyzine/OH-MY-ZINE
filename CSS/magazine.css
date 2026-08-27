@@ -970,13 +970,13 @@ html.ohmy-native-phone-stage .magazine-shop-shell {
 }
 
 html.ohmy-native-phone-stage .magazine-category-panel {
-  width: min(78vw, 640px) !important;
-  height: 100dvh;
-  max-height: 100dvh;
-  padding: 28px 30px 40px !important;
+  width: min(64vw, 620px) !important;
+  height: calc(100dvh - var(--magazine-category-drawer-top, 0px));
+  max-height: calc(100dvh - var(--magazine-category-drawer-top, 0px));
+  padding: 22px 24px 36px !important;
   position: fixed;
-  top: 0;
-  bottom: 0;
+  top: var(--magazine-category-drawer-top, 0px);
+  bottom: auto;
   left: 0;
   z-index: 10001;
   overflow-y: auto;
@@ -997,39 +997,55 @@ html.ohmy-native-phone-stage .magazine-panel-title {
   justify-content: space-between;
 }
 
+html.ohmy-native-phone-stage .magazine-panel-title > div {
+  display: grid;
+  gap: 8px;
+}
+
+html.ohmy-native-phone-stage .magazine-panel-title strong {
+  font-size: 16px;
+}
+
+html.ohmy-native-phone-stage .magazine-panel-title span {
+  font-size: 10px;
+}
+
 html.ohmy-native-phone-stage .magazine-category-close {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   display: grid;
   place-items: center;
-  border: 0;
-  color: #111;
-  background: transparent;
-  font-size: 38px;
-  font-weight: 300;
+  border: 2px solid #e16a9f;
+  color: #7f2850;
+  background: #fff;
+  font-size: 18px;
+  font-weight: 500;
   line-height: 1;
 }
 
 html.ohmy-native-phone-stage .magazine-category-group h3 {
-  margin-top: 28px;
-  font-size: 20px;
+  margin-top: 24px;
+  font-size: 16px;
 }
 
 html.ohmy-native-phone-stage .magazine-category-group ul {
-  gap: 20px;
+  gap: 16px;
 }
 
 html.ohmy-native-phone-stage .magazine-category-group a {
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
 html.ohmy-native-phone-stage .magazine-category-backdrop {
   position: fixed;
-  inset: 0;
+  top: var(--magazine-category-drawer-top, 0px);
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 10000;
   border: 0;
-  background: rgba(0, 0, 0, .34);
+  background: rgba(0, 0, 0, .08);
 }
 
 html.ohmy-native-phone-stage body.is-magazine-category-open .magazine-category-backdrop {
