@@ -62,6 +62,7 @@
       html.ohmy-native-phone-stage .phone-fashion-base {
         width: 100% !important;
         max-width: none !important;
+        min-height: 33.333vh !important;
         margin: 0 auto !important;
         position: relative;
         overflow: hidden !important;
@@ -77,6 +78,10 @@
         flex: none !important;
         min-height: 0 !important;
         height: auto !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .home-page-base {
+        background: #d5d7da !important;
       }
 
       html.ohmy-native-phone-stage .phone-fashion-base > .desktop-site-chrome,
