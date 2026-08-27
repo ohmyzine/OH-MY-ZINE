@@ -87,71 +87,67 @@
         filter: brightness(1.08) saturate(1.12) !important;
       }
 
+      /* Copied from the article's active mobile chrome rules. */
+      html.ohmy-native-phone-stage body.home-page,
+      html.ohmy-native-phone-stage body.subpage {
+        --shared-app-width: 100%;
+        --shared-tab-height: 44px;
+      }
+
       html.ohmy-native-phone-stage body.home-page .shared-titlebar,
       html.ohmy-native-phone-stage body.subpage .shared-titlebar {
-        min-height: 9.5vw !important;
-        padding-inline: 3vw 2.5vw !important;
-        font-size: 2vw !important;
-        letter-spacing: 0.06em !important;
-        touch-action: pan-y pinch-zoom !important;
+        padding-inline: 10px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand,
       html.ohmy-native-phone-stage body.subpage .shared-brand {
-        padding-block: 1.9vw !important;
-        gap: 1vw !important;
+        min-width: 0;
+        min-height: 44px !important;
+        font-size: 11px !important;
+        letter-spacing: 0.04em !important;
       }
 
-      html.ohmy-native-phone-stage body.home-page .shared-brand .shared-brand-icon,
-      html.ohmy-native-phone-stage body.subpage .shared-brand .shared-brand-icon {
-        width: 3.6vw !important;
-        height: 3.6vw !important;
-        flex-basis: 3.6vw !important;
-      }
-
-      html.ohmy-native-phone-stage body.home-page .shared-window-controls,
-      html.ohmy-native-phone-stage body.subpage .shared-window-controls {
-        gap: 0.8vw !important;
+      html.ohmy-native-phone-stage body.home-page .shared-brand > span,
+      html.ohmy-native-phone-stage body.subpage .shared-brand > span {
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-window-controls button,
       html.ohmy-native-phone-stage body.subpage .shared-window-controls button {
-        width: 6.8vw !important;
-        height: 6.4vw !important;
-        border-radius: 0.5vw !important;
-        font-size: 2vw !important;
+        width: 32px !important;
+        min-width: 32px !important;
+        height: 32px !important;
+        min-height: 32px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs,
       html.ohmy-native-phone-stage body.subpage .shared-tabs {
-        padding-inline: 1.5vw !important;
-        border-bottom-width: 0.8vw !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        padding-inline: 8px;
+        overflow: hidden;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs > a,
       html.ohmy-native-phone-stage body.home-page .shared-tabs > span,
       html.ohmy-native-phone-stage body.subpage .shared-tabs > a,
       html.ohmy-native-phone-stage body.subpage .shared-tabs > span {
-        min-height: 8.2vw !important;
-        padding: 2.3vw 1vw 1.6vw !important;
-        font-size: 2vw !important;
-        letter-spacing: 0.035em !important;
+        min-width: 0;
+        height: var(--shared-tab-height) !important;
+        min-height: var(--shared-tab-height) !important;
+        padding-inline: 3px !important;
+        white-space: normal;
+        text-align: center;
+        font-size: clamp(10px, 2.7vw, 12px) !important;
+        line-height: 1.15 !important;
+        letter-spacing: 0.01em !important;
       }
 
-      @media (orientation: portrait) {
-        html.ohmy-native-phone-stage body.home-page:not(.window-maximized) .home-main,
-        html.ohmy-native-phone-stage body.subpage:not(.is-subpage-maximized) {
-          padding-top: 290px !important;
-        }
-
-        html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page:not(.window-maximized) .home-main {
-          padding-top: 236px !important;
-        }
-
-        html.ohmy-native-phone-stage.ohmy-phone-reading body.home-page:not(.window-maximized) .home-main,
-        html.ohmy-native-phone-stage.ohmy-phone-reading body.subpage:not(.is-subpage-maximized) {
-          padding-top: 138px !important;
-        }
+      html.ohmy-native-phone-stage body.home-page:not(.window-maximized) .home-main,
+      html.ohmy-native-phone-stage body.subpage:not(.is-subpage-maximized) {
+        padding-top: 0 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
@@ -411,7 +407,21 @@
 
       html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body {
         max-width: none !important;
-        padding-inline: 12px !important;
+        padding-inline: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > p,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h2,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h3,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > blockquote,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .toc,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-figure,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .image-comparison,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-ending,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-back-top-wrap {
+        max-width: none !important;
+        margin-right: 8px !important;
+        margin-left: 8px !important;
       }
 
       html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-intro {
@@ -446,6 +456,20 @@
         font-size: 18px !important;
         line-height: 1.85 !important;
         letter-spacing: 0.01em !important;
+        text-align: justify !important;
+        text-align-last: left !important;
+        text-justify: inter-character !important;
+        text-wrap: wrap !important;
+        line-break: strict !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-lede p {
+        max-width: none !important;
+        text-align: justify !important;
+        text-align-last: left !important;
+        text-justify: inter-character !important;
+        text-wrap: wrap !important;
+        line-break: strict !important;
       }
 
       html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h2 {
