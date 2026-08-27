@@ -74,7 +74,7 @@
       }
 
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .phone-fashion-header {
-        width: ${PHONE_READING_STAGE_WIDTH}px !important;
+        width: ${(PHONE_READING_STAGE_WIDTH / PHONE_OVERVIEW_STAGE_WIDTH) * 100}% !important;
         zoom: ${PHONE_OVERVIEW_STAGE_WIDTH / PHONE_READING_STAGE_WIDTH};
       }
 
