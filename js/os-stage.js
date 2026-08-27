@@ -3,7 +3,7 @@
 
   const STAGE_PARAMETER = "ohmy_stage";
   const DESKTOP_STAGE_WIDTH = 1440;
-  const PHONE_OVERVIEW_STAGE_WIDTH = 820;
+  const PHONE_OVERVIEW_STAGE_WIDTH = 960;
   const PHONE_READING_STAGE_WIDTH = 560;
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
@@ -89,53 +89,53 @@
 
       html.ohmy-native-phone-stage body.home-page .shared-titlebar,
       html.ohmy-native-phone-stage body.subpage .shared-titlebar {
-        min-height: 56px !important;
-        padding-inline: 24px 20px !important;
-        font-size: 14px !important;
+        min-height: 9.5vw !important;
+        padding-inline: 3vw 2.5vw !important;
+        font-size: 2vw !important;
         letter-spacing: 0.06em !important;
         touch-action: pan-y pinch-zoom !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand,
       html.ohmy-native-phone-stage body.subpage .shared-brand {
-        padding-block: 12px !important;
-        gap: 9px !important;
+        padding-block: 1.9vw !important;
+        gap: 1vw !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand .shared-brand-icon,
       html.ohmy-native-phone-stage body.subpage .shared-brand .shared-brand-icon {
-        width: 24px !important;
-        height: 24px !important;
-        flex-basis: 24px !important;
+        width: 3.6vw !important;
+        height: 3.6vw !important;
+        flex-basis: 3.6vw !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-window-controls,
       html.ohmy-native-phone-stage body.subpage .shared-window-controls {
-        gap: 7px !important;
+        gap: 0.8vw !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-window-controls button,
       html.ohmy-native-phone-stage body.subpage .shared-window-controls button {
-        width: 32px !important;
-        height: 30px !important;
-        border-radius: 4px !important;
-        font-size: 12px !important;
+        width: 6.8vw !important;
+        height: 6.4vw !important;
+        border-radius: 0.5vw !important;
+        font-size: 2vw !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs,
       html.ohmy-native-phone-stage body.subpage .shared-tabs {
-        padding-inline: 14px !important;
-        border-bottom-width: 7px !important;
+        padding-inline: 1.5vw !important;
+        border-bottom-width: 0.8vw !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs > a,
       html.ohmy-native-phone-stage body.home-page .shared-tabs > span,
       html.ohmy-native-phone-stage body.subpage .shared-tabs > a,
       html.ohmy-native-phone-stage body.subpage .shared-tabs > span {
-        min-height: 44px !important;
-        padding: 12px 10px 9px !important;
-        font-size: 13px !important;
-        letter-spacing: 0.1em !important;
+        min-height: 8.2vw !important;
+        padding: 2.3vw 1vw 1.6vw !important;
+        font-size: 2vw !important;
+        letter-spacing: 0.035em !important;
       }
 
       @media (orientation: portrait) {
@@ -145,7 +145,7 @@
         }
 
         html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page:not(.window-maximized) .home-main {
-          padding-top: 202px !important;
+          padding-top: 236px !important;
         }
 
         html.ohmy-native-phone-stage.ohmy-phone-reading body.home-page:not(.window-maximized) .home-main,
@@ -162,6 +162,18 @@
 
       html.ohmy-native-phone-stage body.home-page .magazine-grid {
         padding-block: 31px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-grid {
+        grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.75fr) minmax(0, 0.66fr) !important;
+        grid-template-areas: "left center contents" !important;
+        gap: 12px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .left-column,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .center-column,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .right-column {
+        min-width: 0 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .left-column,
@@ -298,31 +310,6 @@
       html.ohmy-native-phone-stage body.home-page .recommendation-card:active {
         outline: 4px solid #ff4f9a !important;
         outline-offset: -4px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-titlebar {
-        min-height: 66px !important;
-        font-size: 18px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-brand .shared-brand-icon {
-        width: 30px !important;
-        height: 30px !important;
-        flex-basis: 30px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-window-controls button {
-        width: 40px !important;
-        height: 38px !important;
-        font-size: 17px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-tabs > a,
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-tabs > span {
-        min-height: 52px !important;
-        padding: 15px 7px 11px !important;
-        font-size: 16px !important;
-        letter-spacing: 0.035em !important;
       }
 
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .panel-titlebar {
