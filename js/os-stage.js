@@ -64,12 +64,18 @@
         height: auto !important;
       }
 
-      html.ohmy-native-phone-stage .desktop-site-chrome {
+      html.ohmy-native-phone-stage body.home-page .shared-app-window > .desktop-site-chrome,
+      html.ohmy-native-phone-stage body.subpage .shared-app-window > .subpage-header.desktop-site-chrome {
         display: none !important;
       }
 
       html.ohmy-native-phone-stage .phone-fashion-header {
         display: block !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .phone-fashion-header {
+        width: ${PHONE_READING_STAGE_WIDTH}px !important;
+        zoom: ${PHONE_OVERVIEW_STAGE_WIDTH / PHONE_READING_STAGE_WIDTH};
       }
 
       html.ohmy-native-phone-stage {
