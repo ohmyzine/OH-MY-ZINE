@@ -3,7 +3,7 @@
 
   const STAGE_PARAMETER = "ohmy_stage";
   const DESKTOP_STAGE_WIDTH = 1440;
-  const PHONE_STAGE_WIDTH = 1220;
+  const PHONE_STAGE_WIDTH = 1180;
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
   const screenShortEdge = Math.min(window.screen.width, window.screen.height);
@@ -53,6 +53,80 @@
         flex: none !important;
         min-height: 0 !important;
         height: auto !important;
+      }
+
+      html.ohmy-native-phone-stage {
+        -webkit-text-size-adjust: 100% !important;
+        text-size-adjust: 100% !important;
+      }
+
+      html.ohmy-native-phone-stage .soft-cursor {
+        display: none !important;
+      }
+
+      html.ohmy-native-phone-stage :where(a[href], button, input, select, textarea, [role="button"], [role="tab"]) {
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: rgba(32, 184, 224, 0.34) !important;
+      }
+
+      html.ohmy-native-phone-stage :where(a[href], button, input, select, textarea, [role="button"], [role="tab"]):focus-visible {
+        outline: 3px solid #ff4f9a !important;
+        outline-offset: 3px !important;
+      }
+
+      html.ohmy-native-phone-stage :where(a[href], button, [role="button"], [role="tab"]):active {
+        filter: brightness(1.08) saturate(1.12) !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-titlebar,
+      html.ohmy-native-phone-stage body.subpage .shared-titlebar {
+        min-height: 56px !important;
+        padding-inline: 24px 20px !important;
+        font-size: 14px !important;
+        letter-spacing: 0.06em !important;
+        touch-action: pan-y pinch-zoom !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-brand,
+      html.ohmy-native-phone-stage body.subpage .shared-brand {
+        padding-block: 12px !important;
+        gap: 9px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-brand .shared-brand-icon,
+      html.ohmy-native-phone-stage body.subpage .shared-brand .shared-brand-icon {
+        width: 24px !important;
+        height: 24px !important;
+        flex-basis: 24px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-window-controls,
+      html.ohmy-native-phone-stage body.subpage .shared-window-controls {
+        gap: 7px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-window-controls button,
+      html.ohmy-native-phone-stage body.subpage .shared-window-controls button {
+        width: 32px !important;
+        height: 30px !important;
+        border-radius: 4px !important;
+        font-size: 12px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-tabs,
+      html.ohmy-native-phone-stage body.subpage .shared-tabs {
+        padding-inline: 14px !important;
+        border-bottom-width: 7px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-tabs > a,
+      html.ohmy-native-phone-stage body.home-page .shared-tabs > span,
+      html.ohmy-native-phone-stage body.subpage .shared-tabs > a,
+      html.ohmy-native-phone-stage body.subpage .shared-tabs > span {
+        min-height: 44px !important;
+        padding: 12px 10px 9px !important;
+        font-size: 13px !important;
+        letter-spacing: 0.1em !important;
       }
 
       @media (orientation: portrait) {
@@ -118,6 +192,151 @@
       html.ohmy-native-phone-stage body.home-page .window-footer {
         min-height: 56px !important;
         padding-block: 8px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .panel-titlebar {
+        height: 36px !important;
+        padding-inline: 10px !important;
+        font-size: 11px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shuffle-button {
+        min-height: 28px !important;
+        padding: 4px 10px !important;
+        font-size: 10px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .micro-label,
+      html.ohmy-native-phone-stage body.home-page .issue-label,
+      html.ohmy-native-phone-stage body.home-page .category-tag {
+        font-size: 10px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .about-card h2 {
+        font-size: 25px !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .about-card > p:not(.micro-label),
+      html.ohmy-native-phone-stage body.home-page .feature-copy {
+        color: #24343c !important;
+        font-size: 15px !important;
+        line-height: 1.65 !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .feature-body h1 {
+        font-size: clamp(29px, 3.2vw, 42px) !important;
+        line-height: 1.22 !important;
+        text-wrap: balance !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .pill-button,
+      html.ohmy-native-phone-stage body.home-page .read-button,
+      html.ohmy-native-phone-stage body.home-page .contents-button,
+      html.ohmy-native-phone-stage body.home-page .magazine-read-button,
+      html.ohmy-native-phone-stage body.home-page .magazine-shelf-button {
+        min-height: 44px !important;
+        font-size: 11px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .photo-controls {
+        min-height: 42px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .photo-controls button {
+        min-width: 34px !important;
+        min-height: 30px !important;
+        font-size: 11px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .magazine-shelf-copy {
+        color: #31434c !important;
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .recommendation-copy small {
+        top: 7px !important;
+        right: 7px !important;
+        bottom: auto !important;
+        font-size: 9px !important;
+        opacity: 1 !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .recommendation-copy strong {
+        max-width: calc(100% - 14px) !important;
+        left: 7px !important;
+        right: 7px !important;
+        bottom: 7px !important;
+        color: #fff !important;
+        background: rgba(10, 14, 20, 0.86) !important;
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        opacity: 1 !important;
+        white-space: normal !important;
+        transform: none !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .recommendation-card:active {
+        outline: 4px solid #ff4f9a !important;
+        outline-offset: -4px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > p {
+        color: #283941 !important;
+        font-size: 17px !important;
+        line-height: 1.85 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede p,
+      html.ohmy-native-phone-stage body.article-page-shell .article-intro > p:not(.ui-chip):not(.article-subtitle):not(.image-source) {
+        color: #2d4049 !important;
+        font-size: 16px !important;
+        line-height: 1.8 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc li {
+        min-height: 50px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc a {
+        font-size: 15px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-publish-meta,
+      html.ohmy-native-phone-stage body.article-page-shell .toc-title,
+      html.ohmy-native-phone-stage body.article-page-shell .article-figure figcaption,
+      html.ohmy-native-phone-stage body.article-page-shell .comparison-year,
+      html.ohmy-native-phone-stage body.article-page-shell .image-source {
+        font-size: 11px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-newsletter input,
+      html.ohmy-native-phone-stage body.article-page-shell .article-newsletter button,
+      html.ohmy-native-phone-stage body.article-page-shell .article-back-top,
+      html.ohmy-native-phone-stage body.subpage .content-window-body button,
+      html.ohmy-native-phone-stage body.subpage .content-window-body input,
+      html.ohmy-native-phone-stage body.subpage .content-window-body select {
+        min-height: 44px !important;
+        font-size: 13px !important;
+      }
+
+      html.ohmy-native-phone-stage body.about-page-shell .profile-label,
+      html.ohmy-native-phone-stage body.about-page-shell .profile-facts dt,
+      html.ohmy-native-phone-stage body.about-page-shell .about-switcher span,
+      html.ohmy-native-phone-stage body.about-page-shell .fake-ad small,
+      html.ohmy-native-phone-stage body.about-page-shell .fake-ad span {
+        font-size: 10px !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage body.about-page-shell .profile-facts dd {
+        font-size: 14px !important;
+      }
+
+      html.ohmy-native-phone-stage body.about-page-shell .about-body p {
+        font-size: 17px !important;
+        line-height: 1.85 !important;
       }
 
     `;
