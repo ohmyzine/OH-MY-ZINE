@@ -252,6 +252,14 @@
         overflow: hidden;
       }
 
+      /* Match HOME's phone separator to FASHION's 560px source proportions. */
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-tabs {
+        border-bottom: 1.071429vw solid #59656b !important;
+        box-shadow:
+          inset 0 0.178571vw 0 #fff,
+          0 0.357143vw 0 #cbd1d4 !important;
+      }
+
       html.ohmy-native-phone-stage body.home-page .shared-tabs > a,
       html.ohmy-native-phone-stage body.home-page .shared-tabs > span,
       html.ohmy-native-phone-stage body.subpage .shared-tabs > a,
