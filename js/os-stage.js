@@ -73,9 +73,26 @@
         display: block !important;
       }
 
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .phone-fashion-header {
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .phone-fashion-header-slot {
+        display: block !important;
+        height: ${98 * (PHONE_OVERVIEW_STAGE_WIDTH / PHONE_READING_STAGE_WIDTH)}px;
+        overflow: hidden;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .phone-fashion-header-slot .phone-fashion-header {
         width: ${(PHONE_READING_STAGE_WIDTH / PHONE_OVERVIEW_STAGE_WIDTH) * 100}% !important;
-        zoom: ${PHONE_OVERVIEW_STAGE_WIDTH / PHONE_READING_STAGE_WIDTH};
+        transform: scale(${PHONE_OVERVIEW_STAGE_WIDTH / PHONE_READING_STAGE_WIDTH});
+        transform-origin: top left;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .phone-fashion-header .shared-window-controls button[data-window-action="close"] {
+        border-color: #8c2c27 !important;
+        color: #fff !important;
+        background: linear-gradient(180deg, #f8a59e 0%, #d9534b 46%, #972019 52%, #cb443c 100%) !important;
+        box-shadow:
+          inset 1px 1px 0 rgba(255, 255, 255, 0.72),
+          0 1px 1px rgba(75, 24, 20, 0.32) !important;
+        text-shadow: 0 -1px 0 #791914 !important;
       }
 
       html.ohmy-native-phone-stage {
