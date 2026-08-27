@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/os-stage.js?v=20260827-os29"></script>
+  <script src="js/os-stage.js?v=20260828-os30"></script>
   <title>MAGAZINE COLLECTION | OH MY ZINE</title>
   <meta name="description" content="集めた雑誌をカテゴリごとに並べて記録するOH MY ZINEの個人マガジンアーカイブ。">
   <meta property="og:type" content="website">
@@ -13,13 +13,14 @@
   <meta property="og:description" content="古着屋や中古雑誌サイトを見る感覚で、集めた雑誌をカテゴリごとに眺められる個人アーカイブ。">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.css?v=20260825-content-height1">
-  <link rel="stylesheet" href="CSS/magazine.css?v=20260822-exporting1">
+  <link rel="stylesheet" href="CSS/common.css?v=20260828-phone-header1">
+  <link rel="stylesheet" href="CSS/magazine.css?v=20260828-mobile-shop1">
   <link rel="stylesheet" href="CSS/finishing.css?v=20260819-photo19">
   <link rel="stylesheet" href="CSS/mobile-readability.css?v=20260827-os24">
   <link rel="stylesheet" href="CSS/os-stage.css?v=20260823-os4">
   <script src="js/common.js?v=20260827-os24" defer></script>
   <script src="js/subpage-window.js?v=20260827-os24" defer></script>
+  <script src="js/magazine.js?v=20260828-mobile-shop1" defer></script>
 </head>
 
 <body class="subpage magazine-page-shell magazine-store-page">
@@ -71,6 +72,23 @@
   <main class="subpage-main shared-page-base magazine-page">
     <section class="content-window magazine-window">
       <div class="content-window-body">
+        <header class="magazine-mobile-storebar" aria-label="マガジンストアメニュー">
+          <button class="magazine-mobile-menu-button" type="button" aria-label="カテゴリーを開く" aria-controls="magazine-category-panel" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="magazine-mobile-brand">
+            <small>OH MY ZINE</small>
+            <strong>MAGAZINE COLLECTION</strong>
+          </div>
+          <span class="magazine-mobile-owned" aria-label="所有42冊">42</span>
+        </header>
+
+        <div class="magazine-mobile-arrival-title" aria-hidden="true">
+          <span></span><strong>NEW ARRIVAL</strong><span></span>
+        </div>
+
+        <button class="magazine-category-backdrop" type="button" aria-label="カテゴリーを閉じる" hidden></button>
+
         <header class="magazine-archive-hero">
           <div class="magazine-archive-copy">
             <p class="magazine-kicker">PERSONAL ARCHIVE / RESALE STYLE VIEW</p>
@@ -95,10 +113,10 @@
         </header>
 
         <section class="magazine-shop-shell" aria-labelledby="magazine-shop-title">
-          <aside class="magazine-category-panel" aria-label="カテゴリ一覧">
+          <aside class="magazine-category-panel" id="magazine-category-panel" aria-label="カテゴリ一覧" aria-hidden="false">
             <div class="magazine-panel-title">
-              <strong>HOME</strong>
-              <span>Category</span>
+              <div><strong>HOME</strong><span>Category</span></div>
+              <button class="magazine-category-close" type="button" aria-label="カテゴリーを閉じる">×</button>
             </div>
 
             <nav class="magazine-category-groups">
@@ -157,9 +175,10 @@
                 <a href="#" aria-label="5D Diesel Dream Disruption Deviation Denim の詳細を見る">
                   <div class="magazine-item-cover cover-diesel is-exporting">
                     <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                    <div class="magazine-mobile-cover-art" aria-hidden="true"><strong>5D</strong><span>DIESEL<br>DREAM<br>DENIM</span><em>2000s ARCHIVE</em></div>
                   </div>
                   <div class="magazine-item-copy">
-                    <h3>タイトル書き出し中…</h3>
+                    <h3><span class="magazine-exporting-title">タイトル書き出し中…</span><span class="magazine-mobile-item-title">5D Diesel Dream Disruption</span></h3>
                     <p>2000s / denim culture / archive book</p>
                     <div class="magazine-item-price-row">
                       <small>¥7,000</small>
@@ -173,9 +192,10 @@
                 <a href="#" aria-label="cult a visual history of jeanswear の詳細を見る">
                   <div class="magazine-item-cover cover-cult is-exporting">
                     <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                    <div class="magazine-mobile-cover-art" aria-hidden="true"><strong>CULT</strong><span>A VISUAL HISTORY<br>OF JEANSWEAR</span><em>AMERICAN ORIGINALS</em></div>
                   </div>
                   <div class="magazine-item-copy">
-                    <h3>タイトル書き出し中…</h3>
+                    <h3><span class="magazine-exporting-title">タイトル書き出し中…</span><span class="magazine-mobile-item-title">CULT — A Visual History of Jeanswear</span></h3>
                     <p>visual archive / American originals</p>
                     <div class="magazine-item-price-row">
                       <small>¥15,000</small>
@@ -189,9 +209,10 @@
                 <a href="#" aria-label="asayan アサヤン 021 の詳細を見る">
                   <div class="magazine-item-cover cover-asayan-blue is-exporting">
                     <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                    <div class="magazine-mobile-cover-art" aria-hidden="true"><strong>asayan</strong><span>021</span><em>JEANS</em></div>
                   </div>
                   <div class="magazine-item-copy">
-                    <h3>タイトル書き出し中…</h3>
+                    <h3><span class="magazine-exporting-title">タイトル書き出し中…</span><span class="magazine-mobile-item-title">asayan アサヤン 021</span></h3>
                     <p>Japanese street / denim special</p>
                     <div class="magazine-item-price-row">
                       <small>¥2,000</small>
@@ -205,9 +226,10 @@
                 <a href="#" aria-label="asayan アサヤン 041 の詳細を見る">
                   <div class="magazine-item-cover cover-asayan-red is-exporting">
                     <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                    <div class="magazine-mobile-cover-art" aria-hidden="true"><strong>asayan</strong><span>041</span><em>STREET</em></div>
                   </div>
                   <div class="magazine-item-copy">
-                    <h3>タイトル書き出し中…</h3>
+                    <h3><span class="magazine-exporting-title">タイトル書き出し中…</span><span class="magazine-mobile-item-title">asayan アサヤン 041</span></h3>
                     <p>street style / bootscut / spring</p>
                     <div class="magazine-item-price-row">
                       <small>¥2,200</small>
@@ -221,9 +243,10 @@
                 <a href="#" aria-label="Boon EXTRA VOL.1 プロトタイプなジーンズ の詳細を見る">
                   <div class="magazine-item-cover cover-boon-khaki is-exporting">
                     <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                    <div class="magazine-mobile-cover-art" aria-hidden="true"><strong>Boon</strong><span>EXTRA VOL.1</span><em>DENIM</em></div>
                   </div>
                   <div class="magazine-item-copy">
-                    <h3>タイトル書き出し中…</h3>
+                    <h3><span class="magazine-exporting-title">タイトル書き出し中…</span><span class="magazine-mobile-item-title">Boon EXTRA VOL.1 プロトタイプなジーンズ</span></h3>
                     <p>Boon archive / denim issue</p>
                     <div class="magazine-item-price-row">
                       <small>¥3,800</small>
@@ -237,9 +260,10 @@
                 <a href="#" aria-label="Boon EXTRA VOL.4 DENIM ディテールの書 の詳細を見る">
                   <div class="magazine-item-cover cover-boon-cream is-exporting">
                     <span class="magazine-exporting-label">サムネイル<br>書き出し中…</span>
+                    <div class="magazine-mobile-cover-art" aria-hidden="true"><strong>Boon</strong><span>EXTRA VOL.4</span><em>DETAIL BOOK</em></div>
                   </div>
                   <div class="magazine-item-copy">
-                    <h3>タイトル書き出し中…</h3>
+                    <h3><span class="magazine-exporting-title">タイトル書き出し中…</span><span class="magazine-mobile-item-title">Boon EXTRA VOL.4 DENIM ディテールの書</span></h3>
                     <p>details / labels / Lee archive</p>
                     <div class="magazine-item-price-row">
                       <small>¥4,200</small>

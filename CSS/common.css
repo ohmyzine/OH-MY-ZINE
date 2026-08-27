@@ -1371,8 +1371,13 @@ body.subpage {
 
 /* Keep the legacy subpage wrapper for JS, but remove its visual box.
    Its children then participate in exactly the same frame as HOME. */
-body.subpage .shared-app-window > .subpage-header {
+body.subpage .shared-app-window > .subpage-header:not(.phone-fashion-header) {
   display: contents !important;
+}
+
+/* The copied FASHION phone chrome must never become a second PC header. */
+body.subpage .shared-app-window > .phone-fashion-header {
+  display: none !important;
 }
 
 /* The long surface below the blue tabs is part of the shared template. */
