@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/os-stage.js?v=20260827-os22"></script>
+  <script src="js/os-stage.js?v=20260827-os23"></script>
 
   <title>OH MY ZINE | Fashion & Culture</title>
   <meta
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="CSS/mobile-readability.css?v=20260823-mobile6">
   <link rel="stylesheet" href="CSS/os-stage.css?v=20260823-os4">
   <script src="js/common.js?v=20260823-os1" defer></script>
-  <script src="js/home.js?v=20260823-os1" defer></script>
+  <script src="js/home.js?v=20260827-os23" defer></script>
 
   <style id="home-aqua-final-fix">
     /* =========================================================
@@ -210,35 +210,20 @@
   <main class="home-main" id="top">
     <section class="magazine-window shared-app-window" aria-label="OH MY ZINE ホーム">
 
-      <header class="system-bar shared-titlebar">
-        <a class="system-title shared-brand" href="index.html" aria-label="OH MY ZINE ホーム">
-          <img
-            class="system-app-icon shared-brand-icon"
-            src="images/oh-my-zine-archive-icon.png?v=magazine3"
-            alt=""
-            aria-hidden="true"
-          >
+      <header class="system-bar subpage-systembar shared-titlebar">
+        <a class="system-title subpage-brand shared-brand" href="index.html" aria-label="OH MY ZINE ホーム">
+          <img class="shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
           <span>OH_MY_ZINE.EXE</span>
         </a>
 
-        <div class="system-controls shared-window-controls" aria-label="ウィンドウ操作">
-          <button
-            id="window-minimize"
-            type="button"
-            aria-label="最小化"
-            aria-pressed="false"
-          >—</button>
-          <button
-            id="window-maximize"
-            type="button"
-            aria-label="最大化"
-            aria-pressed="false"
-          >□</button>
-          <button id="window-close" type="button" aria-label="閉じる">×</button>
+        <div class="system-controls subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
+          <button id="window-minimize" type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">—</button>
+          <button id="window-maximize" type="button" data-window-action="maximize" aria-label="最大化" aria-pressed="false">□</button>
+          <button id="window-close" type="button" data-window-action="close" aria-label="閉じる" aria-pressed="false">×</button>
         </div>
       </header>
 
-      <nav class="site-nav shared-tabs" aria-label="メインメニュー">
+      <nav class="site-nav subpage-tabs shared-tabs" aria-label="メインメニュー">
         <a href="index.html" aria-current="page">HOME</a>
         <a href="fashion.html">FASHION</a>
         <a href="magazine.html">MAGAZINE COLLECTION</a>

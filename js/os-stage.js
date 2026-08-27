@@ -87,7 +87,7 @@
         filter: brightness(1.08) saturate(1.12) !important;
       }
 
-      /* Copied from the article's active mobile chrome rules. */
+      /* Copied from FASHION's active mobile chrome rules. */
       html.ohmy-native-phone-stage body.home-page,
       html.ohmy-native-phone-stage body.subpage {
         --shared-app-width: 100%;
@@ -150,6 +150,10 @@
         padding-top: 0 !important;
       }
 
+      html.ohmy-native-phone-stage body.subpage .subpage-main {
+        padding-top: 0 !important;
+      }
+
       html.ohmy-native-phone-stage body.home-page .portal-banner {
         min-height: 280px !important;
         margin-top: 28px !important;
@@ -161,7 +165,7 @@
       }
 
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-grid {
-        grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.75fr) minmax(0, 0.66fr) !important;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr) minmax(0, 0.9fr) !important;
         grid-template-areas: "left center contents" !important;
         gap: 12px !important;
       }
@@ -401,6 +405,57 @@
         line-height: 1.3 !important;
       }
 
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .left-column .about-card h2 {
+        font-size: 23px !important;
+        line-height: 1.4 !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .left-column .about-card > p:not(.micro-label) {
+        font-size: 17px !important;
+        line-height: 1.65 !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page :is(.photo-cabinet-link, .photo-controls span) {
+        font-size: 13px !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .right-column .magazine-widget-header h2 {
+        font-size: 14px !important;
+        line-height: 1.25 !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .right-column .magazine-info-panel {
+        font-size: 12px !important;
+        line-height: 1.45 !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .right-column .magazine-widget-counts > div {
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        gap: 7px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .right-column .magazine-widget-counts :is(dt, dd) {
+        min-width: 0 !important;
+        font-size: 12px !important;
+        line-height: 1.25 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .right-column .magazine-widget-counts dt span,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .right-column .magazine-widget-counts dd span {
+        font-size: 10px !important;
+        line-height: 1.2 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .right-column .magazine-widget-counts dd strong {
+        font-size: 24px !important;
+        line-height: 1 !important;
+      }
+
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .window-footer {
         font-size: 14px !important;
       }
@@ -532,6 +587,51 @@
       html.ohmy-native-phone-stage body.subpage .content-window-body select {
         min-height: 44px !important;
         font-size: 13px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body {
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > p,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body blockquote p,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-ending {
+        margin-right: 22px !important;
+        margin-bottom: 1.45em !important;
+        margin-left: 22px !important;
+        color: #25363e !important;
+        font-size: 18px !important;
+        line-height: 1.75 !important;
+        letter-spacing: 0.015em !important;
+        text-align: start !important;
+        text-align-last: auto !important;
+        text-justify: auto !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-lede p {
+        text-align: start !important;
+        text-align-last: auto !important;
+        text-justify: auto !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h2,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h3,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > blockquote,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .toc,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-figure,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .image-comparison,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-ending,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-back-top-wrap {
+        margin-right: 22px !important;
+        margin-left: 22px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell :is(.article-figure figcaption, .comparison-caption, .image-source) {
+        font-size: 13.5px !important;
+        line-height: 1.6 !important;
+        overflow-wrap: anywhere !important;
       }
 
       html.ohmy-native-phone-stage body.about-page-shell .profile-label,

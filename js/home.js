@@ -519,7 +519,6 @@
   const ad = document.querySelector("#desktop-pet-ad");
   if (!ad) return;
 
-  const STORAGE_KEY = "oh-my-zine-desktop-pet-installed-v1";
   const PET_POSITION_KEY = "oh-my-zine-desktop-pet-position-v1";
   let installer = null;
   let pet = null;
@@ -540,16 +539,6 @@
   };
 
   const storageAvailable = canStore();
-
-  const markInstalled = () => {
-    if (!storageAvailable) return;
-    localStorage.setItem(STORAGE_KEY, "1");
-  };
-
-  const isInstalled = () => {
-    if (!storageAvailable) return false;
-    return localStorage.getItem(STORAGE_KEY) === "1";
-  };
 
   const clearTimers = () => {
     window.clearTimeout(bubbleTimer);
@@ -756,7 +745,6 @@
       <button class="pet-installer-ok" type="button">OK</button>
     `;
     body.querySelector(".pet-installer-ok")?.addEventListener("click", () => {
-      markInstalled();
       closeInstaller();
       spawnPet();
     });
@@ -824,8 +812,4 @@
     openInstaller();
   });
 
-  // Re-create the pet on repeat visits after the user has installed it once.
-  if (isInstalled()) {
-    window.setTimeout(() => spawnPet({ announce: false }), 700);
-  }
 })();
