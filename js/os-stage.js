@@ -3,9 +3,12 @@
 
   const STAGE_PARAMETER = "ohmy_stage";
   const DESKTOP_STAGE_WIDTH = 1440;
-  const PHONE_STAGE_WIDTH = 1180;
+  const PHONE_OVERVIEW_STAGE_WIDTH = 820;
+  const PHONE_READING_STAGE_WIDTH = 560;
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
+  const currentPage = currentUrl.pathname.split("/").pop()?.toLowerCase() || "index.html";
+  const isPhoneOverview = currentPage === "index.html";
   const screenShortEdge = Math.min(window.screen.width, window.screen.height);
   const screenLongEdge = Math.max(window.screen.width, window.screen.height);
   const reportsMobile =
@@ -16,16 +19,19 @@
     (reportsMobile || (screenShortEdge <= 600 && screenLongEdge <= 1000));
 
   if (isTouchPhone) {
+    const phoneStageWidth = isPhoneOverview
+      ? PHONE_OVERVIEW_STAGE_WIDTH
+      : PHONE_READING_STAGE_WIDTH;
     const viewport = document.querySelector('meta[name="viewport"]');
     const visibleWidth = window.visualViewport
       ? window.visualViewport.width * window.visualViewport.scale
       : document.documentElement.clientWidth || window.innerWidth;
-    const initialScale = Math.min(1, visibleWidth / PHONE_STAGE_WIDTH);
+    const initialScale = Math.min(1, visibleWidth / phoneStageWidth);
 
     viewport?.setAttribute(
       "content",
       [
-        `width=${PHONE_STAGE_WIDTH}`,
+        `width=${phoneStageWidth}`,
         `initial-scale=${initialScale.toFixed(6)}`,
         "minimum-scale=0.1",
         "maximum-scale=5",
@@ -33,6 +39,9 @@
       ].join(", "),
     );
     document.documentElement.classList.add("ohmy-native-phone-stage");
+    document.documentElement.classList.add(
+      isPhoneOverview ? "ohmy-phone-overview" : "ohmy-phone-reading",
+    );
 
     const phoneStageSizing = document.createElement("style");
     phoneStageSizing.id = "ohmy-native-phone-stage-sizing";
@@ -133,6 +142,15 @@
         html.ohmy-native-phone-stage body.home-page:not(.window-maximized) .home-main,
         html.ohmy-native-phone-stage body.subpage:not(.is-subpage-maximized) {
           padding-top: 290px !important;
+        }
+
+        html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page:not(.window-maximized) .home-main {
+          padding-top: 202px !important;
+        }
+
+        html.ohmy-native-phone-stage.ohmy-phone-reading body.home-page:not(.window-maximized) .home-main,
+        html.ohmy-native-phone-stage.ohmy-phone-reading body.subpage:not(.is-subpage-maximized) {
+          padding-top: 138px !important;
         }
       }
 
@@ -280,6 +298,190 @@
       html.ohmy-native-phone-stage body.home-page .recommendation-card:active {
         outline: 4px solid #ff4f9a !important;
         outline-offset: -4px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-titlebar {
+        min-height: 66px !important;
+        font-size: 18px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-brand .shared-brand-icon {
+        width: 30px !important;
+        height: 30px !important;
+        flex-basis: 30px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-window-controls button {
+        width: 40px !important;
+        height: 38px !important;
+        font-size: 17px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-tabs > a,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .shared-tabs > span {
+        min-height: 52px !important;
+        padding: 15px 7px 11px !important;
+        font-size: 16px !important;
+        letter-spacing: 0.035em !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .panel-titlebar {
+        height: 44px !important;
+        font-size: 15px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .micro-label,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .issue-label,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .category-tag {
+        font-size: 14px !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .portal-copy p,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .photo-cabinet-link,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .photo-controls span {
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .about-card h2 {
+        font-size: 29px !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .about-card > p:not(.micro-label),
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .feature-copy,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-info-panel,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .recommendation-loading {
+        color: #1f3038 !important;
+        font-size: 21px !important;
+        line-height: 1.55 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .feature-body h1 {
+        font-size: 35px !important;
+        line-height: 1.25 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .pill-button,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .read-button,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .contents-button,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-read-button,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-shelf-button {
+        min-height: 52px !important;
+        font-size: 17px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .photo-controls {
+        min-height: 50px !important;
+        font-size: 16px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .photo-controls button {
+        min-width: 42px !important;
+        min-height: 38px !important;
+        font-size: 17px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-header h2,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-counts dt,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-counts dd,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-review-drawer {
+        font-size: 17px !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-counts dt b,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .contents-card strong,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .contents-number {
+        font-size: 17px !important;
+        line-height: 1.3 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-counts dt span,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-counts dd span,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .contents-card small {
+        font-size: 13px !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-counts dd strong {
+        font-size: 27px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .recommendation-copy small {
+        font-size: 13px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .recommendation-copy strong {
+        font-size: 17px !important;
+        line-height: 1.3 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .window-footer {
+        font-size: 14px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body {
+        max-width: none !important;
+        padding-inline: 12px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-intro {
+        margin-bottom: 32px !important;
+        padding: 20px 16px 22px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-opening-grid,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-visual-layout,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-lede {
+        grid-template-columns: 1fr !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-display-title {
+        max-width: none !important;
+        font-size: 29px !important;
+        line-height: 1.3 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-opening-copy .article-subtitle {
+        font-size: 16px !important;
+        line-height: 1.65 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-lede {
+        padding: 20px 16px 2px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > p,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body blockquote p,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-ending {
+        font-size: 18px !important;
+        line-height: 1.85 !important;
+        letter-spacing: 0.01em !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h2 {
+        margin-top: 58px !important;
+        font-size: 28px !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h3 {
+        font-size: 22px !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .toc a {
+        font-size: 16px !important;
+        line-height: 1.55 !important;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-publish-meta,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-figure figcaption,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .comparison-caption,
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .image-source {
+        font-size: 13px !important;
+        line-height: 1.55 !important;
       }
 
       html.ohmy-native-phone-stage body.article-page-shell .article-body > p {
