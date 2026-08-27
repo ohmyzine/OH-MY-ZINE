@@ -26,8 +26,17 @@
   let articles = fallbackArticles;
   const sharedUi = window.OhMyZineSharedUI ||= {};
 
+  function getActiveTitlebar() {
+    if (document.documentElement.classList.contains("ohmy-native-phone-stage")) {
+      const phoneTitlebar = document.querySelector(".phone-fashion-header .shared-titlebar");
+      if (phoneTitlebar) return phoneTitlebar;
+    }
+
+    return document.querySelector(".desktop-site-titlebar") || document.querySelector(".shared-titlebar");
+  }
+
   function createSharedToolbar() {
-    const titlebar = document.querySelector(".shared-titlebar");
+    const titlebar = getActiveTitlebar();
     const controls = titlebar?.querySelector(".shared-window-controls");
     if (!titlebar || !controls) return {};
 
@@ -266,7 +275,7 @@
 
     requestAnimationFrame(swing);
 
-    const draggableTitlebar = document.querySelector(".magazine-window .shared-titlebar");
+    const draggableTitlebar = getActiveTitlebar();
     let titlebarPressed = false;
 
     draggableTitlebar?.addEventListener("pointerdown", (event) => {
@@ -311,7 +320,7 @@
 
   function setupSharedWindowDrag() {
     const page = document.body;
-    const systemBar = document.querySelector(".shared-titlebar");
+    const systemBar = getActiveTitlebar();
     const softCursor = document.querySelector("#soft-cursor");
     const windowFrame = systemBar?.closest(".magazine-window, .subpage-app-frame");
     const legacyHeader = systemBar?.closest(".subpage-header");

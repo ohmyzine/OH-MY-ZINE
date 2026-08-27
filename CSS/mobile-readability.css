@@ -251,6 +251,32 @@
     line-height: 1.6 !important;
   }
 
+  html.ohmy-native-phone-stage .article-page-shell .article-display-title {
+    font-size: clamp(25px, 7.2vw, 31px) !important;
+  }
+
+  html.ohmy-native-phone-stage .article-page-shell .article-subtitle {
+    font-size: 16px !important;
+  }
+
+  html.ohmy-native-phone-stage .article-page-shell .article-lede p,
+  html.ohmy-native-phone-stage .article-page-shell .article-body > p,
+  html.ohmy-native-phone-stage .article-page-shell .article-body blockquote p {
+    font-size: 17px !important;
+    line-height: 1.8 !important;
+  }
+
+  html.ohmy-native-phone-stage .article-page-shell .toc li,
+  html.ohmy-native-phone-stage .article-page-shell .toc a {
+    font-size: 15.5px !important;
+  }
+
+  html.ohmy-native-phone-stage .article-page-shell :is(
+      .article-tags-list span, .article-share-line, .figure-caption,
+      .image-source, .comparison-caption, .article-publish-meta) {
+    font-size: 13px !important;
+  }
+
   /* ABOUT and CREDITS */
   body.subpage.about-page-shell .subpage-feature-hero .about-lead {
     font-size: 15px !important;

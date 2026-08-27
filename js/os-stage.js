@@ -64,6 +64,14 @@
         height: auto !important;
       }
 
+      html.ohmy-native-phone-stage .desktop-site-chrome {
+        display: none !important;
+      }
+
+      html.ohmy-native-phone-stage .phone-fashion-header {
+        display: block !important;
+      }
+
       html.ohmy-native-phone-stage {
         -webkit-text-size-adjust: 100% !important;
         text-size-adjust: 100% !important;
@@ -121,6 +129,54 @@
         min-width: 32px !important;
         height: 32px !important;
         min-height: 32px !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-visitor-counter {
+        display: none !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-system-actions {
+        gap: 4px !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-search-toggle {
+        width: 36px !important;
+        min-width: 36px !important;
+        height: 36px !important;
+        min-height: 36px !important;
+      }
+
+      html.ohmy-native-phone-stage .shared-search-toggle > span {
+        top: 10px;
+        left: 10px;
+      }
+
+      html.ohmy-native-phone-stage .shared-search-panel {
+        width: calc(100% - 16px);
+        right: 8px;
+        padding: 14px;
+      }
+
+      html.ohmy-native-phone-stage .shared-search-panel label {
+        font-size: 12px;
+      }
+
+      html.ohmy-native-phone-stage .shared-search-input-row {
+        grid-template-columns: minmax(0, 1fr) 52px;
+        gap: 8px;
+      }
+
+      html.ohmy-native-phone-stage .shared-search-input-row input,
+      html.ohmy-native-phone-stage .shared-search-input-row button {
+        min-height: 44px;
+        font-size: 16px;
+      }
+
+      html.ohmy-native-phone-stage .shared-search-results a,
+      html.ohmy-native-phone-stage .shared-search-results p {
+        padding: 12px;
+        font-size: 14px;
+        line-height: 1.6;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs,
@@ -208,7 +264,7 @@
       }
 
       html.ohmy-native-phone-stage body.home-page .recommendation-card {
-        aspect-ratio: 1.28 / 1 !important;
+        aspect-ratio: 1.05 / 1 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-ad-stack {
@@ -370,6 +426,10 @@
         font-size: 17px !important;
       }
 
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .photo-controls.photo-controls-viewer {
+        grid-template-columns: 42px minmax(0, 1fr) 42px !important;
+      }
+
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-header h2,
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-counts dt,
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .magazine-widget-counts dd,
@@ -401,8 +461,10 @@
       }
 
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .recommendation-copy strong {
-        font-size: 17px !important;
-        line-height: 1.3 !important;
+        max-height: 48% !important;
+        font-size: 15px !important;
+        line-height: 1.25 !important;
+        overflow: hidden !important;
       }
 
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .left-column .about-card h2 {
@@ -460,125 +522,6 @@
         font-size: 14px !important;
       }
 
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body {
-        max-width: none !important;
-        padding-inline: 0 !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > p,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h2,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h3,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > blockquote,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .toc,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-figure,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .image-comparison,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-ending,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-back-top-wrap {
-        max-width: none !important;
-        margin-right: 8px !important;
-        margin-left: 8px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-intro {
-        margin-bottom: 32px !important;
-        padding: 20px 16px 22px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-opening-grid,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-visual-layout,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-lede {
-        grid-template-columns: 1fr !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-display-title {
-        max-width: none !important;
-        font-size: 29px !important;
-        line-height: 1.3 !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-opening-copy .article-subtitle {
-        font-size: 16px !important;
-        line-height: 1.65 !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-lede {
-        padding: 20px 16px 2px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > p,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body blockquote p,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-ending {
-        font-size: 18px !important;
-        line-height: 1.85 !important;
-        letter-spacing: 0.01em !important;
-        text-align: justify !important;
-        text-align-last: left !important;
-        text-justify: inter-character !important;
-        text-wrap: wrap !important;
-        line-break: strict !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-lede p {
-        max-width: none !important;
-        text-align: justify !important;
-        text-align-last: left !important;
-        text-justify: inter-character !important;
-        text-wrap: wrap !important;
-        line-break: strict !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h2 {
-        margin-top: 58px !important;
-        font-size: 28px !important;
-        line-height: 1.35 !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h3 {
-        font-size: 22px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .toc a {
-        font-size: 16px !important;
-        line-height: 1.55 !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-publish-meta,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-figure figcaption,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .comparison-caption,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .image-source {
-        font-size: 13px !important;
-        line-height: 1.55 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > p {
-        color: #283941 !important;
-        font-size: 17px !important;
-        line-height: 1.85 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-lede p,
-      html.ohmy-native-phone-stage body.article-page-shell .article-intro > p:not(.ui-chip):not(.article-subtitle):not(.image-source) {
-        color: #2d4049 !important;
-        font-size: 16px !important;
-        line-height: 1.8 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .toc li {
-        min-height: 50px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .toc a {
-        font-size: 15px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-publish-meta,
-      html.ohmy-native-phone-stage body.article-page-shell .toc-title,
-      html.ohmy-native-phone-stage body.article-page-shell .article-figure figcaption,
-      html.ohmy-native-phone-stage body.article-page-shell .comparison-year,
-      html.ohmy-native-phone-stage body.article-page-shell .image-source {
-        font-size: 11px !important;
-      }
-
       html.ohmy-native-phone-stage body.article-page-shell .article-newsletter input,
       html.ohmy-native-phone-stage body.article-page-shell .article-newsletter button,
       html.ohmy-native-phone-stage body.article-page-shell .article-back-top,
@@ -587,51 +530,6 @@
       html.ohmy-native-phone-stage body.subpage .content-window-body select {
         min-height: 44px !important;
         font-size: 13px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body {
-        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > p,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body blockquote p,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-ending {
-        margin-right: 22px !important;
-        margin-bottom: 1.45em !important;
-        margin-left: 22px !important;
-        color: #25363e !important;
-        font-size: 18px !important;
-        line-height: 1.75 !important;
-        letter-spacing: 0.015em !important;
-        text-align: start !important;
-        text-align-last: auto !important;
-        text-justify: auto !important;
-        word-break: normal !important;
-        overflow-wrap: anywhere !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-lede p {
-        text-align: start !important;
-        text-align-last: auto !important;
-        text-justify: auto !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h2,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > h3,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > blockquote,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .toc,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-figure,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .image-comparison,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-ending,
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell .article-body > .article-back-top-wrap {
-        margin-right: 22px !important;
-        margin-left: 22px !important;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.article-page-shell :is(.article-figure figcaption, .comparison-caption, .image-source) {
-        font-size: 13.5px !important;
-        line-height: 1.6 !important;
-        overflow-wrap: anywhere !important;
       }
 
       html.ohmy-native-phone-stage body.about-page-shell .profile-label,

@@ -6,9 +6,12 @@
   const recommendationGrid = document.querySelector("#recommendation-grid");
   const shuffleButton = document.querySelector("#recommendation-shuffle");
   const magazineWindow = document.querySelector(".magazine-window");
-  const minimizeButton = document.querySelector("#window-minimize");
-  const maximizeButton = document.querySelector("#window-maximize");
-  const closeButton = document.querySelector("#window-close");
+  const controlsRoot = document.documentElement.classList.contains("ohmy-native-phone-stage")
+    ? document.querySelector(".phone-fashion-header")
+    : document.querySelector(".desktop-site-titlebar");
+  const minimizeButton = controlsRoot?.querySelector('[data-window-action="minimize"], #window-minimize');
+  const maximizeButton = controlsRoot?.querySelector('[data-window-action="maximize"], #window-maximize');
+  const closeButton = controlsRoot?.querySelector('[data-window-action="close"], #window-close');
   const reopenButton = document.querySelector("#window-reopen");
   const closedScreen = document.querySelector("#closed-screen");
   const systemBar = document.querySelector(".system-bar");

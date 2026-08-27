@@ -6,9 +6,13 @@
   const isSubpage = page.classList.contains("subpage");
   if (!appWindow) return;
 
-  const minimizeButton = document.querySelector('[data-window-action="minimize"]');
-  const maximizeButton = document.querySelector('[data-window-action="maximize"]');
-  const closeButton = document.querySelector('[data-window-action="close"], #window-close');
+  const phoneHeader = document.documentElement.classList.contains("ohmy-native-phone-stage")
+    ? document.querySelector(".phone-fashion-header")
+    : null;
+  const controlsRoot = phoneHeader || document.querySelector(".desktop-site-titlebar") || document;
+  const minimizeButton = controlsRoot.querySelector('[data-window-action="minimize"], #window-minimize');
+  const maximizeButton = controlsRoot.querySelector('[data-window-action="maximize"], #window-maximize');
+  const closeButton = controlsRoot.querySelector('[data-window-action="close"], #window-close');
   const setPressed = (button, pressed) => {
     if (button) button.setAttribute("aria-pressed", String(pressed));
   };
