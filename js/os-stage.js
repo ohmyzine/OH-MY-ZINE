@@ -205,15 +205,27 @@
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle {
-        width: 36px !important;
-        min-width: 36px !important;
-        height: 36px !important;
-        min-height: 36px !important;
+        width: 6.428571vw !important;
+        min-width: 6.428571vw !important;
+        height: 6.428571vw !important;
+        min-height: 6.428571vw !important;
+        border-width: 0.178571vw !important;
+        border-radius: 0.357143vw !important;
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle > span {
-        top: 10px;
-        left: 10px;
+        width: 1.785714vw;
+        height: 1.785714vw;
+        top: 1.785714vw;
+        left: 1.785714vw;
+        border-width: 0.357143vw;
+      }
+
+      html.ohmy-native-phone-stage .shared-search-toggle > span::after {
+        width: 1.25vw;
+        height: 0.357143vw;
+        right: -1.071429vw;
+        bottom: -0.714286vw;
       }
 
       html.ohmy-native-phone-stage .shared-search-panel {
@@ -293,6 +305,13 @@
 
       html.ohmy-native-phone-stage body.subpage .subpage-main {
         padding-top: 0 !important;
+      }
+
+      /* HOME's phone opening gap is the shared spacing source for every page. */
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .content-window,
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .subpage-main > .content-window,
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main > .content-window {
+        margin-top: 28px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
