@@ -195,35 +195,49 @@
         text-overflow: ellipsis;
       }
 
-      html.ohmy-native-phone-stage body.home-page .shared-window-controls button,
-      html.ohmy-native-phone-stage body.subpage .shared-window-controls button {
+      /* One phone titlebar control system for HOME and every subpage.
+         PC keeps its original 25px search / 23px window-control ratio. */
+      html.ohmy-native-phone-stage .phone-fashion-header .shared-system-actions {
+        display: flex !important;
+        flex: 0 0 auto !important;
+        align-items: center !important;
+        gap: 0.892857vw !important;
+      }
+
+      html.ohmy-native-phone-stage .phone-fashion-header .shared-window-controls {
+        display: flex !important;
+        flex: 0 0 auto !important;
+        align-items: center !important;
+        gap: 0.892857vw !important;
+      }
+
+      html.ohmy-native-phone-stage .phone-fashion-header .shared-window-controls button {
         width: 5.714286vw !important;
         min-width: 5.714286vw !important;
         height: 5.714286vw !important;
         min-height: 5.714286vw !important;
+        flex: 0 0 5.714286vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
         border-width: 0.178571vw !important;
         border-radius: 0.357143vw !important;
         font-size: 1.785714vw !important;
-      }
-
-      html.ohmy-native-phone-stage body.home-page .shared-window-controls,
-      html.ohmy-native-phone-stage body.subpage .shared-window-controls {
-        gap: 0.892857vw !important;
       }
 
       html.ohmy-native-phone-stage .shared-visitor-counter {
         display: none !important;
       }
 
-      html.ohmy-native-phone-stage .shared-system-actions {
-        gap: 4px !important;
-      }
-
-      html.ohmy-native-phone-stage .shared-search-toggle {
+      html.ohmy-native-phone-stage .phone-fashion-header .shared-search-toggle {
         width: 6.428571vw !important;
         min-width: 6.428571vw !important;
         height: 6.428571vw !important;
         min-height: 6.428571vw !important;
+        flex: 0 0 6.428571vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
         border-width: 0.178571vw !important;
         border-radius: 0.357143vw !important;
       }
@@ -332,7 +346,7 @@
 
       /* ABOUT keeps the blue dotted wallpaper inside one flat, quiet frame. */
       html.ohmy-native-phone-stage body.about-page-shell .about-window {
-        padding: 4.285714vw 1.458333vw 1.458333vw !important;
+        padding: var(--phone-content-start-gap) 1.458333vw 1.458333vw !important;
         box-sizing: border-box;
         background: #eef0f2 !important;
         box-shadow: none !important;
@@ -358,6 +372,250 @@
          lower than HOME even after the outer gap was unified. */
       html.ohmy-native-phone-stage body.article-page-shell .article-window-body > .article-body {
         padding-top: 0 !important;
+      }
+
+      /* Phone article reader: keep the dense magazine feeling while restoring
+         a comfortable reading size, rhythm and useful two-column photo groups. */
+      html.ohmy-native-phone-stage body.article-page-shell .article-window > .article-window-body {
+        padding-top: calc(var(--phone-content-start-gap) / 3) !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-window-body > .article-body {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 0 6.428571vw !important;
+        box-sizing: border-box !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-intro {
+        margin: 0 1.785714vw 4.285714vw !important;
+        padding: 2.857143vw !important;
+        border-radius: 2.142857vw !important;
+        box-shadow: none !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-opening-grid {
+        display: block !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-logo-frame {
+        min-height: 0 !important;
+        margin-block: 1.428571vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-object-title {
+        height: 18.571429vw !important;
+        margin: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-display-title {
+        margin: 2.142857vw 0 1.428571vw !important;
+        font-size: 6.428571vw !important;
+        line-height: 1.28 !important;
+        letter-spacing: -0.035em !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-opening-copy .article-subtitle {
+        margin: 0 0 2.142857vw !important;
+        font-size: 3.75vw !important;
+        line-height: 1.55 !important;
+        letter-spacing: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-publish-meta {
+        margin: 1.428571vw 0 2.5vw !important;
+        gap: 1.071429vw !important;
+        font-size: 2.5vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-visual-layout {
+        min-height: 0 !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.72fr) minmax(21.428571vw, 0.72fr) !important;
+        gap: 2.142857vw !important;
+        align-items: start !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single {
+        min-width: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single img {
+        width: 100% !important;
+        min-height: 0 !important;
+        height: auto !important;
+        aspect-ratio: 16 / 10 !important;
+        object-fit: cover !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-tags-panel {
+        width: auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 2.142857vw !important;
+        position: static !important;
+        border-radius: 1.428571vw !important;
+        box-shadow: none !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-tags-title,
+      html.ohmy-native-phone-stage body.article-page-shell .article-share-line {
+        font-size: 2.5vw !important;
+        line-height: 1.45 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-tags-list {
+        gap: 1.071429vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-tags-list span {
+        padding: 1.071429vw 1.428571vw !important;
+        font-size: 2.321429vw !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > p,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > h2,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > h3,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > blockquote,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .toc,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-figure,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .image-comparison,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-ending,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-newsletter,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-back-top-wrap {
+        width: auto !important;
+        max-width: none !important;
+        margin-right: 5.714286vw !important;
+        margin-left: 5.714286vw !important;
+        box-sizing: border-box !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede {
+        margin-top: 3.571429vw !important;
+        padding: 3.571429vw !important;
+        display: block !important;
+        border: 1px solid #dcc7c0 !important;
+        border-radius: 1.785714vw !important;
+        background: #fff8f5 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede p,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > p,
+      html.ohmy-native-phone-stage body.article-page-shell blockquote p,
+      html.ohmy-native-phone-stage body.article-page-shell .article-ending {
+        color: #293940 !important;
+        font-size: 3.928571vw !important;
+        line-height: 1.85 !important;
+        letter-spacing: 0.01em !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede p,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > p {
+        margin-top: 0 !important;
+        margin-bottom: 4.285714vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede p:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > h2 {
+        margin-top: 11.428571vw !important;
+        margin-bottom: 4.285714vw !important;
+        padding: 2.5vw 2.857143vw !important;
+        font-size: 5.714286vw !important;
+        line-height: 1.35 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > h3 {
+        margin-top: 8.571429vw !important;
+        margin-bottom: 3.571429vw !important;
+        padding-bottom: 1.785714vw !important;
+        font-size: 4.642857vw !important;
+        line-height: 1.45 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc {
+        margin-top: 6.428571vw !important;
+        margin-bottom: 8.571429vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc-title {
+        min-height: 6.428571vw !important;
+        font-size: 2.5vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc li {
+        min-height: 8.571429vw !important;
+        grid-template-columns: 8.571429vw 1fr !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc li::before {
+        font-size: 2.321429vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc a {
+        padding: 2.142857vw 2.5vw !important;
+        font-size: 3.392857vw !important;
+        line-height: 1.55 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-figure {
+        margin-top: 6.428571vw !important;
+        margin-bottom: 7.857143vw !important;
+        padding: 1.428571vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-figure figcaption,
+      html.ohmy-native-phone-stage body.article-page-shell .article-figure .figure-caption,
+      html.ohmy-native-phone-stage body.article-page-shell .comparison-year {
+        font-size: 2.857143vw !important;
+        line-height: 1.65 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .image-source {
+        font-size: 2.5vw !important;
+        line-height: 1.55 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .image-comparison {
+        margin-top: 7.857143vw !important;
+        margin-bottom: 9.285714vw !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 2.142857vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .comparison-item {
+        min-width: 0 !important;
+        padding: 1.071429vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .comparison-item img {
+        width: 100% !important;
+        height: 52.142857vw !important;
+        object-fit: cover !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .comparison-caption {
+        grid-column: 1 / -1 !important;
+        padding: 2.142857vw 2.5vw !important;
+        font-size: 2.857143vw !important;
+        line-height: 1.65 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell blockquote,
+      html.ohmy-native-phone-stage body.article-page-shell .article-ending {
+        padding: 3.571429vw 4.285714vw !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell blockquote cite {
+        font-size: 2.5vw !important;
+        line-height: 1.6 !important;
       }
 
       html.ohmy-native-phone-stage body.article-page-shell .article-page-base {

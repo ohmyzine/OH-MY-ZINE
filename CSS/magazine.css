@@ -923,7 +923,7 @@ html.ohmy-native-phone-stage body.magazine-store-page.is-magazine-category-open 
 }
 
 html.ohmy-native-phone-stage body.magazine-store-page.is-magazine-category-open .phone-fashion-base {
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 html.ohmy-native-phone-stage .magazine-mobile-storebar {
@@ -970,19 +970,21 @@ html.ohmy-native-phone-stage .magazine-shop-shell {
 }
 
 html.ohmy-native-phone-stage .magazine-category-panel {
-  width: min(64vw, 620px) !important;
-  height: calc(100dvh - var(--magazine-category-drawer-top, 0px));
-  max-height: calc(100dvh - var(--magazine-category-drawer-top, 0px));
-  padding: 22px 24px 36px !important;
+  width: min(54vw, 520px) !important;
+  height: auto !important;
+  max-height: calc(100dvh - var(--magazine-category-drawer-top, 0px) - 18px) !important;
+  padding: 14px 16px 18px !important;
   position: fixed;
   top: var(--magazine-category-drawer-top, 0px);
   bottom: auto;
   left: 0;
   z-index: 10001;
   overflow-y: auto;
-  border: 0 !important;
+  border: 1px solid #d4d6d7 !important;
+  border-left: 0 !important;
+  border-radius: 0 0 18px 0 !important;
   background: #fff !important;
-  box-shadow: 12px 0 30px rgba(0, 0, 0, .18) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .16) !important;
   transform: translateX(-110%);
   transition: transform 180ms ease;
 }
@@ -993,17 +995,17 @@ html.ohmy-native-phone-stage body.is-magazine-category-open .magazine-category-p
 
 html.ohmy-native-phone-stage .magazine-panel-title {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
 html.ohmy-native-phone-stage .magazine-panel-title > div {
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 
 html.ohmy-native-phone-stage .magazine-panel-title strong {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 html.ohmy-native-phone-stage .magazine-panel-title span {
@@ -1011,30 +1013,36 @@ html.ohmy-native-phone-stage .magazine-panel-title span {
 }
 
 html.ohmy-native-phone-stage .magazine-category-close {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
-  border: 2px solid #e16a9f;
+  border: 1px solid #e16a9f;
+  border-radius: 8px;
   color: #7f2850;
   background: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1;
 }
 
+html.ohmy-native-phone-stage .magazine-category-groups {
+  gap: 12px !important;
+}
+
 html.ohmy-native-phone-stage .magazine-category-group h3 {
-  margin-top: 24px;
-  font-size: 16px;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 html.ohmy-native-phone-stage .magazine-category-group ul {
-  gap: 16px;
+  gap: 8px;
 }
 
 html.ohmy-native-phone-stage .magazine-category-group a {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 html.ohmy-native-phone-stage .magazine-category-backdrop {

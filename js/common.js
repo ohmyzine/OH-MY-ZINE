@@ -162,7 +162,17 @@
     const setOpen = (isOpen) => {
       searchPanel.hidden = !isOpen;
       searchToggle.setAttribute("aria-expanded", String(isOpen));
-      if (isOpen) input?.focus();
+      if (!isOpen) {
+        input?.blur();
+        return;
+      }
+
+      /* iPhone browsers zoom a scaled page when focus is moved into the
+         search field programmatically. Keep the field fully usable, but let
+         phone visitors tap it themselves so opening the toolbar never zooms. */
+      if (!document.documentElement.classList.contains("ohmy-native-phone-stage")) {
+        input?.focus();
+      }
     };
 
     sharedUi.setSearchOpen = setOpen;
