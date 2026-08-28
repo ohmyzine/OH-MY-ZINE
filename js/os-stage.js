@@ -263,7 +263,7 @@
         border-bottom: 6px solid #59656b !important;
         box-shadow:
           inset 0 1px 0 #fff,
-          0 2px 0 #cbd1d4 !important;
+          0 3px 0 #cbd1d4 !important;
         overflow: hidden;
       }
 
