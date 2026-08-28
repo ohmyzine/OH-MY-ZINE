@@ -332,7 +332,7 @@
 
       /* ABOUT keeps the blue dotted wallpaper inside one flat, quiet frame. */
       html.ohmy-native-phone-stage body.about-page-shell .about-window {
-        padding: 2.142857vw 1.458333vw 1.458333vw !important;
+        padding: 4.285714vw 1.458333vw 1.458333vw !important;
         box-sizing: border-box;
         background: #eef0f2 !important;
         box-shadow: none !important;
