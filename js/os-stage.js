@@ -330,6 +330,25 @@
         padding-top: var(--phone-content-start-gap) !important;
       }
 
+      /* ABOUT keeps the blue dotted wallpaper as an inset page surface. Split
+         the existing opening gap between the light outer frame and the blue
+         inner surface so its content start stays aligned with other pages. */
+      html.ohmy-native-phone-stage body.about-page-shell .about-window {
+        padding: 1.458333vw !important;
+        box-sizing: border-box;
+        background: #d8dcde !important;
+        box-shadow:
+          inset 0 0.178571vw 0 #fff,
+          inset 0 0 0 0.178571vw #cbd1d4 !important;
+      }
+
+      html.ohmy-native-phone-stage body.about-page-shell .about-window > .content-window-body {
+        padding-top: 1.458333vw !important;
+        box-sizing: border-box;
+        border: 0.357143vw solid #d9f2ff !important;
+        box-shadow: inset 0 0 0 0.357143vw rgba(255, 255, 255, 0.40) !important;
+      }
+
       html.ohmy-native-phone-stage body.not-found-page .phone-fashion-header + .subpage-main > .content-window {
         padding-top: var(--phone-content-start-gap) !important;
       }
