@@ -148,7 +148,7 @@
          RGB steps so its rendered divider matches FASHION without changing
          the surrounding HOME surface. */
       html.ohmy-native-phone-stage body.home-page {
-        --phone-nav-light-color: #cad2d2;
+        --phone-nav-light-color: #c8d4cf;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-main,
