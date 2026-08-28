@@ -263,7 +263,7 @@
         border-bottom: 6px solid #59656b !important;
         box-shadow:
           inset 0 1px 0 #fff,
-          0 3px 0 #cbd1d4 !important;
+          0 5px 0 #cbd1d4 !important;
         overflow: hidden;
       }
 
@@ -302,16 +302,28 @@
         padding-top: 0 !important;
       }
 
-      /* HOME's phone opening gap is the shared spacing source for every page. */
+      /* Keep the opening gap inside the app surface so body wallpaper never shows through. */
+      html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base,
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base,
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main {
+        padding-top: 28px !important;
+        box-sizing: border-box;
+        background-color: #e7ebed !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base {
+        background-color: #d5d7da !important;
+      }
+
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .content-window,
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .subpage-main > .content-window,
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main > .content-window {
-        margin-top: 28px !important;
+        margin-top: 0 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
         min-height: 280px !important;
-        margin-top: 28px !important;
+        margin-top: 0 !important;
         padding-block: 52px !important;
       }
 
