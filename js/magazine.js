@@ -33,8 +33,12 @@
       if (open) {
         close.focus({ preventScroll: true });
       } else {
-        document.documentElement.style.removeProperty("--magazine-category-drawer-top");
         toggle.focus({ preventScroll: true });
+        window.setTimeout(() => {
+          if (!page.classList.contains("is-magazine-category-open")) {
+            document.documentElement.style.removeProperty("--magazine-category-drawer-top");
+          }
+        }, 220);
       }
     };
 

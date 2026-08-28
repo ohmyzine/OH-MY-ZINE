@@ -85,13 +85,13 @@
 
       html.ohmy-native-phone-stage body.home-page .home-page-base {
         /* Match FASHION immediately below the divider, then blend back into
-           HOME's original surface across the existing opening gap. */
+           HOME's original surface across the compact HOME-only opening gap. */
         background:
           linear-gradient(
             to bottom,
             #e7ebed 0,
-            #dde1e3 1.458333vw,
-            #d5d7da var(--phone-content-start-gap),
+            #dde1e3 calc(var(--phone-home-content-start-gap) / 2),
+            #d5d7da var(--phone-home-content-start-gap),
             #d5d7da 100%
           ) !important;
       }
@@ -147,6 +147,10 @@
         --shared-tab-height: 7.857143vw;
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
+        --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
+        /* FASHION source: 1px on its 560px phone stage. The vw conversion
+           preserves that same thin line after HOME's 960px stage is scaled. */
+        --phone-chrome-border: 0.178571vw;
         /* Preserve FASHION's 560px-stage divider weight on every phone page. */
         --phone-nav-dark-divider: 1.071429vw;
         --phone-nav-light-divider: 0.892857vw;
@@ -220,7 +224,8 @@
         margin: 0 !important;
         padding: 0 !important;
         box-sizing: border-box !important;
-        border-width: 0.178571vw !important;
+        border-width: var(--phone-chrome-border) !important;
+        border-style: solid !important;
         border-radius: 0.357143vw !important;
         font-size: 1.785714vw !important;
       }
@@ -238,7 +243,8 @@
         margin: 0 !important;
         padding: 0 !important;
         box-sizing: border-box !important;
-        border-width: 0.178571vw !important;
+        border-width: var(--phone-chrome-border) !important;
+        border-style: solid !important;
         border-radius: 0.357143vw !important;
       }
 
@@ -309,7 +315,9 @@
         font-size: 2.142857vw !important;
         line-height: 1.15 !important;
         letter-spacing: 0.01em !important;
-        border-width: 0.178571vw !important;
+        box-sizing: border-box !important;
+        border-width: var(--phone-chrome-border) !important;
+        border-style: solid !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs > :first-child,
@@ -364,7 +372,7 @@
       }
 
       html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base {
-        padding-top: var(--phone-content-start-gap) !important;
+        padding-top: var(--phone-home-content-start-gap) !important;
         box-sizing: border-box;
       }
 
@@ -376,10 +384,6 @@
 
       /* Phone article reader: keep the dense magazine feeling while restoring
          a comfortable reading size, rhythm and useful two-column photo groups. */
-      html.ohmy-native-phone-stage body.article-page-shell .article-window > .article-window-body {
-        padding-top: calc(var(--phone-content-start-gap) / 3) !important;
-      }
-
       html.ohmy-native-phone-stage body.article-page-shell .article-window-body > .article-body {
         width: 100% !important;
         max-width: none !important;
