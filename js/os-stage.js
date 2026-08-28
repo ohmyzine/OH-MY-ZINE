@@ -378,10 +378,10 @@
         box-sizing: border-box;
       }
 
-      /* Restore the article opening to its original full spacing. The article
-         uses body.home-page, so it is not covered by the subpage rule above. */
+      /* Compact only the gap between the phone navigation divider and the
+         orange article frame. Keep every spacing inside the article intact. */
       html.ohmy-native-phone-stage body.article-page-shell .article-window > .article-window-body {
-        padding-top: var(--phone-content-start-gap) !important;
+        padding-top: calc(var(--phone-content-start-gap) / 3) !important;
       }
 
       /* Articles had a second inner top padding, so their title frame started
