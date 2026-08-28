@@ -148,9 +148,11 @@
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
-        /* FASHION source: 1px on its 560px phone stage. The vw conversion
-           preserves that same thin line after HOME's 960px stage is scaled. */
-        --phone-chrome-border: 0.178571vw;
+        /* Copy FASHION's authored chrome widths exactly on every phone page.
+           Using a vw conversion made HOME round up to a heavier device-pixel
+           edge even though the mathematical width was equivalent. */
+        --phone-chrome-border: 1px;
+        --phone-frame-border: 2px;
         /* Preserve FASHION's 560px-stage divider weight on every phone page. */
         --phone-nav-dark-divider: 1.071429vw;
         --phone-nav-light-divider: 0.892857vw;
@@ -163,7 +165,7 @@
       }
 
       html.ohmy-native-phone-stage .phone-fashion-base {
-        border-width: 0.357143vw !important;
+        border-width: var(--phone-frame-border) !important;
         border-radius: 3.035714vw !important;
       }
 
@@ -171,7 +173,7 @@
       html.ohmy-native-phone-stage body.subpage .shared-titlebar {
         min-height: var(--shared-titlebar-height) !important;
         padding-inline: 1.785714vw !important;
-        border-bottom-width: 0.178571vw !important;
+        border-bottom-width: var(--phone-chrome-border) !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand,
