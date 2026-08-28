@@ -406,7 +406,7 @@
       }
 
       html.ohmy-native-phone-stage body.article-page-shell .article-intro {
-        margin: 0 1.785714vw 4.285714vw !important;
+        margin: 2.142857vw 1.785714vw 4.285714vw !important;
         padding: 2.857143vw !important;
         border-radius: 2.142857vw !important;
         box-shadow: none !important;
