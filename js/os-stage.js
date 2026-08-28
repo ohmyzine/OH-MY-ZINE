@@ -141,6 +141,14 @@
         /* Preserve FASHION's 560px-stage divider weight on every phone page. */
         --phone-nav-dark-divider: 1.071429vw;
         --phone-nav-light-divider: 0.892857vw;
+        --phone-nav-light-color: #cbd1d4;
+      }
+
+      /* HOME is reduced from a wider 960px stage. Compensate by only a few
+         RGB steps so its rendered divider matches FASHION without changing
+         the surrounding HOME surface. */
+      html.ohmy-native-phone-stage body.home-page {
+        --phone-nav-light-color: #cad2d2;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-main,
@@ -268,7 +276,7 @@
         border-bottom: var(--phone-nav-dark-divider) solid #59656b !important;
         box-shadow:
           inset 0 1px 0 #fff,
-          0 var(--phone-nav-light-divider) 0 #cbd1d4 !important;
+          0 var(--phone-nav-light-divider) 0 var(--phone-nav-light-color) !important;
         overflow: hidden;
       }
 
