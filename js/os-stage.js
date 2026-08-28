@@ -148,11 +148,11 @@
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
-        /* Copy FASHION's authored chrome widths exactly on every phone page.
-           Using a vw conversion made HOME round up to a heavier device-pixel
-           edge even though the mathematical width was equivalent. */
-        --phone-chrome-border: 1px;
-        --phone-frame-border: 2px;
+        /* FASHION/PHOTO use the 560px reading stage while overview pages use
+           960px. Scale FASHION's 1px/2px source widths with the stage so the
+           visible borders stay the same weight on every phone page. */
+        --phone-chrome-border: 0.178571vw;
+        --phone-frame-border: 0.357143vw;
         /* Preserve FASHION's 560px-stage divider weight on every phone page. */
         --phone-nav-dark-divider: 1.071429vw;
         --phone-nav-light-divider: 0.892857vw;
@@ -376,6 +376,12 @@
       html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base {
         padding-top: var(--phone-home-content-start-gap) !important;
         box-sizing: border-box;
+      }
+
+      /* Restore the article opening to its original full spacing. The article
+         uses body.home-page, so it is not covered by the subpage rule above. */
+      html.ohmy-native-phone-stage body.article-page-shell .article-window > .article-window-body {
+        padding-top: var(--phone-content-start-gap) !important;
       }
 
       /* Articles had a second inner top padding, so their title frame started
