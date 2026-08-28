@@ -136,6 +136,8 @@
         --shared-app-width: 100%;
         --shared-titlebar-height: 8.571429vw;
         --shared-tab-height: 7.857143vw;
+        /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
+        --phone-content-start-gap: 2.916667vw;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-main,
@@ -309,20 +311,33 @@
         margin-top: 0 !important;
       }
 
-      /* HOME's 28px opening gap lives inside that content frame on every subpage. */
-      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .content-window > .content-window-body,
-      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .subpage-main > .content-window > .content-window-body,
-      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main > .content-window > .content-window-body {
-        padding-top: 28px !important;
+      /* Use HOME's visible opening ratio on both the 960px overview stage and
+         the 560px reading stage, then start the first title frame there. */
+      html.ohmy-native-phone-stage body.subpage .content-window > .content-window-body {
+        padding-top: var(--phone-content-start-gap) !important;
       }
 
       html.ohmy-native-phone-stage body.not-found-page .phone-fashion-header + .subpage-main > .content-window {
-        padding-top: 28px !important;
+        padding-top: var(--phone-content-start-gap) !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base {
-        padding-top: 28px !important;
+        padding-top: var(--phone-content-start-gap) !important;
         box-sizing: border-box;
+      }
+
+      /* Articles had a second inner top padding, so their title frame started
+         lower than HOME even after the outer gap was unified. */
+      html.ohmy-native-phone-stage body.article-page-shell .article-window-body > .article-body {
+        padding-top: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-page-base {
+        position: relative;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-reading-progress {
+        margin-bottom: -4px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
