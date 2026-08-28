@@ -302,23 +302,27 @@
         padding-top: 0 !important;
       }
 
-      /* Keep the opening gap inside the app surface so body wallpaper never shows through. */
-      html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base,
-      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base,
-      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main {
-        padding-top: 28px !important;
-        box-sizing: border-box;
-        background-color: #e7ebed !important;
-      }
-
-      html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base {
-        background-color: #d5d7da !important;
-      }
-
+      /* Start each page's own content frame directly below the tabs. */
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .content-window,
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .subpage-main > .content-window,
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main > .content-window {
         margin-top: 0 !important;
+      }
+
+      /* HOME's 28px opening gap lives inside that content frame on every subpage. */
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .content-window > .content-window-body,
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .subpage-main > .content-window > .content-window-body,
+      html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main > .content-window > .content-window-body {
+        padding-top: 28px !important;
+      }
+
+      html.ohmy-native-phone-stage body.not-found-page .phone-fashion-header + .subpage-main > .content-window {
+        padding-top: 28px !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base {
+        padding-top: 28px !important;
+        box-sizing: border-box;
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
