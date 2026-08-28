@@ -84,7 +84,17 @@
       }
 
       html.ohmy-native-phone-stage body.home-page .home-page-base {
-        background: #d5d7da !important;
+        /* FASHION's shared surface is #e7ebed. Match that color only across
+           HOME's opening gap so the light divider reads identically, while
+           preserving HOME's original #d5d7da surface below it. */
+        background:
+          linear-gradient(
+            to bottom,
+            #e7ebed 0,
+            #e7ebed var(--phone-content-start-gap),
+            #d5d7da var(--phone-content-start-gap),
+            #d5d7da 100%
+          ) !important;
       }
 
       html.ohmy-native-phone-stage .phone-fashion-base > .desktop-site-chrome,
