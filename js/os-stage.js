@@ -84,7 +84,16 @@
       }
 
       html.ohmy-native-phone-stage body.home-page .home-page-base {
-        background: #d5d7da !important;
+        /* Match FASHION immediately below the divider, then blend back into
+           HOME's original surface across the existing opening gap. */
+        background:
+          linear-gradient(
+            to bottom,
+            #e7ebed 0,
+            #dde1e3 1.458333vw,
+            #d5d7da var(--phone-content-start-gap),
+            #d5d7da 100%
+          ) !important;
       }
 
       html.ohmy-native-phone-stage .phone-fashion-base > .desktop-site-chrome,
@@ -142,13 +151,6 @@
         --phone-nav-dark-divider: 1.071429vw;
         --phone-nav-light-divider: 0.892857vw;
         --phone-nav-light-color: #cbd1d4;
-      }
-
-      /* HOME is reduced from a wider 960px stage. Compensate by only a few
-         RGB steps so its rendered divider matches FASHION without changing
-         the surrounding HOME surface. */
-      html.ohmy-native-phone-stage body.home-page {
-        --phone-nav-light-color: #c8d4cf;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-main,
