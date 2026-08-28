@@ -35,6 +35,51 @@
     return document.querySelector(".desktop-site-titlebar") || document.querySelector(".shared-titlebar");
   }
 
+  function normalizePhoneFashionChrome() {
+    if (!document.documentElement.classList.contains("ohmy-native-phone-stage")) return;
+
+    const phoneHeader = document.querySelector(".phone-fashion-header");
+    if (!phoneHeader) return;
+
+    const brandText = phoneHeader.querySelector(".shared-brand > span")?.textContent?.trim()
+      || "OH_MY_ZINE.EXE";
+    const activeHref = phoneHeader.querySelector(".shared-tabs [aria-current='page']")
+      ?.getAttribute("href");
+
+    phoneHeader.closest(".phone-fashion-base")?.classList.add("shared-app-window");
+
+    /* Exact FASHION phone header markup is the one source for every page. */
+    phoneHeader.innerHTML = `
+      <header class="system-bar subpage-systembar shared-titlebar">
+        <a class="system-title subpage-brand shared-brand" href="index.html">
+          <img class="shared-brand-icon" src="images/oh-my-zine-archive-icon.png?v=magazine3" alt="">
+          <span></span>
+        </a>
+        <div class="system-controls subpage-window-controls shared-window-controls" aria-label="ウィンドウ操作">
+          <button type="button" data-window-action="minimize" aria-label="最小化" aria-pressed="false">—</button>
+          <button type="button" data-window-action="maximize" aria-label="最大化" aria-pressed="false">□</button>
+          <button type="button" data-window-action="close" aria-label="閉じる" aria-pressed="false">×</button>
+        </div>
+      </header>
+
+      <nav class="site-nav subpage-tabs shared-tabs" aria-label="メインメニュー">
+        <a href="index.html">HOME</a>
+        <a href="fashion.html">FASHION</a>
+        <a href="magazine.html">MAGAZINE COLLECTION</a>
+        <a href="photo.html">PHOTO</a>
+        <a href="about.html">ABOUT</a>
+      </nav>
+    `;
+
+    phoneHeader.querySelector(".shared-brand > span").textContent = brandText;
+    if (activeHref) {
+      phoneHeader.querySelector(`.shared-tabs a[href="${activeHref}"]`)
+        ?.setAttribute("aria-current", "page");
+    }
+  }
+
+  normalizePhoneFashionChrome();
+
   function createSharedToolbar() {
     const titlebar = getActiveTitlebar();
     const controls = titlebar?.querySelector(".shared-window-controls");
