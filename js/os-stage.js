@@ -378,10 +378,16 @@
         box-sizing: border-box;
       }
 
-      /* Compact only the gap between the phone navigation divider and the
-         orange article frame. Keep every spacing inside the article intact. */
+      /* The red-circled article opening gap comes from common.css' main
+         padding-top: 50px. Compact that exact outer gap to one third. */
+      html.ohmy-native-phone-stage body.article-page-shell .subpage-main.article-page {
+        padding-top: calc(50px / 3) !important;
+      }
+
+      /* Keep the article window itself flush; the opening gap is owned by
+         .subpage-main above, not by the orange article frame. */
       html.ohmy-native-phone-stage body.article-page-shell .article-window > .article-window-body {
-        padding-top: calc(var(--phone-content-start-gap) / 3) !important;
+        padding-top: 0 !important;
       }
 
       /* Articles had a second inner top padding, so their title frame started
@@ -501,8 +507,8 @@
       html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-back-top-wrap {
         width: auto !important;
         max-width: none !important;
-        margin-right: 5.714286vw !important;
-        margin-left: 5.714286vw !important;
+        margin-right: 4.285714vw !important;
+        margin-left: 4.285714vw !important;
         box-sizing: border-box !important;
       }
 
@@ -520,9 +526,14 @@
       html.ohmy-native-phone-stage body.article-page-shell blockquote p,
       html.ohmy-native-phone-stage body.article-page-shell .article-ending {
         color: #293940 !important;
-        font-size: 3.928571vw !important;
-        line-height: 1.85 !important;
-        letter-spacing: 0.01em !important;
+        font-size: 3.571429vw !important;
+        line-height: 1.72 !important;
+        letter-spacing: 0 !important;
+        text-align: left !important;
+        line-break: strict !important;
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        text-wrap: pretty !important;
       }
 
       html.ohmy-native-phone-stage body.article-page-shell .article-lede p,
