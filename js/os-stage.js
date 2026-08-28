@@ -138,6 +138,9 @@
         --shared-tab-height: 7.857143vw;
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
+        /* Preserve FASHION's 560px-stage divider weight on every phone page. */
+        --phone-nav-dark-divider: 1.071429vw;
+        --phone-nav-light-divider: 0.892857vw;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-main,
@@ -262,10 +265,10 @@
       html.ohmy-native-phone-stage body.subpage .shared-tabs {
         grid-template-columns: repeat(5, minmax(0, 1fr));
         padding-inline: 1.428571vw;
-        border-bottom: 6px solid #59656b !important;
+        border-bottom: var(--phone-nav-dark-divider) solid #59656b !important;
         box-shadow:
           inset 0 1px 0 #fff,
-          0 5px 0 #cbd1d4 !important;
+          0 var(--phone-nav-light-divider) 0 #cbd1d4 !important;
         overflow: hidden;
       }
 
