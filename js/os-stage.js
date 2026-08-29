@@ -3,7 +3,8 @@
 
   const STAGE_PARAMETER = "ohmy_stage";
   const DESKTOP_STAGE_WIDTH = 1440;
-  const PHONE_STAGE_WIDTH = 560;
+  const PHONE_OVERVIEW_STAGE_WIDTH = 960;
+  const PHONE_READING_STAGE_WIDTH = 560;
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
   const currentPage = currentUrl.pathname.split("/").pop()?.toLowerCase() || "index.html";
@@ -24,9 +25,9 @@
     currentUrl.searchParams.get("ohmy_phone_preview") === "1";
 
   if (isTouchPhone || isLocalPhonePreview) {
-    /* Keep the complete phone window on FASHION's single 560px canvas.
-       Page-specific overview classes still control only the page content. */
-    const phoneStageWidth = PHONE_STAGE_WIDTH;
+    const phoneStageWidth = isPhoneOverview
+      ? PHONE_OVERVIEW_STAGE_WIDTH
+      : PHONE_READING_STAGE_WIDTH;
     const viewport = document.querySelector('meta[name="viewport"]');
     const visibleWidth = window.visualViewport
       ? window.visualViewport.width * window.visualViewport.scale
@@ -83,21 +84,6 @@
         flex: none !important;
         min-height: 0 !important;
         height: auto !important;
-      }
-
-      /* HOME keeps its information-dense three-column overview canvas.
-         ABOUT and MAGAZINE use the native 560px phone canvas so their single
-         column content and product grid are not shrunk a second time. */
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .home-page-base {
-        width: 100% !important;
-        max-width: none !important;
-        zoom: 0.5833333333;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.subpage .shared-page-base {
-        width: 100% !important;
-        max-width: none !important;
-        zoom: 1 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-page-base {
@@ -162,13 +148,15 @@
         --shared-app-width: 100%;
         --shared-titlebar-height: 8.571429vw;
         --shared-tab-height: 7.857143vw;
-        /* Preserve the existing content opening rhythm inside the common stage. */
+        /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
-        /* FASHION's 1px/2px source widths now apply to every phone page. */
+        /* FASHION/PHOTO use the 560px reading stage while overview pages use
+           960px. Scale FASHION's 1px/2px source widths with the stage so the
+           visible borders stay the same weight on every phone page. */
         --phone-chrome-border: 0.178571vw;
         --phone-frame-border: 0.357143vw;
-        /* Preserve FASHION's divider weight on every phone page. */
+        /* Preserve FASHION's 560px-stage divider weight on every phone page. */
         --phone-nav-dark-divider: 1.071429vw;
         --phone-nav-light-divider: 0.892857vw;
         --phone-nav-light-color: #cbd1d4;
@@ -186,7 +174,6 @@
 
       html.ohmy-native-phone-stage body.home-page .shared-titlebar,
       html.ohmy-native-phone-stage body.subpage .shared-titlebar {
-        height: var(--shared-titlebar-height) !important;
         min-height: var(--shared-titlebar-height) !important;
         padding-inline: 1.785714vw !important;
         border-bottom-width: var(--phone-chrome-border) !important;
@@ -195,7 +182,6 @@
       html.ohmy-native-phone-stage body.home-page .shared-brand,
       html.ohmy-native-phone-stage body.subpage .shared-brand {
         min-width: 0;
-        height: auto !important;
         min-height: 7.857143vw !important;
         padding-block: 1.785714vw !important;
         gap: 1.25vw !important;
