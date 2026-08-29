@@ -95,17 +95,9 @@
         zoom: 0.5833333333;
       }
 
-      html.ohmy-native-phone-stage body.home-page .home-page-base {
-        /* Match FASHION immediately below the divider, then blend back into
-           HOME's original surface across the compact HOME-only opening gap. */
-        background:
-          linear-gradient(
-            to bottom,
-            #e7ebed 0,
-            #dde1e3 calc(var(--phone-home-content-start-gap) / 2),
-            #d5d7da var(--phone-home-content-start-gap),
-            #d5d7da 100%
-          ) !important;
+      html.ohmy-native-phone-stage body.home-page .home-page-base,
+      html.ohmy-native-phone-stage body.subpage .shared-page-base {
+        background: #e7ebed !important;
       }
 
       html.ohmy-native-phone-stage .phone-fashion-base > .desktop-site-chrome,
@@ -157,9 +149,9 @@
         --shared-app-width: 100%;
         --shared-titlebar-height: 8.571429vw;
         --shared-tab-height: 7.857143vw;
-        /* Preserve the existing content opening rhythm inside the common stage. */
+        /* FASHION's opening rhythm is now owned by the shared phone header so
+           overview-page zoom can no longer make this strip look different. */
         --phone-content-start-gap: 2.916667vw;
-        --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
         /* FASHION's 1px/2px source widths now apply to every phone page. */
         --phone-chrome-border: 0.178571vw;
         --phone-frame-border: 0.357143vw;
@@ -316,6 +308,17 @@
         overflow: hidden;
       }
 
+      /* One unscaled runway below the blue navigation for every phone page.
+         Keeping it in the shared header makes the height and colour identical
+         even when an overview page scales only its content canvas. */
+      html.ohmy-native-phone-stage .phone-fashion-header::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: var(--phone-content-start-gap);
+        background: #e7ebed;
+      }
+
       html.ohmy-native-phone-stage body.home-page .shared-tabs > a,
       html.ohmy-native-phone-stage body.home-page .shared-tabs > span,
       html.ohmy-native-phone-stage body.subpage .shared-tabs > a,
@@ -353,22 +356,21 @@
         padding-top: 0 !important;
       }
 
-      /* Start each page's own content frame directly below the tabs. */
+      /* The shared header now owns the complete opening strip, so page-level
+         wrappers must not add a second, differently scaled gap. */
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .content-window,
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .shared-page-base > .subpage-main > .content-window,
       html.ohmy-native-phone-stage body.subpage .phone-fashion-header + .subpage-main > .content-window {
         margin-top: 0 !important;
       }
 
-      /* Use HOME's visible opening ratio on both the 960px overview stage and
-         the 560px reading stage, then start the first title frame there. */
       html.ohmy-native-phone-stage body.subpage .content-window > .content-window-body {
-        padding-top: var(--phone-content-start-gap) !important;
+        padding-top: 0 !important;
       }
 
       /* ABOUT keeps the blue dotted wallpaper inside one flat, quiet frame. */
       html.ohmy-native-phone-stage body.about-page-shell .about-window {
-        padding: var(--phone-content-start-gap) 1.458333vw 1.458333vw !important;
+        padding: 0 1.458333vw 1.458333vw !important;
         box-sizing: border-box;
         background: #eef0f2 !important;
         box-shadow: none !important;
@@ -382,22 +384,21 @@
       }
 
       html.ohmy-native-phone-stage body.not-found-page .phone-fashion-header + .subpage-main > .content-window {
-        padding-top: var(--phone-content-start-gap) !important;
+        padding-top: 0 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .phone-fashion-header + .home-page-base {
-        padding-top: var(--phone-home-content-start-gap) !important;
+        padding-top: 0 !important;
         box-sizing: border-box;
       }
 
-      /* The red-circled article opening gap comes from common.css' main
-         padding-top: 50px. Compact that exact outer gap to one third. */
+      /* Articles use the same shared runway instead of their old 50px gap. */
       html.ohmy-native-phone-stage body.article-page-shell .subpage-main.article-page {
-        padding-top: calc(50px / 3) !important;
+        padding-top: 0 !important;
       }
 
-      /* Keep the article window itself flush; the opening gap is owned by
-         .subpage-main above, not by the orange article frame. */
+      /* Keep the article window itself flush; the shared header owns the
+         opening strip, not the orange article frame. */
       html.ohmy-native-phone-stage body.article-page-shell .article-window > .article-window-body {
         padding-top: 0 !important;
       }
