@@ -85,14 +85,19 @@
         height: auto !important;
       }
 
-      /* HOME / ABOUT / MAGAZINE keep their former 960px information canvas
-         inside the shared 560px FASHION window. Only page content is scaled;
-         the titlebar, controls, tabs, frame and dividers remain identical. */
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .home-page-base,
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.subpage .shared-page-base {
+      /* HOME keeps its information-dense three-column overview canvas.
+         ABOUT and MAGAZINE use the native 560px phone canvas so their single
+         column content and product grid are not shrunk a second time. */
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page .home-page-base {
         width: 100% !important;
         max-width: none !important;
         zoom: 0.5833333333;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.subpage .shared-page-base {
+        width: 100% !important;
+        max-width: none !important;
+        zoom: 1 !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-page-base {
