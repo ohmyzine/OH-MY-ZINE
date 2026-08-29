@@ -174,6 +174,16 @@
         --phone-nav-dark-divider: 9px;
       }
 
+      /* FASHION and PHOTO use the narrower 560px reading canvas. Their old
+         2px outer frame and 6px divider were therefore enlarged more than the
+         960px overview pages on a real phone. Keep the content canvas intact,
+         but use the source-pixel widths that land on the same visible weight
+         as HOME, ABOUT and MAGAZINE COLLECTION after mobile scaling. */
+      html.ohmy-native-phone-stage.ohmy-phone-reading body.subpage {
+        --phone-frame-border: 1px;
+        --phone-nav-dark-divider: 5px;
+      }
+
       html.ohmy-native-phone-stage body.home-page .home-main,
       html.ohmy-native-phone-stage body.subpage {
         padding-inline: 1.428571vw !important;
