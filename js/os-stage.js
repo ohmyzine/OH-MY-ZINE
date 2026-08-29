@@ -75,7 +75,7 @@
         border: 0 !important;
         background: #d5d7da !important;
         box-shadow:
-          inset 0 0 0 var(--phone-shared-stroke) #6b6e73,
+          inset 0 0 0 var(--phone-frame-stroke) #6b6e73,
           0 2.5vw 5.357143vw rgba(25, 22, 20, 0.28),
           inset 0 0.178571vw 0 rgba(255, 255, 255, 0.9) !important;
       }
@@ -151,10 +151,11 @@
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
-        /* One physical stroke for the 960px overview and 560px reading stages.
-           Unlike border-width, an inset shadow preserves the fractional source
-           width instead of snapping it to different integer pixels. */
+        /* Keep the fine chrome lines equal on the 960px overview and 560px
+           reading stages. The outer frame uses a stronger shared line so it
+           remains visible against the page background. */
         --phone-shared-stroke: 0.178571vw;
+        --phone-frame-stroke: 0.357143vw;
         --phone-chrome-border: 0.178571vw;
         --phone-chrome-unit: 0.178571vw;
         /* Preserve FASHION's 560px-stage divider weight on every phone page. */
