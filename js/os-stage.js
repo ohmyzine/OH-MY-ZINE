@@ -148,6 +148,7 @@
         --shared-app-width: 100%;
         --shared-titlebar-height: 8.571429vw;
         --shared-tab-height: 7.857143vw;
+        --phone-window-top-gap: 2.142857vw;
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
@@ -181,6 +182,7 @@
 
       html.ohmy-native-phone-stage body.home-page .home-main,
       html.ohmy-native-phone-stage body.subpage {
+        padding-top: var(--phone-window-top-gap) !important;
         padding-inline: 1.428571vw !important;
       }
 
@@ -377,7 +379,7 @@
 
       html.ohmy-native-phone-stage body.home-page:not(.window-maximized) .home-main,
       html.ohmy-native-phone-stage body.subpage:not(.is-subpage-maximized) {
-        padding-top: 0 !important;
+        padding-top: var(--phone-window-top-gap) !important;
       }
 
       html.ohmy-native-phone-stage body.subpage .subpage-main {
