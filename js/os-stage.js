@@ -114,9 +114,9 @@
         color: #fff !important;
         background: linear-gradient(180deg, #f8a59e 0%, #d9534b 46%, #972019 52%, #cb443c 100%) !important;
         box-shadow:
-          inset 1px 1px 0 rgba(255, 255, 255, 0.72),
-          0 1px 1px rgba(75, 24, 20, 0.32) !important;
-        text-shadow: 0 -1px 0 #791914 !important;
+          inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.72),
+          0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(75, 24, 20, 0.32) !important;
+        text-shadow: 0 calc(var(--phone-chrome-unit) * -1) 0 #791914 !important;
       }
 
       html.ohmy-native-phone-stage {
@@ -156,10 +156,22 @@
            visible borders stay the same weight on every phone page. */
         --phone-chrome-border: 0.178571vw;
         --phone-frame-border: 0.357143vw;
+        --phone-chrome-unit: 0.178571vw;
         /* Preserve FASHION's 560px-stage divider weight on every phone page. */
         --phone-nav-dark-divider: 1.071429vw;
         --phone-nav-light-divider: 0.892857vw;
         --phone-nav-light-color: #cbd1d4;
+      }
+
+      /* The overview pages retain their original 960px content canvas.
+         Borders need integer source pixels there because browsers snap border
+         widths before the page is scaled down. These values reproduce the
+         perceived FASHION weight without changing either content canvas. */
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page,
+      html.ohmy-native-phone-stage.ohmy-phone-overview body.subpage {
+        --phone-chrome-border: 2px;
+        --phone-frame-border: 2px;
+        --phone-nav-dark-divider: 9px;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-main,
@@ -177,6 +189,9 @@
         min-height: var(--shared-titlebar-height) !important;
         padding-inline: 1.785714vw !important;
         border-bottom-width: var(--phone-chrome-border) !important;
+        box-shadow:
+          inset 0 var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.96),
+          inset 0 calc(var(--phone-chrome-unit) * -1) 0 rgba(255, 255, 255, 0.55) !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand,
@@ -187,6 +202,7 @@
         gap: 1.25vw !important;
         font-size: 1.964286vw !important;
         letter-spacing: 0.04em !important;
+        text-shadow: 0 var(--phone-chrome-unit) 0 #fff !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand .shared-brand-icon,
@@ -233,6 +249,9 @@
         border-style: solid !important;
         border-radius: 0.357143vw !important;
         font-size: 1.785714vw !important;
+        box-shadow:
+          inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 #fff,
+          0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(43, 48, 51, 0.18) !important;
       }
 
       html.ohmy-native-phone-stage .shared-visitor-counter {
@@ -251,6 +270,9 @@
         border-width: var(--phone-chrome-border) !important;
         border-style: solid !important;
         border-radius: 0.357143vw !important;
+        box-shadow:
+          inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 #fff,
+          0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(43, 48, 51, 0.18) !important;
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle > span {
@@ -302,7 +324,7 @@
         padding-inline: 1.428571vw;
         border-bottom: var(--phone-nav-dark-divider) solid #59656b !important;
         box-shadow:
-          inset 0 1px 0 #fff,
+          inset 0 var(--phone-chrome-unit) 0 #fff,
           0 var(--phone-nav-light-divider) 0 var(--phone-nav-light-color) !important;
         overflow: hidden;
       }
@@ -323,6 +345,18 @@
         box-sizing: border-box !important;
         border-width: var(--phone-chrome-border) !important;
         border-style: solid !important;
+        box-shadow:
+          inset 0 var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.76),
+          inset 0 calc(var(--phone-chrome-unit) * -4) 0 rgba(35, 71, 84, 0.15) !important;
+        text-shadow: 0 calc(var(--phone-chrome-unit) * -1) 0 #425b68 !important;
+      }
+
+      html.ohmy-native-phone-stage body.home-page .shared-tabs > a[aria-current="page"],
+      html.ohmy-native-phone-stage body.subpage .shared-tabs > a[aria-current="page"] {
+        box-shadow:
+          inset 0 calc(var(--phone-chrome-unit) * 2) 0 #fff,
+          inset 0 calc(var(--phone-chrome-unit) * -3) 0 #d8eef5,
+          0 var(--phone-chrome-unit) calc(var(--phone-chrome-unit) * 2) rgba(61, 76, 82, 0.34) !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs > :first-child,
