@@ -72,10 +72,10 @@
         margin: 0 auto !important;
         position: relative;
         overflow: hidden !important;
-        border-style: solid !important;
-        border-color: #6b6e73 !important;
+        border: 0 !important;
         background: #d5d7da !important;
         box-shadow:
+          inset 0 0 0 var(--phone-shared-stroke) #6b6e73,
           0 2.5vw 5.357143vw rgba(25, 22, 20, 0.28),
           inset 0 0.178571vw 0 rgba(255, 255, 255, 0.9) !important;
       }
@@ -151,11 +151,11 @@
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
-        /* FASHION/PHOTO use the 560px reading stage while overview pages use
-           960px. Scale FASHION's 1px/2px source widths with the stage so the
-           visible borders stay the same weight on every phone page. */
+        /* One physical stroke for the 960px overview and 560px reading stages.
+           Unlike border-width, an inset shadow preserves the fractional source
+           width instead of snapping it to different integer pixels. */
+        --phone-shared-stroke: 0.178571vw;
         --phone-chrome-border: 0.178571vw;
-        --phone-frame-border: 0.357143vw;
         --phone-chrome-unit: 0.178571vw;
         /* Preserve FASHION's 560px-stage divider weight on every phone page. */
         --phone-nav-dark-divider: 1.071429vw;
@@ -170,17 +170,11 @@
       html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page,
       html.ohmy-native-phone-stage.ohmy-phone-overview body.subpage {
         --phone-chrome-border: 2px;
-        --phone-frame-border: 2px;
         --phone-nav-dark-divider: 9px;
       }
 
-      /* FASHION and PHOTO use the narrower 560px reading canvas. Their old
-         2px outer frame and 6px divider were therefore enlarged more than the
-         960px overview pages on a real phone. Keep the content canvas intact,
-         but use the source-pixel widths that land on the same visible weight
-         as HOME, ABOUT and MAGAZINE COLLECTION after mobile scaling. */
+      /* FASHION and PHOTO use the narrower 560px reading canvas. */
       html.ohmy-native-phone-stage.ohmy-phone-reading body.subpage {
-        --phone-frame-border: 1px;
         --phone-nav-dark-divider: 5px;
       }
 
@@ -190,7 +184,6 @@
       }
 
       html.ohmy-native-phone-stage .phone-fashion-base {
-        border-width: var(--phone-frame-border) !important;
         border-radius: 3.035714vw !important;
       }
 
@@ -198,8 +191,9 @@
       html.ohmy-native-phone-stage body.subpage .shared-titlebar {
         min-height: var(--shared-titlebar-height) !important;
         padding-inline: 1.785714vw !important;
-        border-bottom-width: var(--phone-chrome-border) !important;
+        border-bottom: 0 !important;
         box-shadow:
+          inset 0 calc(var(--phone-shared-stroke) * -1) 0 #777d84,
           inset 0 var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.96),
           inset 0 calc(var(--phone-chrome-unit) * -1) 0 rgba(255, 255, 255, 0.55) !important;
       }
@@ -353,9 +347,9 @@
         line-height: 1.15 !important;
         letter-spacing: 0.01em !important;
         box-sizing: border-box !important;
-        border-width: var(--phone-chrome-border) !important;
-        border-style: solid !important;
+        border: 0 !important;
         box-shadow:
+          inset 0 0 0 var(--phone-shared-stroke) #718b95,
           inset 0 var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.76),
           inset 0 calc(var(--phone-chrome-unit) * -4) 0 rgba(35, 71, 84, 0.15) !important;
         text-shadow: 0 calc(var(--phone-chrome-unit) * -1) 0 #425b68 !important;
@@ -364,6 +358,7 @@
       html.ohmy-native-phone-stage body.home-page .shared-tabs > a[aria-current="page"],
       html.ohmy-native-phone-stage body.subpage .shared-tabs > a[aria-current="page"] {
         box-shadow:
+          inset 0 0 0 var(--phone-shared-stroke) #718b95,
           inset 0 calc(var(--phone-chrome-unit) * 2) 0 #fff,
           inset 0 calc(var(--phone-chrome-unit) * -3) 0 #d8eef5,
           0 var(--phone-chrome-unit) calc(var(--phone-chrome-unit) * 2) rgba(61, 76, 82, 0.34) !important;
