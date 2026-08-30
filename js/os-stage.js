@@ -1435,6 +1435,8 @@
                 .article-lede {
                   margin-left: -20px !important;
                   margin-right: -20px !important;
+                  padding-left: 18px !important;
+                  padding-right: 18px !important;
                   width: calc(100% + 40px) !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
@@ -1446,6 +1448,8 @@
                 body.vhs-article .article-lede {
                   margin-left: -20px !important;
                   margin-right: -20px !important;
+                  padding-left: 18px !important;
+                  padding-right: 18px !important;
                   width: calc(100% + 40px) !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
