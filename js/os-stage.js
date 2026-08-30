@@ -1451,6 +1451,46 @@
                   box-sizing: border-box !important;
                 }
 
+                /* The desktop article is scaled into the phone window, so its
+                   original type becomes a little too small. Increase only the
+                   copied phone article; the real desktop page is unchanged. */
+                .article-lede p,
+                .article-body > p {
+                  font-size: 17px !important;
+                  line-height: 1.95 !important;
+                }
+
+                .toc-title {
+                  font-size: 12px !important;
+                }
+
+                .toc li {
+                  min-height: 48px !important;
+                }
+
+                .toc li::before {
+                  font-size: 11px !important;
+                }
+
+                .toc a {
+                  padding-top: 13px !important;
+                  padding-bottom: 13px !important;
+                  font-size: 15px !important;
+                }
+
+                /* Let the VHS introduction text use the full white sheet and
+                   enlarge its single-photo figures without touching Attention. */
+                body.vhs-article .article-lede p {
+                  width: 100% !important;
+                  max-width: none !important;
+                }
+
+                body.vhs-article .article-body > .article-figure {
+                  width: min(620px, calc(100% - 80px)) !important;
+                  margin-right: auto !important;
+                  margin-left: auto !important;
+                }
+
                 .soft-cursor,
                 .article-reading-progress {
                   display: none !important;
