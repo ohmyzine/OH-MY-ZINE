@@ -1435,6 +1435,20 @@
                 .article-lede {
                   margin-left: -20px !important;
                   margin-right: -20px !important;
+                  width: calc(100% + 40px) !important;
+                  max-width: none !important;
+                  box-sizing: border-box !important;
+                }
+
+                /* VHS uses the exact same phone lede geometry as Attention.
+                   Keep the article content different, but never let its white
+                   introduction sheet fall back to the narrower legacy width. */
+                body.vhs-article .article-lede {
+                  margin-left: -20px !important;
+                  margin-right: -20px !important;
+                  width: calc(100% + 40px) !important;
+                  max-width: none !important;
+                  box-sizing: border-box !important;
                 }
 
                 .soft-cursor,
