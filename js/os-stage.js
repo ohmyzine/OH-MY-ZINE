@@ -8,6 +8,9 @@
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
   const currentPage = currentUrl.pathname.split("/").pop()?.toLowerCase() || "index.html";
+  const isArticlePage =
+    currentPage === "article.html" ||
+    currentPage === "article-vhs.html";
   const isPhoneOverview =
     currentPage === "index.html" ||
     currentPage === "about.html" ||
@@ -1302,8 +1305,225 @@
         line-height: 1.85 !important;
       }
 
+      html.ohmy-native-phone-stage body.article-page-shell .article-window-body > .pc-article-exact-wrap {
+        width: 100%;
+        height: 1px;
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        opacity: 0;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-window-body.pc-article-exact-mounted > .article-body {
+        display: none !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-window-body.pc-article-exact-mounted > .pc-article-exact-wrap {
+        opacity: 1;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .pc-article-exact-frame {
+        width: 1440px;
+        height: 1px;
+        max-width: none;
+        position: absolute;
+        inset: 0 auto auto 0;
+        display: block;
+        border: 0;
+        background: #fff;
+        transform-origin: 0 0;
+      }
+
     `;
     document.head.append(phoneStageSizing);
+
+    if (isArticlePage) {
+      const mountExactDesktopArticle = () => {
+        const articleWindowBody = document.querySelector(".article-window-body");
+        const originalArticle = articleWindowBody?.querySelector(":scope > .article-body");
+
+        if (
+          !articleWindowBody ||
+          !originalArticle ||
+          articleWindowBody.querySelector(":scope > .pc-article-exact-wrap")
+        ) {
+          return;
+        }
+
+        const desktopViewportWidth = 1440;
+        const desktopArticleWidth = 1060;
+        const articleClone = articleWindowBody.cloneNode(true);
+
+        articleClone.classList.remove("pc-article-exact-mounted");
+        articleClone.querySelectorAll("img").forEach((image) => {
+          image.loading = "eager";
+          image.decoding = "async";
+        });
+
+        const escapeAttribute = (value) =>
+          String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;");
+
+        const stylesheetMarkup = Array.from(
+          document.querySelectorAll('link[rel~="stylesheet"]'),
+        )
+          .map(
+            (stylesheet) =>
+              `<link rel="stylesheet" href="${escapeAttribute(stylesheet.href)}">`,
+          )
+          .join("");
+        const baseHref = escapeAttribute(new URL(".", window.location.href).href);
+        const bodyClasses = escapeAttribute(document.body.className);
+
+        const exactWrap = document.createElement("div");
+        exactWrap.className = "pc-article-exact-wrap";
+        exactWrap.setAttribute("data-pc-article-copy", "true");
+
+        const exactFrame = document.createElement("iframe");
+        exactFrame.className = "pc-article-exact-frame";
+        exactFrame.title = "PC版の記事デザイン";
+        exactFrame.loading = "eager";
+        exactFrame.setAttribute("scrolling", "no");
+        exactFrame.srcdoc = `<!doctype html>
+          <html lang="ja">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=${desktopViewportWidth}, initial-scale=1">
+              <base href="${baseHref}">
+              ${stylesheetMarkup}
+              <style>
+                html,
+                body {
+                  width: ${desktopViewportWidth}px !important;
+                  min-width: ${desktopViewportWidth}px !important;
+                  max-width: none !important;
+                  min-height: 0 !important;
+                  margin: 0 !important;
+                  padding: 0 !important;
+                  overflow: hidden !important;
+                  background: #fff !important;
+                }
+
+                .article-window-body,
+                .article-window-body > .article-body {
+                  width: ${desktopArticleWidth}px !important;
+                  max-width: ${desktopArticleWidth}px !important;
+                  margin: 0 !important;
+                }
+
+                .soft-cursor,
+                .article-reading-progress {
+                  display: none !important;
+                }
+              </style>
+            </head>
+            <body class="${bodyClasses}">
+              ${articleClone.outerHTML}
+            </body>
+          </html>`;
+
+        exactWrap.append(exactFrame);
+        articleWindowBody.append(exactWrap);
+
+        let desktopArticleHeight = 1;
+        let contentResizeObserver = null;
+
+        const syncExactArticleSize = () => {
+          const availableWidth = articleWindowBody.clientWidth;
+          const scale = Math.max(0.01, availableWidth / desktopArticleWidth);
+
+          exactFrame.style.transform = `scale(${scale})`;
+          exactFrame.style.height = `${desktopArticleHeight}px`;
+          exactWrap.style.height = `${desktopArticleHeight * scale}px`;
+          exactWrap.style.setProperty("--pc-article-scale", String(scale));
+        };
+
+        const outerResizeObserver = new ResizeObserver(syncExactArticleSize);
+        outerResizeObserver.observe(articleWindowBody);
+
+        exactFrame.addEventListener("load", async () => {
+          const frameDocument = exactFrame.contentDocument;
+          const frameWindow = exactFrame.contentWindow;
+          const copiedArticle = frameDocument?.querySelector(".article-window-body");
+
+          if (!frameDocument || !frameWindow || !copiedArticle) {
+            exactWrap.remove();
+            outerResizeObserver.disconnect();
+            return;
+          }
+
+          await frameDocument.fonts?.ready;
+          await Promise.all(
+            Array.from(frameDocument.images).map((image) => {
+              if (image.complete) return Promise.resolve();
+              return new Promise((resolve) => {
+                image.addEventListener("load", resolve, { once: true });
+                image.addEventListener("error", resolve, { once: true });
+              });
+            }),
+          );
+
+          const measureCopiedArticle = () => {
+            desktopArticleHeight = Math.max(
+              1,
+              Math.ceil(copiedArticle.getBoundingClientRect().height),
+            );
+            syncExactArticleSize();
+          };
+
+          frameDocument.querySelectorAll(".image-source").forEach((source) => {
+            const match = source.textContent.match(/https?:\/\/\S+/);
+            if (!match) return;
+
+            const url = match[0];
+            const before = source.textContent.slice(0, match.index);
+            const after = source.textContent.slice((match.index || 0) + url.length);
+            const link = frameDocument.createElement("a");
+            link.href = url;
+            link.target = "_blank";
+            link.rel = "noreferrer";
+            link.textContent = url;
+            source.replaceChildren(before, link, after);
+          });
+
+          frameDocument.addEventListener("click", (event) => {
+            const anchor = event.target.closest?.('a[href^="#"]');
+            if (!anchor) return;
+
+            event.preventDefault();
+            const hash = anchor.getAttribute("href");
+            const target = hash === "#top" ? null : frameDocument.querySelector(hash);
+            const wrapTop = exactWrap.getBoundingClientRect().top + window.scrollY;
+            const scale = articleWindowBody.clientWidth / desktopArticleWidth;
+            const targetTop = target
+              ? wrapTop + target.getBoundingClientRect().top * scale
+              : 0;
+
+            window.scrollTo({ top: targetTop, behavior: "smooth" });
+          });
+
+          contentResizeObserver = new frameWindow.ResizeObserver(measureCopiedArticle);
+          contentResizeObserver.observe(copiedArticle);
+          exactFrame._pcArticleResizeObserver = contentResizeObserver;
+          exactFrame._pcArticleOuterResizeObserver = outerResizeObserver;
+
+          measureCopiedArticle();
+          articleWindowBody.classList.add("pc-article-exact-mounted");
+        });
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", mountExactDesktopArticle, {
+          once: true,
+        });
+      } else {
+        mountExactDesktopArticle();
+      }
+    }
+
     return;
   }
 
