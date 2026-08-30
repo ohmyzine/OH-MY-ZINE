@@ -8,6 +8,9 @@
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
   const currentPage = currentUrl.pathname.split("/").pop()?.toLowerCase() || "index.html";
+  const isArticlePage =
+    currentPage === "article.html" ||
+    currentPage === "article-vhs.html";
   const isPhoneOverview =
     currentPage === "index.html" ||
     currentPage === "about.html" ||
@@ -24,7 +27,12 @@
     /^(?:localhost|127\.0\.0\.1)$/.test(window.location.hostname) &&
     currentUrl.searchParams.get("ohmy_phone_preview") === "1";
 
-  if (isTouchPhone || isLocalPhonePreview) {
+  if (currentUrl.searchParams.get(STAGE_PARAMETER) === "1") {
+    document.documentElement.classList.add("ohmy-os-stage-frame");
+    return;
+  }
+
+  if ((isTouchPhone || isLocalPhonePreview) && !isArticlePage) {
     const phoneStageWidth = isPhoneOverview
       ? PHONE_OVERVIEW_STAGE_WIDTH
       : PHONE_READING_STAGE_WIDTH;
@@ -1036,11 +1044,6 @@
 
     `;
     document.head.append(phoneStageSizing);
-    return;
-  }
-
-  if (currentUrl.searchParams.get(STAGE_PARAMETER) === "1") {
-    document.documentElement.classList.add("ohmy-os-stage-frame");
     return;
   }
 
