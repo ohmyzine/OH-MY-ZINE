@@ -8,9 +8,6 @@
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
   const currentPage = currentUrl.pathname.split("/").pop()?.toLowerCase() || "index.html";
-  const isArticlePage =
-    currentPage === "article.html" ||
-    currentPage === "article-vhs.html";
   const isPhoneOverview =
     currentPage === "index.html" ||
     currentPage === "about.html" ||
@@ -27,12 +24,7 @@
     /^(?:localhost|127\.0\.0\.1)$/.test(window.location.hostname) &&
     currentUrl.searchParams.get("ohmy_phone_preview") === "1";
 
-  if (currentUrl.searchParams.get(STAGE_PARAMETER) === "1") {
-    document.documentElement.classList.add("ohmy-os-stage-frame");
-    return;
-  }
-
-  if ((isTouchPhone || isLocalPhonePreview) && !isArticlePage) {
+  if (isTouchPhone || isLocalPhonePreview) {
     const phoneStageWidth = isPhoneOverview
       ? PHONE_OVERVIEW_STAGE_WIDTH
       : PHONE_READING_STAGE_WIDTH;
@@ -694,6 +686,274 @@
         line-height: 1.6 !important;
       }
 
+      /* ARTICLE CONTENT ONLY: copy the desktop editorial composition into the
+         existing phone window. The phone window, chrome and zoom system above
+         deliberately stay untouched. */
+      html.ohmy-native-phone-stage body.article-page-shell .article-window-body > .article-body {
+        padding: 0 0 38px !important;
+        color: #26211f !important;
+        background: #fff !important;
+        border-radius: 0 0 15px 15px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-intro {
+        margin: 10px 8px 18px !important;
+        padding: 16px 18px 12px !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #f4c4b0 !important;
+        box-shadow: 0 0 0 6px #fff !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-opening-grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
+        gap: 12px !important;
+        align-items: start !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-opening-copy {
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-column-label {
+        margin: 0 0 7px !important;
+        font-size: 9px !important;
+        letter-spacing: 0.18em !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-logo-frame {
+        width: min(100%, 150px) !important;
+        min-height: 0 !important;
+        margin: 0 0 8px !important;
+        padding: 7px 9px 6px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-logo-frame .article-object-title {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        display: block !important;
+        object-fit: contain !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-display-title {
+        max-width: 9.7em !important;
+        margin: 0 0 7px !important;
+        font-size: 14px !important;
+        line-height: 1.28 !important;
+        letter-spacing: -0.035em !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-opening-copy .article-subtitle {
+        max-width: 28em !important;
+        margin: 0 0 7px !important;
+        font-size: 8px !important;
+        line-height: 1.8 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-publish-meta {
+        margin: 6px 0 0 !important;
+        gap: 3px !important;
+        font-size: 6px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-publish-meta > * {
+        padding: 3px 4px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-visual-layout {
+        width: 100% !important;
+        min-height: 0 !important;
+        display: block !important;
+        position: relative !important;
+        aspect-ratio: 16 / 9 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single,
+      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single img {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        aspect-ratio: auto !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single {
+        margin: 0 !important;
+        display: grid !important;
+        place-items: center !important;
+        background: #dfaa94 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single img {
+        object-fit: contain !important;
+        object-position: center !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single figcaption {
+        left: 5px !important;
+        bottom: 5px !important;
+        padding: 3px 4px !important;
+        font-size: 5.5px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-tags-panel {
+        width: min(74px, calc(100% - 12px)) !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 5px 5px 4px !important;
+        position: absolute !important;
+        right: 6px !important;
+        bottom: 6px !important;
+        border: 1px solid rgba(79, 51, 40, 0.38) !important;
+        border-radius: 6px !important;
+        background: rgba(255, 245, 239, 0.93) !important;
+        box-shadow: 0 2px 7px rgba(45, 26, 20, 0.24) !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-tags-title {
+        margin: 0 0 4px !important;
+        font-size: 6px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-tags-list {
+        gap: 2px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-tags-list span {
+        padding: 2px 3px !important;
+        font-size: 5.5px !important;
+        line-height: 1.3 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-share-line {
+        display: none !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede {
+        margin: 12px 5.47% 0 !important;
+        padding: 14px 15px 4px !important;
+        display: block !important;
+        border: 1px solid #dfd3cc !important;
+        border-radius: 9px 9px 5px 5px !important;
+        background: #fffdfb !important;
+        box-shadow: 0 1px 0 rgba(118, 96, 87, 0.16) !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede p,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > p,
+      html.ohmy-native-phone-stage body.article-page-shell blockquote p,
+      html.ohmy-native-phone-stage body.article-page-shell .article-ending {
+        color: #26211f !important;
+        font-size: 15px !important;
+        line-height: 2 !important;
+        letter-spacing: 0 !important;
+        text-align: left !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-lede p {
+        margin: 0 0 14px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > p,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > h2,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > h3,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > blockquote,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .toc,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-figure,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .image-comparison,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-ending,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-newsletter,
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-back-top-wrap {
+        width: auto !important;
+        max-width: none !important;
+        margin-right: 5.47% !important;
+        margin-left: 5.47% !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > p {
+        margin-top: 0 !important;
+        margin-bottom: 18px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > h2 {
+        margin-top: 48px !important;
+        margin-bottom: 18px !important;
+        padding: 9px 11px !important;
+        font-size: clamp(21px, 6.5vw, 29px) !important;
+        line-height: 1.4 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-body > h3 {
+        margin-top: 36px !important;
+        margin-bottom: 14px !important;
+        padding-bottom: 7px !important;
+        font-size: 19px !important;
+        line-height: 1.5 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc {
+        margin-top: 32px !important;
+        margin-bottom: 40px !important;
+        border-radius: 6px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc-title {
+        min-height: 24px !important;
+        font-size: 9px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc li {
+        min-height: 36px !important;
+        grid-template-columns: 36px 1fr !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc li::before {
+        font-size: 8px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .toc a {
+        padding: 8px 10px !important;
+        font-size: 13px !important;
+        line-height: 1.65 !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-figure {
+        margin-top: 30px !important;
+        margin-bottom: 40px !important;
+        padding: 6px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-figure img,
+      html.ohmy-native-phone-stage body.article-page-shell .comparison-item img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .image-comparison {
+        margin-top: 36px !important;
+        margin-bottom: 44px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .comparison-item {
+        min-width: 0 !important;
+        padding: 5px !important;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .comparison-caption {
+        grid-column: 1 / -1 !important;
+        padding: 8px 10px !important;
+        font-size: 10px !important;
+        line-height: 1.75 !important;
+      }
+
       html.ohmy-native-phone-stage body.article-page-shell .article-page-base {
         position: relative;
       }
@@ -1044,6 +1304,11 @@
 
     `;
     document.head.append(phoneStageSizing);
+    return;
+  }
+
+  if (currentUrl.searchParams.get(STAGE_PARAMETER) === "1") {
+    document.documentElement.classList.add("ohmy-os-stage-frame");
     return;
   }
 
