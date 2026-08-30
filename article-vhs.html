@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/os-stage.js?v=20260831-os83"></script>
+  <script src="js/os-stage.js?v=20260831-os85"></script>
 
   <title>OHMYZINE vs VSH | OH MY ZINE</title>
 
@@ -43,9 +43,18 @@
 
 
   <style>
-    /* VHS article only: keep the original orange double ring, change only the inner background to white. */
+    /* VHS article only: show the transparent logo image by itself. */
     .vhs-article .article-opening-copy .article-logo-frame {
-      background: #ffffff;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .vhs-article .article-opening-copy .article-logo-frame::before {
+      content: none;
     }
   </style>
 

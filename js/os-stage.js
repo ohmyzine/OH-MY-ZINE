@@ -1432,11 +1432,27 @@
                   justify-self: center !important;
                 }
 
+                /* VHS uses the transparent badge by itself. The desktop
+                   source page has the same VHS-only rule, but inline styles
+                   are not copied into this exact phone article document. */
+                body.vhs-article .article-logo-frame {
+                  padding: 0 !important;
+                  background: transparent !important;
+                  border: 0 !important;
+                  border-radius: 0 !important;
+                  box-shadow: none !important;
+                  transform: none !important;
+                }
+
+                body.vhs-article .article-logo-frame::before {
+                  content: none !important;
+                }
+
                 .article-lede {
                   margin-left: 0 !important;
                   margin-right: 0 !important;
-                  padding-left: 8px !important;
-                  padding-right: 8px !important;
+                  padding-left: 4px !important;
+                  padding-right: 4px !important;
                   width: 100% !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
@@ -1448,8 +1464,8 @@
                 body.vhs-article .article-lede {
                   margin-left: 0 !important;
                   margin-right: 0 !important;
-                  padding-left: 8px !important;
-                  padding-right: 8px !important;
+                  padding-left: 4px !important;
+                  padding-right: 4px !important;
                   width: 100% !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
