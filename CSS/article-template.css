@@ -87,12 +87,14 @@
 .article-page-shell .article-reading-progress {
   width: var(--shared-app-width);
   height: 4px;
-  margin: 0 auto;
-  position: sticky;
+  margin: 0;
+  position: fixed;
   top: 0;
-  z-index: 90;
+  left: 50%;
+  z-index: 10000;
   overflow: hidden;
   background: #c9d1d4;
+  transform: translateX(-50%);
 }
 
 .article-page-shell .article-reading-progress span {

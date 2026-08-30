@@ -4,6 +4,13 @@
   if (window.OHMYZINE_OS_STAGE_HOST) return;
 
   const progress = document.querySelector("[data-reading-progress]");
+  const progressTrack = progress?.closest(".article-reading-progress");
+
+  /* Keep the reading meter outside the clipped app window so it can follow
+     the viewport on both desktop and phone layouts. */
+  if (progressTrack && progressTrack.parentElement !== document.body) {
+    document.body.append(progressTrack);
+  }
 
   const updateProgress = () => {
     if (!progress) return;

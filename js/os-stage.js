@@ -962,7 +962,13 @@
       }
 
       html.ohmy-native-phone-stage body.article-page-shell .article-reading-progress {
-        margin-bottom: -4px !important;
+        width: 100vw !important;
+        height: 4px !important;
+        margin: 0 !important;
+        position: fixed !important;
+        inset: 0 0 auto 0 !important;
+        z-index: 10000 !important;
+        transform: none !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
@@ -1387,7 +1393,7 @@
         exactFrame.title = "PC版の記事デザイン";
         exactFrame.loading = "eager";
         exactFrame.setAttribute("scrolling", "no");
-        exactFrame.srcdoc = `<!doctype html>
+        const exactArticleDocument = `<!doctype html>
           <html lang="ja">
             <head>
               <meta charset="UTF-8">
@@ -1425,11 +1431,9 @@
             </body>
           </html>`;
 
-        exactWrap.append(exactFrame);
-        articleWindowBody.append(exactWrap);
-
         let desktopArticleHeight = 1;
         let contentResizeObserver = null;
+        let outerResizeObserver = null;
 
         const syncExactArticleSize = () => {
           const availableWidth = articleWindowBody.clientWidth;
@@ -1441,9 +1445,6 @@
           exactWrap.style.setProperty("--pc-article-scale", String(scale));
         };
 
-        const outerResizeObserver = new ResizeObserver(syncExactArticleSize);
-        outerResizeObserver.observe(articleWindowBody);
-
         exactFrame.addEventListener("load", async () => {
           const frameDocument = exactFrame.contentDocument;
           const frameWindow = exactFrame.contentWindow;
@@ -1451,7 +1452,7 @@
 
           if (!frameDocument || !frameWindow || !copiedArticle) {
             exactWrap.remove();
-            outerResizeObserver.disconnect();
+            outerResizeObserver?.disconnect();
             return;
           }
 
@@ -1512,7 +1513,18 @@
 
           measureCopiedArticle();
           articleWindowBody.classList.add("pc-article-exact-mounted");
-        });
+        }, { once: true });
+
+        /* Register the load handler before Safari is allowed to start loading
+           srcdoc. Otherwise a fast cached load can leave the responsive
+           fallback visible instead of the exact desktop article copy. */
+        exactFrame.srcdoc = exactArticleDocument;
+        exactWrap.append(exactFrame);
+        articleWindowBody.append(exactWrap);
+
+        outerResizeObserver = new ResizeObserver(syncExactArticleSize);
+        outerResizeObserver.observe(articleWindowBody);
+        syncExactArticleSize();
       };
 
       if (document.readyState === "loading") {
