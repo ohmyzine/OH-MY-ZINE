@@ -1427,11 +1427,6 @@
                   align-items: center !important;
                 }
 
-                /* Keep the phone article opener neutral for both stories. */
-                .article-intro {
-                  background: #ffffff !important;
-                }
-
                 .article-visual-layout {
                   align-self: center !important;
                   justify-self: center !important;
@@ -1440,8 +1435,8 @@
                 .article-lede {
                   margin-left: 0 !important;
                   margin-right: 0 !important;
-                  padding-left: 18px !important;
-                  padding-right: 18px !important;
+                  padding-left: 8px !important;
+                  padding-right: 8px !important;
                   width: 100% !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
@@ -1453,8 +1448,8 @@
                 body.vhs-article .article-lede {
                   margin-left: 0 !important;
                   margin-right: 0 !important;
-                  padding-left: 18px !important;
-                  padding-right: 18px !important;
+                  padding-left: 8px !important;
+                  padding-right: 8px !important;
                   width: 100% !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
