@@ -972,9 +972,9 @@
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
-        min-height: 280px !important;
+        min-height: 230px !important;
         margin-top: 0 !important;
-        padding-block: 52px !important;
+        padding-block: 36px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .magazine-grid {
@@ -1418,6 +1418,23 @@
                   width: ${desktopArticleWidth}px !important;
                   max-width: ${desktopArticleWidth}px !important;
                   margin: 0 !important;
+                }
+
+                /* Phone-only adjustment requested for the Attention opener.
+                   The desktop page remains untouched: these rules live only
+                   inside the scaled phone article copy. */
+                body:not(.vhs-article) .article-opening-grid {
+                  align-items: center !important;
+                }
+
+                body:not(.vhs-article) .article-visual-layout {
+                  align-self: center !important;
+                  justify-self: center !important;
+                }
+
+                body:not(.vhs-article) .article-lede {
+                  margin-left: -20px !important;
+                  margin-right: -20px !important;
                 }
 
                 .soft-cursor,
