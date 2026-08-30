@@ -1427,17 +1427,22 @@
                   align-items: center !important;
                 }
 
+                /* Keep the phone article opener neutral for both stories. */
+                .article-intro {
+                  background: #ffffff !important;
+                }
+
                 .article-visual-layout {
                   align-self: center !important;
                   justify-self: center !important;
                 }
 
                 .article-lede {
-                  margin-left: -20px !important;
-                  margin-right: -20px !important;
+                  margin-left: 0 !important;
+                  margin-right: 0 !important;
                   padding-left: 18px !important;
                   padding-right: 18px !important;
-                  width: calc(100% + 40px) !important;
+                  width: 100% !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
                 }
@@ -1446,11 +1451,11 @@
                    Keep the article content different, but never let its white
                    introduction sheet fall back to the narrower legacy width. */
                 body.vhs-article .article-lede {
-                  margin-left: -20px !important;
-                  margin-right: -20px !important;
+                  margin-left: 0 !important;
+                  margin-right: 0 !important;
                   padding-left: 18px !important;
                   padding-right: 18px !important;
-                  width: calc(100% + 40px) !important;
+                  width: 100% !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
                 }
