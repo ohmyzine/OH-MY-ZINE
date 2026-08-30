@@ -1423,16 +1423,16 @@
                 /* Phone-only adjustment requested for the Attention opener.
                    The desktop page remains untouched: these rules live only
                    inside the scaled phone article copy. */
-                body:not(.vhs-article) .article-opening-grid {
+                .article-opening-grid {
                   align-items: center !important;
                 }
 
-                body:not(.vhs-article) .article-visual-layout {
+                .article-visual-layout {
                   align-self: center !important;
                   justify-self: center !important;
                 }
 
-                body:not(.vhs-article) .article-lede {
+                .article-lede {
                   margin-left: -20px !important;
                   margin-right: -20px !important;
                 }
