@@ -1460,6 +1460,13 @@
                   line-height: 1.95 !important;
                 }
 
+                /* Every phone article uses the full width of its white intro
+                   sheet instead of keeping the desktop 70ch line limit. */
+                .article-lede p {
+                  width: 100% !important;
+                  max-width: none !important;
+                }
+
                 .toc-title {
                   font-size: 12px !important;
                 }
@@ -1478,15 +1485,10 @@
                   font-size: 15px !important;
                 }
 
-                /* Let the VHS introduction text use the full white sheet and
-                   enlarge its single-photo figures without touching Attention. */
-                body.vhs-article .article-lede p {
-                  width: 100% !important;
-                  max-width: none !important;
-                }
-
+                /* Keep VHS single-photo figures slightly larger than the PC
+                   source, without making them dominate the phone article. */
                 body.vhs-article .article-body > .article-figure {
-                  width: min(620px, calc(100% - 80px)) !important;
+                  width: min(560px, calc(100% - 80px)) !important;
                   margin-right: auto !important;
                   margin-left: auto !important;
                 }
