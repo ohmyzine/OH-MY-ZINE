@@ -1451,8 +1451,8 @@
                 .article-lede {
                   margin-left: 0 !important;
                   margin-right: 0 !important;
-                  padding-left: 4px !important;
-                  padding-right: 4px !important;
+                  padding-left: 0 !important;
+                  padding-right: 0 !important;
                   width: 100% !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
@@ -1464,8 +1464,8 @@
                 body.vhs-article .article-lede {
                   margin-left: 0 !important;
                   margin-right: 0 !important;
-                  padding-left: 4px !important;
-                  padding-right: 4px !important;
+                  padding-left: 0 !important;
+                  padding-right: 0 !important;
                   width: 100% !important;
                   max-width: none !important;
                   box-sizing: border-box !important;
@@ -1483,8 +1483,14 @@
                 /* Every phone article uses the full width of its white intro
                    sheet instead of keeping the desktop 70ch line limit. */
                 .article-lede p {
+                  display: block !important;
                   width: 100% !important;
+                  max-inline-size: none !important;
                   max-width: none !important;
+                  margin-left: auto !important;
+                  margin-right: auto !important;
+                  text-align: center !important;
+                  text-align-last: center !important;
                 }
 
                 .toc-title {
