@@ -2009,7 +2009,8 @@ body.subpage.fashion-page {
   color: #AEB0B2 !important;
   white-space: nowrap !important;
 }
-@media (max-width: 520px) {
+
+@media (max-width: 760px) {
   body.subpage.fashion-page.fashion-player-page .fashion-hero-copy > p:last-child {
     font-size: 9px !important;
   }
