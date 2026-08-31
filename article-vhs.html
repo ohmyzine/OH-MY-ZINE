@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/os-stage.js?v=20260831-os86"></script>
+  <script src="js/os-stage.js?v=20260831-os87"></script>
 
   <title>OHMYZINE vs VSH | OH MY ZINE</title>
 
@@ -38,6 +38,22 @@
     .vhs-article .article-opening-copy .article-display-title > span {
       display: block;
       white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .vhs-article .article-opening-copy .article-display-title {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .vhs-article .article-opening-copy .article-display-title > span {
+        white-space: normal;
+      }
+
+      .vhs-article .article-visual-layout {
+        margin: 18px auto 0;
+        justify-self: center;
+      }
     }
   </style>
 

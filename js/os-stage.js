@@ -1448,6 +1448,33 @@
                   content: none !important;
                 }
 
+                /* Keep the VHS headline inside the left column, then place the
+                   thumbnail a little lower and centered in the right column. */
+                body.vhs-article .article-opening-copy {
+                  width: 100% !important;
+                  max-width: 390px !important;
+                  min-width: 0 !important;
+                }
+
+                body.vhs-article .article-display-title {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                }
+
+                body.vhs-article .article-display-title > span {
+                  display: block !important;
+                  max-width: 100% !important;
+                  white-space: normal !important;
+                  overflow-wrap: anywhere !important;
+                }
+
+                body.vhs-article .article-visual-layout {
+                  width: 100% !important;
+                  margin: 24px auto 0 !important;
+                  align-self: center !important;
+                  justify-self: center !important;
+                }
+
                 .article-lede {
                   margin-left: 0 !important;
                   margin-right: 0 !important;
