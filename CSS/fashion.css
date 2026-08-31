@@ -2005,6 +2005,12 @@ body.subpage.fashion-page {
 }
 
 .fashion-page .fashion-hero-copy > p:last-child {
-  color: #AEB0B2;
-  white-space: nowrap;
+  max-width: none !important;
+  color: #AEB0B2 !important;
+  white-space: nowrap !important;
+}
+@media (max-width: 520px) {
+  body.subpage.fashion-page.fashion-player-page .fashion-hero-copy > p:last-child {
+    font-size: 9px !important;
+  }
 }
