@@ -159,14 +159,14 @@
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
-        /* Viewport-unit strokes stay the same visible thickness after either
-           the 960px HOME canvas or 560px reading canvas is scaled to a phone. */
-        --phone-shared-stroke: 0.178571vw;
-        --phone-frame-stroke: 0.357143vw;
-        --phone-chrome-unit: 0.178571vw;
-        /* Preserve HOME's current 9px divider without integer border snapping. */
-        --phone-nav-dark-divider: 0.9375vw;
-        --phone-nav-light-divider: 0.892857vw;
+        /* Copy HOME's source pixels into viewport units. FASHION and PHOTO use
+           the same ratios on their 560px canvas, so the final phone chrome is
+           identical without changing either page's content width. */
+        --phone-shared-stroke: 0.104167vw;
+        --phone-frame-stroke: 0.208333vw;
+        --phone-chrome-unit: 0.104167vw;
+        --phone-nav-dark-divider: 0.625vw;
+        --phone-nav-light-divider: 0.208333vw;
         --phone-nav-light-color: #cbd1d4;
       }
 
