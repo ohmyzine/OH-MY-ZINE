@@ -6726,3 +6726,22 @@ overflow: visible !important;
 .article-page-shell .content-window {
   border-top-right-radius: 23px;
 }
+
+/* Hidden magazine totals: keep three full-width question marks inside the existing boxes. */
+.home-page .magazine-widget-counts dd strong {
+  max-width: calc(100% - 15px);
+  flex: 0 1 auto;
+  font-size: 20px !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+}
+
+.magazine-store-page .magazine-archive-counts dd strong {
+  max-width: calc(100% - 28px);
+  flex: 0 1 auto;
+  font-size: clamp(24px, 3.2vw, 40px) !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+}
