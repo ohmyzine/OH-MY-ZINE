@@ -116,10 +116,11 @@
       }
 
       html.ohmy-native-phone-stage .phone-fashion-header .shared-window-controls button[data-window-action="close"] {
-        border-color: #8c2c27 !important;
+        border: 0 !important;
         color: #fff !important;
         background: linear-gradient(180deg, #f8a59e 0%, #d9534b 46%, #972019 52%, #cb443c 100%) !important;
         box-shadow:
+          inset 0 0 0 var(--phone-shared-stroke) #8c2c27,
           inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.72),
           0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(75, 24, 20, 0.32) !important;
         text-shadow: 0 calc(var(--phone-chrome-unit) * -1) 0 #791914 !important;
@@ -148,7 +149,7 @@
         filter: brightness(1.08) saturate(1.12) !important;
       }
 
-      /* FASHION's 560px phone frame is the source for every phone page. */
+      /* HOME's visible phone chrome is the source for every phone page. */
       html.ohmy-native-phone-stage body.home-page,
       html.ohmy-native-phone-stage body.subpage {
         --shared-app-width: 100%;
@@ -158,32 +159,15 @@
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
-        /* Keep the fine chrome lines equal on the 960px overview and 560px
-           reading stages. The outer frame is drawn outside the window so
-           flush children cannot cover it. */
+        /* Viewport-unit strokes stay the same visible thickness after either
+           the 960px HOME canvas or 560px reading canvas is scaled to a phone. */
         --phone-shared-stroke: 0.178571vw;
         --phone-frame-stroke: 0.357143vw;
-        --phone-chrome-border: 0.178571vw;
         --phone-chrome-unit: 0.178571vw;
-        /* Preserve FASHION's 560px-stage divider weight on every phone page. */
-        --phone-nav-dark-divider: 1.071429vw;
+        /* Preserve HOME's current 9px divider without integer border snapping. */
+        --phone-nav-dark-divider: 0.9375vw;
         --phone-nav-light-divider: 0.892857vw;
         --phone-nav-light-color: #cbd1d4;
-      }
-
-      /* The overview pages retain their original 960px content canvas.
-         Borders need integer source pixels there because browsers snap border
-         widths before the page is scaled down. These values reproduce the
-         perceived FASHION weight without changing either content canvas. */
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.home-page,
-      html.ohmy-native-phone-stage.ohmy-phone-overview body.subpage {
-        --phone-chrome-border: 2px;
-        --phone-nav-dark-divider: 9px;
-      }
-
-      /* FASHION and PHOTO use the narrower 560px reading canvas. */
-      html.ohmy-native-phone-stage.ohmy-phone-reading body.subpage {
-        --phone-nav-dark-divider: 5px;
       }
 
       html.ohmy-native-phone-stage body.home-page .home-main,
@@ -258,11 +242,11 @@
         margin: 0 !important;
         padding: 0 !important;
         box-sizing: border-box !important;
-        border-width: var(--phone-chrome-border) !important;
-        border-style: solid !important;
+        border: 0 !important;
         border-radius: 0.357143vw !important;
         font-size: 1.785714vw !important;
         box-shadow:
+          inset 0 0 0 var(--phone-shared-stroke) #71787d,
           inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 #fff,
           0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(43, 48, 51, 0.18) !important;
       }
@@ -280,10 +264,10 @@
         margin: 0 !important;
         padding: 0 !important;
         box-sizing: border-box !important;
-        border-width: var(--phone-chrome-border) !important;
-        border-style: solid !important;
+        border: 0 !important;
         border-radius: 0.357143vw !important;
         box-shadow:
+          inset 0 0 0 var(--phone-shared-stroke) #71787d,
           inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 #fff,
           0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(43, 48, 51, 0.18) !important;
       }
@@ -293,7 +277,8 @@
         height: 1.785714vw;
         top: 1.785714vw;
         left: 1.785714vw;
-        border-width: 0.357143vw;
+        border: 0;
+        box-shadow: inset 0 0 0 calc(var(--phone-chrome-unit) * 2) #333c46;
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle > span::after {
@@ -335,9 +320,11 @@
       html.ohmy-native-phone-stage body.subpage .shared-tabs {
         grid-template-columns: repeat(5, minmax(0, 1fr));
         padding-inline: 1.428571vw;
-        border-bottom: var(--phone-nav-dark-divider) solid #59656b !important;
+        padding-bottom: var(--phone-nav-dark-divider) !important;
+        border-bottom: 0 !important;
         box-shadow:
           inset 0 var(--phone-chrome-unit) 0 #fff,
+          inset 0 calc(var(--phone-nav-dark-divider) * -1) 0 #59656b,
           0 var(--phone-nav-light-divider) 0 var(--phone-nav-light-color) !important;
         overflow: hidden;
       }
