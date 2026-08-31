@@ -1516,8 +1516,8 @@
                   max-width: none !important;
                   margin-left: auto !important;
                   margin-right: auto !important;
-                  text-align: center !important;
-                  text-align-last: center !important;
+                  text-align: left !important;
+                  text-align-last: auto !important;
                 }
 
                 .toc-title {
