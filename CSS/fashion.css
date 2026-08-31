@@ -2003,3 +2003,8 @@ body.subpage.fashion-page {
 .fashion-page .fashion-unavailable-thumb small {
   color: #78868c;
 }
+
+.fashion-page .fashion-hero-copy > p:last-child {
+  color: #AEB0B2;
+  white-space: nowrap;
+}
