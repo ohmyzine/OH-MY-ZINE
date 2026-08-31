@@ -1414,11 +1414,30 @@
                   background: #fff !important;
                 }
 
-                .article-window-body,
-                .article-window-body > .article-body {
+                .article-window-body {
                   width: ${desktopArticleWidth}px !important;
                   max-width: ${desktopArticleWidth}px !important;
                   margin: 0 !important;
+                  padding: 34px !important;
+                  box-sizing: border-box !important;
+                  background: #e7ebed !important;
+                }
+
+                /* Copy the PC article frame into the scaled phone article:
+                   the grey outer gutter, white outline and peach page must
+                   remain visible instead of stretching edge to edge. */
+                .article-window-body > .article-body {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                  margin: 0 auto !important;
+                  position: relative !important;
+                  overflow: hidden !important;
+                  border: 1px solid rgba(255, 255, 255, 0.96) !important;
+                  border-radius: 23px 23px 17px 17px !important;
+                  box-shadow:
+                    0 0 0 7px rgba(255, 255, 255, 0.14),
+                    0 0 0 8px rgba(255, 255, 255, 0.74) !important;
+                  box-sizing: border-box !important;
                 }
 
                 /* Phone-only adjustment requested for the Attention opener.
