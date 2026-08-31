@@ -1320,6 +1320,7 @@
         opacity: 0;
       }
 
+      html.ohmy-native-phone-stage body.article-page-shell .article-window-body.pc-article-exact-pending > .article-body,
       html.ohmy-native-phone-stage body.article-page-shell .article-window-body.pc-article-exact-mounted > .article-body {
         display: none !important;
       }
@@ -1560,6 +1561,8 @@
         let desktopArticleHeight = 1;
         let contentResizeObserver = null;
         let outerResizeObserver = null;
+        let exactArticleInitialized = false;
+        let exactArticlePollFrame = 0;
 
         const syncExactArticleSize = () => {
           const availableWidth = articleWindowBody.clientWidth;
@@ -1571,27 +1574,38 @@
           exactWrap.style.setProperty("--pc-article-scale", String(scale));
         };
 
-        exactFrame.addEventListener("load", async () => {
+        const showResponsiveFallback = () => {
+          window.cancelAnimationFrame(exactArticlePollFrame);
+          articleWindowBody.classList.remove(
+            "pc-article-exact-pending",
+            "pc-article-exact-mounted",
+          );
+          exactWrap.remove();
+          outerResizeObserver?.disconnect();
+        };
+
+        const initializeExactArticle = async () => {
+          if (exactArticleInitialized) return true;
+
           const frameDocument = exactFrame.contentDocument;
           const frameWindow = exactFrame.contentWindow;
           const copiedArticle = frameDocument?.querySelector(".article-window-body");
 
           if (!frameDocument || !frameWindow || !copiedArticle) {
-            exactWrap.remove();
-            outerResizeObserver?.disconnect();
-            return;
+            return false;
           }
 
-          await frameDocument.fonts?.ready;
-          await Promise.all(
-            Array.from(frameDocument.images).map((image) => {
-              if (image.complete) return Promise.resolve();
-              return new Promise((resolve) => {
-                image.addEventListener("load", resolve, { once: true });
-                image.addEventListener("error", resolve, { once: true });
-              });
-            }),
-          );
+          exactArticleInitialized = true;
+          window.cancelAnimationFrame(exactArticlePollFrame);
+
+          /* The copied article must not wait for every image request. On a
+             phone, Safari can otherwise leave the responsive fallback visible
+             whenever one cached image wins or loses the loading race. */
+          const fontsReady = frameDocument.fonts?.ready || Promise.resolve();
+          await Promise.race([
+            Promise.resolve(fontsReady).catch(() => {}),
+            new Promise((resolve) => window.setTimeout(resolve, 800)),
+          ]);
 
           const measureCopiedArticle = () => {
             desktopArticleHeight = Math.max(
@@ -1637,13 +1651,30 @@
           exactFrame._pcArticleResizeObserver = contentResizeObserver;
           exactFrame._pcArticleOuterResizeObserver = outerResizeObserver;
 
+          Array.from(frameDocument.images).forEach((image) => {
+            if (image.complete) return;
+            image.addEventListener("load", measureCopiedArticle, { once: true });
+            image.addEventListener("error", measureCopiedArticle, { once: true });
+          });
+
           measureCopiedArticle();
+          articleWindowBody.classList.remove("pc-article-exact-pending");
           articleWindowBody.classList.add("pc-article-exact-mounted");
-        }, { once: true });
+          return true;
+        };
+
+        exactFrame.addEventListener(
+          "load",
+          () => {
+            void initializeExactArticle();
+          },
+          { once: true },
+        );
 
         /* Register the load handler before Safari is allowed to start loading
            srcdoc. Otherwise a fast cached load can leave the responsive
            fallback visible instead of the exact desktop article copy. */
+        articleWindowBody.classList.add("pc-article-exact-pending");
         exactFrame.srcdoc = exactArticleDocument;
         exactWrap.append(exactFrame);
         articleWindowBody.append(exactWrap);
@@ -1651,6 +1682,32 @@
         outerResizeObserver = new ResizeObserver(syncExactArticleSize);
         outerResizeObserver.observe(articleWindowBody);
         syncExactArticleSize();
+
+        /* srcdoc becomes queryable before its external images finish. Polling
+           that document makes the PC-copy layout deterministic even when the
+           iframe load event is delayed by a slow image or browser cache. */
+        let pollAttempts = 0;
+        const pollForExactArticle = () => {
+          if (exactArticleInitialized) return;
+
+          const copiedArticle = exactFrame.contentDocument?.querySelector(
+            ".article-window-body",
+          );
+          if (copiedArticle) {
+            void initializeExactArticle();
+            return;
+          }
+
+          pollAttempts += 1;
+          if (pollAttempts >= 240) {
+            showResponsiveFallback();
+            return;
+          }
+
+          exactArticlePollFrame = window.requestAnimationFrame(pollForExactArticle);
+        };
+
+        exactArticlePollFrame = window.requestAnimationFrame(pollForExactArticle);
       };
 
       if (document.readyState === "loading") {
