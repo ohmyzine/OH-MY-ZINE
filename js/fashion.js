@@ -79,3 +79,56 @@
     });
   });
 }());
+
+(function () {
+  "use strict";
+
+  if (window.OHMYZINE_OS_STAGE_HOST) return;
+
+  var channelButtons = Array.prototype.slice.call(
+    document.querySelectorAll("[data-fashion-channel]"),
+  );
+  var channelCards = Array.prototype.slice.call(
+    document.querySelectorAll(".fashion-latest-rail [data-fashion-channels]"),
+  );
+  var caption = document.querySelector("#fashion-channel-caption");
+  if (!channelButtons.length || !channelCards.length) return;
+
+  var labels = {
+    "on-air": "ON AIR",
+    street: "STREET STYLE FILE",
+    archive: "ARCHIVE UPLOAD",
+    music: "MUSIC × FASHION",
+    next: "NEXT ISSUE",
+  };
+
+  function selectChannel(channel) {
+    var visibleCount = 0;
+
+    channelButtons.forEach(function (button) {
+      var isSelected = button.dataset.fashionChannel === channel;
+      button.classList.toggle("is-active", isSelected);
+      button.setAttribute("aria-pressed", String(isSelected));
+    });
+
+    channelCards.forEach(function (card) {
+      var channels = (card.dataset.fashionChannels || "").split(/\s+/);
+      var isVisible = channels.indexOf(channel) !== -1;
+      card.hidden = !isVisible;
+      if (isVisible) visibleCount += 1;
+    });
+
+    if (caption) {
+      caption.textContent = labels[channel] + " / " + String(visibleCount).padStart(3, "0") +
+        (visibleCount === 1 ? " ARTICLE" : " ARTICLES");
+    }
+  }
+
+  channelButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      selectChannel(button.dataset.fashionChannel);
+    });
+  });
+
+  selectChannel("on-air");
+}());

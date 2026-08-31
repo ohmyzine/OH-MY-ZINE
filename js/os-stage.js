@@ -273,19 +273,19 @@
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle > span {
-        width: 1.785714vw;
-        height: 1.785714vw;
-        top: 1.785714vw;
-        left: 1.785714vw;
+        width: 2.5vw;
+        height: 2.5vw;
+        top: 1.428571vw;
+        left: 1.428571vw;
         border: 0;
-        box-shadow: inset 0 0 0 calc(var(--phone-chrome-unit) * 2) #333c46;
+        box-shadow: inset 0 0 0 calc(var(--phone-chrome-unit) * 3) #333c46;
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle > span::after {
-        width: 1.25vw;
-        height: 0.357143vw;
-        right: -1.071429vw;
-        bottom: -0.714286vw;
+        width: 1.785714vw;
+        height: calc(var(--phone-chrome-unit) * 3);
+        right: -1.428571vw;
+        bottom: -0.892857vw;
       }
 
       html.ohmy-native-phone-stage .shared-search-panel {

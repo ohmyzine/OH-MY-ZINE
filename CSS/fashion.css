@@ -894,14 +894,19 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
   pointer-events: none;
 }
 
-.fashion-page .fashion-channel-strip strong,
-.fashion-page .fashion-channel-strip span {
+.fashion-page .fashion-channel-strip button {
   min-width: 0;
   padding: 0 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-left: 1px solid rgba(104, 0, 20, 0.55);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
   font-family: Impact, "Arial Black", sans-serif;
   font-size: clamp(9px, 1.05vw, 13px);
   font-weight: 700;
@@ -910,14 +915,26 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
   white-space: nowrap;
   text-shadow: 0 2px 0 #781026;
   transform: skewX(-2deg);
+  cursor: pointer;
 }
 
-.fashion-page .fashion-channel-strip strong {
+.fashion-page .fashion-channel-strip button.is-active {
   margin: 0 -1px 0 -10px;
   border-left: 0;
   color: #ffdae3;
   background: rgba(91, 0, 20, 0.35);
   font-size: clamp(12px, 1.3vw, 17px);
+}
+
+.fashion-page .fashion-channel-strip button:focus-visible {
+  position: relative;
+  z-index: 2;
+  outline: 2px solid #fff;
+  outline-offset: -3px;
+}
+
+.fashion-page .fashion-stream-card[hidden] {
+  display: none !important;
 }
 
 .fashion-page .fashion-latest {
@@ -983,22 +1000,24 @@ body.subpage.fashion-page.fashion-player-page .fashion-hero {
 
 @media (max-width: 760px) {
   .fashion-page .fashion-channel-strip {
-    min-height: 38px;
+    min-height: 42px;
     padding: 0;
-    grid-template-columns: repeat(5, minmax(105px, 1fr));
-    overflow-x: auto;
-    scrollbar-width: thin;
+    grid-template-columns: 0.78fr 1.16fr 1.08fr 1.12fr 0.92fr;
+    overflow: hidden;
   }
 
-  .fashion-page .fashion-channel-strip strong,
-  .fashion-page .fashion-channel-strip span {
-    padding: 0 8px;
-    font-size: 9px;
+  .fashion-page .fashion-channel-strip button {
+    padding: 0 2px;
+    font-size: clamp(7px, 1.42vw, 8px);
+    line-height: 1.08;
+    letter-spacing: 0.015em;
+    white-space: normal;
+    text-align: center;
   }
 
-  .fashion-page .fashion-channel-strip strong {
+  .fashion-page .fashion-channel-strip button.is-active {
     margin-left: 0;
-    font-size: 12px;
+    font-size: clamp(9px, 1.8vw, 11px);
   }
 }
 
