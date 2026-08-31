@@ -51,6 +51,9 @@
     document.documentElement.classList.add(
       isPhoneOverview ? "ohmy-phone-overview" : "ohmy-phone-reading",
     );
+    if (isArticlePage) {
+      document.documentElement.classList.add("ohmy-article-copy-preparing");
+    }
 
     const phoneStageSizing = document.createElement("style");
     phoneStageSizing.id = "ohmy-native-phone-stage-sizing";
@@ -1318,6 +1321,15 @@
         overflow: hidden;
         background: #fff;
         opacity: 0;
+        transition: opacity 90ms ease-out;
+      }
+
+      html.ohmy-native-phone-stage body.article-page-shell .article-window {
+        transition: opacity 90ms ease-out;
+      }
+
+      html.ohmy-native-phone-stage.ohmy-article-copy-preparing body.article-page-shell .article-window {
+        opacity: 0 !important;
       }
 
       html.ohmy-native-phone-stage body.article-page-shell .article-window-body.pc-article-exact-pending > .article-body,
@@ -1354,6 +1366,7 @@
           !originalArticle ||
           articleWindowBody.querySelector(":scope > .pc-article-exact-wrap")
         ) {
+          document.documentElement.classList.remove("ohmy-article-copy-preparing");
           return;
         }
 
@@ -1601,6 +1614,7 @@
           );
           exactWrap.remove();
           outerResizeObserver?.disconnect();
+          document.documentElement.classList.remove("ohmy-article-copy-preparing");
         };
 
         const initializeExactArticle = async () => {
@@ -1609,22 +1623,18 @@
           const frameDocument = exactFrame.contentDocument;
           const frameWindow = exactFrame.contentWindow;
           const copiedArticle = frameDocument?.querySelector(".article-window-body");
+          const copiedStyles = frameDocument
+            ? Array.from(frameDocument.querySelectorAll('link[rel~="stylesheet"]'))
+            : [];
+          const copiedStylesReady =
+            copiedStyles.length === 0 || copiedStyles.every((stylesheet) => stylesheet.sheet);
 
-          if (!frameDocument || !frameWindow || !copiedArticle) {
+          if (!frameDocument || !frameWindow || !copiedArticle || !copiedStylesReady) {
             return false;
           }
 
           exactArticleInitialized = true;
           window.cancelAnimationFrame(exactArticlePollFrame);
-
-          /* The copied article must not wait for every image request. On a
-             phone, Safari can otherwise leave the responsive fallback visible
-             whenever one cached image wins or loses the loading race. */
-          const fontsReady = frameDocument.fonts?.ready || Promise.resolve();
-          await Promise.race([
-            Promise.resolve(fontsReady).catch(() => {}),
-            new Promise((resolve) => window.setTimeout(resolve, 800)),
-          ]);
 
           const measureCopiedArticle = () => {
             desktopArticleHeight = Math.max(
@@ -1679,6 +1689,14 @@
           measureCopiedArticle();
           articleWindowBody.classList.remove("pc-article-exact-pending");
           articleWindowBody.classList.add("pc-article-exact-mounted");
+          document.documentElement.classList.remove("ohmy-article-copy-preparing");
+
+          /* Reveal as soon as the already-cached PC stylesheets are applied.
+             Font and image completion may refine height afterwards, but must
+             never hold the phone on an empty article window. */
+          Promise.resolve(frameDocument.fonts?.ready)
+            .then(measureCopiedArticle)
+            .catch(() => {});
           return true;
         };
 
