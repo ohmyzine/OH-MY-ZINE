@@ -1508,13 +1508,13 @@
                   line-height: 1.95 !important;
                 }
 
-                /* Every phone article uses the full width of its white intro
-                   sheet instead of keeping the desktop 70ch line limit. */
+                /* Keep the white intro sheet unchanged while giving its text a
+                   small, even inset on phone screens. */
                 .article-lede p {
                   display: block !important;
-                  width: 100% !important;
-                  max-inline-size: none !important;
-                  max-width: none !important;
+                  width: 92% !important;
+                  max-inline-size: 92% !important;
+                  max-width: 92% !important;
                   margin-left: auto !important;
                   margin-right: auto !important;
                   text-align: left !important;
