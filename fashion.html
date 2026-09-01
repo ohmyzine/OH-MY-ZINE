@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/os-stage.min.js?v=20260901-chrome3"></script>
+  <script src="js/os-stage.min.js?v=20260901-chrome4"></script>
   <title>FASHION | OH MY ZINE</title>
   <meta name="description" content="ファッションを入り口に、その背景にある音楽とカルチャーを読み解くOH MY ZINEのFASHIONページ。">
   <meta property="og:type" content="website">
@@ -13,10 +13,10 @@
   <meta property="og:description" content="ファッションを入り口に、その背景にある音楽とカルチャーを読み解く記事ライブラリ。">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/fashion.css?v=20260901-channel1">
+  <link rel="stylesheet" href="CSS/common.min.css?v=20260901-icon1">
+  <link rel="stylesheet" href="CSS/fashion.css?v=20260901-category2">
   <link rel="stylesheet" href="CSS/finishing.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/mobile-readability.min.css?v=20260831-perf1">
+  <link rel="stylesheet" href="CSS/mobile-readability.min.css?v=20260901-strip1">
   <link rel="stylesheet" href="CSS/os-stage.min.css?v=20260831-perf1">
 <style>
 @media (max-width: 760px) {
@@ -33,7 +33,7 @@
 
   <script src="js/common.min.js?v=20260831-perf1" defer></script>
   <script src="js/subpage-window.min.js?v=20260831-perf1" defer></script>
-  <script src="js/fashion.min.js?v=20260901-channel1" defer></script>
+  <script src="js/fashion.min.js?v=20260901-category2" defer></script>
 </head>
 
 <body class="subpage fashion-page fashion-player-page">
@@ -94,7 +94,7 @@
               <strong>2026</strong><span>2 ISSUES</span><span>LONG READ</span><b>13+</b>
             </p>
             <div class="fashion-hero-actions">
-              <a class="fashion-hero-play" href="article.html"><span>▶</span> 最新の記事を読む</a>
+              <a class="fashion-hero-play" href="article.html"><span><img class="fashion-play-icon" src="images/fashion-play-icon.png?v=20260901-1" alt="" aria-hidden="true"></span> 最新の記事を読む</a>
               <button class="fashion-hero-add js-article-toggle" type="button" data-article-action="save" data-article-id="attention-001" data-off-symbol="＋" data-on-symbol="✓" aria-label="マイリストに追加" aria-pressed="false">＋</button>
               <button class="fashion-hero-rate js-article-toggle" type="button" data-article-action="like" data-article-id="attention-001" data-off-symbol="♡" data-on-symbol="♥" aria-label="お気に入りに追加" aria-pressed="false">♡</button>
             </div>
@@ -114,10 +114,14 @@
 
         <div class="fashion-channel-strip" role="group" aria-label="記事カテゴリ">
           <button class="is-active" type="button" data-fashion-channel="on-air" aria-pressed="true">ON AIR</button>
+          <button type="button" data-fashion-category-toggle aria-expanded="false" aria-controls="fashion-category-menu">CATEGORY</button>
+          <button type="button" data-fashion-channel="next" aria-pressed="false">NEXT ISSUE</button>
+        </div>
+
+        <div class="fashion-category-menu" id="fashion-category-menu" aria-label="カテゴリ一覧" hidden>
           <button type="button" data-fashion-channel="street" aria-pressed="false">STREET STYLE FILE</button>
           <button type="button" data-fashion-channel="archive" aria-pressed="false">ARCHIVE UPLOAD</button>
           <button type="button" data-fashion-channel="music" aria-pressed="false">MUSIC × FASHION</button>
-          <button type="button" data-fashion-channel="next" aria-pressed="false">NEXT ISSUE</button>
         </div>
 
         <section class="fashion-latest" aria-labelledby="latest-title">
@@ -135,7 +139,7 @@
               </a>
               <div class="fashion-stream-card-body">
                 <div class="fashion-card-controls">
-                  <a class="is-play" href="article.html" aria-label="記事を読む">▶</a>
+                  <a class="is-play" href="article.html" aria-label="記事を読む"><img class="fashion-play-icon" src="images/fashion-play-icon.png?v=20260901-1" alt="" aria-hidden="true"></a>
                   <button class="js-article-toggle" type="button" data-article-action="save" data-article-id="attention-001" data-off-symbol="＋" data-on-symbol="✓" aria-label="マイリストに追加" aria-pressed="false">＋</button>
                   <button class="js-article-toggle" type="button" data-article-action="like" data-article-id="attention-001" data-off-symbol="♡" data-on-symbol="♥" aria-label="お気に入りに追加" aria-pressed="false">♡</button>
                   <small>5,339文字</small>
@@ -160,7 +164,7 @@
               </a>
               <div class="fashion-stream-card-body">
                 <div class="fashion-card-controls">
-                  <a class="is-play" href="article-vhs.html" aria-label="記事を読む">▶</a>
+                  <a class="is-play" href="article-vhs.html" aria-label="記事を読む"><img class="fashion-play-icon" src="images/fashion-play-icon.png?v=20260901-1" alt="" aria-hidden="true"></a>
                   <button class="js-article-toggle" type="button" data-article-action="save" data-article-id="vsh-002" data-off-symbol="＋" data-on-symbol="✓" aria-label="マイリストに追加" aria-pressed="false">＋</button>
                   <button class="js-article-toggle" type="button" data-article-action="like" data-article-id="vsh-002" data-off-symbol="♡" data-on-symbol="♥" aria-label="お気に入りに追加" aria-pressed="false">♡</button>
                   <small>約3,800文字</small>
@@ -181,7 +185,7 @@
               </div>
               <div class="fashion-stream-card-body">
                 <div class="fashion-card-controls">
-                  <button class="is-play" type="button" aria-label="記事は準備中です" disabled>▶</button>
+                  <button class="is-play" type="button" aria-label="記事は準備中です" disabled><img class="fashion-play-icon" src="images/fashion-play-icon.png?v=20260901-1" alt="" aria-hidden="true"></button>
                   <button type="button" aria-label="記事は準備中です" disabled>＋</button>
                   <button type="button" aria-label="記事は準備中です" disabled>♡</button>
                   <small>----文字</small>
@@ -202,7 +206,7 @@
               </div>
               <div class="fashion-stream-card-body">
                 <div class="fashion-card-controls">
-                  <button class="is-play" type="button" aria-label="記事は準備中です" disabled>▶</button>
+                  <button class="is-play" type="button" aria-label="記事は準備中です" disabled><img class="fashion-play-icon" src="images/fashion-play-icon.png?v=20260901-1" alt="" aria-hidden="true"></button>
                   <button type="button" aria-label="記事は準備中です" disabled>＋</button>
                   <button type="button" aria-label="記事は準備中です" disabled>♡</button>
                   <small>----文字</small>
@@ -220,12 +224,12 @@
             <a class="fashion-screen" href="article.html" aria-label="NewJeans『Attention』の記事を読む">
               <img loading="lazy" decoding="async" src="images/attention-main.jpg" alt="NewJeans Attention">
               <span class="fashion-screen-badge">FEATURE 001 / LONG READ</span>
-              <span class="fashion-big-play" aria-hidden="true">▶</span>
+              <span class="fashion-big-play" aria-hidden="true"><img class="fashion-play-icon" src="images/fashion-play-icon.png?v=20260901-1" alt=""></span>
               <span class="fashion-screen-caption">クリックして記事を再生</span>
             </a>
 
             <div class="fashion-player-controls" aria-label="記事プレイヤー操作">
-              <a class="fashion-control-play" href="article.html" aria-label="記事を読む">▶</a>
+              <a class="fashion-control-play" href="article.html" aria-label="記事を読む"><img class="fashion-play-icon" src="images/fashion-play-icon.png?v=20260901-1" alt="" aria-hidden="true"></a>
               <div class="fashion-word-track" aria-hidden="true"><span></span></div>
               <strong>0 / 5,339 CHARACTERS</strong>
               <span class="fashion-format">TXT</span>
@@ -245,7 +249,7 @@
               </dl>
 
               <a class="fashion-read-button" href="article.html">
-                <span>▶</span> PLAY ARTICLE
+                <span><img class="fashion-play-icon" src="images/fashion-play-icon.png?v=20260901-1" alt="" aria-hidden="true"></span> PLAY ARTICLE
               </a>
             </div>
           </div>

@@ -92,6 +92,8 @@
     document.querySelectorAll(".fashion-latest-rail [data-fashion-channels]"),
   );
   var caption = document.querySelector("#fashion-channel-caption");
+  var categoryToggle = document.querySelector("[data-fashion-category-toggle]");
+  var categoryMenu = document.querySelector("#fashion-category-menu");
   if (!channelButtons.length || !channelCards.length) return;
 
   var labels = {
@@ -102,6 +104,23 @@
     next: "NEXT ISSUE",
   };
 
+  function isCategoryChannel(channel) {
+    return channel === "street" || channel === "archive" || channel === "music";
+  }
+
+  function closeCategoryMenu() {
+    if (!categoryMenu || !categoryToggle) return;
+    categoryMenu.hidden = true;
+    categoryToggle.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleCategoryMenu() {
+    if (!categoryMenu || !categoryToggle) return;
+    var willOpen = categoryMenu.hidden;
+    categoryMenu.hidden = !willOpen;
+    categoryToggle.setAttribute("aria-expanded", String(willOpen));
+  }
+
   function selectChannel(channel) {
     var visibleCount = 0;
 
@@ -110,6 +129,12 @@
       button.classList.toggle("is-active", isSelected);
       button.setAttribute("aria-pressed", String(isSelected));
     });
+
+    if (categoryToggle) {
+      var categorySelected = isCategoryChannel(channel);
+      categoryToggle.classList.toggle("is-active", categorySelected);
+      categoryToggle.setAttribute("aria-pressed", String(categorySelected));
+    }
 
     channelCards.forEach(function (card) {
       var channels = (card.dataset.fashionChannels || "").split(/\s+/);
@@ -127,7 +152,22 @@
   channelButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       selectChannel(button.dataset.fashionChannel);
+      closeCategoryMenu();
     });
+  });
+
+  if (categoryToggle) {
+    categoryToggle.addEventListener("click", toggleCategoryMenu);
+  }
+
+  document.addEventListener("click", function (event) {
+    if (!categoryMenu || categoryMenu.hidden) return;
+    if (categoryMenu.contains(event.target) || categoryToggle.contains(event.target)) return;
+    closeCategoryMenu();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeCategoryMenu();
   });
 
   selectChannel("on-air");

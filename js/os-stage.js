@@ -273,19 +273,19 @@
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle > span {
-        width: 2.5vw;
-        height: 2.5vw;
-        top: 1.428571vw;
-        left: 1.428571vw;
+        width: 4.464286vw;
+        height: 4.464286vw;
+        top: 0.982143vw;
+        left: 0.982143vw;
         border: 0;
-        box-shadow: inset 0 0 0 calc(var(--phone-chrome-unit) * 3) #333c46;
+        border-radius: 0;
+        background: url("images/ui-search-icon.png?v=20260901-1") center / contain no-repeat;
+        box-shadow: none;
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle > span::after {
-        width: 1.785714vw;
-        height: calc(var(--phone-chrome-unit) * 3);
-        right: -1.428571vw;
-        bottom: -0.892857vw;
+        content: none;
+        display: none;
       }
 
       html.ohmy-native-phone-stage .shared-search-panel {
@@ -1281,6 +1281,24 @@
       html.ohmy-native-phone-stage body.subpage .content-window-body select {
         min-height: 44px !important;
         font-size: 13px !important;
+      }
+
+      html.ohmy-native-phone-stage body.subpage.fashion-page .content-window-body .fashion-channel-strip {
+        min-height: 38px !important;
+        padding: 0 !important;
+        gap: 0 !important;
+      }
+
+      html.ohmy-native-phone-stage body.subpage.fashion-page .content-window-body .fashion-channel-strip button {
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 0 2px !important;
+        font-size: 8px !important;
+        line-height: 1.08 !important;
+      }
+
+      html.ohmy-native-phone-stage body.subpage.fashion-page .content-window-body .fashion-channel-strip button.is-active {
+        font-size: 10px !important;
       }
 
       html.ohmy-native-phone-stage body.about-page-shell .profile-label,

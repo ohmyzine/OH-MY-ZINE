@@ -642,25 +642,19 @@ body.subpage {
 }
 
 .shared-search-toggle > span {
-  width: 10px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
   position: absolute;
-  top: 5px;
-  left: 5px;
-  border: 2px solid #333c46;
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  border: 0;
+  border-radius: 0;
+  background: url("../images/ui-search-icon.png?v=20260901-1") center / contain no-repeat;
 }
 
 .shared-search-toggle > span::after {
-  content: "";
-  width: 7px;
-  height: 2px;
-  position: absolute;
-  right: -6px;
-  bottom: -4px;
-  background: #333c46;
-  transform: rotate(45deg);
-  transform-origin: left center;
+  content: none;
+  display: none;
 }
 
 .shared-search-toggle:hover,
