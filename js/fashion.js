@@ -98,13 +98,14 @@
 
   var labels = {
     "on-air": "ON AIR",
+    fashion: "FASHION",
     culture: "CULTURE",
     archive: "ARCHIVE / ALL ARTICLES",
     next: "NEXT ISSUE",
   };
 
   function isCategoryChannel(channel) {
-    return channel === "culture" || channel === "archive";
+    return channel === "fashion" || channel === "culture" || channel === "archive";
   }
 
   function closeCategoryMenu() {
