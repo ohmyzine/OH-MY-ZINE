@@ -4,36 +4,31 @@
   if (window.OHMYZINE_OS_STAGE_HOST) return;
 
   const video = document.querySelector(".profile-motion video");
-  const source = video?.querySelector("source[data-src]");
 
-  if (video && source) {
-    let loaded = false;
-    const loadVideo = () => {
-      if (loaded) return;
-      loaded = true;
-      source.src = source.dataset.src;
-      source.removeAttribute("data-src");
-      video.load();
+  if (video) {
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
 
+    const startVideo = () => {
+      video.muted = true;
       video.play().catch(() => {
-        // Autoplay can be blocked. The first frame still remains visible.
+        // iOSの一時停止後も、次の表示機会に自動再生を再試行する。
       });
     };
 
-    if (!("IntersectionObserver" in window)) {
-      loadVideo();
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      startVideo();
     } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (!entries.some((entry) => entry.isIntersecting)) return;
-          loadVideo();
-          observer.disconnect();
-        },
-        { rootMargin: "320px 0px" },
-      );
-
-      observer.observe(video);
+      video.addEventListener("canplay", startVideo, { once: true });
     }
+
+    window.addEventListener("pageshow", startVideo);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) startVideo();
+    });
   }
 
   const tabs = [...document.querySelectorAll("[data-about-panel]")];

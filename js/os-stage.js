@@ -1798,6 +1798,7 @@
     stageFrame.id = "ohmy-os-stage-frame";
     stageFrame.title = `${document.title} — Desktop Stage`;
     stageFrame.loading = "eager";
+    stageFrame.allow = "autoplay";
     stageFrame.setAttribute("scrolling", "no");
 
     const frameUrl = new URL(window.location.href);
