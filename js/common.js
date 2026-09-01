@@ -26,6 +26,11 @@
   let articles = fallbackArticles;
   const sharedUi = window.OhMyZineSharedUI ||= {};
 
+  function isPhonePresentation() {
+    return document.documentElement.classList.contains("ohmy-native-phone-stage")
+      || document.documentElement.classList.contains("ohmy-os-stage-frame");
+  }
+
   function getActiveTitlebar() {
     if (document.documentElement.classList.contains("ohmy-native-phone-stage")) {
       const phoneTitlebar = document.querySelector(".phone-fashion-header .shared-titlebar");
@@ -93,7 +98,10 @@
     }
 
     let visitor = actions.querySelector(".shared-visitor-counter");
-    if (!visitor) {
+    if (isPhonePresentation()) {
+      visitor?.remove();
+      visitor = null;
+    } else if (!visitor) {
       visitor = document.createElement("span");
       visitor.className = "shared-visitor-counter";
       visitor.append("VISITOR ");
@@ -140,32 +148,64 @@
     return { searchToggle, searchPanel };
   }
 
-  function updateVisitorCount() {
+  async function updateVisitorCount() {
     const counters = document.querySelectorAll("[data-visitor-count]");
-    if (!counters.length) return;
+    const showCount = !isPhonePresentation() && counters.length > 0;
+    const totalKey = "oh-my-zine-local-visits";
+    const fallbackSessionKey = "oh-my-zine-visitor-counted-v1";
+    const globalSessionKey = "oh-my-zine-global-visitor-counted-v1";
+    const counterEndpoint = "https://counterapi.com/api/oh-my-zine.com/view/site-visits";
 
-    let count = 1;
+    const renderCount = (count) => {
+      if (!showCount) return;
+      const display = String(Math.max(1, count)).padStart(6, "0");
+      counters.forEach((counter) => {
+        counter.textContent = display;
+      });
+    };
+
+    let fallbackCount = 1;
     try {
-      const totalKey = "oh-my-zine-local-visits";
-      const sessionKey = "oh-my-zine-visitor-counted-v1";
       const stored = Number.parseInt(localStorage.getItem(totalKey) || "0", 10);
-      count = Number.isFinite(stored) ? stored : 0;
+      fallbackCount = Number.isFinite(stored) ? stored : 0;
 
-      if (sessionStorage.getItem(sessionKey) !== "true") {
-        count += 1;
-        localStorage.setItem(totalKey, String(count));
-        sessionStorage.setItem(sessionKey, "true");
-      } else if (count < 1) {
-        count = 1;
-      }
+      const alreadyCounted = sessionStorage.getItem(globalSessionKey) === "true";
+      if (!alreadyCounted) sessionStorage.setItem(globalSessionKey, "true");
+
+      if (alreadyCounted && !showCount) return;
+
+      const query = new URLSearchParams({ startNumber: "1" });
+      if (alreadyCounted) query.set("readOnly", "true");
+      const response = await fetch(`${counterEndpoint}?${query}`, {
+        cache: "no-store",
+        mode: "cors",
+      });
+      if (!response.ok) throw new Error(`Visitor counter request failed: ${response.status}`);
+
+      const payload = await response.json();
+      const globalCount = Number.parseInt(String(payload.value), 10);
+      if (!Number.isFinite(globalCount)) throw new Error("Visitor counter returned an invalid value");
+
+      localStorage.setItem(totalKey, String(globalCount));
+      renderCount(globalCount);
+      return;
     } catch (error) {
-      count = 1;
+      // file:// preview or a temporary network failure falls back locally.
     }
 
-    const display = String(count).padStart(6, "0");
-    counters.forEach((counter) => {
-      counter.textContent = display;
-    });
+    try {
+      if (sessionStorage.getItem(fallbackSessionKey) !== "true") {
+        fallbackCount += 1;
+        localStorage.setItem(totalKey, String(fallbackCount));
+        sessionStorage.setItem(fallbackSessionKey, "true");
+      } else if (fallbackCount < 1) {
+        fallbackCount = 1;
+      }
+    } catch (error) {
+      fallbackCount = 1;
+    }
+
+    renderCount(fallbackCount);
   }
 
   function setupSearch(searchToggle, searchPanel) {
