@@ -98,14 +98,13 @@
 
   var labels = {
     "on-air": "ON AIR",
-    street: "STREET STYLE FILE",
-    archive: "ARCHIVE UPLOAD",
-    music: "MUSIC × FASHION",
+    culture: "CULTURE",
+    archive: "ARCHIVE / ALL ARTICLES",
     next: "NEXT ISSUE",
   };
 
   function isCategoryChannel(channel) {
-    return channel === "street" || channel === "archive" || channel === "music";
+    return channel === "culture" || channel === "archive";
   }
 
   function closeCategoryMenu() {
