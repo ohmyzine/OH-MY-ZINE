@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/os-stage.min.js?v=20260901-chrome4"></script>
+  <script src="js/os-stage.js?v=20260918-common1"></script>
 
   <title>OHMYZINE vs VSH | OH MY ZINE</title>
 
@@ -17,15 +17,11 @@
   <meta property="article:published_time" content="2026-08-19">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.min.css?v=20260901-icon1">
-  <link rel="stylesheet" href="CSS/index.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/article-template.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/finishing.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/mobile-readability.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/os-stage.min.css?v=20260831-perf1">
-  <script src="js/common.min.js?v=20260902-visitor1" defer></script>
-  <script src="js/subpage-window.min.js?v=20260831-perf1" defer></script>
-  <script src="js/article.min.js?v=20260831-perf1" defer></script>
+  <link rel="stylesheet" href="CSS/common.css?v=20260901-icon1">
+  <link rel="stylesheet" href="CSS/index.css?v=20260822-common-cleanup1">
+  <link rel="stylesheet" href="CSS/article.css?v=20260918-common1">
+  <link rel="stylesheet" href="CSS/common-runtime.min.css?v=20260918-common1">
+  <script src="js/common.js?v=20260918-common1" defer></script>
 
   <style>
     /* VHS article only */
@@ -39,38 +35,13 @@
       display: block;
       white-space: nowrap;
     }
-
-    @media (max-width: 900px) {
-      .vhs-article .article-opening-copy .article-display-title {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .vhs-article .article-opening-copy .article-display-title > span {
-        white-space: normal;
-      }
-
-      .vhs-article .article-visual-layout {
-        margin: 18px auto 0;
-        justify-self: center;
-      }
-    }
   </style>
 
 
   <style>
-    /* VHS article only: show the transparent logo image by itself. */
+    /* VHS article only: keep the original orange double ring, change only the inner background to white. */
     .vhs-article .article-opening-copy .article-logo-frame {
-      padding: 0;
-      background: transparent;
-      border: 0;
-      border-radius: 0;
-      box-shadow: none;
-      transform: none;
-    }
-
-    .vhs-article .article-opening-copy .article-logo-frame::before {
-      content: none;
+      background: #ffffff;
     }
   </style>
 
@@ -159,7 +130,7 @@
         <h1 class="article-title-heading">OHMYZINE vs VSH</h1>
 
         <div class="article-logo-frame">
-          <img class="article-object-title" src="images/VHS-clean.png?v=1" alt="VHS">
+          <img class="article-object-title" src="images/VHS.webp" alt="VHS">
         </div>
 
         <p class="article-display-title">

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">記事画像の差し替え位置</title>
+  <desc id="desc">新しい記事の画像ファイルに差し替えるためのプレースホルダー</desc>
+  <rect width="1600" height="900" fill="#e4aa92"/>
+  <rect x="48" y="48" width="1504" height="804" rx="28" fill="#fffaf7" stroke="#151515" stroke-width="8" stroke-dasharray="28 18"/>
+  <path d="M610 570 760 405l105 115 87-94 152 144H610Z" fill="#f6c5b1" stroke="#151515" stroke-width="8" stroke-linejoin="round"/>
+  <circle cx="705" cy="334" r="52" fill="#ff7d2b" stroke="#151515" stroke-width="8"/>
+  <text x="800" y="685" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#151515">ARTICLE IMAGE</text>
+  <text x="800" y="760" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#444">画像ファイルに差し替えてください</text>
+</svg>

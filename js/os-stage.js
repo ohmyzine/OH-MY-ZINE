@@ -8,9 +8,6 @@
   const STAGE_BREAKPOINT = 1100;
   const currentUrl = new URL(window.location.href);
   const currentPage = currentUrl.pathname.split("/").pop()?.toLowerCase() || "index.html";
-  const isArticlePage =
-    currentPage === "article.html" ||
-    currentPage === "article-vhs.html";
   const isPhoneOverview =
     currentPage === "index.html" ||
     currentPage === "about.html" ||
@@ -51,9 +48,6 @@
     document.documentElement.classList.add(
       isPhoneOverview ? "ohmy-phone-overview" : "ohmy-phone-reading",
     );
-    if (isArticlePage) {
-      document.documentElement.classList.add("ohmy-article-copy-preparing");
-    }
 
     const phoneStageSizing = document.createElement("style");
     phoneStageSizing.id = "ohmy-native-phone-stage-sizing";
@@ -81,9 +75,9 @@
         border: 0 !important;
         background: #d5d7da !important;
         box-shadow:
-          0 0 0 var(--phone-frame-stroke) #6b6e73,
-          0 2.5vw 5.357143vw rgba(25, 22, 20, 0.28),
-          inset 0 0.178571vw 0 rgba(255, 255, 255, 0.9) !important;
+          0 0 0 var(--phone-frame-border) #6b6e73,
+          0 var(--phone-frame-shadow-y) var(--phone-frame-shadow-blur) rgba(25, 22, 20, 0.28),
+          inset 0 var(--phone-bevel-1) 0 rgba(255, 255, 255, 0.9) !important;
       }
 
       html.ohmy-native-phone-stage .shared-page-base {
@@ -120,10 +114,10 @@
         color: #fff !important;
         background: linear-gradient(180deg, #f8a59e 0%, #d9534b 46%, #972019 52%, #cb443c 100%) !important;
         box-shadow:
-          inset 0 0 0 var(--phone-shared-stroke) #8c2c27,
-          inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.72),
-          0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(75, 24, 20, 0.32) !important;
-        text-shadow: 0 calc(var(--phone-chrome-unit) * -1) 0 #791914 !important;
+          inset 0 0 0 var(--phone-chrome-border) #8c2c27,
+          inset var(--phone-bevel-1) var(--phone-bevel-1) 0 rgba(255, 255, 255, 0.72),
+          0 var(--phone-bevel-1) var(--phone-bevel-1) rgba(75, 24, 20, 0.32) !important;
+        text-shadow: 0 -1px 0 #791914 !important;
       }
 
       html.ohmy-native-phone-stage {
@@ -149,22 +143,27 @@
         filter: brightness(1.08) saturate(1.12) !important;
       }
 
-      /* HOME's visible phone chrome is the source for every phone page. */
+      /* HOME's 960px phone chrome is the visual source for every phone page. */
       html.ohmy-native-phone-stage body.home-page,
       html.ohmy-native-phone-stage body.subpage {
         --shared-app-width: 100%;
         --shared-titlebar-height: 8.571429vw;
         --shared-tab-height: 7.857143vw;
-        --phone-window-top-gap: 2.142857vw;
         /* HOME uses a 960px phone stage: 28 / 960 = 2.916667vw. */
         --phone-content-start-gap: 2.916667vw;
         --phone-home-content-start-gap: calc(var(--phone-content-start-gap) / 3);
-        /* Copy HOME's source pixels into viewport units. FASHION and PHOTO use
-           the same ratios on their 560px canvas, so the final phone chrome is
-           identical without changing either page's content width. */
-        --phone-shared-stroke: 0.104167vw;
-        --phone-frame-stroke: 0.208333vw;
-        --phone-chrome-unit: 0.104167vw;
+        /* HOME uses a 960px stage while FASHION/PHOTO use 560px. Express every
+           chrome edge in viewport units from HOME's original pixel values so
+           the final on-screen thickness stays identical after either scale. */
+        --phone-chrome-border: 0.104167vw;
+        --phone-frame-border: 0.208333vw;
+        --phone-bevel-1: 0.104167vw;
+        --phone-bevel-2: 0.208333vw;
+        --phone-bevel-3: 0.3125vw;
+        --phone-bevel-4: 0.416667vw;
+        --phone-bevel-5: 0.520833vw;
+        --phone-frame-shadow-y: 1.458333vw;
+        --phone-frame-shadow-blur: 3.125vw;
         --phone-nav-dark-divider: 0.625vw;
         --phone-nav-light-divider: 0.208333vw;
         --phone-nav-light-color: #cbd1d4;
@@ -172,7 +171,6 @@
 
       html.ohmy-native-phone-stage body.home-page .home-main,
       html.ohmy-native-phone-stage body.subpage {
-        padding-top: var(--phone-window-top-gap) !important;
         padding-inline: 1.428571vw !important;
       }
 
@@ -186,9 +184,9 @@
         padding-inline: 1.785714vw !important;
         border-bottom: 0 !important;
         box-shadow:
-          inset 0 calc(var(--phone-shared-stroke) * -1) 0 #777d84,
-          inset 0 var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.96),
-          inset 0 calc(var(--phone-chrome-unit) * -1) 0 rgba(255, 255, 255, 0.55) !important;
+          inset 0 calc(-1 * var(--phone-chrome-border)) 0 #777d84,
+          inset 0 var(--phone-bevel-1) 0 rgba(255, 255, 255, 0.96),
+          inset 0 calc(-1 * var(--phone-bevel-1)) 0 rgba(255, 255, 255, 0.55) !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand,
@@ -199,7 +197,6 @@
         gap: 1.25vw !important;
         font-size: 1.964286vw !important;
         letter-spacing: 0.04em !important;
-        text-shadow: 0 var(--phone-chrome-unit) 0 #fff !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-brand .shared-brand-icon,
@@ -246,9 +243,13 @@
         border-radius: 0.357143vw !important;
         font-size: 1.785714vw !important;
         box-shadow:
-          inset 0 0 0 var(--phone-shared-stroke) #71787d,
-          inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 #fff,
-          0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(43, 48, 51, 0.18) !important;
+          inset 0 0 0 var(--phone-chrome-border) #71787d,
+          inset var(--phone-bevel-1) var(--phone-bevel-1) 0 #fff,
+          0 var(--phone-bevel-1) var(--phone-bevel-1) rgba(43, 48, 51, 0.18) !important;
+      }
+
+      html.ohmy-native-phone-stage .phone-fashion-header .shared-window-controls button:active {
+        box-shadow: inset 0 var(--phone-bevel-3) var(--phone-bevel-5) rgba(45, 57, 66, 0.28) !important;
       }
 
       html.ohmy-native-phone-stage .shared-visitor-counter {
@@ -267,9 +268,13 @@
         border: 0 !important;
         border-radius: 0.357143vw !important;
         box-shadow:
-          inset 0 0 0 var(--phone-shared-stroke) #71787d,
-          inset var(--phone-chrome-unit) var(--phone-chrome-unit) 0 #fff,
-          0 var(--phone-chrome-unit) var(--phone-chrome-unit) rgba(43, 48, 51, 0.18) !important;
+          inset 0 0 0 var(--phone-chrome-border) #71787d,
+          inset var(--phone-bevel-1) var(--phone-bevel-1) 0 #fff,
+          0 var(--phone-bevel-1) var(--phone-bevel-1) rgba(43, 48, 51, 0.18) !important;
+      }
+
+      html.ohmy-native-phone-stage .phone-fashion-header .shared-search-toggle:active {
+        box-shadow: inset 0 var(--phone-bevel-3) var(--phone-bevel-5) rgba(45, 57, 66, 0.28) !important;
       }
 
       html.ohmy-native-phone-stage .shared-search-toggle > span {
@@ -323,8 +328,8 @@
         padding-bottom: var(--phone-nav-dark-divider) !important;
         border-bottom: 0 !important;
         box-shadow:
-          inset 0 var(--phone-chrome-unit) 0 #fff,
-          inset 0 calc(var(--phone-nav-dark-divider) * -1) 0 #59656b,
+          inset 0 var(--phone-bevel-1) 0 #fff,
+          inset 0 calc(-1 * var(--phone-nav-dark-divider)) 0 #59656b,
           0 var(--phone-nav-light-divider) 0 var(--phone-nav-light-color) !important;
         overflow: hidden;
       }
@@ -345,19 +350,18 @@
         box-sizing: border-box !important;
         border: 0 !important;
         box-shadow:
-          inset 0 0 0 var(--phone-shared-stroke) #718b95,
-          inset 0 var(--phone-chrome-unit) 0 rgba(255, 255, 255, 0.76),
-          inset 0 calc(var(--phone-chrome-unit) * -4) 0 rgba(35, 71, 84, 0.15) !important;
-        text-shadow: 0 calc(var(--phone-chrome-unit) * -1) 0 #425b68 !important;
+          inset 0 0 0 var(--phone-chrome-border) #718b95,
+          inset 0 var(--phone-bevel-1) 0 rgba(255, 255, 255, 0.76),
+          inset 0 calc(-1 * var(--phone-bevel-4)) 0 rgba(35, 71, 84, 0.15) !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs > a[aria-current="page"],
       html.ohmy-native-phone-stage body.subpage .shared-tabs > a[aria-current="page"] {
         box-shadow:
-          inset 0 0 0 var(--phone-shared-stroke) #718b95,
-          inset 0 calc(var(--phone-chrome-unit) * 2) 0 #fff,
-          inset 0 calc(var(--phone-chrome-unit) * -3) 0 #d8eef5,
-          0 var(--phone-chrome-unit) calc(var(--phone-chrome-unit) * 2) rgba(61, 76, 82, 0.34) !important;
+          inset 0 0 0 var(--phone-chrome-border) #718b95,
+          inset 0 var(--phone-bevel-2) 0 #fff,
+          inset 0 calc(-1 * var(--phone-bevel-3)) 0 #d8eef5,
+          0 var(--phone-bevel-1) var(--phone-bevel-2) rgba(61, 76, 82, 0.34) !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .shared-tabs > :first-child,
@@ -372,7 +376,7 @@
 
       html.ohmy-native-phone-stage body.home-page:not(.window-maximized) .home-main,
       html.ohmy-native-phone-stage body.subpage:not(.is-subpage-maximized) {
-        padding-top: var(--phone-window-top-gap) !important;
+        padding-top: 0 !important;
       }
 
       html.ohmy-native-phone-stage body.subpage .subpage-main {
@@ -679,292 +683,18 @@
         line-height: 1.6 !important;
       }
 
-      /* ARTICLE CONTENT ONLY: copy the desktop editorial composition into the
-         existing phone window. The phone window, chrome and zoom system above
-         deliberately stay untouched. */
-      html.ohmy-native-phone-stage body.article-page-shell .article-window-body > .article-body {
-        padding: 0 0 38px !important;
-        color: #26211f !important;
-        background: #fff !important;
-        border-radius: 0 0 15px 15px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-intro {
-        margin: 10px 8px 18px !important;
-        padding: 16px 18px 12px !important;
-        border: 0 !important;
-        border-radius: 0 !important;
-        background: #f4c4b0 !important;
-        box-shadow: 0 0 0 6px #fff !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-opening-grid {
-        display: grid !important;
-        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
-        gap: 12px !important;
-        align-items: start !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-opening-copy {
-        width: auto !important;
-        max-width: none !important;
-        min-width: 0 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-column-label {
-        margin: 0 0 7px !important;
-        font-size: 9px !important;
-        letter-spacing: 0.18em !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-logo-frame {
-        width: min(100%, 150px) !important;
-        min-height: 0 !important;
-        margin: 0 0 8px !important;
-        padding: 7px 9px 6px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-logo-frame .article-object-title {
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 !important;
-        display: block !important;
-        object-fit: contain !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-display-title {
-        max-width: 9.7em !important;
-        margin: 0 0 7px !important;
-        font-size: 14px !important;
-        line-height: 1.28 !important;
-        letter-spacing: -0.035em !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-opening-copy .article-subtitle {
-        max-width: 28em !important;
-        margin: 0 0 7px !important;
-        font-size: 8px !important;
-        line-height: 1.8 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-publish-meta {
-        margin: 6px 0 0 !important;
-        gap: 3px !important;
-        font-size: 6px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-publish-meta > * {
-        padding: 3px 4px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-visual-layout {
-        width: 100% !important;
-        min-height: 0 !important;
-        display: block !important;
-        position: relative !important;
-        aspect-ratio: 16 / 9 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single,
-      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single img {
-        width: 100% !important;
-        height: 100% !important;
-        min-height: 0 !important;
-        aspect-ratio: auto !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single {
-        margin: 0 !important;
-        display: grid !important;
-        place-items: center !important;
-        background: #dfaa94 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single img {
-        object-fit: contain !important;
-        object-position: center !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-hero-single figcaption {
-        left: 5px !important;
-        bottom: 5px !important;
-        padding: 3px 4px !important;
-        font-size: 5.5px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-tags-panel {
-        width: min(74px, calc(100% - 12px)) !important;
-        min-width: 0 !important;
-        min-height: 0 !important;
-        margin: 0 !important;
-        padding: 5px 5px 4px !important;
-        position: absolute !important;
-        right: 6px !important;
-        bottom: 6px !important;
-        border: 1px solid rgba(79, 51, 40, 0.38) !important;
-        border-radius: 6px !important;
-        background: rgba(255, 245, 239, 0.93) !important;
-        box-shadow: 0 2px 7px rgba(45, 26, 20, 0.24) !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-tags-title {
-        margin: 0 0 4px !important;
-        font-size: 6px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-tags-list {
-        gap: 2px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-tags-list span {
-        padding: 2px 3px !important;
-        font-size: 5.5px !important;
-        line-height: 1.3 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-share-line {
-        display: none !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-lede {
-        margin: 12px 5.47% 0 !important;
-        padding: 14px 15px 4px !important;
-        display: block !important;
-        border: 1px solid #dfd3cc !important;
-        border-radius: 9px 9px 5px 5px !important;
-        background: #fffdfb !important;
-        box-shadow: 0 1px 0 rgba(118, 96, 87, 0.16) !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-lede p,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > p,
-      html.ohmy-native-phone-stage body.article-page-shell blockquote p,
-      html.ohmy-native-phone-stage body.article-page-shell .article-ending {
-        color: #26211f !important;
-        font-size: 15px !important;
-        line-height: 2 !important;
-        letter-spacing: 0 !important;
-        text-align: left !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-lede p {
-        margin: 0 0 14px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > p,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > h2,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > h3,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > blockquote,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > .toc,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-figure,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > .image-comparison,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-ending,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-newsletter,
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > .article-back-top-wrap {
-        width: auto !important;
-        max-width: none !important;
-        margin-right: 5.47% !important;
-        margin-left: 5.47% !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > p {
-        margin-top: 0 !important;
-        margin-bottom: 18px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > h2 {
-        margin-top: 48px !important;
-        margin-bottom: 18px !important;
-        padding: 9px 11px !important;
-        font-size: clamp(21px, 6.5vw, 29px) !important;
-        line-height: 1.4 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-body > h3 {
-        margin-top: 36px !important;
-        margin-bottom: 14px !important;
-        padding-bottom: 7px !important;
-        font-size: 19px !important;
-        line-height: 1.5 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .toc {
-        margin-top: 32px !important;
-        margin-bottom: 40px !important;
-        border-radius: 6px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .toc-title {
-        min-height: 24px !important;
-        font-size: 9px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .toc li {
-        min-height: 36px !important;
-        grid-template-columns: 36px 1fr !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .toc li::before {
-        font-size: 8px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .toc a {
-        padding: 8px 10px !important;
-        font-size: 13px !important;
-        line-height: 1.65 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-figure {
-        margin-top: 30px !important;
-        margin-bottom: 40px !important;
-        padding: 6px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-figure img,
-      html.ohmy-native-phone-stage body.article-page-shell .comparison-item img {
-        width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .image-comparison {
-        margin-top: 36px !important;
-        margin-bottom: 44px !important;
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 8px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .comparison-item {
-        min-width: 0 !important;
-        padding: 5px !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .comparison-caption {
-        grid-column: 1 / -1 !important;
-        padding: 8px 10px !important;
-        font-size: 10px !important;
-        line-height: 1.75 !important;
-      }
-
       html.ohmy-native-phone-stage body.article-page-shell .article-page-base {
         position: relative;
       }
 
       html.ohmy-native-phone-stage body.article-page-shell .article-reading-progress {
-        width: 100vw !important;
-        height: 4px !important;
-        margin: 0 !important;
-        position: fixed !important;
-        inset: 0 0 auto 0 !important;
-        z-index: 10000 !important;
-        transform: none !important;
+        margin-bottom: -4px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .portal-banner {
-        min-height: 230px !important;
+        min-height: 280px !important;
         margin-top: 0 !important;
-        padding-block: 36px !important;
+        padding-block: 52px !important;
       }
 
       html.ohmy-native-phone-stage body.home-page .magazine-grid {
@@ -1319,448 +1049,8 @@
         line-height: 1.85 !important;
       }
 
-      html.ohmy-native-phone-stage body.article-page-shell .article-window-body > .pc-article-exact-wrap {
-        width: 100%;
-        height: 1px;
-        position: relative;
-        overflow: hidden;
-        background: #fff;
-        opacity: 0;
-        transition: opacity 90ms ease-out;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-window {
-        transition: opacity 90ms ease-out;
-      }
-
-      html.ohmy-native-phone-stage.ohmy-article-copy-preparing body.article-page-shell .article-window {
-        opacity: 0 !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-window-body.pc-article-exact-pending > .article-body,
-      html.ohmy-native-phone-stage body.article-page-shell .article-window-body.pc-article-exact-mounted > .article-body {
-        display: none !important;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .article-window-body.pc-article-exact-mounted > .pc-article-exact-wrap {
-        opacity: 1;
-      }
-
-      html.ohmy-native-phone-stage body.article-page-shell .pc-article-exact-frame {
-        width: 1440px;
-        height: 1px;
-        max-width: none;
-        position: absolute;
-        inset: 0 auto auto 0;
-        display: block;
-        border: 0;
-        background: #fff;
-        transform-origin: 0 0;
-      }
-
     `;
     document.head.append(phoneStageSizing);
-
-    if (isArticlePage) {
-      const mountExactDesktopArticle = () => {
-        const articleWindowBody = document.querySelector(".article-window-body");
-        const originalArticle = articleWindowBody?.querySelector(":scope > .article-body");
-
-        if (
-          !articleWindowBody ||
-          !originalArticle ||
-          articleWindowBody.querySelector(":scope > .pc-article-exact-wrap")
-        ) {
-          document.documentElement.classList.remove("ohmy-article-copy-preparing");
-          return;
-        }
-
-        const desktopViewportWidth = 1440;
-        const desktopArticleWidth = 1060;
-        const articleClone = articleWindowBody.cloneNode(true);
-
-        articleClone.classList.remove("pc-article-exact-mounted");
-        articleClone.querySelectorAll("img").forEach((image) => {
-          image.loading = "eager";
-          image.decoding = "async";
-        });
-
-        const escapeAttribute = (value) =>
-          String(value)
-            .replaceAll("&", "&amp;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;");
-
-        const stylesheetMarkup = Array.from(
-          document.querySelectorAll('link[rel~="stylesheet"]'),
-        )
-          .map(
-            (stylesheet) =>
-              `<link rel="stylesheet" href="${escapeAttribute(stylesheet.href)}">`,
-          )
-          .join("");
-        const baseHref = escapeAttribute(new URL(".", window.location.href).href);
-        const bodyClasses = escapeAttribute(document.body.className);
-
-        const exactWrap = document.createElement("div");
-        exactWrap.className = "pc-article-exact-wrap";
-        exactWrap.setAttribute("data-pc-article-copy", "true");
-
-        const exactFrame = document.createElement("iframe");
-        exactFrame.className = "pc-article-exact-frame";
-        exactFrame.title = "PC版の記事デザイン";
-        exactFrame.loading = "eager";
-        exactFrame.setAttribute("scrolling", "no");
-        const exactArticleDocument = `<!doctype html>
-          <html lang="ja">
-            <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=${desktopViewportWidth}, initial-scale=1">
-              <base href="${baseHref}">
-              ${stylesheetMarkup}
-              <style>
-                html,
-                body {
-                  width: ${desktopViewportWidth}px !important;
-                  min-width: ${desktopViewportWidth}px !important;
-                  max-width: none !important;
-                  min-height: 0 !important;
-                  margin: 0 !important;
-                  padding: 0 !important;
-                  overflow: hidden !important;
-                  background: #fff !important;
-                }
-
-                .article-window-body {
-                  width: ${desktopArticleWidth}px !important;
-                  max-width: ${desktopArticleWidth}px !important;
-                  margin: 0 !important;
-                  padding: 34px !important;
-                  box-sizing: border-box !important;
-                  background: #e7ebed !important;
-                }
-
-                /* Copy the PC article frame into the scaled phone article:
-                   the grey outer gutter, white outline and peach page must
-                   remain visible instead of stretching edge to edge. */
-                .article-window-body > .article-body {
-                  width: 100% !important;
-                  max-width: 100% !important;
-                  margin: 0 auto !important;
-                  position: relative !important;
-                  overflow: hidden !important;
-                  border: 1px solid rgba(255, 255, 255, 0.96) !important;
-                  border-radius: 23px 23px 17px 17px !important;
-                  box-shadow:
-                    0 0 0 7px rgba(255, 255, 255, 0.14),
-                    0 0 0 8px rgba(255, 255, 255, 0.74) !important;
-                  box-sizing: border-box !important;
-                }
-
-                /* Phone-only adjustment requested for the Attention opener.
-                   The desktop page remains untouched: these rules live only
-                   inside the scaled phone article copy. */
-                .article-opening-grid {
-                  align-items: center !important;
-                }
-
-                .article-visual-layout {
-                  align-self: center !important;
-                  justify-self: center !important;
-                }
-
-                /* VHS uses the transparent badge by itself. The desktop
-                   source page has the same VHS-only rule, but inline styles
-                   are not copied into this exact phone article document. */
-                body.vhs-article .article-logo-frame {
-                  padding: 0 !important;
-                  background: transparent !important;
-                  border: 0 !important;
-                  border-radius: 0 !important;
-                  box-shadow: none !important;
-                  transform: none !important;
-                }
-
-                body.vhs-article .article-logo-frame::before {
-                  content: none !important;
-                }
-
-                /* Keep the VHS headline inside the left column, then place the
-                   thumbnail a little lower and centered in the right column. */
-                body.vhs-article .article-opening-copy {
-                  width: 100% !important;
-                  max-width: 390px !important;
-                  min-width: 0 !important;
-                }
-
-                body.vhs-article .article-display-title {
-                  width: 100% !important;
-                  max-width: 100% !important;
-                }
-
-                body.vhs-article .article-display-title > span {
-                  display: block !important;
-                  max-width: 100% !important;
-                  white-space: normal !important;
-                  overflow-wrap: anywhere !important;
-                }
-
-                body.vhs-article .article-visual-layout {
-                  width: 100% !important;
-                  margin: 24px auto 0 !important;
-                  align-self: center !important;
-                  justify-self: center !important;
-                }
-
-                .article-lede {
-                  margin-left: 0 !important;
-                  margin-right: 0 !important;
-                  padding-left: 0 !important;
-                  padding-right: 0 !important;
-                  width: 100% !important;
-                  max-width: none !important;
-                  box-sizing: border-box !important;
-                }
-
-                /* VHS uses the exact same phone lede geometry as Attention.
-                   Keep the article content different, but never let its white
-                   introduction sheet fall back to the narrower legacy width. */
-                body.vhs-article .article-lede {
-                  margin-left: 0 !important;
-                  margin-right: 0 !important;
-                  padding-left: 0 !important;
-                  padding-right: 0 !important;
-                  width: 100% !important;
-                  max-width: none !important;
-                  box-sizing: border-box !important;
-                }
-
-                /* The desktop article is scaled into the phone window, so its
-                   original type becomes a little too small. Increase only the
-                   copied phone article; the real desktop page is unchanged. */
-                .article-lede p,
-                .article-body > p {
-                  font-size: 17px !important;
-                  line-height: 1.95 !important;
-                }
-
-                /* Keep the white intro sheet unchanged while giving its text a
-                   small, even inset on phone screens. */
-                .article-lede p {
-                  display: block !important;
-                  width: 92% !important;
-                  max-inline-size: 92% !important;
-                  max-width: 92% !important;
-                  margin-left: auto !important;
-                  margin-right: auto !important;
-                  text-align: left !important;
-                  text-align-last: auto !important;
-                }
-
-                .toc-title {
-                  font-size: 12px !important;
-                }
-
-                .toc li {
-                  min-height: 48px !important;
-                }
-
-                .toc li::before {
-                  font-size: 11px !important;
-                }
-
-                .toc a {
-                  padding-top: 13px !important;
-                  padding-bottom: 13px !important;
-                  font-size: 15px !important;
-                }
-
-                /* Keep VHS single-photo figures slightly larger than the PC
-                   source, without making them dominate the phone article. */
-                body.vhs-article .article-body > .article-figure {
-                  width: min(560px, calc(100% - 80px)) !important;
-                  margin-right: auto !important;
-                  margin-left: auto !important;
-                }
-
-                .soft-cursor,
-                .article-reading-progress {
-                  display: none !important;
-                }
-              </style>
-            </head>
-            <body class="${bodyClasses}">
-              ${articleClone.outerHTML}
-            </body>
-          </html>`;
-
-        let desktopArticleHeight = 1;
-        let contentResizeObserver = null;
-        let outerResizeObserver = null;
-        let exactArticleInitialized = false;
-        let exactArticlePollFrame = 0;
-
-        const syncExactArticleSize = () => {
-          const availableWidth = articleWindowBody.clientWidth;
-          const scale = Math.max(0.01, availableWidth / desktopArticleWidth);
-
-          exactFrame.style.transform = `scale(${scale})`;
-          exactFrame.style.height = `${desktopArticleHeight}px`;
-          exactWrap.style.height = `${desktopArticleHeight * scale}px`;
-          exactWrap.style.setProperty("--pc-article-scale", String(scale));
-        };
-
-        const showResponsiveFallback = () => {
-          window.cancelAnimationFrame(exactArticlePollFrame);
-          articleWindowBody.classList.remove(
-            "pc-article-exact-pending",
-            "pc-article-exact-mounted",
-          );
-          exactWrap.remove();
-          outerResizeObserver?.disconnect();
-          document.documentElement.classList.remove("ohmy-article-copy-preparing");
-        };
-
-        const initializeExactArticle = async () => {
-          if (exactArticleInitialized) return true;
-
-          const frameDocument = exactFrame.contentDocument;
-          const frameWindow = exactFrame.contentWindow;
-          const copiedArticle = frameDocument?.querySelector(".article-window-body");
-          const copiedStyles = frameDocument
-            ? Array.from(frameDocument.querySelectorAll('link[rel~="stylesheet"]'))
-            : [];
-          const copiedStylesReady =
-            copiedStyles.length === 0 || copiedStyles.every((stylesheet) => stylesheet.sheet);
-
-          if (!frameDocument || !frameWindow || !copiedArticle || !copiedStylesReady) {
-            return false;
-          }
-
-          exactArticleInitialized = true;
-          window.cancelAnimationFrame(exactArticlePollFrame);
-
-          const measureCopiedArticle = () => {
-            desktopArticleHeight = Math.max(
-              1,
-              Math.ceil(copiedArticle.getBoundingClientRect().height),
-            );
-            syncExactArticleSize();
-          };
-
-          frameDocument.querySelectorAll(".image-source").forEach((source) => {
-            const match = source.textContent.match(/https?:\/\/\S+/);
-            if (!match) return;
-
-            const url = match[0];
-            const before = source.textContent.slice(0, match.index);
-            const after = source.textContent.slice((match.index || 0) + url.length);
-            const link = frameDocument.createElement("a");
-            link.href = url;
-            link.target = "_blank";
-            link.rel = "noreferrer";
-            link.textContent = url;
-            source.replaceChildren(before, link, after);
-          });
-
-          frameDocument.addEventListener("click", (event) => {
-            const anchor = event.target.closest?.('a[href^="#"]');
-            if (!anchor) return;
-
-            event.preventDefault();
-            const hash = anchor.getAttribute("href");
-            const target = hash === "#top" ? null : frameDocument.querySelector(hash);
-            const wrapTop = exactWrap.getBoundingClientRect().top + window.scrollY;
-            const scale = articleWindowBody.clientWidth / desktopArticleWidth;
-            const targetTop = target
-              ? wrapTop + target.getBoundingClientRect().top * scale
-              : 0;
-
-            window.scrollTo({ top: targetTop, behavior: "smooth" });
-          });
-
-          contentResizeObserver = new frameWindow.ResizeObserver(measureCopiedArticle);
-          contentResizeObserver.observe(copiedArticle);
-          exactFrame._pcArticleResizeObserver = contentResizeObserver;
-          exactFrame._pcArticleOuterResizeObserver = outerResizeObserver;
-
-          Array.from(frameDocument.images).forEach((image) => {
-            if (image.complete) return;
-            image.addEventListener("load", measureCopiedArticle, { once: true });
-            image.addEventListener("error", measureCopiedArticle, { once: true });
-          });
-
-          measureCopiedArticle();
-          articleWindowBody.classList.remove("pc-article-exact-pending");
-          articleWindowBody.classList.add("pc-article-exact-mounted");
-          document.documentElement.classList.remove("ohmy-article-copy-preparing");
-
-          /* Reveal as soon as the already-cached PC stylesheets are applied.
-             Font and image completion may refine height afterwards, but must
-             never hold the phone on an empty article window. */
-          Promise.resolve(frameDocument.fonts?.ready)
-            .then(measureCopiedArticle)
-            .catch(() => {});
-          return true;
-        };
-
-        exactFrame.addEventListener(
-          "load",
-          () => {
-            void initializeExactArticle();
-          },
-          { once: true },
-        );
-
-        /* Register the load handler before Safari is allowed to start loading
-           srcdoc. Otherwise a fast cached load can leave the responsive
-           fallback visible instead of the exact desktop article copy. */
-        articleWindowBody.classList.add("pc-article-exact-pending");
-        exactFrame.srcdoc = exactArticleDocument;
-        exactWrap.append(exactFrame);
-        articleWindowBody.append(exactWrap);
-
-        outerResizeObserver = new ResizeObserver(syncExactArticleSize);
-        outerResizeObserver.observe(articleWindowBody);
-        syncExactArticleSize();
-
-        /* srcdoc becomes queryable before its external images finish. Polling
-           that document makes the PC-copy layout deterministic even when the
-           iframe load event is delayed by a slow image or browser cache. */
-        let pollAttempts = 0;
-        const pollForExactArticle = () => {
-          if (exactArticleInitialized) return;
-
-          const copiedArticle = exactFrame.contentDocument?.querySelector(
-            ".article-window-body",
-          );
-          if (copiedArticle) {
-            void initializeExactArticle();
-            return;
-          }
-
-          pollAttempts += 1;
-          if (pollAttempts >= 240) {
-            showResponsiveFallback();
-            return;
-          }
-
-          exactArticlePollFrame = window.requestAnimationFrame(pollForExactArticle);
-        };
-
-        exactArticlePollFrame = window.requestAnimationFrame(pollForExactArticle);
-      };
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", mountExactDesktopArticle, {
-          once: true,
-        });
-      } else {
-        mountExactDesktopArticle();
-      }
-    }
-
     return;
   }
 

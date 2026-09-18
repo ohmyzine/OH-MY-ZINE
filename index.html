@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/os-stage.min.js?v=20260901-chrome4"></script>
+  <script src="js/os-stage.js?v=20260918-common1"></script>
 
   <title>OH MY ZINE | Fashion & Culture</title>
   <meta
@@ -16,22 +16,13 @@
   <meta property="og:site_name" content="OH MY ZINE">
   <meta property="og:title" content="OH MY ZINE | Fashion &amp; Culture">
   <meta property="og:description" content="ファッションを入り口に、音楽や時代、その背景にあるカルチャーを読み解くWebメディア。">
-  <meta property="og:url" content="https://oh-my-zine.com/">
-  <meta property="og:image" content="https://oh-my-zine.com/images/og-image.jpg?v=3">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="OH MY ZINE | Fashion &amp; Culture">
-  <meta name="twitter:description" content="ファッションを入り口に、音楽や時代、その背景にあるカルチャーを読み解くWebメディア。">
-  <meta name="twitter:image" content="https://oh-my-zine.com/images/og-image.jpg?v=3">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/oh-my-zine-archive-icon.png">
-  <link rel="stylesheet" href="CSS/common.min.css?v=20260901-icon1">
-  <link rel="stylesheet" href="CSS/index.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/finishing.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/mobile-readability.min.css?v=20260831-perf1">
-  <link rel="stylesheet" href="CSS/os-stage.min.css?v=20260831-perf1">
-  <script src="js/common.min.js?v=20260902-visitor1" defer></script>
-  <script src="js/home.min.js?v=20260831-perf1" defer></script>
+  <link rel="stylesheet" href="CSS/common.css?v=20260901-icon1">
+  <link rel="stylesheet" href="CSS/index.css?v=20260822-common-cleanup1">
+  <link rel="stylesheet" href="CSS/common-runtime.min.css?v=20260918-common1">
+  <script src="js/common.js?v=20260918-common1" defer></script>
+  <script src="js/home.js?v=20260827-os24" defer></script>
 
   <style id="home-aqua-final-fix">
     /* =========================================================
@@ -400,21 +391,28 @@
               <dl class="magazine-widget-counts">
                 <div>
                   <dt><b>OWNED</b><span>所有</span></dt>
-                  <dd class="is-blue"><strong>？？？</strong><span>冊</span></dd>
+                  <dd class="is-blue"><strong>042</strong><span>冊</span></dd>
                 </div>
                 <div>
                   <dt><b>REVIEWED</b><span>レビュー済み</span></dt>
-                  <dd class="is-green"><strong>？？？</strong><span>冊</span></dd>
+                  <dd class="is-green"><strong>017</strong><span>冊</span></dd>
                 </div>
                 <div>
                   <dt><b>TO REVIEW</b><span>未レビュー</span></dt>
-                  <dd class="is-red"><strong>？？？</strong><span>冊</span></dd>
+                  <dd class="is-red"><strong>025</strong><span>冊</span></dd>
                 </div>
               </dl>
 
-              <a class="magazine-read-button" id="magazine-collection-link" href="magazine.html" aria-label="MAGAZINE COLLECTIONを開く">
-                <span>OPEN MAGAZINE COLLECTION</span><b>▶</b>
-              </a>
+              <button class="magazine-read-button" id="magazine-read-button" type="button" aria-expanded="false" aria-controls="magazine-review-drawer">
+                <span>READ REVIEWS</span><b>▶</b>
+              </button>
+
+              <div class="magazine-review-drawer" id="magazine-review-drawer" hidden>
+                <p><b>01</b><span>Olive</span><small>REVIEW PREPARING</small></p>
+                <p><b>02</b><span>FRUiTS</span><small>COMING SOON</small></p>
+                <p><b>03</b><span>Zipper</span><small>COMING SOON</small></p>
+                <a href="magazine.html">OPEN MAGAZINE COLLECTION →</a>
+              </div>
             </div>
           </section>
 
@@ -439,9 +437,9 @@
           </div>
 
           <figure class="hanging-keychain hanging-keychain-layered" aria-hidden="true">
-              <img class="keychain-charm keychain-swing-layer" src="images/home-keychain-dog-layer.webp?v=22" alt="" loading="lazy" decoding="async">
-              <img class="keychain-eyelet keychain-eyelet-only" src="images/home-keychain-eyelet-only.webp?v=22" alt="" loading="lazy" decoding="async">
-              <img class="keychain-eyelet keychain-eyelet-front" src="images/home-keychain-front-cover.webp?v=23-clean" alt="" loading="lazy" decoding="async">
+            <img class="keychain-charm keychain-swing-layer" src="images/home-keychain-dog-layer.webp?v=22" alt="">
+            <img class="keychain-eyelet keychain-eyelet-only" src="images/home-keychain-eyelet-only.webp?v=22" alt="">
+            <img class="keychain-eyelet keychain-eyelet-front" src="images/home-keychain-front-cover.webp?v=23-clean" alt="">
           </figure>
         </aside>
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" role="img" aria-labelledby="title desc">
+  <title id="title">記事ロゴの差し替え位置</title>
+  <desc id="desc">新しい記事のロゴ画像に差し替えるためのプレースホルダー</desc>
+  <path d="M105 93C225 18 756 12 894 101c64 42 78 238 2 317-103 107-684 108-796 3C17 343 27 142 105 93Z" fill="#050505" stroke="#ff7d2b" stroke-width="22"/>
+  <text x="500" y="284" text-anchor="middle" font-family="Arial, sans-serif" font-size="118" font-style="italic" font-weight="800" fill="#ffd2ae">YOUR TITLE</text>
+  <text x="500" y="365" text-anchor="middle" font-family="Arial, sans-serif" font-size="35" font-weight="700" letter-spacing="8" fill="#fff">ARTICLE LOGO</text>
+</svg>
