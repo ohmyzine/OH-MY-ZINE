@@ -600,6 +600,16 @@ body.subpage .shared-tabs > a:focus-visible {
    SHARED APP SIZE / UTILITIES
 ========================= */
 
+/* Use the former 90% browser-zoom appearance as the desktop baseline.
+   Phone layouts render inside their own staged viewport and must keep their
+   existing scale, so the adjustment only applies to the native PC page. */
+@media (min-width: 1101px) {
+  html:not(.ohmy-os-stage-frame):not(.ohmy-native-phone-stage) body.home-page,
+  html:not(.ohmy-os-stage-frame):not(.ohmy-native-phone-stage) body.subpage {
+    zoom: 0.9;
+  }
+}
+
 body.home-page,
 body.subpage {
   --shared-app-width: min(1134px, calc(100vw - 24px));
