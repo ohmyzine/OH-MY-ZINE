@@ -35,13 +35,35 @@
       display: block;
       white-space: nowrap;
     }
+
+    .vhs-article .article-opening-copy .vhs-title-phone {
+      display: none !important;
+    }
+
+    html.ohmy-native-phone-stage .vhs-article .article-opening-copy .vhs-title-desktop {
+      display: none !important;
+    }
+
+    html.ohmy-native-phone-stage .vhs-article .article-opening-copy .vhs-title-phone {
+      display: block !important;
+    }
   </style>
 
 
   <style>
-    /* VHS article only: keep the original orange double ring, change only the inner background to white. */
+    /* Keep the original PC presentation. */
     .vhs-article .article-opening-copy .article-logo-frame {
       background: #ffffff;
+    }
+
+    /* Phone only: compensate for the transparent padding inside VHS.webp. */
+    html.ohmy-native-phone-stage .vhs-article .article-opening-copy .article-logo-frame {
+      overflow: hidden;
+    }
+
+    html.ohmy-native-phone-stage .vhs-article .article-opening-copy .article-logo-frame .article-object-title {
+      object-position: center;
+      transform: scale(1.65);
     }
   </style>
 
@@ -135,7 +157,8 @@
 
         <p class="article-display-title">
           <span>OHMYZINE vs VSH</span>
-          <span>ファッション目線でVHSにハマるまで</span>
+          <span class="vhs-title-desktop">ファッション目線でVHSにハマるまで</span>
+          <span class="vhs-title-phone">VHSにハマるまで</span>
         </p>
 
         <p class="article-subtitle">

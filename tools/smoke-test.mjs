@@ -129,7 +129,13 @@ for (const pageName of pageNames) {
 
   if (pageName === "fashion.html") {
     const ipodCard = page.locator('.fashion-stream-card a[href="article-ipod.html"]').first();
+    const ipodCoverImage = ipodCard.locator("img");
     assert.equal(await ipodCard.isVisible(), true, "FASHION ON AIR should show the iPod article");
+    assert.equal(
+      await ipodCoverImage.evaluate((image) => getComputedStyle(image).objectFit),
+      "contain",
+      "FASHION desktop should keep its original iPod thumbnail fit",
+    );
     assert.equal(
       await page.locator("#fashion-channel-caption").textContent(),
       "ON AIR / 003 ARTICLES",
@@ -150,6 +156,27 @@ for (const pageName of pageNames) {
       const element = document.querySelector(".profile-motion video");
       return element && element.readyState >= 2 && !element.paused;
     }, null, { timeout: 15000 });
+  }
+
+  if (pageName === "article-vhs.html") {
+    assert.equal(
+      await page.locator(".article-display-title").innerText(),
+      "OHMYZINE vs VSH\nファッション目線でVHSにハマるまで",
+      "VHS desktop title should keep the original wording",
+    );
+    assert.equal(
+      await page.locator(".article-object-title").evaluate((image) => getComputedStyle(image).transform),
+      "none",
+      "VHS desktop logo should keep its original size",
+    );
+  }
+
+  if (pageName === "article-ipod.html") {
+    assert.equal(
+      await page.locator(".article-object-title").evaluate((image) => getComputedStyle(image).transform),
+      "none",
+      "iPod desktop logo should keep its original size",
+    );
   }
 
   assert.deepEqual(pageErrors, [], `${pageName} should not throw page errors`);
@@ -202,12 +229,51 @@ for (const pageName of nativePhoneReaders) {
     `${pageName} phone reading progress should begin directly below navigation`,
   );
 
+  if (pageName === "article-vhs.html" || pageName === "article-ipod.html") {
+    const logoLayout = await page.locator(".article-logo-frame").evaluate((frame) => {
+      const image = frame.querySelector(".article-object-title");
+      return {
+        overflow: getComputedStyle(frame).overflow,
+        objectPosition: getComputedStyle(image).objectPosition,
+        transform: getComputedStyle(image).transform,
+      };
+    });
+    assert.equal(logoLayout.overflow, "hidden", `${pageName} logo should stay inside its shared frame`);
+    assert.equal(logoLayout.objectPosition, "50% 50%", `${pageName} logo should be centered`);
+    assert.notEqual(logoLayout.transform, "none", `${pageName} padded logo artwork should be enlarged`);
+  }
+
+  if (pageName === "article-vhs.html") {
+    const visibleTitle = await page.locator(".article-display-title").innerText();
+    assert.equal(visibleTitle, "OHMYZINE vs VSH\nVHSにハマるまで");
+    const titleFits = await page.locator(".article-display-title").evaluate(
+      (title) => title.scrollWidth <= title.clientWidth,
+    );
+    assert.equal(titleFits, true, "VHS phone title should fit without horizontal overflow");
+  }
+
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   await page.waitForTimeout(50);
   const followedProgressBox = await progressBar.boundingBox();
   assert.ok(followedProgressBox && followedProgressBox.y <= 1, `${pageName} phone reading progress should follow at viewport top`);
   await page.close();
 }
+
+const phoneFashionPage = await nativePhoneContext.newPage();
+const phoneFashionResponse = await phoneFashionPage.goto(`${baseUrl}/fashion.html`, {
+  waitUntil: "domcontentloaded",
+  timeout: 30000,
+});
+assert.equal(phoneFashionResponse?.status(), 200);
+await phoneFashionPage.waitForTimeout(250);
+assert.equal(
+  await phoneFashionPage.locator(".fashion-ipod-thumbnail").evaluate(
+    (image) => getComputedStyle(image).objectFit,
+  ),
+  "cover",
+  "FASHION phone iPod thumbnail should fill the card without black margins",
+);
+await phoneFashionPage.close();
 await nativePhoneContext.close();
 await browser.close();
 

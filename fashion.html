@@ -18,6 +18,14 @@
   <link rel="stylesheet" href="CSS/common-runtime.min.css?v=20260918-common1">
   <script src="js/common.js?v=20260920-cursor1" defer></script>
   <script src="js/fashion.js?v=20260901-category5" defer></script>
+
+  <style>
+    /* Only the staged phone layout crops the iPod image to the card edges. */
+    html.ohmy-native-phone-stage .fashion-ipod-thumbnail {
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+  </style>
 </head>
 
 <body class="subpage fashion-page fashion-player-page">
@@ -120,6 +128,7 @@
                 <img
                   decoding="async"
                   fetchpriority="high"
+                  class="fashion-ipod-thumbnail"
                   src="images/ipod-shuffle-thumbnail.webp"
                   alt="カラフルなiPod shuffle"
                   style="object-fit:contain;object-position:center;"
