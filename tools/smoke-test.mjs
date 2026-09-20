@@ -44,6 +44,31 @@ for (const pageName of pageNames) {
     .filter((id, index, ids) => ids.indexOf(id) !== index));
   assert.deepEqual(duplicateIds, [], `${pageName} should not contain duplicate IDs`);
 
+  await page.mouse.move(1030, 760);
+  await page.waitForTimeout(30);
+  const cursorMetrics = await page.evaluate(() => {
+    const cursor = document.querySelector("#soft-cursor");
+    const rect = cursor?.getBoundingClientRect();
+    const zoom = Number.parseFloat(getComputedStyle(document.body).zoom) || 1;
+    return {
+      ready: document.body.classList.contains("custom-cursor-ready"),
+      hidden: cursor?.hidden ?? true,
+      left: rect?.left ?? null,
+      top: rect?.top ?? null,
+      zoom,
+    };
+  });
+  assert.equal(cursorMetrics.ready, true, `${pageName} custom cursor should initialize`);
+  assert.equal(cursorMetrics.hidden, false, `${pageName} custom cursor should appear`);
+  assert.ok(
+    Math.abs(cursorMetrics.left + (16 * cursorMetrics.zoom) - 1030) <= 1,
+    `${pageName} custom cursor x hotspot should match the pointer: ${JSON.stringify(cursorMetrics)}`,
+  );
+  assert.ok(
+    Math.abs(cursorMetrics.top + (10 * cursorMetrics.zoom) - 760) <= 1,
+    `${pageName} custom cursor y hotspot should match the pointer: ${JSON.stringify(cursorMetrics)}`,
+  );
+
   const searchToggle = page.locator(".desktop-site-titlebar .shared-search-toggle");
   if (await searchToggle.count()) {
     await searchToggle.click();
@@ -103,11 +128,19 @@ for (const pageName of pageNames) {
   }
 
   if (pageName === "fashion.html") {
+    const ipodCard = page.locator('.fashion-stream-card a[href="article-ipod.html"]').first();
+    assert.equal(await ipodCard.isVisible(), true, "FASHION ON AIR should show the iPod article");
+    assert.equal(
+      await page.locator("#fashion-channel-caption").textContent(),
+      "ON AIR / 003 ARTICLES",
+      "FASHION ON AIR should count all three published articles",
+    );
     await page.locator("[data-fashion-category-toggle]").click();
     assert.equal(await page.locator("#fashion-category-menu").isVisible(), true, "FASHION category menu should open");
     await page.locator('[data-fashion-channel="archive"]').click();
     assert.equal(await page.locator("#fashion-category-menu").isVisible(), false, "FASHION category menu should close after selection");
     assert.ok(await page.locator('.fashion-stream-card:not([hidden])').count() > 0, "FASHION archive should show articles");
+    assert.equal(await ipodCard.isVisible(), true, "FASHION archive should keep the iPod article visible");
   }
 
   if (pageName === "about.html") {

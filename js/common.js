@@ -279,11 +279,26 @@
   }
 
   function setupCursor() {
-    const cursor = document.querySelector("#soft-cursor");
-    if (!cursor || !window.matchMedia("(pointer: fine)").matches) return;
+    if (isPhonePresentation() || !window.matchMedia("(pointer: fine)").matches) return;
+
+    let cursor = document.querySelector("#soft-cursor");
+    if (!cursor) {
+      cursor = document.createElement("div");
+      cursor.id = "soft-cursor";
+      cursor.className = "soft-cursor";
+      cursor.setAttribute("aria-hidden", "true");
+      cursor.hidden = true;
+      document.body.appendChild(cursor);
+    }
+    if (!cursor.querySelector("span")) cursor.appendChild(document.createElement("span"));
+
     document.body.classList.add("custom-cursor-ready");
     document.addEventListener("pointermove", (event) => {
-      cursor.style.transform = `translate3d(${event.clientX - 16}px, ${event.clientY - 10}px, 0)`;
+      /* The desktop shell is rendered with CSS zoom: .9. Pointer coordinates
+         stay in viewport pixels, while fixed elements inside the zoomed body
+         use pre-zoom CSS pixels, so compensate before positioning the hotspot. */
+      const pageZoom = Number.parseFloat(getComputedStyle(document.body).zoom) || 1;
+      cursor.style.transform = `translate3d(${event.clientX / pageZoom - 16}px, ${event.clientY / pageZoom - 10}px, 0)`;
       cursor.hidden = false;
     });
     document.addEventListener("pointerover", (event) => {

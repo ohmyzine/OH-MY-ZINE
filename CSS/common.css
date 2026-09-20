@@ -546,19 +546,15 @@ body.subpage .shared-tabs > a:focus-visible {
 
 @media (pointer: fine) {
   body.custom-cursor-ready,
-  body.custom-cursor-ready a,
-  body.custom-cursor-ready button,
-  body.custom-cursor-ready label,
-  body.custom-cursor-ready input,
-  body.custom-cursor-ready .shared-titlebar {
-    cursor: none;
+  body.custom-cursor-ready * {
+    cursor: none !important;
   }
 
   body.custom-cursor-ready .soft-cursor {
     width: 64px;
     height: 64px;
     position: fixed;
-    z-index: 9999;
+    z-index: 2147483647;
     top: 0;
     left: 0;
     display: block;
