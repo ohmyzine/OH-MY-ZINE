@@ -85,16 +85,25 @@
 }
 
 .article-page-shell .article-reading-progress {
-  width: var(--shared-app-width);
+  width: 100%;
   height: 4px;
   margin: 0;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 50%;
   z-index: 10000;
   overflow: hidden;
   background: #c9d1d4;
-  transform: translateX(-50%);
+}
+
+/* JS moves the meter outside the draggable/clipped app window. It begins
+   directly below the navigation, then settles at the viewport top while the
+   reader scrolls through the article. */
+.article-page-shell .article-reading-progress.is-following {
+  width: var(--article-progress-width, var(--shared-app-width));
+  position: fixed;
+  top: var(--article-progress-top, 0px);
+  left: var(--article-progress-left, 50%);
+  transform: none;
 }
 
 .article-page-shell .article-reading-progress span {
@@ -278,6 +287,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+}
+
+.article-page-shell .image-comparison-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .article-page-shell .comparison-item {

@@ -624,8 +624,39 @@
 
   function setupArticleReader() {
     const progress = document.querySelector("[data-reading-progress]");
+    const progressBar = progress?.closest(".article-reading-progress");
     const sources = document.querySelectorAll(".image-source");
     if (!progress && !sources.length) return;
+
+    const appWindow = document.querySelector(".shared-app-window");
+    const titlebar = getActiveTitlebar();
+    const navigation = titlebar?.parentElement?.querySelector(".shared-tabs")
+      || document.querySelector(".shared-tabs");
+
+    if (progressBar) {
+      document.body.append(progressBar);
+      progressBar.classList.add("is-following");
+    }
+
+    const updateProgressPosition = () => {
+      if (!progressBar || !appWindow || !navigation) return;
+
+      const pageZoom = Number.parseFloat(getComputedStyle(document.body).zoom) || 1;
+      const appRect = appWindow.getBoundingClientRect();
+      const navigationRect = navigation.getBoundingClientRect();
+      const isWindowHidden = appWindow.hidden
+        || appWindow.classList.contains("is-minimized")
+        || document.body.classList.contains("window-minimized")
+        || document.body.classList.contains("is-subpage-minimized");
+
+      progressBar.hidden = isWindowHidden;
+      progressBar.style.setProperty("--article-progress-width", `${appRect.width / pageZoom}px`);
+      progressBar.style.setProperty("--article-progress-left", `${appRect.left / pageZoom}px`);
+      progressBar.style.setProperty(
+        "--article-progress-top",
+        `${Math.max(0, navigationRect.bottom) / pageZoom}px`,
+      );
+    };
 
     const updateProgress = () => {
       if (!progress) return;
@@ -633,6 +664,7 @@
       const distance = Math.max(1, page.scrollHeight - window.innerHeight);
       const ratio = Math.min(1, Math.max(0, window.scrollY / distance));
       progress.style.transform = `scaleX(${ratio})`;
+      updateProgressPosition();
     };
 
     sources.forEach((source) => {
@@ -653,6 +685,16 @@
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
     window.addEventListener("resize", updateProgress);
+    titlebar?.addEventListener("pointermove", updateProgressPosition);
+    titlebar?.addEventListener("pointerup", updateProgressPosition);
+
+    if (appWindow) {
+      const appWindowObserver = new MutationObserver(updateProgressPosition);
+      appWindowObserver.observe(appWindow, {
+        attributes: true,
+        attributeFilter: ["class", "hidden", "style"],
+      });
+    }
   }
 
   async function loadSearchArticles() {

@@ -17,6 +17,7 @@ const pageNames = [
   "fashion.html",
   "article.html",
   "article-vhs.html",
+  "article-ipod.html",
   "article-template.html",
   "magazine.html",
   "photo.html",
@@ -76,10 +77,29 @@ for (const pageName of pageNames) {
   }
 
   if (await page.locator("[data-reading-progress]").count()) {
+    const progressBar = page.locator(".article-reading-progress");
+    const tabs = page.locator(".desktop-site-chrome.shared-tabs");
+    const progressBarIsVisible = await progressBar.isVisible();
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(50);
+    if (progressBarIsVisible) {
+      const initialProgressBox = await progressBar.boundingBox();
+      const tabsBox = await tabs.boundingBox();
+      assert.ok(initialProgressBox && tabsBox, `${pageName} reading progress should be measurable`);
+      assert.ok(
+        Math.abs(initialProgressBox.y - (tabsBox.y + tabsBox.height)) <= 2,
+        `${pageName} reading progress should begin directly below navigation: ${JSON.stringify({ initialProgressBox, tabsBox })}`,
+      );
+    }
+
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await page.waitForTimeout(50);
     const transform = await page.locator("[data-reading-progress]").evaluate((element) => element.style.transform);
     assert.notEqual(transform, "scaleX(0)", `${pageName} reading progress should update`);
+    if (progressBarIsVisible) {
+      const followedProgressBox = await progressBar.boundingBox();
+      assert.ok(followedProgressBox && followedProgressBox.y <= 1, `${pageName} reading progress should follow at viewport top`);
+    }
   }
 
   if (pageName === "fashion.html") {
@@ -119,6 +139,47 @@ for (const pageName of pageNames) {
   await page.close();
 }
 await mobileContext.close();
+
+const nativePhoneContext = await browser.newContext({
+  viewport: { width: 390, height: 844 },
+  deviceScaleFactor: 3,
+  hasTouch: true,
+  isMobile: true,
+  userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Safari/604.1",
+});
+const nativePhoneReaders = ["article.html", "article-vhs.html", "article-ipod.html"];
+for (const pageName of nativePhoneReaders) {
+  const page = await nativePhoneContext.newPage();
+  const response = await page.goto(`${baseUrl}/${pageName}`, {
+    waitUntil: "domcontentloaded",
+    timeout: 30000,
+  });
+  assert.equal(response?.status(), 200);
+  await page.waitForTimeout(350);
+
+  const progressBar = page.locator(".article-reading-progress");
+  const tabs = page.locator(".phone-fashion-header .shared-tabs");
+  assert.equal(await progressBar.isVisible(), true, `${pageName} phone reading progress should be visible`);
+
+  const initialProgressBox = await progressBar.boundingBox();
+  const tabsBox = await tabs.boundingBox();
+  assert.ok(initialProgressBox && tabsBox);
+  assert.ok(
+    Math.abs(initialProgressBox.y - (tabsBox.y + tabsBox.height)) <= 2,
+    `${pageName} phone reading progress should begin directly below navigation`,
+  );
+
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await page.waitForTimeout(50);
+  const followedProgressBox = await progressBar.boundingBox();
+  assert.ok(followedProgressBox && followedProgressBox.y <= 1, `${pageName} phone reading progress should follow at viewport top`);
+  await page.close();
+}
+await nativePhoneContext.close();
 await browser.close();
 
-console.log(JSON.stringify({ passed: results.length, mobileStages: pageNames.length }, null, 2));
+console.log(JSON.stringify({
+  passed: results.length,
+  mobileStages: pageNames.length,
+  nativePhoneReaders: nativePhoneReaders.length,
+}, null, 2));
